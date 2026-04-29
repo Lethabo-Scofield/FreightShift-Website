@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "PpPN23F0kBRDr124lkrie"
+uri = "file://artifacts/freightshift/public/hero.png"
+type = "image"
+title = "Hero container ship port"
+
+[[generated]]
+id = "k_iF1ryUGMpMI_KsBhfFl"
+uri = "file://artifacts/freightshift/public/warehouse.png"
+type = "image"
+title = "Warehouse interior"
+
+[[generated]]
+id = "PRhFrAtZQzQwmzYBVrD4J"
+uri = "file://artifacts/freightshift/public/cargo-plane.png"
+type = "image"
+title = "Cargo plane"
+
+[[generated]]
+id = "e7q1Ebb7QLZoksQAa6pe9"
+uri = "file://artifacts/freightshift/public/logistics-pro.png"
+type = "image"
+title = "Logistics professional"
+
+[[generated]]
+id = "Ei2HUDKXFUkgTsBz4KNpR"
+uri = "file://artifacts/freightshift/public/favicon.png"
+type = "image"
+title = "FreightShift Favicon"

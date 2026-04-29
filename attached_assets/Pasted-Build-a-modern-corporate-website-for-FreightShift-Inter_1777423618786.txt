@@ -1,0 +1,113 @@
+Build a modern corporate website for FreightShift International Logistics (Pty) Ltd.
+
+Company slogan:
+“We deliver freight solutions”
+
+Core positioning:
+FreightShift International Logistics is a South African logistics and freight forwarding company helping businesses source, ship, clear, store, and deliver goods locally and internationally, with a strong focus on China to South Africa trade.
+
+Design style:
+Clean, premium, corporate, modern logistics website.
+Use short, clear copy.
+Avoid repeating the same words across sections.
+
+Colours:
+- Main Freight Blue: #1F73D8
+- Charcoal / Black: #1E1E1E
+- White: #FFFFFF
+- Light Grey: #F7F7F7
+- Accent Orange: #F28C28
+- Deep Navy: #0F3D75
+
+Use blue for buttons, highlights, icons, links, and headers.
+Use orange only for key actions like “Get a Quote” and “Track Shipment”.
+Use navy for hero/footer gradients.
+Use charcoal for body text and headings.
+
+Website structure:
+1. Home
+2. About
+3. Services
+4. China to South Africa Freight
+5. Get a Quote
+6. Contact
+
+Hero section:
+Headline: We deliver freight solutions
+Subtext: Reliable freight forwarding, customs clearance, warehousing, and delivery between China and South Africa.
+Buttons:
+- Get a Quote
+- WhatsApp Us
+
+About section:
+FreightShift International Logistics (Pty) Ltd is a South African-based logistics and freight forwarding company delivering efficient, reliable, and cost-effective supply chain solutions across local and international markets.
+
+The company specializes in seamless cargo movement between China and South Africa, while also supporting domestic logistics across South Africa.
+
+Value proposition section:
+Show these as cards:
+- China to South Africa freight expertise
+- Competitive and flexible pricing
+- Real-time shipment tracking and communication
+- Customs compliance knowledge
+- Dedicated logistics support
+- Reliable, fast, and transparent service
+
+Services section:
+Create service cards for:
+1. International Freight Forwarding
+Air, sea, and road freight, including FCL, LCL, and express cargo.
+
+2. Customs Clearance
+Compliant customs processing to reduce delays and avoid penalties.
+
+3. Warehousing and Distribution
+Secure storage, inventory handling, packing, and distribution.
+
+4. Supply Chain Management
+End-to-end logistics planning to reduce costs and improve delivery timelines.
+
+5. Domestic Logistics Services
+Nationwide transport, last-mile delivery, and business logistics.
+
+6. Relocation and Moving Services
+Household and office relocation with secure packing and delivery.
+
+Vision section:
+To become a leading logistics and freight forwarding provider connecting China and South Africa, recognized for innovation, reliability, and excellent service delivery.
+
+Mission section:
+To deliver seamless, efficient, and cost-effective logistics solutions that support client growth while maintaining high standards of service quality, integrity, and operational performance.
+
+Strategic goals section:
+- Clear communication and transparent service
+- Reduced delivery lead times
+- Expanded local and international logistics network
+- Real-time visibility through technology
+- Compliance, professionalism, and ethical business
+
+Why partner with us section:
+FreightShift helps South African businesses source, ship, clear, and deliver goods from China safely, affordably, and directly to their doorstep.
+
+Get a Quote form:
+Fields required:
+- Name and Surname
+- Email
+- Mobile Number
+- Type of Goods
+- Volume Weight / Weight
+- Mode: Sea or Air
+
+Contact section:
+Phone / WhatsApp: 0681095543
+WhatsApp link: https://wa.me/message/EVTMLWYQY2OCG1
+
+Technical requirements:
+- Fully responsive for mobile, tablet, and desktop
+- Functional quote form with validation
+- Success message after submission
+- Smooth hover states
+- Clean footer with quick links and contact details
+- Use professional freight, cargo, shipping, warehouse, and logistics visuals
+- Keep the layout premium and minimal
+- Do not overuse orange
