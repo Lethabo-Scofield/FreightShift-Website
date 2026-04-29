@@ -6,7 +6,7 @@ import ddpImage from "@assets/image_1777424859406.png";
 
 export function MultimodalFeature() {
   return (
-    <section className="py-20 md:py-28 bg-white border-b border-border/50">
+    <section className="py-14 md:py-28 bg-white border-b border-border/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
@@ -18,7 +18,7 @@ export function MultimodalFeature() {
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-3 py-1.5 rounded-full mb-5">
               Multimodal · DDP
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight mb-6 leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-5 md:mb-6 leading-[1.15]">
               Sea, Air, or DDP. <span className="text-brand-blue">One team, every mode.</span>
             </h2>
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">

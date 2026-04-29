@@ -9,7 +9,7 @@ export function Hero() {
   const goToQuote = () => navigate("/contact");
 
   return (
-    <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-brand-navy">
+    <section id="home" className="relative pt-24 pb-12 md:pt-40 md:pb-28 overflow-hidden bg-brand-navy">
       <div className="absolute inset-0 z-0">
         <img
           src="/hero.png"
@@ -22,14 +22,14 @@ export function Hero() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] mb-5">
               We deliver{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-brand-blue">
                 freight solutions.
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/75 max-w-xl mb-10 leading-relaxed font-light">
+            <p className="text-base sm:text-lg md:text-xl text-white/75 max-w-xl mb-8 md:mb-10 leading-relaxed font-light">
               Reliable freight forwarding, customs clearance, warehousing, and delivery between China and South Africa.
             </p>
 

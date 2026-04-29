@@ -12,7 +12,7 @@ const valueProps = [
 
 export function WhyUs() {
   return (
-    <section className="py-20 md:py-32 bg-muted border-t border-border/50">
+    <section className="py-14 md:py-32 bg-muted border-t border-border/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div 

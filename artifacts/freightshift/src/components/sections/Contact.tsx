@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-28 bg-white">
+    <section id="contact" className="py-14 md:py-28 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Contact Us</span>

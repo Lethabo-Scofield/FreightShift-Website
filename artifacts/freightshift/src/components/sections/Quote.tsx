@@ -44,7 +44,7 @@ export function Quote() {
   };
 
   return (
-    <section id="quote" className="py-20 md:py-32 bg-muted border-t border-border/50">
+    <section id="quote" className="py-14 md:py-32 bg-muted border-t border-border/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           

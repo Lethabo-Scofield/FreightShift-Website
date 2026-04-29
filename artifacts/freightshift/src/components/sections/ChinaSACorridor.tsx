@@ -4,7 +4,7 @@ import corridorMap from "@assets/image_1777424831181.png";
 
 export function ChinaSACorridor() {
   return (
-    <section id="china-sa" className="py-20 md:py-32 bg-brand-navy relative overflow-hidden">
+    <section id="china-sa" className="py-14 md:py-32 bg-brand-navy relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
@@ -16,10 +16,10 @@ export function ChinaSACorridor() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-widest uppercase mb-6">
               Core Route
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 md:mb-6 leading-tight">
               The China-South Africa Direct Link
             </h2>
-            <p className="text-xl text-white/80 mb-10 leading-relaxed font-light">
+            <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 md:mb-10 leading-relaxed font-light">
               We help South African businesses source, ship, clear, and deliver goods from China securely and affordably.
             </p>
 

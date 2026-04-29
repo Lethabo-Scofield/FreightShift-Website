@@ -11,7 +11,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ eyebrow, title, subtitle, breadcrumb }: PageHeaderProps) {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-brand-navy overflow-hidden">
+    <section className="relative pt-24 pb-12 md:pt-40 md:pb-24 bg-brand-navy overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-blue/25 via-transparent to-transparent" />
       <div className="absolute inset-0 opacity-[0.04]" style={{
         backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
@@ -44,11 +44,11 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb }: PageHeaderP
               {eyebrow}
             </span>
           )}
-          <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-[1.05] mb-5">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-4 md:mb-5 break-words">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl">
               {subtitle}
             </p>
           )}

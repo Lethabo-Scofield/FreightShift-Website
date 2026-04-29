@@ -4,11 +4,11 @@ import { FaWhatsapp } from "react-icons/fa";
 
 export function FinalCTA() {
   return (
-    <section className="py-24 bg-brand-navy relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-brand-navy relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-blue/20 via-transparent to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to move your cargo?</h2>
-        <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 md:mb-6">Ready to move your cargo?</h2>
+        <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-8 md:mb-10">
           Partner with FreightShift for predictable, transparent, and efficient logistics between China and South Africa.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">

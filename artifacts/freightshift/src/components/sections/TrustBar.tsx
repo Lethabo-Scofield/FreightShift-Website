@@ -37,19 +37,19 @@ export function TrustBar() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 divide-x-0 md:divide-x divide-white/10 text-center">
           <div className="flex flex-col gap-1 px-4">
             <Counter end={12000} suffix="+" />
-            <span className="text-white/60 text-sm font-medium">Containers Cleared</span>
+            <span className="text-white/60 text-xs sm:text-sm font-medium">Containers Cleared</span>
           </div>
           <div className="flex flex-col gap-1 px-4">
             <Counter end={98} suffix=".4%" />
-            <span className="text-white/60 text-sm font-medium">On-Time Delivery</span>
+            <span className="text-white/60 text-xs sm:text-sm font-medium">On-Time Delivery</span>
           </div>
           <div className="flex flex-col gap-1 px-4">
             <span className="font-bold text-2xl md:text-3xl text-white">45<span className="text-xl">d</span></span>
-            <span className="text-white/60 text-sm font-medium">Average Door-to-Door</span>
+            <span className="text-white/60 text-xs sm:text-sm font-medium">Door-to-Door</span>
           </div>
           <div className="flex flex-col gap-1 px-4">
             <span className="font-bold text-2xl md:text-3xl text-white">24/7</span>
-            <span className="text-white/60 text-sm font-medium">Corridor Support</span>
+            <span className="text-white/60 text-xs sm:text-sm font-medium">Corridor Support</span>
           </div>
         </div>
       </div>
