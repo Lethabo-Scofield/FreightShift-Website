@@ -26,7 +26,7 @@ export function WhyUs() {
               FreightShift International Logistics is a South African-based company delivering efficient, reliable, and cost-effective supply chain solutions.
             </p>
             <p className="text-lg text-foreground/80 leading-relaxed mb-10">
-              We manage the complexities of international trade so you don't have to — from factory floors in Shenzhen to warehouses in Johannesburg.
+              We manage the complexities of international trade so you don't have to. From factory floors in Shenzhen to warehouses in Johannesburg.
             </p>
 
             <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-lg">

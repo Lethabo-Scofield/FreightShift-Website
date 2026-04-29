@@ -12,7 +12,7 @@ const faqs = [
     a: "Air freight takes 5–9 days depending on the carrier and clearance speed. Sea freight typically takes 28–40 days port-to-port, plus a few days for customs and local delivery."
   },
   {
-    q: "What's the difference between FCL and LCL — and which should I use?",
+    q: "What's the difference between FCL and LCL, and which should I use?",
     a: "FCL (Full Container Load) means you rent an entire 20ft or 40ft container. LCL (Less than Container Load) means you share space. Use FCL for large bulk orders (usually >15cbm) and LCL for smaller consignments to save costs."
   },
   {

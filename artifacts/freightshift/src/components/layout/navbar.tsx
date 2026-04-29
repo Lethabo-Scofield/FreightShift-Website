@@ -40,7 +40,7 @@ export function Navbar() {
         <Link
           href="/"
           className="flex items-center group"
-          aria-label="FreightShift International Logistics — Home"
+          aria-label="FreightShift International Logistics, Home"
         >
           <img
             src={logoUrl}

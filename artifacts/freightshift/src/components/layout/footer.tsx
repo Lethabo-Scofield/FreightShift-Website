@@ -22,7 +22,7 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center bg-white rounded-lg px-4 py-3 self-start shadow-sm hover:shadow-md transition-shadow"
-              aria-label="FreightShift International Logistics — Home"
+              aria-label="FreightShift International Logistics, Home"
             >
               <img
                 src={logoUrl}

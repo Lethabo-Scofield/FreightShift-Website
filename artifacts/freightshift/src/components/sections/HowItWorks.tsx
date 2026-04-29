@@ -20,7 +20,7 @@ const steps = [
   {
     icon: FileCheck,
     title: "SA Customs Clearance",
-    desc: "Our team handles SARS, duties, and compliance — no surprises."
+    desc: "Our team handles SARS, duties, and compliance. No surprises."
   },
   {
     icon: MapPin,

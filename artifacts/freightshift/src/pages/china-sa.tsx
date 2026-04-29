@@ -16,7 +16,7 @@ export default function ChinaSA() {
         <PageHeader
           eyebrow="China ↔ South Africa"
           title="The corridor we know better than anyone."
-          subtitle="Predictable schedules, deep relationships in Chinese ports, and on-the-ground SARS expertise in South Africa — that's how we keep your goods moving."
+          subtitle="Predictable schedules, deep relationships in Chinese ports, and on-the-ground SARS expertise in South Africa. That's how we keep your goods moving."
           breadcrumb={[{ label: "China to SA" }]}
         />
         <ChinaSACorridor />

@@ -19,10 +19,10 @@ export function MultimodalFeature() {
               Multimodal · DDP
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight mb-6 leading-[1.1]">
-              Sea, Air, or DDP — <span className="text-brand-blue">one team, every mode.</span>
+              Sea, Air, or DDP. <span className="text-brand-blue">One team, every mode.</span>
             </h2>
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              Whether you need budget-friendly sea freight, urgent air shipments, or fully-landed DDP (Delivered Duty Paid) where we handle every cost from factory to your warehouse — we coordinate it under one invoice, one contact.
+              Whether you need budget-friendly sea freight, urgent air shipments, or fully-landed DDP (Delivered Duty Paid) where we handle every cost from factory to your warehouse. We coordinate it under one invoice, one contact.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-10">
