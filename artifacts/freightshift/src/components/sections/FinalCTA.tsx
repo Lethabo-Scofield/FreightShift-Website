@@ -1,15 +1,8 @@
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { FaWhatsapp } from "react-icons/fa";
 
 export function FinalCTA() {
-  const scrollToQuote = () => {
-    const element = document.querySelector("#quote");
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="py-24 bg-brand-navy relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-blue/20 via-transparent to-transparent"></div>
@@ -19,17 +12,18 @@ export function FinalCTA() {
           Partner with FreightShift for predictable, transparent, and efficient logistics between China and South Africa.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button 
-            size="lg" 
-            className="bg-brand-orange hover:bg-brand-orange/90 text-white h-14 px-8 text-lg border-none shadow-lg shadow-brand-orange/20"
-            onClick={scrollToQuote}
-          >
-            Get a Quote
-          </Button>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              className="bg-brand-orange hover:bg-brand-orange/90 text-white h-14 px-8 text-lg border-none shadow-lg shadow-brand-orange/20 w-full sm:w-auto"
+            >
+              Get a Quote
+            </Button>
+          </Link>
           <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white h-14 px-8 gap-2 w-full sm:w-auto text-lg"
             >
               <FaWhatsapp className="w-5 h-5 text-green-400" />

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { FaWhatsapp } from "react-icons/fa";
 export function Hero() {
   const [trackingNumber, setTrackingNumber] = useState("");
   const [showResult, setShowResult] = useState(false);
+  const [, navigate] = useLocation();
 
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,13 +20,7 @@ export function Hero() {
     localStorage.setItem('fs_tracking', JSON.stringify(lookups.slice(-3)));
   };
 
-  const scrollToQuote = () => {
-    const element = document.querySelector("#quote");
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
+  const goToQuote = () => navigate("/contact");
 
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-brand-navy">
@@ -63,7 +59,7 @@ export function Hero() {
               <Button 
                 size="lg" 
                 className="bg-brand-orange hover:bg-brand-orange/90 text-white text-base h-14 px-8 border-none shadow-lg shadow-brand-orange/20"
-                onClick={scrollToQuote}
+                onClick={goToQuote}
               >
                 Get a Quote
               </Button>

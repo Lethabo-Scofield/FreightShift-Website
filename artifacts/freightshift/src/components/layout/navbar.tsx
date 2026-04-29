@@ -1,83 +1,80 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
-import { Menu, X, Phone } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Menu } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logoUrl from "@/assets/freightshift-logo.png";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "China to SA", href: "#china-sa" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "China to SA", href: "/china-sa" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
+  const isActive = (href: string) => location === href || (href !== "/" && location.startsWith(href));
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
-          : "bg-white py-5"
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
+          : "bg-white py-3"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        {/* Logo */}
-        <a 
-          href="#home" 
-          onClick={(e) => scrollToSection(e, "#home")}
+        <Link
+          href="/"
           className="flex items-center group"
           aria-label="FreightShift International Logistics — Home"
         >
           <img
             src={logoUrl}
             alt="FreightShift International Logistics"
-            className="h-14 md:h-16 w-auto object-contain transition-opacity group-hover:opacity-90"
+            className="h-12 md:h-14 w-auto object-contain transition-opacity group-hover:opacity-90"
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-sm font-medium text-foreground hover:text-brand-blue transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+        <div className="hidden lg:flex items-center gap-8">
+          <div className="flex items-center gap-7">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`relative text-sm font-medium transition-colors ${
+                    active ? "text-brand-blue" : "text-foreground hover:text-brand-blue"
+                  }`}
+                >
+                  {link.name}
+                  {active && (
+                    <span className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-brand-blue rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-3">
-            <a 
-              href="https://wa.me/message/EVTMLWYQY2OCG1" 
-              target="_blank" 
+            <a
+              href="https://wa.me/message/EVTMLWYQY2OCG1"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <Button variant="outline" size="sm" className="gap-2 border-brand-blue text-brand-blue hover:bg-brand-blue/5">
@@ -85,16 +82,16 @@ export function Navbar() {
                 WhatsApp Us
               </Button>
             </a>
-            <a href="#quote" onClick={(e) => scrollToSection(e, "#quote")}>
+            <Link href="/contact">
               <Button size="sm" className="bg-brand-orange hover:bg-brand-orange/90 text-white border-none">
                 Get a Quote
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Mobile Nav Toggle */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="text-foreground">
@@ -102,22 +99,29 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] flex flex-col pt-16">
-              <div className="flex flex-col gap-6">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
-                    className="text-lg font-semibold text-foreground hover:text-brand-blue transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                ))}
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => {
+                  const active = isActive(link.href);
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-lg font-semibold py-2 px-3 rounded-lg transition-colors ${
+                        active
+                          ? "text-brand-blue bg-brand-blue/5"
+                          : "text-foreground hover:text-brand-blue hover:bg-brand-blue/5"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
               </div>
               <div className="mt-auto flex flex-col gap-3 pb-8">
-                <a 
-                  href="https://wa.me/message/EVTMLWYQY2OCG1" 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/message/EVTMLWYQY2OCG1"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-full"
                 >
@@ -126,15 +130,15 @@ export function Navbar() {
                     WhatsApp Us
                   </Button>
                 </a>
-                <a 
-                  href="#quote" 
-                  onClick={(e) => scrollToSection(e, "#quote")}
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full"
                 >
                   <Button className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white">
                     Get a Quote
                   </Button>
-                </a>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

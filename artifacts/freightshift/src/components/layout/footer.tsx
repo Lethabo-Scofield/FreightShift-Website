@@ -1,26 +1,26 @@
+import { Link } from "wouter";
 import { FaWhatsapp } from "react-icons/fa";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import logoUrl from "@/assets/freightshift-logo.png";
 
-export function Footer() {
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "China to SA", href: "/china-sa" },
+  { name: "Get a Quote", href: "/contact" },
+  { name: "Contact", href: "/contact" },
+];
 
+export function Footer() {
   return (
     <footer className="bg-brand-navy text-white/90 pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <a
-              href="#home"
-              onClick={(e) => scrollToSection(e, "#home")}
+            <Link
+              href="/"
               className="inline-flex items-center bg-white rounded-lg px-4 py-3 self-start shadow-sm hover:shadow-md transition-shadow"
               aria-label="FreightShift International Logistics — Home"
             >
@@ -29,7 +29,7 @@ export function Footer() {
                 alt="FreightShift International Logistics"
                 className="h-9 w-auto object-contain"
               />
-            </a>
+            </Link>
             <p className="text-sm text-white/70 max-w-xs mt-2">
               We deliver freight solutions. Reliable freight forwarding, customs clearance, warehousing, and delivery between China and South Africa.
             </p>
@@ -39,20 +39,16 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
             <ul className="flex flex-col gap-3">
-              {['Home', 'About', 'Services', 'China to SA', 'Get a Quote', 'Contact'].map((link) => {
-                const href = `#${link.toLowerCase().replace(/\s+/g, '-').replace('to-', '')}`;
-                return (
-                  <li key={link}>
-                    <a 
-                      href={href}
-                      onClick={(e) => scrollToSection(e, href === '#get-a-quote' ? '#quote' : href)}
-                      className="text-sm text-white/70 hover:text-white transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                );
-              })}
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
