@@ -1,5 +1,6 @@
 import { FaWhatsapp } from "react-icons/fa";
 import { Phone, Mail, MapPin } from "lucide-react";
+import logoUrl from "@/assets/freightshift-logo.png";
 
 export function Footer() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -17,13 +18,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <a href="#home" onClick={(e) => scrollToSection(e, "#home")} className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center text-brand-navy font-bold text-xl">
-                F
-              </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Freight<span className="text-brand-blue">Shift</span>
-              </span>
+            <a
+              href="#home"
+              onClick={(e) => scrollToSection(e, "#home")}
+              className="inline-flex items-center bg-white rounded-lg px-4 py-3 self-start shadow-sm hover:shadow-md transition-shadow"
+              aria-label="FreightShift International Logistics — Home"
+            >
+              <img
+                src={logoUrl}
+                alt="FreightShift International Logistics"
+                className="h-9 w-auto object-contain"
+              />
             </a>
             <p className="text-sm text-white/70 max-w-xs mt-2">
               We deliver freight solutions. Reliable freight forwarding, customs clearance, warehousing, and delivery between China and South Africa.

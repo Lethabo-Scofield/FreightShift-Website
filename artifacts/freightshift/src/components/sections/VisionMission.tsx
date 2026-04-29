@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import officeImage from "@assets/WhatsApp_Image_2026-04-29_at_2.53.56_AM_1777424384686.jpeg";
 
 export function VisionMission() {
   return (
@@ -37,25 +38,36 @@ export function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.2 }}
-            className="bg-brand-navy rounded-3xl p-8 md:p-12 shadow-xl"
+            className="relative rounded-3xl overflow-hidden shadow-xl min-h-[520px] lg:min-h-full"
           >
-            <h3 className="text-2xl font-bold text-white mb-8">Strategic Goals</h3>
-            <ul className="space-y-6">
-              {[
-                "Clear communication and transparent service",
-                "Reduced delivery lead times",
-                "Expanded local and international logistics network",
-                "Real-time visibility through technology",
-                "Compliance, professionalism, and ethical business"
-              ].map((goal, i) => (
-                <li key={i} className="flex items-start gap-4 pb-6 border-b border-white/10 last:border-0 last:pb-0">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-white font-mono text-sm">
-                    {i + 1}
-                  </div>
-                  <span className="text-white/90 font-medium text-lg leading-tight mt-1">{goal}</span>
-                </li>
-              ))}
-            </ul>
+            <img
+              src={officeImage}
+              alt="FreightShift International Logistics office"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/95 via-brand-navy/85 to-brand-navy/70" />
+            <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+              <span className="inline-block self-start text-xs font-bold uppercase tracking-widest text-brand-blue bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full mb-6">
+                Inside FreightShift
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Strategic Goals</h3>
+              <ul className="space-y-5 flex-1">
+                {[
+                  "Clear communication and transparent service",
+                  "Reduced delivery lead times",
+                  "Expanded local and international logistics network",
+                  "Real-time visibility through technology",
+                  "Compliance, professionalism, and ethical business"
+                ].map((goal, i) => (
+                  <li key={i} className="flex items-start gap-4 pb-5 border-b border-white/15 last:border-0 last:pb-0">
+                    <div className="w-8 h-8 rounded-full bg-brand-blue/30 backdrop-blur-sm border border-white/20 flex items-center justify-center shrink-0 text-white font-mono text-sm">
+                      {i + 1}
+                    </div>
+                    <span className="text-white font-medium text-base md:text-lg leading-snug mt-0.5">{goal}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
       </div>

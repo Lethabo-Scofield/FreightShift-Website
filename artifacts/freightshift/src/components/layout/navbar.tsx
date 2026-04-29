@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import logoUrl from "@/assets/freightshift-logo.png";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -48,14 +49,14 @@ export function Navbar() {
         <a 
           href="#home" 
           onClick={(e) => scrollToSection(e, "#home")}
-          className="flex items-center gap-2 group"
+          className="flex items-center group"
+          aria-label="FreightShift International Logistics — Home"
         >
-          <div className="w-8 h-8 bg-brand-navy rounded-sm flex items-center justify-center text-white font-bold text-xl group-hover:bg-brand-blue transition-colors">
-            F
-          </div>
-          <span className="text-xl font-bold tracking-tight text-brand-navy">
-            Freight<span className="text-brand-blue">Shift</span>
-          </span>
+          <img
+            src={logoUrl}
+            alt="FreightShift International Logistics"
+            className="h-14 md:h-16 w-auto object-contain transition-opacity group-hover:opacity-90"
+          />
         </a>
 
         {/* Desktop Nav */}
