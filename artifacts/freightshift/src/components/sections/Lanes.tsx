@@ -45,7 +45,7 @@ export function Lanes() {
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl font-bold font-mono text-brand-navy">CN</span>
+                        <span className="text-3xl leading-none" aria-label="China" role="img">🇨🇳</span>
                         <div className="text-left leading-tight">
                           <div className="font-bold text-foreground">{lane.origin}</div>
                         </div>
@@ -55,7 +55,7 @@ export function Lanes() {
                         <div className="text-right leading-tight">
                           <div className="font-bold text-foreground">{lane.dest}</div>
                         </div>
-                        <span className="text-2xl font-bold font-mono text-brand-navy">ZA</span>
+                        <span className="text-3xl leading-none" aria-label="South Africa" role="img">🇿🇦</span>
                       </div>
                     </div>
                     
