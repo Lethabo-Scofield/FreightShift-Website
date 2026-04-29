@@ -21,7 +21,7 @@ export function WhyUs() {
             viewport={{ once: true, margin: "-50px" }}
           >
             <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Why FreightShift</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6">The China–South Africa corridor, simplified.</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6">The China-South Africa corridor, simplified.</h2>
             <p className="text-lg text-foreground/80 leading-relaxed mb-6">
               FreightShift International Logistics is a South African-based company delivering efficient, reliable, and cost-effective supply chain solutions.
             </p>

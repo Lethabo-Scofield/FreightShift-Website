@@ -82,7 +82,7 @@ export function Footer() {
               <li className="text-sm text-white/70">International Freight Forwarding</li>
               <li className="text-sm text-white/70">Customs Clearance</li>
               <li className="text-sm text-white/70">Warehousing & Distribution</li>
-              <li className="text-sm text-white/70">China–SA Corridor Specialists</li>
+              <li className="text-sm text-white/70">China-SA Corridor Specialists</li>
             </ul>
           </div>
         </div>

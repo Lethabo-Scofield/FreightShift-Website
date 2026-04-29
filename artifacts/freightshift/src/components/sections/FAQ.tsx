@@ -9,7 +9,7 @@ import {
 const faqs = [
   {
     q: "How long does shipping from China to South Africa take?",
-    a: "Air freight takes 5–9 days depending on the carrier and clearance speed. Sea freight typically takes 28–40 days port-to-port, plus a few days for customs and local delivery."
+    a: "Air freight takes 5-9 days depending on the carrier and clearance speed. Sea freight typically takes 28-40 days port-to-port, plus a few days for customs and local delivery."
   },
   {
     q: "What's the difference between FCL and LCL, and which should I use?",

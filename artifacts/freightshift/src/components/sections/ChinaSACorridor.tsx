@@ -17,7 +17,7 @@ export function ChinaSACorridor() {
               Core Route
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              The China–South Africa Direct Link
+              The China-South Africa Direct Link
             </h2>
             <p className="text-xl text-white/80 mb-10 leading-relaxed font-light">
               We help South African businesses source, ship, clear, and deliver goods from China securely and affordably.

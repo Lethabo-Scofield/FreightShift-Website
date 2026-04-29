@@ -28,7 +28,7 @@ export function MultimodalFeature() {
             <div className="grid sm:grid-cols-2 gap-4 mb-10">
               {[
                 { icon: Anchor, label: "Sea FCL & LCL", note: "Weekly sailings" },
-                { icon: Plane, label: "Air Freight", note: "5–9 day transit" },
+                { icon: Plane, label: "Air Freight", note: "5-9 day transit" },
                 { icon: ShieldCheck, label: "Full DDP", note: "Duties included" },
                 { icon: Truck, label: "Last-Mile", note: "Door-to-door" },
               ].map((item, i) => (
