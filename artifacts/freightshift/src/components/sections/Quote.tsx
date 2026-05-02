@@ -24,6 +24,8 @@ type QuoteFormValues = z.infer<typeof quoteSchema>;
 
 export function Quote() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const form = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteSchema),
@@ -36,11 +38,29 @@ export function Quote() {
     },
   });
 
-  const onSubmit = (data: QuoteFormValues) => {
-    const quotes = JSON.parse(localStorage.getItem('freightshift_quotes') || '[]');
-    quotes.push({ ...data, date: new Date().toISOString() });
-    localStorage.setItem('freightshift_quotes', JSON.stringify(quotes));
-    setIsSubmitted(true);
+  const onSubmit = async (data: QuoteFormValues) => {
+    setSubmitError(null);
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body?.error ?? "Failed to send quote request");
+      }
+      const quotes = JSON.parse(localStorage.getItem("freightshift_quotes") || "[]");
+      quotes.push({ ...data, date: new Date().toISOString() });
+      localStorage.setItem("freightshift_quotes", JSON.stringify(quotes));
+      setIsSubmitted(true);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again or WhatsApp us.";
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -219,8 +239,13 @@ export function Quote() {
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white h-14 text-lg mt-4 shadow-lg shadow-brand-orange/20 border-none">
-                    Submit Request
+                  {submitError && (
+                    <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {submitError}
+                    </div>
+                  )}
+                  <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white h-14 text-lg mt-4 shadow-lg shadow-brand-orange/20 border-none disabled:opacity-70">
+                    {isSubmitting ? "Sending…" : "Submit Request"}
                   </Button>
                 </form>
               </Form>
