@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/footer";
 
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
-import { Services } from "@/components/sections/Services";
 import { Lanes } from "@/components/sections/Lanes";
 import { ChinaSACorridor } from "@/components/sections/ChinaSACorridor";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -19,7 +18,6 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
-        <Services />
         <ChinaSACorridor />
         <Lanes />
         <HowItWorks />
