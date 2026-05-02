@@ -17,7 +17,7 @@ export function Industries() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
           <div>
             <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Industries</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">Built for South African business</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">Built for SA business.</h2>
           </div>
         </div>
 

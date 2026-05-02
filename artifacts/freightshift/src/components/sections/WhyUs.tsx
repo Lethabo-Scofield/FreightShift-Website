@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const valueProps = [
-  "China to SA freight expertise",
-  "Competitive & flexible pricing",
-  "Real-time shipment tracking",
-  "Customs compliance knowledge",
-  "Dedicated logistics support",
-  "Reliable, fast, transparent service"
+  "China-SA corridor expertise",
+  "Flexible, competitive pricing",
+  "Real-time tracking",
+  "Full SARS customs support",
+  "Dedicated account manager",
+  "Reliable & transparent"
 ];
 
 export function WhyUs() {
@@ -43,7 +43,7 @@ export function WhyUs() {
             transition={{ delay: 0.2 }}
             className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-border/60"
           >
-            <h3 className="text-2xl font-bold mb-8">The FreightShift Advantage</h3>
+            <h3 className="text-2xl font-bold mb-8">Why us.</h3>
             <ul className="space-y-6">
               {valueProps.map((prop, i) => (
                 <li key={i} className="flex items-start gap-4 group">

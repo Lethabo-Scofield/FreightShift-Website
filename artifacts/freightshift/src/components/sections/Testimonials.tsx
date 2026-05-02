@@ -2,19 +2,19 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    quote: "FreightShift took over our China imports last year. We used to wait 50+ days, now our containers land in Durban in 30 days flat. Exceptional service.",
+    quote: "Used to wait 50+ days. Now containers land in Durban in 30. Exceptional team.",
     name: "Aisha Naidoo",
     company: "Durban Home Goods",
     role: "Founder"
   },
   {
-    quote: "They handle SARS clearance effortlessly. The team knows exactly what documents are needed, avoiding the delays we used to face. Highly recommend.",
+    quote: "SARS clearance, handled. No more delays. Highly recommend.",
     name: "Sipho Khumalo",
     company: "Joburg Auto Parts",
     role: "Operations Manager"
   },
   {
-    quote: "Air freighting electronics from Shenzhen requires speed and precision. FreightShift gives us real-time updates and delivers exactly when promised.",
+    quote: "Real-time updates. Delivered on time, every time.",
     name: "Reza Patel",
     company: "Cape Town Imports Co.",
     role: "MD"
@@ -27,7 +27,7 @@ export function Testimonials() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Testimonials</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Trusted by SA Importers</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Trusted by SA importers.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">

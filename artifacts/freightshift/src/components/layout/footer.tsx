@@ -31,7 +31,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-white/70 max-w-xs mt-2">
-              We deliver freight solutions. Reliable freight forwarding, customs clearance, warehousing, and delivery between China and South Africa.
+              China to South Africa. Door to door. One trusted team.
             </p>
           </div>
 
@@ -77,12 +77,12 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Our Expertise</h4>
+            <h4 className="text-lg font-semibold text-white mb-6">What we do</h4>
             <ul className="flex flex-col gap-3">
-              <li className="text-sm text-white/70">International Freight Forwarding</li>
+              <li className="text-sm text-white/70">Freight Forwarding</li>
               <li className="text-sm text-white/70">Customs Clearance</li>
-              <li className="text-sm text-white/70">Warehousing & Distribution</li>
-              <li className="text-sm text-white/70">China-SA Corridor Specialists</li>
+              <li className="text-sm text-white/70">Warehousing</li>
+              <li className="text-sm text-white/70">China-SA Corridor</li>
             </ul>
           </div>
         </div>

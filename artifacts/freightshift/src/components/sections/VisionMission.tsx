@@ -53,11 +53,11 @@ export function VisionMission() {
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Strategic Goals</h3>
               <ul className="space-y-5 flex-1">
                 {[
-                  "Clear communication and transparent service",
-                  "Reduced delivery lead times",
-                  "Expanded local and international logistics network",
-                  "Real-time visibility through technology",
-                  "Compliance, professionalism, and ethical business"
+                  "Transparent service",
+                  "Faster lead times",
+                  "Wider global network",
+                  "Real-time tracking",
+                  "Compliance & ethics"
                 ].map((goal, i) => (
                   <li key={i} className="flex items-start gap-4 pb-5 border-b border-white/15 last:border-0 last:pb-0">
                     <div className="w-8 h-8 rounded-full bg-brand-blue/30 backdrop-blur-sm border border-white/20 flex items-center justify-center shrink-0 text-white font-mono text-sm">
