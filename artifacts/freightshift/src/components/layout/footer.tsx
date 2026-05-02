@@ -13,7 +13,7 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-zinc-100 text-foreground/80 pt-12 md:pt-16 pb-24 md:pb-8 border-t border-zinc-200">
+    <footer className="bg-zinc-50 text-foreground/80 pt-12 md:pt-16 pb-24 md:pb-8 border-t border-zinc-200">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Brand */}
