@@ -13,36 +13,38 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-brand-navy text-white/90 pt-12 md:pt-16 pb-24 md:pb-8">
+    <footer className="bg-zinc-100 text-foreground/80 pt-12 md:pt-16 pb-24 md:pb-8 border-t border-zinc-200">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <Link
               href="/"
-              className="inline-flex items-center bg-white rounded-lg px-4 py-3 self-start shadow-sm hover:shadow-md transition-shadow"
+              className="inline-flex items-center self-start"
               aria-label="FreightShift International Logistics, Home"
             >
               <img
                 src={logoUrl}
                 alt="FreightShift International Logistics"
-                className="h-9 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
             </Link>
-            <p className="text-sm text-white/70 max-w-xs mt-2">
+            <p className="text-sm text-foreground/60 max-w-xs mt-2">
               China to South Africa. Door to door. One trusted team.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground/40 mb-5">
+              Quick Links
+            </h4>
             <ul className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="text-sm text-foreground/70 hover:text-brand-blue transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -53,21 +55,31 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Contact Us</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground/40 mb-5">
+              Contact Us
+            </h4>
             <ul className="flex flex-col gap-4">
               <li>
-                <a href="tel:+27681095543" className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors">
+                <a
+                  href="tel:+27681095543"
+                  className="flex items-center gap-3 text-sm text-foreground/70 hover:text-brand-blue transition-colors"
+                >
                   <Phone className="w-4 h-4 text-brand-blue" />
                   068 109 5543
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors">
-                  <FaWhatsapp className="w-4 h-4 text-brand-blue" />
+                <a
+                  href="https://wa.me/message/EVTMLWYQY2OCG1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-foreground/70 hover:text-brand-blue transition-colors"
+                >
+                  <FaWhatsapp className="w-4 h-4 text-green-600" />
                   WhatsApp Us
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-white/70">
+              <li className="flex items-start gap-3 text-sm text-foreground/70">
                 <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-1" />
                 <span>Johannesburg, South Africa</span>
               </li>
@@ -76,18 +88,20 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">What we do</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground/40 mb-5">
+              What we do
+            </h4>
             <ul className="flex flex-col gap-3">
-              <li className="text-sm text-white/70">Freight Forwarding</li>
-              <li className="text-sm text-white/70">Customs Clearance</li>
-              <li className="text-sm text-white/70">Warehousing</li>
-              <li className="text-sm text-white/70">China-SA Corridor</li>
+              <li className="text-sm text-foreground/70">Freight Forwarding</li>
+              <li className="text-sm text-foreground/70">Customs Clearance</li>
+              <li className="text-sm text-foreground/70">Warehousing</li>
+              <li className="text-sm text-foreground/70">China-SA Corridor</li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/50">
+        <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-foreground/50">
             © 2026 FreightShift International Logistics (Pty) Ltd. All rights reserved.
           </p>
         </div>
