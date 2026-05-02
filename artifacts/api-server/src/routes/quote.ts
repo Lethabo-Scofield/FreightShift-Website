@@ -1,14 +1,23 @@
 import { Router, type IRouter } from "express";
+import rateLimit from "express-rate-limit";
 import { z } from "zod/v4";
 
 const router: IRouter = Router();
 
+const quoteRateLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  limit: 5,
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+  message: { error: "Too many quote requests. Please try again later or WhatsApp us." },
+});
+
 const quoteBodySchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  mobile: z.string().min(5),
-  goodsType: z.string().min(2),
-  volumeWeight: z.string().min(2),
+  name: z.string().min(2).max(120),
+  email: z.string().email().max(254),
+  mobile: z.string().min(10).max(32),
+  goodsType: z.string().min(2).max(500),
+  volumeWeight: z.string().min(2).max(500),
   mode: z.enum(["sea", "air"]),
 });
 
@@ -21,7 +30,7 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#039;");
 }
 
-router.post("/quote", async (req, res) => {
+router.post("/quote", quoteRateLimiter, async (req, res) => {
   const parsed = quoteBodySchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Invalid quote payload", details: parsed.error.issues });

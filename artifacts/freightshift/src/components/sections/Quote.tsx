@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { CheckCircle2, Clock, Calculator, Phone, Mail } from "lucide-react";
+import { CheckCircle2, Clock, Calculator, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { Button } from "@/components/ui/button";
