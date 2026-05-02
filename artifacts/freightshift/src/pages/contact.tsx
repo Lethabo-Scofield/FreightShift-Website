@@ -16,7 +16,7 @@ export default function ContactPage() {
         <PageHeader
           eyebrow="Get in Touch"
           title="Let's move your cargo."
-          subtitle="Request a quote, ask a question, or just say hi. We respond within 24 hours on weekdays, usually a lot faster on WhatsApp."
+          subtitle="Quote in 24 hours. WhatsApp for instant replies."
           breadcrumb={[{ label: "Contact" }]}
         />
         <Contact />

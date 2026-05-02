@@ -27,8 +27,8 @@ export function Lanes() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12">
           <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Our Lanes</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Our China-South Africa Lanes</h2>
-          <p className="text-foreground/70 mt-4 max-w-2xl text-lg">Predictable, scheduled departures connecting major Chinese hubs directly to South African ports and airports.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">China-SA shipping lanes.</h2>
+          <p className="text-foreground/70 mt-4 max-w-2xl text-lg">Scheduled departures from major Chinese hubs.</p>
         </div>
 
         <motion.div 

@@ -8,8 +8,8 @@ export function Contact() {
     <section id="contact" className="py-14 md:py-28 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Contact Us</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Get in touch</h2>
+          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Contact</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Three ways to reach us.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -20,7 +20,7 @@ export function Contact() {
                   <FaWhatsapp className="w-7 h-7 text-green-500" />
                 </div>
                 <h3 className="font-bold text-lg mb-2">WhatsApp Us</h3>
-                <p className="text-sm text-foreground/60 mb-6">Fastest response for quick queries and document exchange.</p>
+                <p className="text-sm text-foreground/60 mb-6">Fastest response. Send docs anytime.</p>
                 <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer" className="text-green-600 font-semibold hover:underline mt-auto">
                   Message Now →
                 </a>
@@ -35,7 +35,7 @@ export function Contact() {
                   <Phone className="w-7 h-7 text-brand-blue" />
                 </div>
                 <h3 className="font-bold text-lg mb-2">Call Office</h3>
-                <p className="text-sm text-foreground/60 mb-6">Speak directly with our logistics coordinators.</p>
+                <p className="text-sm text-foreground/60 mb-6">Talk to a coordinator directly.</p>
                 <a href="tel:+27681095543" className="text-brand-blue font-semibold hover:underline mt-auto">
                   068 109 5543
                 </a>
@@ -50,7 +50,7 @@ export function Contact() {
                   <MapPin className="w-7 h-7 text-brand-navy" />
                 </div>
                 <h3 className="font-bold text-lg mb-2">Service Area</h3>
-                <p className="text-sm text-foreground/60 mb-6">Nationwide South African coverage from major ports.</p>
+                <p className="text-sm text-foreground/60 mb-6">Nationwide SA delivery.</p>
                 <span className="text-brand-navy font-semibold mt-auto">
                   Gauteng, KZN, W. Cape
                 </span>

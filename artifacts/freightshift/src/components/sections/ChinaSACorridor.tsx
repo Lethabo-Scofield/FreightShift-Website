@@ -17,10 +17,10 @@ export function ChinaSACorridor() {
               Core Route
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 md:mb-6 leading-tight">
-              The China-South Africa Direct Link
+              Direct China-SA link.
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 md:mb-10 leading-relaxed font-light">
-              We help South African businesses source, ship, clear, and deliver goods from China securely and affordably.
+              Source, ship, clear, deliver. Securely. Affordably.
             </p>
 
             <div className="space-y-4">
@@ -30,7 +30,7 @@ export function ChinaSACorridor() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-white mb-1">Sea Freight (FCL & LCL)</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Cost-effective shipping for bulk orders, full containers, or shared space via major ports like Durban and Cape Town.</p>
+                  <p className="text-white/60 text-sm leading-relaxed">Bulk or shared space via Durban and Cape Town.</p>
                 </div>
               </div>
 
@@ -40,7 +40,7 @@ export function ChinaSACorridor() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-white mb-1">Air Freight & Express</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Rapid transit to OR Tambo and Cape Town Int. for time-sensitive cargo and high-value goods.</p>
+                  <p className="text-white/60 text-sm leading-relaxed">Fast transit to OR Tambo and Cape Town Int.</p>
                 </div>
               </div>
 
@@ -50,7 +50,7 @@ export function ChinaSACorridor() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-white mb-1">Door-to-Door & Customs</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Seamless handling from supplier origin to final delivery anywhere in SA, including full SARS customs clearance.</p>
+                  <p className="text-white/60 text-sm leading-relaxed">Supplier pickup to SA delivery, with SARS clearance.</p>
                 </div>
               </div>
             </div>

@@ -15,9 +15,9 @@ export default function ServicesPage() {
       <Navbar />
       <main>
         <PageHeader
-          eyebrow="Our Services"
-          title="End-to-end freight, customs & last-mile in one team."
-          subtitle="From a single carton to multi-container projects, our team manages every step of the corridor, so you focus on selling, not chasing shipments."
+          eyebrow="Services"
+          title="Freight, customs & delivery. One team."
+          subtitle="From one carton to full containers. We manage every step."
           breadcrumb={[{ label: "Services" }]}
         />
         <MultimodalFeature />

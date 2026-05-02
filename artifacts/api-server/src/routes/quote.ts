@@ -19,6 +19,10 @@ const quoteBodySchema = z.object({
   goodsType: z.string().min(2).max(500),
   volumeWeight: z.string().min(2).max(500),
   mode: z.enum(["sea", "air"]),
+  origin: z.string().min(2).max(120).optional(),
+  destination: z.string().min(2).max(120).optional(),
+  cargoType: z.string().min(2).max(200).optional(),
+  notes: z.string().max(2000).optional(),
 });
 
 function escapeHtml(str: string): string {
@@ -57,6 +61,16 @@ router.post("/quote", quoteRateLimiter, async (req, res) => {
 
   const subject = `New Quote Request — ${data.name} (${modeLabel})`;
 
+  const optionalRow = (label: string, value?: string) =>
+    value && value.trim().length > 0
+      ? `<tr><td style="padding: 8px 0; color: #666;">${label}</td><td style="padding: 8px 0;">${escapeHtml(value)}</td></tr>`
+      : "";
+
+  const notesBlock =
+    data.notes && data.notes.trim().length > 0
+      ? `<div style="margin-top: 16px; padding: 14px 16px; background: #fff; border-left: 3px solid #1F73D8; border-radius: 8px; font-size: 14px; color: #333; white-space: pre-wrap;"><strong style="display:block; color:#666; font-size:12px; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Notes</strong>${escapeHtml(data.notes)}</div>`
+      : "";
+
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #1E1E1E;">
       <div style="background: #0F3D75; color: #fff; padding: 20px 24px; border-radius: 12px 12px 0 0;">
@@ -68,14 +82,22 @@ router.post("/quote", quoteRateLimiter, async (req, res) => {
           <tr><td style="padding: 8px 0; color: #666; width: 160px;">Name</td><td style="padding: 8px 0; font-weight: 600;">${escapeHtml(data.name)}</td></tr>
           <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(data.email)}" style="color: #1F73D8; text-decoration: none;">${escapeHtml(data.email)}</a></td></tr>
           <tr><td style="padding: 8px 0; color: #666;">Mobile</td><td style="padding: 8px 0;"><a href="tel:${escapeHtml(data.mobile)}" style="color: #1F73D8; text-decoration: none;">${escapeHtml(data.mobile)}</a></td></tr>
-          <tr><td style="padding: 8px 0; color: #666;">Commodity / Goods</td><td style="padding: 8px 0;">${escapeHtml(data.goodsType)}</td></tr>
-          <tr><td style="padding: 8px 0; color: #666;">Volume &amp; Weight</td><td style="padding: 8px 0;">${escapeHtml(data.volumeWeight)}</td></tr>
-          <tr><td style="padding: 8px 0; color: #666;">Preferred Mode</td><td style="padding: 8px 0;"><span style="background: #F28C28; color: #fff; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;">${modeLabel}</span></td></tr>
+          <tr><td colspan="2" style="padding: 8px 0;"><hr style="border: none; border-top: 1px solid #e5e5e5; margin: 4px 0;" /></td></tr>
+          <tr><td style="padding: 8px 0; color: #666;">Mode</td><td style="padding: 8px 0;"><span style="background: #F28C28; color: #fff; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;">${modeLabel}</span></td></tr>
+          ${optionalRow("Origin", data.origin)}
+          ${optionalRow("Destination", data.destination)}
+          ${optionalRow("Cargo type", data.cargoType)}
+          <tr><td style="padding: 8px 0; color: #666;">Goods</td><td style="padding: 8px 0;">${escapeHtml(data.goodsType)}</td></tr>
+          <tr><td style="padding: 8px 0; color: #666;">Vol. / Weight</td><td style="padding: 8px 0;">${escapeHtml(data.volumeWeight)}</td></tr>
         </table>
+        ${notesBlock}
         <p style="margin-top: 24px; font-size: 12px; color: #888;">Submitted ${new Date().toUTCString()}</p>
       </div>
     </div>
   `;
+
+  const textLine = (label: string, value?: string) =>
+    value && value.trim().length > 0 ? `${label}: ${value}` : null;
 
   const text = [
     `New Quote Request — FreightShift`,
@@ -83,12 +105,19 @@ router.post("/quote", quoteRateLimiter, async (req, res) => {
     `Name: ${data.name}`,
     `Email: ${data.email}`,
     `Mobile: ${data.mobile}`,
-    `Goods: ${data.goodsType}`,
-    `Volume/Weight: ${data.volumeWeight}`,
+    ``,
     `Mode: ${modeLabel}`,
+    textLine("Origin", data.origin),
+    textLine("Destination", data.destination),
+    textLine("Cargo type", data.cargoType),
+    `Goods: ${data.goodsType}`,
+    `Vol/Weight: ${data.volumeWeight}`,
+    data.notes ? `\nNotes:\n${data.notes}` : null,
     ``,
     `Submitted ${new Date().toUTCString()}`,
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   try {
     const response = await fetch("https://api.resend.com/emails", {

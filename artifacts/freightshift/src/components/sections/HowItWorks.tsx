@@ -5,27 +5,27 @@ const steps = [
   {
     icon: ClipboardEdit,
     title: "Quote & Book",
-    desc: "Tell us your goods, mode, and timeline. We confirm rates within 24 hours."
+    desc: "Rates within 24 hours."
   },
   {
     icon: Truck,
     title: "Origin Pickup",
-    desc: "We collect from your supplier in China and consolidate at our partner warehouse."
+    desc: "We collect from your supplier in China."
   },
   {
     icon: Ship,
-    title: "Ocean / Air Transit",
-    desc: "Cargo sails or flies on scheduled corridor services with full visibility."
+    title: "Sea or Air",
+    desc: "Scheduled corridor services with tracking."
   },
   {
     icon: FileCheck,
-    title: "SA Customs Clearance",
-    desc: "Our team handles SARS, duties, and compliance. No surprises."
+    title: "Customs Clearance",
+    desc: "We handle SARS, duties, and compliance."
   },
   {
     icon: MapPin,
-    title: "Last-Mile Delivery",
-    desc: "Door-to-door delivery anywhere in South Africa."
+    title: "Final Delivery",
+    desc: "Door-to-door anywhere in SA."
   }
 ];
 
@@ -35,8 +35,8 @@ export function HowItWorks() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">How It Works</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">From Factory to Your Door</h2>
-          <p className="text-foreground/70 mt-4 text-lg">A simplified, fully managed process that takes the complexity out of international trade.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Factory to door in 5 steps.</h2>
+          <p className="text-foreground/70 mt-4 text-lg">We handle the complexity. You track the cargo.</p>
         </div>
 
         <div className="relative">

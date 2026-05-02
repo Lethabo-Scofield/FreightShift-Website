@@ -15,8 +15,8 @@ export default function About() {
       <main>
         <PageHeader
           eyebrow="About Us"
-          title="South Africa's trusted China trade partner."
-          subtitle="FreightShift International Logistics is a Pty Ltd freight forwarder founded to give South African importers a more transparent, reliable way to move cargo from China."
+          title="Your trusted China trade partner."
+          subtitle="A South African freight forwarder built for transparent, reliable imports."
           breadcrumb={[{ label: "About" }]}
         />
         <VisionMission />

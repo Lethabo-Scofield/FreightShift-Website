@@ -4,38 +4,38 @@ import { Globe, ShieldCheck, Box, BarChart3, Truck, Package } from "lucide-react
 export function Services() {
   const services = [
     {
-      title: "International Freight Forwarding",
-      desc: "Air, sea, and road freight, including FCL, LCL, and express cargo.",
+      title: "Freight Forwarding",
+      desc: "Air, sea, and road. FCL, LCL, express.",
       icon: Globe,
       colSpan: "lg:col-span-2"
     },
     {
       title: "Customs Clearance",
-      desc: "Compliant customs processing to reduce delays and avoid penalties.",
+      desc: "SARS-compliant. No delays, no penalties.",
       icon: ShieldCheck,
       colSpan: "lg:col-span-1"
     },
     {
-      title: "Warehousing & Distribution",
-      desc: "Secure storage, inventory handling, packing, and distribution.",
+      title: "Warehousing",
+      desc: "Secure storage, packing, distribution.",
       icon: Box,
       colSpan: "lg:col-span-1"
     },
     {
-      title: "Supply Chain Management",
-      desc: "End-to-end logistics planning to reduce costs and improve delivery timelines.",
+      title: "Supply Chain",
+      desc: "End-to-end planning. Lower cost, faster lanes.",
       icon: BarChart3,
       colSpan: "lg:col-span-2"
     },
     {
       title: "Domestic Logistics",
-      desc: "Nationwide transport, last-mile delivery, and business logistics.",
+      desc: "Nationwide transport and last-mile delivery.",
       icon: Truck,
       colSpan: "lg:col-span-2"
     },
     {
-      title: "Relocation & Moving",
-      desc: "Household and office relocation with secure packing and delivery.",
+      title: "Relocation",
+      desc: "Home and office moves. Packed, safe.",
       icon: Package,
       colSpan: "lg:col-span-1"
     }
@@ -46,8 +46,8 @@ export function Services() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16 max-w-2xl">
           <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Capabilities</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">What we do for you.</h2>
-          <p className="text-lg text-foreground/70">Comprehensive logistics solutions engineered for precision, speed, and reliability.</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">What we do.</h2>
+          <p className="text-lg text-foreground/70">Six services. One trusted team.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

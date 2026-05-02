@@ -30,7 +30,7 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-white/75 max-w-xl mb-8 md:mb-10 leading-relaxed font-light">
-              Reliable freight forwarding, customs clearance, warehousing, and delivery between China and South Africa.
+              China to South Africa. Door to door. One team.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

@@ -18,7 +18,7 @@ export function VisionMission() {
                 Our Vision
               </h3>
               <p className="text-2xl font-medium text-foreground leading-snug relative z-10">
-                To become a leading logistics provider connecting China and South Africa, recognized for innovation, reliability, and excellent service delivery.
+                Be the leading link between China and South Africa.
               </p>
             </div>
             
@@ -28,7 +28,7 @@ export function VisionMission() {
                 Our Mission
               </h3>
               <p className="text-2xl font-medium text-foreground leading-snug relative z-10">
-                To deliver seamless, efficient, and cost-effective logistics solutions that support client growth with high standards of operational performance.
+                Deliver fast, fair, and reliable logistics that grow our clients.
               </p>
             </div>
           </motion.div>
