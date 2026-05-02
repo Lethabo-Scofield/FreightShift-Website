@@ -100,7 +100,7 @@
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: Menlo, monospace;
-  --radius: 0.25rem;
+  --radius: 0;
   
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -150,5 +150,22 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Industrial / square-corner aesthetic.
+   Override Tailwind's default border-radius utilities so all cards,
+   buttons, inputs, badges, etc. render with crisp 90° corners.
+   `rounded-full` is intentionally preserved for circular icons,
+   pulse dots, avatars, and pill badges. */
+@layer utilities {
+  .rounded-sm,
+  .rounded,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl,
+  .rounded-2xl,
+  .rounded-3xl {
+    border-radius: 0;
   }
 }
