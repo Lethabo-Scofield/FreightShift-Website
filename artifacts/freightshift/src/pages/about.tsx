@@ -7,12 +7,25 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
+import { Seo } from "@/components/Seo";
+import { PAGE_SEO, SITE } from "@/lib/seo";
+import { organizationJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 import aboutHeroImg from "@assets/image_1777729909208.png";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        {...PAGE_SEO.about}
+        jsonLd={[
+          organizationJsonLd,
+          breadcrumbJsonLd([
+            { name: "Home", url: SITE.url + "/" },
+            { name: "About", url: SITE.url + "/about" },
+          ]),
+        ]}
+      />
       <Navbar />
       <main>
         <PageHeader

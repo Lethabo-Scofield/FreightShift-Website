@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const faqs = [
+export const faqs = [
   {
     q: "How long does shipping from China to SA take?",
     a: "Air: 5–9 days. Sea: 28–40 days port-to-port, plus a few days for customs and delivery."
