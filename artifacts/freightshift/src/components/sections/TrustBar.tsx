@@ -11,7 +11,6 @@ function useCountUp(end: number, isActive: boolean, duration = 1.8, decimals = 0
     const start = performance.now();
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / (duration * 1000));
-      // easeOutCubic
       const eased = 1 - Math.pow(1 - t, 3);
       setValue(end * eased);
       if (t < 1) raf = requestAnimationFrame(tick);
@@ -46,17 +45,17 @@ function Stat({ icon: Icon, value, suffix = "", decimals = 0, label, isInView, d
       className="group relative flex items-center gap-4 px-4 sm:px-6 py-2"
     >
       <div className="relative shrink-0">
-        <div className="absolute inset-0 rounded-xl bg-brand-blue/30 blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
-        <div className="relative w-11 h-11 rounded-xl bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-center group-hover:border-brand-blue/60 transition-colors">
-          <Icon className="w-5 h-5 text-blue-300" />
+        <div className="absolute inset-0 rounded-xl bg-brand-blue/15 blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
+        <div className="relative w-11 h-11 rounded-xl bg-white border border-zinc-200 flex items-center justify-center group-hover:border-brand-blue/40 transition-colors shadow-sm">
+          <Icon className="w-5 h-5 text-brand-blue" />
         </div>
       </div>
       <div className="flex flex-col text-left leading-tight">
-        <span className="font-bold text-2xl md:text-3xl text-white tracking-tight tabular-nums">
+        <span className="font-bold text-2xl md:text-3xl text-foreground tracking-tight tabular-nums">
           {display}
           {suffix && <span className="text-brand-blue ml-0.5">{suffix}</span>}
         </span>
-        <span className="text-white/60 text-xs sm:text-[13px] font-medium">{label}</span>
+        <span className="text-foreground/60 text-xs sm:text-[13px] font-medium">{label}</span>
       </div>
     </motion.div>
   );
@@ -67,18 +66,18 @@ export function TrustBar() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <div ref={ref} className="bg-brand-navy border-t border-white/10 py-6 md:py-8 relative z-20 overflow-hidden">
+    <div ref={ref} className="bg-zinc-50 border-y border-zinc-200/60 py-6 md:py-10 relative z-20 overflow-hidden">
       {/* Live pulse line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-blue/50 to-transparent">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent">
         <motion.div
-          className="absolute top-0 left-0 h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent"
+          className="absolute top-0 left-0 h-px w-32 bg-gradient-to-r from-transparent via-brand-blue to-transparent"
           animate={{ x: ["-10%", "110%"] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
         />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
-        {/* "Live" indicator strip */}
+        {/* Live pill */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -87,47 +86,18 @@ export function TrustBar() {
         >
           <span className="relative flex w-2 h-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
           </span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/50">
             Corridor live
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-white/10 justify-items-center md:justify-items-stretch">
-          <Stat
-            icon={Container}
-            value={12000}
-            suffix="+"
-            label="Containers Cleared"
-            isInView={isInView}
-            delay={0}
-          />
-          <Stat
-            icon={Clock}
-            value={98.4}
-            decimals={1}
-            suffix="%"
-            label="On-Time Delivery"
-            isInView={isInView}
-            delay={0.1}
-          />
-          <Stat
-            icon={Truck}
-            value={45}
-            suffix="d"
-            label="Door-to-Door"
-            isInView={isInView}
-            delay={0.2}
-          />
-          <Stat
-            icon={Headphones}
-            value={24}
-            suffix="/7"
-            label="Corridor Support"
-            isInView={isInView}
-            delay={0.3}
-          />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-zinc-200 justify-items-center md:justify-items-stretch">
+          <Stat icon={Container} value={12000} suffix="+" label="Containers Cleared" isInView={isInView} delay={0} />
+          <Stat icon={Clock} value={98.4} decimals={1} suffix="%" label="On-Time Delivery" isInView={isInView} delay={0.1} />
+          <Stat icon={Truck} value={45} suffix="d" label="Door-to-Door" isInView={isInView} delay={0.2} />
+          <Stat icon={Headphones} value={24} suffix="/7" label="Corridor Support" isInView={isInView} delay={0.3} />
         </div>
       </div>
     </div>

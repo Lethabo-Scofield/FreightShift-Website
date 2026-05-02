@@ -60,7 +60,7 @@ export function HowItWorks() {
                 
                 <div className="w-16 h-16 rounded-2xl bg-white border-2 border-brand-blue/20 shadow-sm flex items-center justify-center mb-6 relative group hover:border-brand-blue transition-colors duration-300">
                   <step.icon className="w-7 h-7 text-brand-blue group-hover:scale-110 transition-transform" />
-                  <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-brand-navy text-white text-xs font-bold flex items-center justify-center border-2 border-white">
+                  <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-foreground text-white text-xs font-bold flex items-center justify-center border-2 border-white">
                     {i + 1}
                   </div>
                 </div>
