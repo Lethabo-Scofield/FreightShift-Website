@@ -1,42 +1,62 @@
-import { motion } from "framer-motion";
 import { ShoppingBag, Building2, Wrench, Hammer, Box, Cog } from "lucide-react";
 
 const industries = [
   { icon: ShoppingBag, name: "Retail & E-commerce" },
   { icon: Building2, name: "Manufacturing" },
   { icon: Cog, name: "Automotive Parts" },
-  { icon: Hammer, name: "Construction & Building" },
+  { icon: Hammer, name: "Construction" },
   { icon: Box, name: "FMCG" },
-  { icon: Wrench, name: "Industrial Equipment" }
+  { icon: Wrench, name: "Industrial Equipment" },
 ];
 
 export function Industries() {
-  return (
-    <section className="py-16 bg-muted border-y border-border/50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
-          <div>
-            <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Industries</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">Built for SA business.</h2>
-          </div>
-        </div>
+  // Duplicate the list so the marquee can loop seamlessly
+  const looped = [...industries, ...industries];
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {industries.map((ind, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="bg-white border border-border/60 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-3 hover:border-brand-blue/30 hover:shadow-sm transition-all"
-            >
-              <ind.icon className="w-6 h-6 text-brand-navy/60" />
-              <span className="text-sm font-semibold text-foreground/90">{ind.name}</span>
-            </motion.div>
-          ))}
+  return (
+    <section className="py-12 md:py-16 bg-muted border-y border-border/50 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 mb-6">
+        <div className="flex items-center justify-center gap-3">
+          <div className="h-px w-8 bg-border" />
+          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">
+            Built for South African business
+          </span>
+          <div className="h-px w-8 bg-border" />
         </div>
       </div>
+
+      {/* Marquee */}
+      <div className="relative">
+        {/* Edge fades */}
+        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-muted to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-muted to-transparent z-10 pointer-events-none" />
+
+        <div className="flex overflow-hidden">
+          <div className="flex gap-4 md:gap-6 animate-marquee shrink-0">
+            {looped.map((ind, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 bg-white border border-border/60 rounded-xl px-5 py-3 shrink-0"
+              >
+                <ind.icon className="w-5 h-5 text-brand-blue/80" />
+                <span className="text-sm font-semibold text-foreground/90 whitespace-nowrap">
+                  {ind.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes fs-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: fs-marquee 30s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }
