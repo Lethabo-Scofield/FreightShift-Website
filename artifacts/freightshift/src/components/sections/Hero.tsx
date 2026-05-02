@@ -57,7 +57,7 @@ export function Hero() {
                 <span aria-label="China" role="img">🇨🇳</span>
                 <span className="font-semibold">Shanghai</span>
                 <ArrowRight className="w-3 h-3 text-foreground/40" />
-                <span className="font-semibold">Durban</span>
+                <span className="font-semibold">OR Tambo</span>
                 <span aria-label="South Africa" role="img">🇿🇦</span>
               </span>
             </motion.div>
