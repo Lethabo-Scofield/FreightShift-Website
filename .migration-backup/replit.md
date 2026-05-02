@@ -25,3 +25,7 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Artifacts
+
+- `freightshift` (`/`) — FreightShift International Logistics corporate website. Single-page React + Vite marketing site (Home, About, Services, China to SA, Quote form, Contact). Brand palette: Freight Blue #1F73D8, Deep Navy #0F3D75, Charcoal #1E1E1E, Light Grey #F7F7F7, Accent Orange #F28C28. Quote form uses react-hook-form + zod with localStorage persistence — no backend.
