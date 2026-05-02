@@ -1,9 +1,11 @@
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { goToQuote } from "@/lib/scroll-to-quote";
 
 export function FinalCTA() {
+  const [, navigate] = useLocation();
   return (
     <section className="py-16 md:py-24 bg-zinc-50 relative overflow-hidden">
       {/* Subtle grid */}
@@ -30,15 +32,14 @@ export function FinalCTA() {
           Quick reply. Honest pricing. No back-and-forth.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="bg-brand-orange hover:bg-brand-orange/90 text-white h-14 px-8 text-base border-none shadow-lg shadow-brand-orange/20 w-full sm:w-auto gap-2"
-            >
-              Get a Quote
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
+          <Button
+            size="lg"
+            onClick={() => goToQuote(navigate)}
+            className="bg-brand-orange hover:bg-brand-orange/90 text-white h-14 px-8 text-base border-none shadow-lg shadow-brand-orange/20 w-full sm:w-auto gap-2"
+          >
+            Get a Quote
+            <ArrowRight className="w-4 h-4" />
+          </Button>
           <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"

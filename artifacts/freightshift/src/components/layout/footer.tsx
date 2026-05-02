@@ -1,17 +1,18 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { FaWhatsapp } from "react-icons/fa";
 import { Phone, MapPin } from "lucide-react";
 import logoUrl from "@/assets/freightshift-logo.png";
+import { goToQuote } from "@/lib/scroll-to-quote";
 
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Get a Quote", href: "/contact" },
   { name: "Contact", href: "/contact" },
 ];
 
 export function Footer() {
+  const [, navigate] = useLocation();
   return (
     <footer className="bg-zinc-50 text-foreground/80 pt-12 md:pt-16 pb-24 md:pb-8 border-t border-zinc-200">
       <div className="container mx-auto px-4 md:px-6">
@@ -50,6 +51,15 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => goToQuote(navigate)}
+                  className="text-sm text-foreground/70 hover:text-brand-blue transition-colors text-left"
+                >
+                  Get a Quote
+                </button>
+              </li>
             </ul>
           </div>
 

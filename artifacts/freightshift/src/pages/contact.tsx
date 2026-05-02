@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -7,8 +8,13 @@ import { Quote } from "@/components/sections/Quote";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
+import { consumePendingQuoteScroll } from "@/lib/scroll-to-quote";
 
 export default function ContactPage() {
+  useEffect(() => {
+    consumePendingQuoteScroll();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />

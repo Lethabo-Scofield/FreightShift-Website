@@ -5,6 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logoUrl from "@/assets/freightshift-logo.png";
+import { goToQuote } from "@/lib/scroll-to-quote";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -16,7 +17,7 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -81,11 +82,13 @@ export function Navbar() {
                 WhatsApp Us
               </Button>
             </a>
-            <Link href="/contact">
-              <Button size="sm" className="bg-brand-orange hover:bg-brand-orange/90 text-white border-none">
-                Get a Quote
-              </Button>
-            </Link>
+            <Button
+              size="sm"
+              onClick={() => goToQuote(navigate)}
+              className="bg-brand-orange hover:bg-brand-orange/90 text-white border-none"
+            >
+              Get a Quote
+            </Button>
           </div>
         </div>
 
@@ -129,15 +132,15 @@ export function Navbar() {
                     WhatsApp Us
                   </Button>
                 </a>
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full"
+                <Button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    goToQuote(navigate);
+                  }}
+                  className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white"
                 >
-                  <Button className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white">
-                    Get a Quote
-                  </Button>
-                </Link>
+                  Get a Quote
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

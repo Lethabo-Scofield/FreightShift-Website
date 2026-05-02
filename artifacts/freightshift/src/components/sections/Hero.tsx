@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Anchor, Plane } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import heroBg from "@assets/image_1777730034034.png";
+import { goToQuote as routeToQuote } from "@/lib/scroll-to-quote";
 
 export function Hero() {
   const [, navigate] = useLocation();
-  const goToQuote = () => navigate("/contact");
+  const goToQuote = () => routeToQuote(navigate);
 
   return (
     <section
