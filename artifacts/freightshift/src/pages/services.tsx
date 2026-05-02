@@ -2,9 +2,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { PageHeader } from "@/components/layout/PageHeader";
 
+import { ChinaSACorridor } from "@/components/sections/ChinaSACorridor";
+import { Lanes } from "@/components/sections/Lanes";
 import { Services } from "@/components/sections/Services";
-import { MultimodalFeature } from "@/components/sections/MultimodalFeature";
-import { Industries } from "@/components/sections/Industries";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
@@ -15,14 +15,14 @@ export default function ServicesPage() {
       <Navbar />
       <main>
         <PageHeader
-          eyebrow="Services"
-          title="Freight, customs & delivery. One team."
-          subtitle="From one carton to full containers. We manage every step."
+          eyebrow="Services & Corridor"
+          title="Freight, customs & delivery."
+          subtitle="China–SA corridor specialists. Door to door, one team."
           breadcrumb={[{ label: "Services" }]}
         />
-        <MultimodalFeature />
+        <ChinaSACorridor />
+        <Lanes />
         <Services />
-        <Industries />
         <HowItWorks />
         <FinalCTA />
       </main>

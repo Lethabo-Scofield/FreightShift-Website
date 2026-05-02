@@ -7,7 +7,6 @@ const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "China to SA", href: "/china-sa" },
   { name: "Get a Quote", href: "/contact" },
   { name: "Contact", href: "/contact" },
 ];

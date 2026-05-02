@@ -10,7 +10,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "China to SA", href: "/china-sa" },
   { name: "Contact", href: "/contact" },
 ];
 
