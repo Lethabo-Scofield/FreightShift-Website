@@ -38,30 +38,6 @@ export function Hero() {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left: copy */}
           <div className="lg:col-span-7">
-            {/* Live route ticker */}
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 pl-2 pr-4 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6"
-            >
-              <span className="relative flex w-2 h-2 ml-1">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/60">
-                Live route
-              </span>
-              <span className="h-3 w-px bg-zinc-300" />
-              <span className="inline-flex items-center gap-1.5 text-xs text-foreground/85">
-                <span aria-label="China" role="img">🇨🇳</span>
-                <span className="font-semibold">Shanghai</span>
-                <ArrowRight className="w-3 h-3 text-foreground/40" />
-                <span className="font-semibold">OR Tambo</span>
-                <span aria-label="South Africa" role="img">🇿🇦</span>
-              </span>
-            </motion.div>
-
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
