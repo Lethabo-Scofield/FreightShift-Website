@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://freightshiftlogistics.co.za/sitemap.xml

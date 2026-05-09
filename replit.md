@@ -1,57 +1,45 @@
-# Workspace
+# [Project name]
 
-## Overview
+_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
 
-pnpm workspace monorepo using TypeScript. Hosts the FreightShift International Logistics website — a China-to-South-Africa freight forwarding company site.
+## Run & Operate
+
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm run typecheck` — full typecheck across all packages
+- `pnpm run build` — typecheck + build all packages
+- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
+- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
+- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
-- **Monorepo tool**: pnpm workspaces
-- **Node.js version**: 24
-- **Package manager**: pnpm
-- **TypeScript version**: 5.9
-- **API framework**: Express 5
-- **Database**: PostgreSQL + Drizzle ORM
-- **Validation**: Zod (`zod/v4`), `drizzle-zod`
-- **API codegen**: Orval (from OpenAPI spec)
-- **Build**: esbuild (CJS bundle)
+- pnpm workspaces, Node.js 24, TypeScript 5.9
+- API: Express 5
+- DB: PostgreSQL + Drizzle ORM
+- Validation: Zod (`zod/v4`), `drizzle-zod`
+- API codegen: Orval (from OpenAPI spec)
+- Build: esbuild (CJS bundle)
 
-## Artifacts
+## Where things live
 
-- **`artifacts/freightshift`** (`@workspace/freightshift`) — React + Vite frontend, served at `/`. FreightShift International Logistics marketing site with pages: Home, About, Services, Contact.
-- **`artifacts/api-server`** (`@workspace/api-server`) — Express API server, served at `/api`. Handles quote form submissions via Resend email service.
-- **`artifacts/mockup-sandbox`** — UI mockup/design sandbox (internal tool).
+_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
 
-## Key Routes (frontend)
+## Architecture decisions
 
-- `/` — Home page (hero, services overview, quote form, testimonials)
-- `/about` — About page
-- `/services` — Services page
-- `/contact` — Contact page
-- `/china-sa` — China-SA corridor page (aliases to Services)
+_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
 
-## Key API Routes
+## Product
 
-- `GET /api/healthz` — Health check
-- `POST /api/quote` — Submit quote request (emails via Resend, rate-limited)
+_Describe the high-level user-facing capabilities of this app once they exist._
 
-## Required Environment Variables
+## User preferences
 
-- `RESEND_API_KEY` — Resend API key for email delivery (quote submissions)
-- `QUOTE_TO_EMAIL` — Recipient email address for quote requests
-- `QUOTE_FROM_EMAIL` — Sender email (optional, defaults to onboarding@resend.dev)
+_Populate as you build — explicit user instructions worth remembering across sessions._
 
-## Key Commands
+## Gotchas
 
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
+_Populate as you build — sharp edges, "always run X before Y" rules._
 
-## Assets
+## Pointers
 
-- `attached_assets/` — Images used by the frontend (hero backgrounds, team photos, etc.)
-- `artifacts/freightshift/public/` — Public static assets (favicon, robots.txt, sitemap, opengraph image)
-- `artifacts/freightshift/src/assets/` — Logo image
-
-See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details

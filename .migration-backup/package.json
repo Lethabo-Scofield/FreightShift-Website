@@ -10,7 +10,9 @@
   },
   "private": true,
   "devDependencies": {
+    "@vercel/node": "^5.1.13",
     "typescript": "~5.9.2",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "zod": "^3.25.76"
   }
 }

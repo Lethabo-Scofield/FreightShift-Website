@@ -1,4 +1,4 @@
-modules = ["nodejs-24", "python-3.11"]
+modules = ["nodejs-24"]
 
 [deployment]
 router = "application"
@@ -30,9 +30,3 @@ externalPort = 8081
 [[ports]]
 localPort = 21403
 externalPort = 80
-
-[userenv]
-
-[userenv.shared]
-QUOTE_TO_EMAIL = "info@freightshiftlogistics.co.za"
-QUOTE_FROM_EMAIL = "info@freightshiftlogistics.co.za"
