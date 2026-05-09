@@ -3,7 +3,8 @@ import { Link, useLocation } from "wouter";
 import { Menu } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import logoUrl from "@/assets/freightshift-logo.png";
 import { goToQuote } from "@/lib/scroll-to-quote";
 
@@ -101,6 +102,12 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] flex flex-col pt-16">
+              <VisuallyHidden>
+                <SheetTitle>Navigation menu</SheetTitle>
+                <SheetDescription>
+                  Site navigation links and quick actions for FreightShift International Logistics.
+                </SheetDescription>
+              </VisuallyHidden>
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => {
                   const active = isActive(link.href);
