@@ -77,22 +77,6 @@ export function TrustBar() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
-        {/* Live pill */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4 }}
-          className="flex items-center justify-center gap-2 mb-5 md:mb-6"
-        >
-          <span className="relative flex w-2 h-2">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-          </span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/50">
-            Corridor live
-          </span>
-        </motion.div>
-
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-zinc-200 justify-items-center md:justify-items-stretch">
           <Stat icon={Container} value={12000} suffix="+" label="Containers Cleared" isInView={isInView} delay={0} />
           <Stat icon={Clock} value={98.4} decimals={1} suffix="%" label="On-Time Delivery" isInView={isInView} delay={0.1} />
