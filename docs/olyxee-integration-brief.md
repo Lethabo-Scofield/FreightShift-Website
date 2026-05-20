@@ -33,7 +33,7 @@ GET https://logistics.olyxee.com/api/public/track/:trackingId
 
 ```json
 {
-  "trackingId": "OLY-7K3-9PQ4",
+  "trackingId": "FSL-7K3-9PQ4",
   "reference": "FSL-2026-0418",
   "origin": "Shenzhen, CN",
   "destination": "Johannesburg, ZA",
@@ -142,10 +142,10 @@ This is what your system uses to build the tracking button inside every status e
 {websiteUrl}/track?code={trackingId}
 ```
 
-So a customer with tracking ID `OLY-7K3-9PQ4` will receive an email with a button pointing to:
+So a customer with tracking ID `FSL-7K3-9PQ4` will receive an email with a button pointing to:
 
 ```
-https://freightshiftlogistics.co.za/track?code=OLY-7K3-9PQ4
+https://freightshiftlogistics.co.za/track?code=FSL-7K3-9PQ4
 ```
 
 Our `/track` page is already built and reads `?code=` correctly — once the website URL is set, the emails will link straight to a working page.
@@ -160,11 +160,11 @@ Our `/track` page is already built and reads `?code=` correctly — once the web
 4. Create a test order in Olyxee for a FreightShift test customer.
 5. Push it through a couple of statuses (e.g. Pending → Picked up → In transit).
 6. Open the email, click the button — you should land on
-   `https://freightshiftlogistics.co.za/track?code=OLY-XXX-XXXX` and see the
+   `https://freightshiftlogistics.co.za/track?code=FSL-XXX-XXXX` and see the
    live status and timeline.
 7. Hit the endpoint directly to sanity-check the payload:
    ```bash
-   curl -i https://logistics.olyxee.com/api/public/track/OLY-XXX-XXXX
+   curl -i https://logistics.olyxee.com/api/public/track/FSL-XXX-XXXX
    ```
 
 ---

@@ -143,7 +143,7 @@ export default function TrackPage() {
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="e.g. OLY-7K3-9PQ4"
+                  placeholder="e.g. FSL-7K3-9PQ4"
                   aria-label="Tracking ID"
                   className="pl-10 h-12 text-base font-medium tracking-wide uppercase placeholder:normal-case placeholder:font-normal placeholder:tracking-normal placeholder:text-foreground/40"
                   autoComplete="off"

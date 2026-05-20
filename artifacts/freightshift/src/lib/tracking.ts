@@ -54,7 +54,7 @@ export const STATUS_META: Record<
 
 const MOCK_ORDERS: TrackingOrder[] = [
   {
-    trackingId: "OLY-7K3-9PQ4",
+    trackingId: "FSL-7K3-9PQ4",
     reference: "FSL-2026-0418",
     origin: "Shenzhen, CN",
     destination: "Johannesburg, ZA",
@@ -74,7 +74,7 @@ const MOCK_ORDERS: TrackingOrder[] = [
     ],
   },
   {
-    trackingId: "OLY-A2X-0011",
+    trackingId: "FSL-A2X-0011",
     reference: "FSL-2026-0405",
     origin: "Guangzhou, CN",
     destination: "Cape Town, ZA",
@@ -94,7 +94,7 @@ const MOCK_ORDERS: TrackingOrder[] = [
     ],
   },
   {
-    trackingId: "OLY-DEMO-001",
+    trackingId: "FSL-DEMO-001",
     reference: "FSL-DEMO-001",
     origin: "Ningbo, CN",
     destination: "Durban, ZA",
