@@ -8,6 +8,7 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import ServicesPage from "@/pages/services";
 import ContactPage from "@/pages/contact";
+import TrackPage from "@/pages/track";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ function Router() {
         <Route path="/services" component={ServicesPage} />
         <Route path="/china-sa" component={ServicesPage} />
         <Route path="/contact" component={ContactPage} />
+        <Route path="/track" component={TrackPage} />
         <Route component={NotFound} />
       </Switch>
     </>
