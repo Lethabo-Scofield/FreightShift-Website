@@ -2,34 +2,27 @@
 
 **To:** Olyxee Admin dev team (`logistics.olyxee.com`)
 **From:** FreightShift International Logistics
-**Status:** FreightShift website is live with a `/track?code=XXX` page running on **mock data**. We need three things from the Olyxee side to switch it to real data.
+
+The FreightShift `/track?code=…` page is **built, deployed, and wired to call your API**. It's currently calling `https://logistics.olyxee.com/api/public/track/:trackingId` — that endpoint doesn't exist yet, so the page shows a "no shipment found" or "temporarily unavailable" state.
+
+Once the three items below are done on your side, tracking goes live. **Zero further changes needed from us.**
 
 ---
 
-## TL;DR — what we need from you
+## What you need to do
 
-1. **Ship the public tracking endpoint** (Option A from your own integration guide):
-   `GET https://logistics.olyxee.com/api/public/track/:trackingId`
-2. **Add our origin to `ALLOWED_ORIGINS`** so the browser can call you.
-3. **Set our Website URL in Olyxee Admin → Settings → Business** so your status emails link back to us.
-
-When all three are done, we flip a single function on our side and tracking goes live. No further changes needed from you.
-
----
-
-## 1. Public tracking endpoint (required)
-
-### Endpoint
+### 1. Ship the public tracking endpoint
 
 ```
 GET https://logistics.olyxee.com/api/public/track/:trackingId
 ```
 
-- **No login required.** This is the only public read endpoint we need.
-- **404** if the tracking ID does not exist.
-- **200** with the payload below if found.
+- No authentication.
+- `404` if the tracking ID isn't found.
+- `200` with the JSON payload below if found.
+- Rate limit ~60 req/min/IP, `Cache-Control: public, max-age=30`.
 
-### Response shape (must match exactly)
+**Response shape (must match exactly — this is what our page already expects):**
 
 ```json
 {
@@ -58,7 +51,7 @@ GET https://logistics.olyxee.com/api/public/track/:trackingId
 }
 ```
 
-### Field rules
+**Field rules**
 
 | Field                   | Type     | Required | Notes                                                                 |
 | ----------------------- | -------- | -------- | --------------------------------------------------------------------- |
@@ -67,15 +60,15 @@ GET https://logistics.olyxee.com/api/public/track/:trackingId
 | `events[]`              | array    | ✅       | Newest first. Empty array is OK for brand-new orders.                 |
 | `events[].at`           | ISO 8601 | ✅       | UTC, e.g. `2026-05-20T07:12:00Z`.                                     |
 | `events[].status`       | enum     | ✅       | One of the status values below.                                       |
-| `events[].label`        | string   | ✅       | Short human label, e.g. "Out for delivery", "Released from customs".  |
-| `events[].message`      | string   | ⛔️      | Optional one-line note shown under the label.                         |
-| `events[].location`     | string   | ⛔️      | Optional, e.g. "OR Tambo".                                            |
-| `reference`             | string   | ⛔️      | Our internal order ref. Shown next to the tracking ID.                |
-| `origin`, `destination` | string   | ⛔️      | "City, CC" format preferred.                                          |
-| `mode`                  | enum     | ⛔️      | `sea` \| `air` \| `road`.                                             |
-| `estimatedDeliveryDate` | ISO date | ⛔️      | Date only (`YYYY-MM-DD`) or full ISO 8601. We render as a local date. |
+| `events[].label`        | string   | ✅       | Short human label (e.g. "Out for delivery").                          |
+| `events[].message`      | string   | ⛔       | Optional one-line note shown under the label.                         |
+| `events[].location`     | string   | ⛔       | Optional, e.g. "OR Tambo".                                            |
+| `reference`             | string   | ⛔       | Our internal order ref. Shown next to the tracking ID.                |
+| `origin`, `destination` | string   | ⛔       | "City, CC" format preferred.                                          |
+| `mode`                  | enum     | ⛔       | `sea` \| `air` \| `road`.                                             |
+| `estimatedDeliveryDate` | ISO date | ⛔       | Date only (`YYYY-MM-DD`) or full ISO 8601. Omit if unknown.           |
 
-### Allowed `status` values
+**Allowed `currentStatus` / `events[].status` values:**
 
 ```
 pending
@@ -90,121 +83,64 @@ returned
 cancelled
 ```
 
-If you add a new status later, please let us know — unrecognised values will render as "Unknown status" until we add it on our side.
-
-### What NOT to return
-
-This endpoint is unauthenticated and reachable by anyone with a tracking ID. Please **do not** include:
-
-- Customer email, phone, address
+**Do NOT include** in the response (it's a public endpoint):
+- Customer email, phone, or address
 - Pricing, invoice, or commercial terms
 - Internal staff notes
 - Other orders for the same customer
 
-Only the safe fields above.
-
-### Operational requirements
-
-- **Rate limit:** 60 req/min/IP is fine. Return `429` with a `Retry-After` header when exceeded.
-- **Caching:** `Cache-Control: public, max-age=30` is ideal. 30 seconds is more than enough — customers refresh, not poll.
-- **CORS:** see section 2.
-- **Errors:** standard JSON `{ "error": "message" }` body on 4xx/5xx.
-
 ---
 
-## 2. CORS (required)
+### 2. Whitelist our origin (CORS)
 
-Add the FreightShift origins to your `ALLOWED_ORIGINS` env var on the API:
+Add these to your `ALLOWED_ORIGINS` env var on the API:
 
 ```
 ALLOWED_ORIGINS=https://freightshiftlogistics.co.za,https://www.freightshiftlogistics.co.za
 ```
 
-If you already have other origins listed, just append ours — comma-separated, no spaces.
-
-Until this is done, browsers will block the request and our `/track` page will show "Tracking is temporarily unavailable".
-
-> While we're testing on Replit, please also temporarily allow our preview domain. We'll send you the exact URL when we're ready to test end-to-end and you can drop it once we go live.
+If you already have other origins, just append ours — comma-separated, no spaces. Without this, browsers block the request and our page shows "Tracking is temporarily unavailable".
 
 ---
 
-## 3. Website URL setting (required for emails)
+### 3. Set our Website URL in Olyxee Admin
 
-In Olyxee Admin → **Settings → Business → Website URL**, set:
+In **Settings → Business → Website URL**, set:
 
 ```
 https://freightshiftlogistics.co.za
 ```
 
-This is what your system uses to build the tracking button inside every status email. Per your own integration guide, the link template is:
-
-```
-{websiteUrl}/track?code={trackingId}
-```
-
-So a customer with tracking ID `FSL-7K3-9PQ4` will receive an email with a button pointing to:
-
-```
-https://freightshiftlogistics.co.za/track?code=FSL-7K3-9PQ4
-```
-
-Our `/track` page is already built and reads `?code=` correctly — once the website URL is set, the emails will link straight to a working page.
+Your system uses this to build the tracking button in every customer email. The template (per your own integration guide) is `{websiteUrl}/track?code={trackingId}`, so emails will land customers on a working page automatically.
 
 ---
 
-## 4. How to test end-to-end (suggested flow)
+## How to test it's working
 
-1. Deploy the public endpoint on `logistics.olyxee.com`.
-2. Add our origin to `ALLOWED_ORIGINS`.
-3. Set the Website URL in admin settings.
-4. Create a test order in Olyxee for a FreightShift test customer.
-5. Push it through a couple of statuses (e.g. Pending → Picked up → In transit).
-6. Open the email, click the button — you should land on
-   `https://freightshiftlogistics.co.za/track?code=FSL-XXX-XXXX` and see the
-   live status and timeline.
-7. Hit the endpoint directly to sanity-check the payload:
+1. Deploy the endpoint.
+2. Add the CORS origin.
+3. Set the Website URL.
+4. Create a test order in Olyxee and push it through a couple of statuses.
+5. Click the button in the email → should land on `https://freightshiftlogistics.co.za/track?code=FSL-XXX-XXXX` and show the live status + timeline.
+6. Sanity-check the payload directly:
    ```bash
    curl -i https://logistics.olyxee.com/api/public/track/FSL-XXX-XXXX
    ```
 
 ---
 
-## 5. What we do on our side once you're done
+## A few things to confirm
 
-A single function in our codebase (`src/lib/tracking.ts → fetchTracking`) currently returns mock data. The swap is one block of code, already drafted and commented in the file:
+Quick reply on these would unblock us:
 
-```ts
-const base = import.meta.env.VITE_OLYXEE_API_BASE
-  ?? "https://logistics.olyxee.com";
-const res = await fetch(
-  `${base}/api/public/track/${encodeURIComponent(code)}`,
-  { headers: { Accept: "application/json" } },
-);
-if (res.status === 404) return null;
-if (!res.ok) throw new Error(`Tracking lookup failed (${res.status})`);
-return (await res.json()) as TrackingOrder;
-```
-
-We'll uncomment that, remove the mock data, and ship.
+- [ ] Confirm the endpoint URL will be exactly `https://logistics.olyxee.com/api/public/track/:trackingId`. If different, send the final URL — we use it via `VITE_OLYXEE_API_BASE` on our side.
+- [ ] Confirm the JSON shape above matches what you'll return. If a field has to be renamed (e.g. `status` vs `currentStatus`), tell us now.
+- [ ] Confirm `events[].at` is UTC ISO 8601.
+- [ ] Confirm the 10 status values cover everything Olyxee can emit today.
 
 ---
 
-## 6. Open questions for you
-
-Please confirm by reply:
-
-- [ ] **Endpoint URL** — will it be exactly `https://logistics.olyxee.com/api/public/track/:trackingId`, or a different path? If different, give us the final URL.
-- [ ] **Field names** — can you match the JSON shape in section 1 exactly? If a field has to be named differently (e.g. `status` instead of `currentStatus`), tell us now so we adapt the mapper in one place.
-- [ ] **Timezone** — confirm `events[].at` will be UTC ISO 8601.
-- [ ] **ETA timing** — when there's no ETA, please omit `estimatedDeliveryDate` rather than sending `null` or an empty string (or document which you'll use).
-- [ ] **Rate limit / caching** — let us know the actual limits so we can show a sensible error if a customer ever trips them.
-- [ ] **Status taxonomy** — confirm the 10 statuses in section 1 cover everything Olyxee can emit today.
-
----
-
-## 7. Contact
-
-Anything unclear, or want to change the contract above before you build — reach out and we'll update this brief. The faster we lock the shape, the faster customers get real tracking.
+## Contact
 
 **FreightShift technical contact:** info@freightshiftlogistics.co.za
 **WhatsApp:** +27 68 109 5543

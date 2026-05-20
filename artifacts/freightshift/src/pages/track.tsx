@@ -15,7 +15,6 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 import {
   fetchTracking,
   STATUS_META,
-  DEMO_TRACKING_IDS,
   type TrackingOrder,
 } from "@/lib/tracking";
 import { TrackingTimeline, ModeBadge } from "@/components/sections/TrackingTimeline";
@@ -100,12 +99,6 @@ export default function TrackPage() {
     void lookup(trimmed);
   }
 
-  function useDemo(code: string) {
-    setInput(code);
-    navigate(`/track?code=${encodeURIComponent(code)}`);
-    void lookup(code);
-  }
-
   return (
     <div className="min-h-screen bg-white">
       <Seo
@@ -143,7 +136,7 @@ export default function TrackPage() {
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="e.g. FSL-7K3-9PQ4"
+                  placeholder="Enter your tracking ID"
                   aria-label="Tracking ID"
                   className="pl-10 h-12 text-base font-medium tracking-wide uppercase placeholder:normal-case placeholder:font-normal placeholder:tracking-normal placeholder:text-foreground/40"
                   autoComplete="off"
@@ -159,19 +152,9 @@ export default function TrackPage() {
               </Button>
             </form>
 
-            <div className="mt-4 text-xs text-foreground/50 flex flex-wrap items-center gap-2">
-              <span>Try a demo ID:</span>
-              {DEMO_TRACKING_IDS.map((code) => (
-                <button
-                  key={code}
-                  type="button"
-                  onClick={() => useDemo(code)}
-                  className="font-mono text-[11px] bg-zinc-100 hover:bg-zinc-200 px-2 py-1 rounded-md transition-colors text-foreground/70"
-                >
-                  {code}
-                </button>
-              ))}
-            </div>
+            <p className="mt-3 text-xs text-foreground/50">
+              Your tracking ID is in the email we sent you when your shipment was created.
+            </p>
 
             {/* States */}
             <div className="mt-8">
