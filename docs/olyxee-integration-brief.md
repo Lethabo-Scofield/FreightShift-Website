@@ -1,17 +1,43 @@
-# Olyxee → FreightShift Tracking Integration Brief
+# Olyxee → Customer Website Tracking Integration Brief
 
 **To:** Olyxee Admin dev team (`logistics.olyxee.com`)
-**From:** FreightShift International Logistics
+**From:** FreightShift International Logistics (first integrator)
 
-The FreightShift `/track?code=…` page is **built, deployed, and wired to call your API**. It's currently calling `https://logistics.olyxee.com/api/public/track/:trackingId` — that endpoint doesn't exist yet, so the page shows a "no shipment found" or "temporarily unavailable" state.
+This brief covers what `logistics.olyxee.com` needs to ship so that customer-facing websites can plug a public `/track?code=…` page into Olyxee. Our website (`freightshiftlogistics.co.za`) is **built, deployed, and already calling your API** — it currently shows the empty/error state because the endpoint isn't live yet.
 
-Once the three items below are done on your side, tracking goes live. **Zero further changes needed from us.**
+> ⚠️ **Important:** Olyxee is a multi-business platform. Everything below has to work for **every business** in Olyxee, not just FreightShift. The two places this matters most are **tracking-ID generation** (section 1) and **CORS** (section 3). Please don't hard-code anything FreightShift-specific.
 
 ---
 
-## What you need to do
+## What you need to ship
 
-### 1. Ship the public tracking endpoint
+### 1. Per-business tracking-ID generator
+
+Today the platform generates IDs like `OLY-XXX-XXXX`. That works for one tenant but breaks the moment a second business signs up — every customer-facing email goes out branded "OLY-…" regardless of who actually shipped the cargo, and IDs from different businesses are indistinguishable.
+
+**Required change:** the prefix has to come from the business, not the platform.
+
+**Add a setting:** Admin → Settings → Business → **Tracking ID prefix** (3–5 uppercase letters, e.g. `FSL`, `ACME`, `LOG`).
+
+**Required ID format:**
+```
+{PREFIX}-{3 alphanumerics}-{4 alphanumerics}
+```
+- `PREFIX` — that business's configured prefix (e.g. `FSL`).
+- The two random chunks together must be globally unique across the whole Olyxee install (not just per-business), since the public lookup endpoint is keyed by ID alone.
+- Use unambiguous characters only — drop `0/O` and `1/I/L` to avoid customer typos.
+- Example: `FSL-7K3-9PQ4`, `ACME-Q42-8H7P`.
+
+**Validation rules:**
+- Prefix is required, 3–5 chars, A–Z only, must be unique across all businesses in Olyxee.
+- Existing orders keep their old ID — only newly created orders use the new prefix.
+- Surface the configured prefix prominently in admin so dispatchers know what their IDs look like.
+
+**FreightShift's prefix:** `FSL`
+
+---
+
+### 2. Public tracking endpoint
 
 ```
 GET https://logistics.olyxee.com/api/public/track/:trackingId
@@ -20,9 +46,10 @@ GET https://logistics.olyxee.com/api/public/track/:trackingId
 - No authentication.
 - `404` if the tracking ID isn't found.
 - `200` with the JSON payload below if found.
-- Rate limit ~60 req/min/IP, `Cache-Control: public, max-age=30`.
+- Rate limit ~60 req/min/IP. `Cache-Control: public, max-age=30`.
+- Works for **any** business's IDs (FSL-…, ACME-…, etc.) since each ID is globally unique.
 
-**Response shape (must match exactly — this is what our page already expects):**
+**Response shape (must match exactly — every customer site will rely on this contract):**
 
 ```json
 {
@@ -55,7 +82,7 @@ GET https://logistics.olyxee.com/api/public/track/:trackingId
 
 | Field                   | Type     | Required | Notes                                                                 |
 | ----------------------- | -------- | -------- | --------------------------------------------------------------------- |
-| `trackingId`            | string   | ✅       | Echo back the canonical ID (uppercase, with dashes).                  |
+| `trackingId`            | string   | ✅       | Echo back the canonical ID (uppercase, with dashes, with prefix).     |
 | `currentStatus`         | enum     | ✅       | One of the status values below.                                       |
 | `events[]`              | array    | ✅       | Newest first. Empty array is OK for brand-new orders.                 |
 | `events[].at`           | ISO 8601 | ✅       | UTC, e.g. `2026-05-20T07:12:00Z`.                                     |
@@ -63,7 +90,7 @@ GET https://logistics.olyxee.com/api/public/track/:trackingId
 | `events[].label`        | string   | ✅       | Short human label (e.g. "Out for delivery").                          |
 | `events[].message`      | string   | ⛔       | Optional one-line note shown under the label.                         |
 | `events[].location`     | string   | ⛔       | Optional, e.g. "OR Tambo".                                            |
-| `reference`             | string   | ⛔       | Our internal order ref. Shown next to the tracking ID.                |
+| `reference`             | string   | ⛔       | The business's internal order ref.                                    |
 | `origin`, `destination` | string   | ⛔       | "City, CC" format preferred.                                          |
 | `mode`                  | enum     | ⛔       | `sea` \| `air` \| `road`.                                             |
 | `estimatedDeliveryDate` | ISO date | ⛔       | Date only (`YYYY-MM-DD`) or full ISO 8601. Omit if unknown.           |
@@ -83,59 +110,97 @@ returned
 cancelled
 ```
 
-**Do NOT include** in the response (it's a public endpoint):
+**Do NOT include** in the response (it's a public endpoint, anyone with an ID can hit it):
 - Customer email, phone, or address
 - Pricing, invoice, or commercial terms
 - Internal staff notes
-- Other orders for the same customer
+- The owning business's name, internal IDs, or other orders
+- Any other orders for the same customer
+
+The customer already knows which business they shipped with — the page lives on that business's own website. Don't leak cross-business data.
 
 ---
 
-### 2. Whitelist our origin (CORS)
+### 3. CORS — per-business origin allow-list
 
-Add these to your `ALLOWED_ORIGINS` env var on the API:
+A single global `ALLOWED_ORIGINS` env var **won't scale**. Every new business onboarding to Olyxee will need their website origin whitelisted, and you don't want to be redeploying the API every time.
+
+**Recommended:** read allowed origins from each business's settings (you already collect "Website URL" — extend it to "Allowed website origins", comma-separated). The CORS middleware then resolves the request's `Origin` against the union of all businesses' allowed origins.
+
+**Minimum acceptable (for launch):** keep `ALLOWED_ORIGINS` env var but make it comma-separated and document how to add new tenants. Add FreightShift's origins now:
 
 ```
-ALLOWED_ORIGINS=https://freightshiftlogistics.co.za,https://www.freightshiftlogistics.co.za
+https://freightshiftlogistics.co.za,https://www.freightshiftlogistics.co.za
 ```
 
-If you already have other origins, just append ours — comma-separated, no spaces. Without this, browsers block the request and our page shows "Tracking is temporarily unavailable".
+Without CORS, browsers block the request and the customer's `/track` page shows "Tracking is temporarily unavailable".
+
+> While we're testing on Replit, please also temporarily allow our preview domain — we'll send you the exact URL when ready, and you can drop it once we're on the production domain.
 
 ---
 
-### 3. Set our Website URL in Olyxee Admin
+### 4. Website URL setting (per business — already exists)
 
-In **Settings → Business → Website URL**, set:
+You already have Settings → Business → **Website URL**. Two things to confirm:
 
-```
-https://freightshiftlogistics.co.za
-```
+- The status-email template uses `{websiteUrl}/track?code={trackingId}` for the tracking button. Confirm this is in place per the integration guide.
+- For FreightShift, set Website URL to:
+  ```
+  https://freightshiftlogistics.co.za
+  ```
 
-Your system uses this to build the tracking button in every customer email. The template (per your own integration guide) is `{websiteUrl}/track?code={trackingId}`, so emails will land customers on a working page automatically.
+That ensures every status email FreightShift sends links straight to a working page on our site.
 
 ---
 
-## How to test it's working
+## How customers will actually use this
 
-1. Deploy the endpoint.
-2. Add the CORS origin.
-3. Set the Website URL.
-4. Create a test order in Olyxee and push it through a couple of statuses.
-5. Click the button in the email → should land on `https://freightshiftlogistics.co.za/track?code=FSL-XXX-XXXX` and show the live status + timeline.
-6. Sanity-check the payload directly:
+For clarity (and because the customer-side question came up): there's no customer login on the website side. Two flows, both already work on ours and should work for any business that ships a `/track` page:
+
+1. **Automatic** — customer clicks the button in their status email → lands on `https://{business}.com/track?code=FSL-XXX-XXXX` → the page reads `?code=` and fetches immediately. This is the 99% case.
+2. **Manual fallback** — customer lost the email, goes to `/track`, pastes the ID into the search box → URL updates to `/track?code=…` and renders the same page.
+
+The tracking ID itself is the auth — anyone with the ID can see that one shipment, nobody else can. That's why a per-business prefix matters: it gives each business a branded, recognisable ID space and prevents accidental cross-business lookups feeling generic.
+
+---
+
+## How to test end-to-end
+
+1. Ship the per-business prefix setting (section 1) and ship the public endpoint (section 2).
+2. Add FreightShift's origins to CORS (section 3) and set FreightShift's Website URL to `https://freightshiftlogistics.co.za` (section 4).
+3. In Olyxee Admin, set FreightShift's tracking prefix to `FSL`.
+4. Create a test order for a FreightShift test customer — the generated ID should be `FSL-XXX-XXXX`.
+5. Push the order through a couple of statuses (Pending → Picked up → In transit).
+6. Open the email, click the button → should land on `https://freightshiftlogistics.co.za/track?code=FSL-XXX-XXXX` and show the live status and timeline.
+7. Sanity-check the payload directly:
    ```bash
    curl -i https://logistics.olyxee.com/api/public/track/FSL-XXX-XXXX
    ```
+8. Repeat steps 3–7 with a second test business using a different prefix (e.g. `ACME`) to confirm the multi-tenant path works.
 
 ---
 
-## A few things to confirm
+## What we've already done on our side
 
-Quick reply on these would unblock us:
+For reference, no action needed from you on these — just so you know the contract we've built against:
 
-- [ ] Confirm the endpoint URL will be exactly `https://logistics.olyxee.com/api/public/track/:trackingId`. If different, send the final URL — we use it via `VITE_OLYXEE_API_BASE` on our side.
-- [ ] Confirm the JSON shape above matches what you'll return. If a field has to be renamed (e.g. `status` vs `currentStatus`), tell us now.
-- [ ] Confirm `events[].at` is UTC ISO 8601.
+- `/track` page is live on `freightshiftlogistics.co.za` (and linked from the main nav).
+- It reads `?code=` from the URL on mount and on browser back/forward.
+- Manual search input updates the URL so customers can bookmark/share.
+- It calls `https://logistics.olyxee.com/api/public/track/:trackingId` directly (configurable via `VITE_OLYXEE_API_BASE` if the URL ever changes).
+- States handled: idle, loading, found (with timeline + ETA + "what next"), 404 ("no shipment found"), and network/CORS error ("temporarily unavailable").
+- Page is `noindex` so individual tracking pages don't leak into Google.
+
+---
+
+## Quick confirm before you build
+
+A short reply on these would let us close the loop:
+
+- [ ] Confirm the endpoint URL will be exactly `https://logistics.olyxee.com/api/public/track/:trackingId`. If different, send the final URL.
+- [ ] Confirm the JSON shape in section 2 matches what you'll return.
+- [ ] Confirm the per-business prefix approach (section 1) works for you, or propose an alternative — but it must let FreightShift's IDs look like `FSL-…`, not `OLY-…`.
+- [ ] Confirm CORS will be per-business (or at minimum that you'll document how to add new tenants to `ALLOWED_ORIGINS`).
 - [ ] Confirm the 10 status values cover everything Olyxee can emit today.
 
 ---
