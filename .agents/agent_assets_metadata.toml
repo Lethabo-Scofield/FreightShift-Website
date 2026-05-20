@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "lDfopm2TQ2aPO_KhBNHjr"
+uri = "file://docs/olyxee-integration-brief.md"
+type = "text"
+title = "Olyxee → FreightShift Tracking Integration Brief"
