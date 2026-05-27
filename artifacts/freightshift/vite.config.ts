@@ -11,18 +11,21 @@ function olyxeeProxyPlugin(): PluginOption {
   const handler: any = async (req: any, res: any, next: any) => {
     if (!req.url || !req.url.startsWith(OLYXEE_PREFIX)) return next();
     const upstream = OLYXEE_TARGET + req.url.slice(OLYXEE_PREFIX.length);
-    console.log("[olyxee-proxy]", req.method, req.url, "->", upstream);
     try {
       const upstreamRes = await fetch(upstream, {
         method: req.method,
-        headers: { Accept: "application/json" },
+        headers: {
+          Accept: "application/json",
+          "User-Agent": "FreightShift-Proxy/1.0",
+        },
+        redirect: "follow",
       });
       res.statusCode = upstreamRes.status;
       const ct = upstreamRes.headers.get("content-type");
       if (ct) res.setHeader("content-type", ct);
       const body = await upstreamRes.arrayBuffer();
       res.end(Buffer.from(body));
-    } catch (err) {
+    } catch {
       res.statusCode = 502;
       res.setHeader("content-type", "application/json");
       res.end(JSON.stringify({ error: "upstream_unreachable" }));
