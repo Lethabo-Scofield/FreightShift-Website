@@ -1,8 +1,43 @@
-import { defineConfig } from "vite";
+import { defineConfig, type PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+
+const OLYXEE_PREFIX = "/api/olyxee";
+const OLYXEE_TARGET = "https://logistics.olyxee.com";
+
+function olyxeeProxyPlugin(): PluginOption {
+  const handler: any = async (req: any, res: any, next: any) => {
+    if (!req.url || !req.url.startsWith(OLYXEE_PREFIX)) return next();
+    const upstream = OLYXEE_TARGET + req.url.slice(OLYXEE_PREFIX.length);
+    console.log("[olyxee-proxy]", req.method, req.url, "->", upstream);
+    try {
+      const upstreamRes = await fetch(upstream, {
+        method: req.method,
+        headers: { Accept: "application/json" },
+      });
+      res.statusCode = upstreamRes.status;
+      const ct = upstreamRes.headers.get("content-type");
+      if (ct) res.setHeader("content-type", ct);
+      const body = await upstreamRes.arrayBuffer();
+      res.end(Buffer.from(body));
+    } catch (err) {
+      res.statusCode = 502;
+      res.setHeader("content-type", "application/json");
+      res.end(JSON.stringify({ error: "upstream_unreachable" }));
+    }
+  };
+  return {
+    name: "olyxee-proxy",
+    configureServer(server) {
+      server.middlewares.use(handler);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(handler);
+    },
+  };
+}
 
 const rawPort = process.env.PORT ?? "5173";
 const port = Number(rawPort);
@@ -19,6 +54,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    olyxeeProxyPlugin(),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [

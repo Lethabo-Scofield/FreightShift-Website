@@ -3,6 +3,7 @@
   "buildCommand": "pnpm --filter @workspace/freightshift run build",
   "outputDirectory": "artifacts/freightshift/dist/public",
   "rewrites": [
+    { "source": "/api/olyxee/:path*", "destination": "https://logistics.olyxee.com/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

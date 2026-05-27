@@ -47,7 +47,7 @@ export const STATUS_META: Record<
   cancelled: { label: "Cancelled", tone: "neutral", whatNext: "This order has been cancelled. Please contact us if this was unexpected." },
 };
 
-const DEFAULT_API_BASE = "https://logistics.olyxee.com";
+const DEFAULT_API_BASE = "/api/olyxee";
 
 function getApiBase(): string {
   const fromEnv = import.meta.env.VITE_OLYXEE_API_BASE as string | undefined;
