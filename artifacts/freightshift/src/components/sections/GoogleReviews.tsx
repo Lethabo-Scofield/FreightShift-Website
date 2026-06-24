@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 import { Button } from "@/components/ui/button";
 
 const GOOGLE_REVIEWS_LINK = "GOOGLE_REVIEWS_LINK_HERE";
@@ -16,9 +17,13 @@ export function GoogleReviews() {
           className="max-w-3xl mx-auto"
         >
           <div className="flex justify-center mb-8">
-            <div className="inline-flex gap-2 bg-foreground text-background px-4 py-2 border-2 border-foreground rounded-none">
+            <div className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 border-2 border-foreground rounded-none">
+              <FcGoogle className="w-6 h-6" />
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-accent text-accent" />
+                <Star
+                  key={i}
+                  className={`w-6 h-6 text-brand-orange ${i < 4 ? "fill-brand-orange" : "fill-none"}`}
+                />
               ))}
             </div>
           </div>
