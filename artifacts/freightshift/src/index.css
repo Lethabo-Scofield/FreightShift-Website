@@ -62,7 +62,7 @@
 
   --border: 220 15% 85%;
   --input: 220 15% 85%;
-  --ring: 17 100% 50%; /* signal orange */
+  --ring: 207 85% 37%; /* #0E5FB1 logo blue */
 
   --card: 44 20% 96%;
   --card-foreground: 212 74% 14%;
@@ -81,7 +81,7 @@
   --muted: 44 10% 88%;
   --muted-foreground: 220 15% 45%;
 
-  --accent: 17 100% 50%; /* #ff4a00 */
+  --accent: 207 85% 37%; /* #0E5FB1 logo blue */
   --accent-foreground: 44 20% 96%;
 
   --destructive: 0 84% 60%;
@@ -110,7 +110,7 @@
   --foreground: 44 20% 96%;
   --border: 220 15% 20%;
   --input: 220 15% 20%;
-  --ring: 17 100% 50%;
+  --ring: 207 85% 45%;
   
   --card: 220 40% 10%;
   --card-foreground: 44 20% 96%;
@@ -129,7 +129,7 @@
   --muted: 220 30% 15%;
   --muted-foreground: 220 10% 70%;
   
-  --accent: 17 100% 50%;
+  --accent: 207 85% 45%;
   --accent-foreground: 44 20% 96%;
   
   --destructive: 0 62% 30%;
