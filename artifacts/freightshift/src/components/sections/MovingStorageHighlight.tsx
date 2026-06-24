@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
-import { goToQuote as routeToQuote } from "@/lib/scroll-to-quote";
 import storageBg from "@/assets/warehouse-team-tablet.png";
 
 export function MovingStorageHighlight() {
   const [, navigate] = useLocation();
-  const goToQuote = () => routeToQuote(navigate);
 
   return (
     <section className="py-20 md:py-32 bg-foreground text-background relative border-b-2 border-foreground">
@@ -36,10 +34,10 @@ export function MovingStorageHighlight() {
             </ul>
 
             <Button
-              onClick={goToQuote}
+              onClick={() => navigate("/contact")}
               className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none rounded-none w-full sm:w-auto"
             >
-              Request Moving Quote
+              Contact Us
             </Button>
           </motion.div>
 
