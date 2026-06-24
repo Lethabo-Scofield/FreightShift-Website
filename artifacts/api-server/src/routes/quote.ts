@@ -1,4 +1,6 @@
 import { Router, type IRouter } from "express";
+// Email is sent via the Replit Mail integration (blueprint:replitmail).
+import { sendEmail } from "../replitmail";
 
 const router: IRouter = Router();
 
@@ -41,23 +43,6 @@ router.post("/quote", async (req, res) => {
   const validationError = validateBody(data);
   if (validationError) {
     res.status(400).json({ error: validationError });
-    return;
-  }
-
-  const apiKey = process.env["RESEND_API_KEY"];
-  const toEmail = process.env["QUOTE_TO_EMAIL"];
-  const fromEmail = process.env["QUOTE_FROM_EMAIL"];
-
-  if (!apiKey) {
-    res.status(500).json({ error: "RESEND_API_KEY is not configured" });
-    return;
-  }
-  if (!toEmail) {
-    res.status(500).json({ error: "QUOTE_TO_EMAIL is not configured" });
-    return;
-  }
-  if (!fromEmail) {
-    res.status(500).json({ error: "QUOTE_FROM_EMAIL is not configured" });
     return;
   }
 
@@ -136,33 +121,16 @@ router.post("/quote", async (req, res) => {
     .join("\n");
 
   try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: `FreightShift Quotes <${fromEmail}>`,
-        to: [toEmail],
-        reply_to: data.email,
-        subject,
-        html,
-        text: textParts,
-      }),
+    await sendEmail({
+      subject,
+      html,
+      text: textParts,
     });
-
-    if (!response.ok) {
-      const errBody = await response.text();
-      req.log.error({ status: response.status, errBody }, "Resend error");
-      res.status(502).json({ error: "Failed to send email", detail: errBody });
-      return;
-    }
 
     res.json({ ok: true });
   } catch (err) {
-    req.log.error({ err }, "Resend fetch failed");
-    res.status(500).json({ error: "Failed to send email" });
+    req.log.error({ err }, "Replit Mail send failed");
+    res.status(502).json({ error: "Failed to send email" });
   }
 });
 

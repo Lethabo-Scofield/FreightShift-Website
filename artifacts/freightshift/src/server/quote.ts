@@ -1,5 +1,8 @@
 /// <reference types="node" />
 
+// Email is sent via the Replit Mail integration (blueprint:replitmail).
+import { sendEmail } from "./replitmail";
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, "&amp;")
@@ -45,23 +48,6 @@ export async function handleQuote(body: unknown): Promise<QuoteResult> {
   const validationError = validateBody(data);
   if (validationError) {
     return { status: 400, json: { error: validationError } };
-  }
-
-  const apiKey = process.env["RESEND_API_KEY"];
-  const toEmail = process.env["QUOTE_TO_EMAIL"];
-  const fromEmail = process.env["QUOTE_FROM_EMAIL"];
-
-  if (!apiKey) {
-    return { status: 500, json: { error: "RESEND_API_KEY is not configured" } };
-  }
-  if (!toEmail) {
-    return { status: 500, json: { error: "QUOTE_TO_EMAIL is not configured" } };
-  }
-  if (!fromEmail) {
-    return {
-      status: 500,
-      json: { error: "QUOTE_FROM_EMAIL is not configured" },
-    };
   }
 
   const modeLabel = data.mode === "sea" ? "Sea Freight" : "Air Freight";
@@ -139,32 +125,15 @@ export async function handleQuote(body: unknown): Promise<QuoteResult> {
     .join("\n");
 
   try {
-    const response = (await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: `FreightShift Quotes <${fromEmail}>`,
-        to: [toEmail],
-        reply_to: data.email,
-        subject,
-        html,
-        text: textParts,
-      }),
-    })) as unknown as { ok: boolean; text: () => Promise<string> };
-
-    if (!response.ok) {
-      const errBody = await response.text();
-      return {
-        status: 502,
-        json: { error: "Failed to send email", detail: errBody },
-      };
-    }
+    await sendEmail({
+      subject,
+      html,
+      text: textParts,
+    });
 
     return { status: 200, json: { ok: true } };
-  } catch {
-    return { status: 500, json: { error: "Failed to send email" } };
+  } catch (err) {
+    console.error("Quote email send failed:", err);
+    return { status: 502, json: { error: "Failed to send email" } };
   }
 }
