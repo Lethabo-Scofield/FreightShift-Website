@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Users } from "lucide-react";
-import teamImg from "@assets/image_1777730074520.png";
+import teamImg from "@assets/WhatsApp_Image_2026-06-24_at_4.51.08_PM_1782339811172.jpeg";
 
 const valueProps = [
   "China-SA corridor expertise",
@@ -32,11 +32,11 @@ export function WhyUs() {
               Shenzhen to Joburg. We handle every step in between.
             </p>
 
-            <div className="relative overflow-hidden aspect-[4/3] border-2 border-foreground bg-foreground">
+            <div className="relative overflow-hidden aspect-[4/5] sm:aspect-[4/3] border-2 border-foreground bg-foreground">
               <img
                 src={teamImg}
-                alt="FreightShift logistics team celebrating a successful delivery"
-                className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-80"
+                alt="The FreightShift International Logistics team outside their warehouse"
+                className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
 
