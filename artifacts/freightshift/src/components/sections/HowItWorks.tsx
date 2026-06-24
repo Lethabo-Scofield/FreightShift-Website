@@ -4,39 +4,39 @@ import { ClipboardEdit, Truck, Ship, FileCheck, MapPin } from "lucide-react";
 const steps = [
   {
     icon: ClipboardEdit,
-    title: "Quote & Plan",
-    desc: "Detailed planning and transparent pricing for your logistics needs."
+    title: "Quote & Book",
+    desc: "Rates within 24 hours."
   },
   {
     icon: Truck,
-    title: "Dispatch & Collection",
-    desc: "Our fleet arrives on time, fully equipped for safe handling."
+    title: "Origin Pickup",
+    desc: "We collect from your supplier in China."
   },
   {
     icon: Ship,
-    title: "Transit & Storage",
-    desc: "Secure movement or warehousing of your goods."
+    title: "Sea or Air",
+    desc: "Scheduled corridor services with tracking."
   },
   {
     icon: FileCheck,
-    title: "Compliance & Admin",
-    desc: "We handle all necessary paperwork, including customs if needed."
+    title: "Customs Clearance",
+    desc: "We handle SARS, duties, and compliance."
   },
   {
     icon: MapPin,
     title: "Final Delivery",
-    desc: "Safe, verified delivery to the final destination."
+    desc: "Door-to-door anywhere in SA."
   }
 ];
 
 export function HowItWorks() {
   return (
-    <section className="py-14 md:py-32 bg-white border-y border-zinc-100">
+    <section className="py-14 md:py-32 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">Our Process</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Smooth operations from start to finish.</h2>
-          <p className="text-foreground/70 mt-4 text-lg">We handle the complexity, so you can focus on your business.</p>
+          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">How It Works</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Factory to door in 5 steps.</h2>
+          <p className="text-foreground/70 mt-4 text-lg">We handle the complexity. You track the cargo.</p>
         </div>
 
         <div className="relative">

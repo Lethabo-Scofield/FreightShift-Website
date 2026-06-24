@@ -207,11 +207,11 @@ export function Quote() {
                 WhatsApp Us
               </a>
               <a
-                href="tel:+27100113971"
+                href="tel:+27681095543"
                 className="flex items-center gap-3 text-foreground hover:text-brand-orange transition-colors font-medium"
               >
                 <Phone className="w-5 h-5 text-brand-blue" />
-                010 011 3971
+                068 109 5543
               </a>
             </div>
           </motion.div>

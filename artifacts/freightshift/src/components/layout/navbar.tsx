@@ -75,12 +75,6 @@ export function Navbar() {
 
           <div className="flex items-center gap-3">
             <a
-              href="tel:+27100113971"
-              className="hidden xl:flex items-center text-sm font-semibold text-brand-blue hover:text-brand-navy transition-colors mr-2"
-            >
-              010 011 3971
-            </a>
-            <a
               href="https://wa.me/message/EVTMLWYQY2OCG1"
               target="_blank"
               rel="noopener noreferrer"
@@ -135,12 +129,6 @@ export function Navbar() {
                 })}
               </div>
               <div className="mt-auto flex flex-col gap-3 pb-8">
-                <a
-                  href="tel:+27100113971"
-                  className="w-full text-center py-2 font-bold text-brand-blue text-lg"
-                >
-                  010 011 3971
-                </a>
                 <a
                   href="https://wa.me/message/EVTMLWYQY2OCG1"
                   target="_blank"

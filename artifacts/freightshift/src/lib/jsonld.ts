@@ -36,7 +36,10 @@ export const localBusinessJsonLd = {
     addressRegion: "Gauteng",
     addressCountry: SITE.region,
   },
-  areaServed: [{ "@type": "Country", name: "South Africa" }],
+  areaServed: [
+    { "@type": "Country", name: "South Africa" },
+    { "@type": "Country", name: "China" },
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -50,36 +53,42 @@ export const localBusinessJsonLd = {
 export const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Logistics, moving and storage services",
+  serviceType: "Freight forwarding and customs clearance",
   provider: {
     "@type": "Organization",
     name: SITE.name,
     url: SITE.url,
   },
-  areaServed: [{ "@type": "Country", name: "South Africa" }],
+  areaServed: [
+    { "@type": "Country", name: "South Africa" },
+    { "@type": "Country", name: "China" },
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Full-service logistics in South Africa",
+    name: "China to South Africa logistics services",
     itemListElement: [
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Moving Services" },
+        itemOffered: {
+          "@type": "Service",
+          name: "Sea Freight (FCL & LCL)",
+        },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Storage" },
+        itemOffered: { "@type": "Service", name: "Air Freight & Express" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Courier Services" },
+        itemOffered: { "@type": "Service", name: "SARS Customs Clearance" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Freight Transport" },
+        itemOffered: { "@type": "Service", name: "Door-to-Door Delivery" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Logistics Operations" },
+        itemOffered: { "@type": "Service", name: "Warehousing" },
       },
     ],
   },

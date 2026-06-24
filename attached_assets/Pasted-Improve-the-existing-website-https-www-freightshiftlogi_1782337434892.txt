@@ -1,0 +1,81 @@
+Improve the existing website https://www.freightshiftlogistics.co.za/ without changing the full structure or rebuilding the site from scratch.
+
+Keep the current website identity, layout direction, branding, and existing content where possible. Only make targeted improvements to make the site more professional, trustworthy, and complete.
+
+Required updates:
+
+1. Update contact number
+   Replace the current phone number with:
+   010 011 3971
+
+2. Fix expired key issue
+   There is an expired key issue on the site. Check for any expired Google Maps key, API key, form key, or third-party integration key. Fix the issue without changing unrelated parts of the website.
+
+3. Add attached images
+   I will attach images. Use them naturally on the existing website:
+
+* Team images
+* Site visit images
+* Logistics/operations images
+* Moving/storage-related images
+
+Do not replace the whole design. Just add or improve image sections where they fit.
+
+4. Improve services visibility
+   Keep the existing services, but make these services more visible:
+
+* Moving Services
+* Storage
+* Courier Services
+* Freight Transport
+* Logistics Operations
+
+Moving Services and Storage should be easier for visitors to notice.
+
+5. Google reviews link
+   Add a simple button or section for Google Reviews.
+
+Use this placeholder until the real link is provided:
+GOOGLE_REVIEWS_LINK_HERE
+
+Button text:
+Read Our Google Reviews
+
+Do not fake or manually invent reviews.
+
+6. Companies served
+   Add a small credibility section with:
+
+* Mizu Innovations (Pty) Ltd
+* CORE X (Pty) Ltd
+
+Present them honestly as companies Freight Shift Logistics has provided services for.
+
+7. Partners / support providers
+   Add these only where appropriate:
+
+* Courier Guy — local courier services
+* Just In Time Logistics — moving services
+* Olyxee — technology / website / digital support
+
+Do not exaggerate the relationship.
+
+8. UJ site visit
+   Add a small section using the attached site visit images.
+
+Text:
+Road Freight Transport students from the University of Johannesburg visited Freight Shift Logistics to learn more about real-world logistics and transport operations. The visit helped students connect classroom theory with practical industry experience.
+
+9. Trust improvements
+   Improve wording, spacing, image placement, and credibility sections so the website feels more professional, but do not redesign everything.
+
+10. Final checks
+    Check:
+
+* Phone number updated correctly
+* Expired key issue fixed
+* Images display properly
+* Google Reviews button added
+* Mobile layout still works
+* Contact buttons still work
+* No broken links

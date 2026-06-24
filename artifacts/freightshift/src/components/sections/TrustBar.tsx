@@ -78,10 +78,10 @@ export function TrustBar() {
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-zinc-200 justify-items-center md:justify-items-stretch">
-          <Stat icon={Truck} value={15000} suffix="+" label="Successful Moves" isInView={isInView} delay={0} />
-          <Stat icon={Clock} value={99.2} decimals={1} suffix="%" label="On-Time Delivery" isInView={isInView} delay={0.1} />
-          <Stat icon={Container} value={5000} suffix="+" label="Tons Stored" isInView={isInView} delay={0.2} />
-          <Stat icon={Headphones} value={24} suffix="/7" label="Operational Support" isInView={isInView} delay={0.3} />
+          <Stat icon={Container} value={12000} suffix="+" label="Containers Cleared" isInView={isInView} delay={0} />
+          <Stat icon={Clock} value={98.4} decimals={1} suffix="%" label="On-Time Delivery" isInView={isInView} delay={0.1} />
+          <Stat icon={Truck} value={45} suffix="d" label="Door-to-Door" isInView={isInView} delay={0.2} />
+          <Stat icon={Headphones} value={24} suffix="/7" label="Corridor Support" isInView={isInView} delay={0.3} />
         </div>
       </div>
     </div>

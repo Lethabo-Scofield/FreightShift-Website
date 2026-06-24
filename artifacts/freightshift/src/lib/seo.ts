@@ -3,9 +3,9 @@ export const SITE = {
   shortName: "FreightShift",
   url: "https://freightshiftlogistics.co.za",
   description:
-    "Full-service South African logistics company offering moving, storage, courier, freight transport and end-to-end logistics operations across Johannesburg and beyond.",
+    "South African freight forwarder specialising in the China to South Africa trade corridor. Sea, air and door-to-door logistics with full SARS customs clearance.",
   email: "info@freightshiftlogistics.co.za",
-  phone: "+27 10 011 3971",
+  phone: "+27 68 109 5543",
   whatsapp: "https://wa.me/message/EVTMLWYQY2OCG1",
   region: "ZA",
   city: "Johannesburg",
@@ -23,28 +23,28 @@ export type SeoMeta = {
 export const PAGE_SEO: Record<string, SeoMeta> = {
   home: {
     title:
-      "Moving, Storage & Logistics in South Africa | FreightShift International Logistics",
+      "China to South Africa Freight Forwarding | FreightShift International Logistics",
     description:
-      "Full-service South African logistics: moving, storage, courier, freight transport and logistics operations. A real team with real assets on the ground. Call 010 011 3971.",
+      "Reliable freight forwarding from China to South Africa. Sea & air freight, SARS customs clearance, door-to-door delivery. Quote in 24 hours.",
     path: "/",
   },
   about: {
-    title: "About FreightShift — South Africa's Trusted Logistics Partner",
+    title: "About FreightShift — Your Trusted China Trade Partner",
     description:
-      "FreightShift International Logistics is a full-service South African logistics company handling moving, storage, courier and freight transport. Meet the team behind the operation.",
+      "FreightShift is a South African freight forwarder built for transparent, reliable imports from China. Meet the team behind the Shenzhen-to-Joburg corridor.",
     path: "/about",
   },
   services: {
     title:
-      "Moving, Storage, Courier & Freight Services | FreightShift",
+      "Freight, Customs & Delivery Services | China-SA Corridor | FreightShift",
     description:
-      "Moving services, storage, courier, freight transport and end-to-end logistics operations across South Africa. Reliable, operational and on the ground.",
+      "Sea FCL/LCL, air freight, full SARS customs clearance, warehousing and door-to-door delivery between China and South Africa. Six active lanes, weekly departures.",
     path: "/services",
   },
   contact: {
-    title: "Contact FreightShift — Call 010 011 3971 | WhatsApp & Quote",
+    title: "Contact FreightShift — Quote in 24 Hours | WhatsApp & Phone",
     description:
-      "Get a logistics quote fast. Call 010 011 3971, WhatsApp us, or fill in the quick quote form. Full-service logistics in Johannesburg, South Africa.",
+      "Get a freight quote in 24 hours. WhatsApp 068 109 5543, call us, or fill in the quick quote form. China to South Africa logistics specialists in Johannesburg.",
     path: "/contact",
   },
 };
