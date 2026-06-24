@@ -123,7 +123,7 @@ export async function handleQuote(body: unknown): Promise<QuoteResult> {
     .join("\n");
 
   try {
-    const response = await fetch("https://api.resend.com/emails", {
+    const response = (await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -137,7 +137,7 @@ export async function handleQuote(body: unknown): Promise<QuoteResult> {
         html,
         text: textParts,
       }),
-    });
+    })) as unknown as { ok: boolean; text: () => Promise<string> };
 
     if (!response.ok) {
       const errBody = await response.text();
