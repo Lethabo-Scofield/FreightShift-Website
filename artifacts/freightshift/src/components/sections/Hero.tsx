@@ -118,7 +118,7 @@ export function Hero() {
                   src={heroBg}
                   alt=""
                   aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 mix-blend-multiply opacity-80"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 
                 <div className="absolute top-4 right-4 bg-background text-foreground border-2 border-foreground px-4 py-2 font-mono text-sm font-bold uppercase">

@@ -76,7 +76,7 @@ export function ChinaSACorridor() {
               <img
                 src={corridorMap}
                 alt="World map showing the shipping route from China to South Africa"
-                className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 mix-blend-multiply opacity-80"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-foreground/20 pointer-events-none" />
 
