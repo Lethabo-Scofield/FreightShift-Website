@@ -31,7 +31,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-foreground/60 max-w-xs mt-2">
-              China to South Africa. Door to door. One trusted team.
+              End-to-end logistics, moving, and storage. South Africa's trusted operational partner.
             </p>
           </div>
 
@@ -71,11 +71,11 @@ export function Footer() {
             <ul className="flex flex-col gap-4">
               <li>
                 <a
-                  href="tel:+27681095543"
+                  href="tel:+27100113971"
                   className="flex items-center gap-3 text-sm text-foreground/70 hover:text-brand-blue transition-colors"
                 >
                   <Phone className="w-4 h-4 text-brand-blue" />
-                  068 109 5543
+                  010 011 3971
                 </a>
               </li>
               <li>
@@ -102,10 +102,11 @@ export function Footer() {
               What we do
             </h4>
             <ul className="flex flex-col gap-3">
-              <li className="text-sm text-foreground/70">Freight Forwarding</li>
-              <li className="text-sm text-foreground/70">Customs Clearance</li>
-              <li className="text-sm text-foreground/70">Warehousing</li>
-              <li className="text-sm text-foreground/70">China-SA Corridor</li>
+              <li className="text-sm text-foreground/70">Moving Services</li>
+              <li className="text-sm text-foreground/70">Storage Solutions</li>
+              <li className="text-sm text-foreground/70">Courier Services</li>
+              <li className="text-sm text-foreground/70">Freight Transport</li>
+              <li className="text-sm text-foreground/70">Logistics Operations</li>
             </ul>
           </div>
         </div>

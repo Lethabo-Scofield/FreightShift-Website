@@ -36,10 +36,7 @@ export const localBusinessJsonLd = {
     addressRegion: "Gauteng",
     addressCountry: SITE.region,
   },
-  areaServed: [
-    { "@type": "Country", name: "South Africa" },
-    { "@type": "Country", name: "China" },
-  ],
+  areaServed: [{ "@type": "Country", name: "South Africa" }],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -53,42 +50,36 @@ export const localBusinessJsonLd = {
 export const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Freight forwarding and customs clearance",
+  serviceType: "Logistics, moving and storage services",
   provider: {
     "@type": "Organization",
     name: SITE.name,
     url: SITE.url,
   },
-  areaServed: [
-    { "@type": "Country", name: "South Africa" },
-    { "@type": "Country", name: "China" },
-  ],
+  areaServed: [{ "@type": "Country", name: "South Africa" }],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "China to South Africa logistics services",
+    name: "Full-service logistics in South Africa",
     itemListElement: [
       {
         "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Sea Freight (FCL & LCL)",
-        },
+        itemOffered: { "@type": "Service", name: "Moving Services" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Air Freight & Express" },
+        itemOffered: { "@type": "Service", name: "Storage" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "SARS Customs Clearance" },
+        itemOffered: { "@type": "Service", name: "Courier Services" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Door-to-Door Delivery" },
+        itemOffered: { "@type": "Service", name: "Freight Transport" },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Warehousing" },
+        itemOffered: { "@type": "Service", name: "Logistics Operations" },
       },
     ],
   },

@@ -40,16 +40,17 @@ export function FinalCTA() {
             Get a Quote
             <ArrowRight className="w-4 h-4" />
           </Button>
-          <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white border-zinc-200 text-foreground hover:bg-zinc-50 hover:text-foreground h-14 px-8 gap-2 w-full sm:w-auto text-base"
-            >
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="bg-white border-zinc-200 text-foreground hover:bg-zinc-50 hover:text-foreground h-14 px-8 gap-2 w-full sm:w-auto text-base"
+          >
+            <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
               <FaWhatsapp className="w-5 h-5 text-green-500" />
               WhatsApp Us
-            </Button>
-          </a>
+            </a>
+          </Button>
         </div>
       </div>
     </section>

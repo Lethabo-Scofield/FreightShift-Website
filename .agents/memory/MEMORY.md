@@ -1,0 +1,1 @@
+- [FreightShift asset aliases](freightshift-asset-aliases.md) — @assets→attached_assets vs @/assets→src/assets; mismatched alias causes Vite 500 even when file exists.

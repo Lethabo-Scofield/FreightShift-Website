@@ -1,0 +1,117 @@
+Update https://www.freightshiftlogistics.co.za/ into a cleaner, more professional, trust-focused logistics website.
+
+I will attach real images. Use them across the site to make the company look credible and operational, not like a generic template.
+
+Main updates:
+
+1. Contact number
+   Replace the current number with:
+   010 011 3971
+
+2. Fix expired key issue
+   Check for any expired API key, Google Maps key, form key, or integration key causing errors. Fix, replace, or remove the broken integration.
+
+3. Services
+   Make these services more visible:
+
+* Moving Services
+* Storage
+* Courier Services
+* Freight Transport
+* Logistics Operations
+
+Moving Services and Storage must appear as key services.
+
+4. Images
+   Use the attached images for:
+
+* Hero section
+* Team section
+* Site visit section
+* Operations/gallery section
+* Moving/storage/logistics service cards
+
+Do not use fake-looking stock images if real attached images are available. Keep images clean, cropped properly, and professional.
+
+5. Google reviews
+   Add a Google Reviews section.
+
+I do not have the confirmed review link yet, so add a placeholder link variable:
+GOOGLE_REVIEWS_LINK_HERE
+
+Use buttons such as:
+
+* Read Our Google Reviews
+* Leave a Google Review
+
+Once the real Google Business Profile review link is provided, replace the placeholder with the correct link.
+
+6. Companies served
+   Add a section titled:
+   Companies We Have Provided Services For
+
+Include:
+
+* Mizu Innovations (Pty) Ltd
+* CORE X (Pty) Ltd
+
+Do not exaggerate. Present them only as companies served.
+
+7. Service partners
+   Add:
+
+* Courier Guy — local courier services
+* Just In Time Logistics — moving services
+* Olyxee — technology / website / digital support
+
+Present these honestly as service partners/support providers where applicable.
+
+8. Sun International
+   Add Sun International only as a recent client/service reference if appropriate. Do not present it as a long-term contract unless confirmed.
+
+9. University of Johannesburg site visit
+   Add this section:
+
+Road Freight Transport students from the University of Johannesburg visited Freight Shift Logistics to learn more about real-world logistics and transport operations. The visit helped students connect classroom theory with practical industry experience.
+
+Place it under “Industry Engagement”, “Community”, or “Real-World Logistics Education”.
+
+10. Design direction
+    Use:
+
+* White background
+* Dark professional text
+* Brand accent color
+* Clean cards
+* Real logistics imagery
+* Strong call-to-action buttons
+* Mobile responsive layout
+* Simple navigation
+
+Avoid anything that looks scammy, unfinished, or overly templated.
+
+11. Homepage structure
+    Create these sections:
+
+* Hero section with strong logistics value proposition
+* Key services
+* Moving and Storage highlight
+* Why choose Freight Shift Logistics
+* Companies served
+* Service partners
+* Google Reviews CTA
+* UJ site visit / industry engagement
+* Image gallery
+* Contact section with 010 011 3971
+
+12. Final checks
+    Before finishing, check:
+
+* Mobile responsiveness
+* Phone number links
+* WhatsApp/contact buttons
+* Broken links
+* Expired key errors
+* Image loading
+* Forms working
+* Google reviews placeholder added correctly
