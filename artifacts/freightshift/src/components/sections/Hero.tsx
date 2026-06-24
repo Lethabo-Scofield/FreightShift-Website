@@ -29,9 +29,9 @@ export function Hero() {
 
         {/* Desktop: light overlay fading from solid white on the left
             to transparent on the right, so the dark headline stays
-            crisp while the colourful container yard shows through. */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/0" />
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-zinc-50/60" />
+            crisp while the colourful container yard shows through clearly. */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-white/55 to-transparent" />
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-zinc-50/20" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
