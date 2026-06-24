@@ -31,18 +31,18 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-foreground break-words"
+              className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-white break-words [text-shadow:0_2px_16px_rgba(0,0,0,0.35)]"
             >
-              Ship from <span className="text-accent">China.</span>
+              Ship from <span className="text-sky-300">China.</span>
               <br />
-              Land in <span className="text-accent">South Africa.</span>
+              Land in <span className="text-sky-300">South Africa.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-lg md:text-xl max-w-xl mb-8 md:mb-10 font-medium text-foreground/80 font-mono tracking-tight"
+              className="text-lg md:text-xl max-w-xl mb-8 md:mb-10 font-medium text-white/90 font-mono tracking-tight [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]"
             >
               Door to door. One team. Zero surprises.
             </motion.p>
@@ -84,20 +84,20 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-foreground/80 font-bold border-t-2 border-foreground/10 pt-6"
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-white/90 font-bold border-t-2 border-white/20 pt-6 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
             >
               <span className="flex items-center gap-2">
-                <Anchor className="w-4 h-4 text-accent" />
+                <Anchor className="w-4 h-4 text-sky-300" />
                 Sea · 28–35 days
               </span>
-              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-foreground/20 rounded-none" />
+              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-white/40 rounded-none" />
               <span className="flex items-center gap-2">
-                <Plane className="w-4 h-4 text-accent" />
+                <Plane className="w-4 h-4 text-sky-300" />
                 Air · 5–9 days
               </span>
-              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-foreground/20 rounded-none" />
-              <span className="flex items-center gap-2 text-foreground">
-                <span className="inline-block w-2 h-2 rounded-none bg-accent" />
+              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-white/40 rounded-none" />
+              <span className="flex items-center gap-2 text-white">
+                <span className="inline-block w-2 h-2 rounded-none bg-sky-300" />
                 Full DDP available
               </span>
             </motion.div>
