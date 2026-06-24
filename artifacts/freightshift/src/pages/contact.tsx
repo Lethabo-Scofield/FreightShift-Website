@@ -40,7 +40,7 @@ export default function ContactPage() {
         <PageHeader
           eyebrow="Get in Touch"
           title="Let's move your cargo."
-          subtitle="Choose the channel that works for you."
+          subtitle="Quote in 24 hours. WhatsApp for instant replies."
           breadcrumb={[{ label: "Contact" }]}
         />
         <Contact />

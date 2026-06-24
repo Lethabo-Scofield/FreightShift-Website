@@ -15,7 +15,7 @@ export function ServicePartners() {
           <Handshake className="w-10 h-10 text-brand-blue mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-foreground mb-4">Our Service Partners</h2>
           <p className="text-foreground/70">
-            Trusted partners who extend our reach across the logistics network.
+            We collaborate with industry leaders to ensure comprehensive, reliable support across our entire logistics network.
           </p>
         </div>
 
