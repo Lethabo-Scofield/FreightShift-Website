@@ -1,1 +1,2 @@
 - [FreightShift asset aliases](freightshift-asset-aliases.md) — @assets→attached_assets vs @/assets→src/assets; mismatched alias causes Vite 500 even when file exists.
+- [FreightShift deploy target](freightshift-deploy-target.md) — live site is on Vercel (not Replit); /api/quote needs a serverless fn for prod or POST returns 405.
