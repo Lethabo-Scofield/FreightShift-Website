@@ -84,7 +84,7 @@ export function Navbar() {
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
-              className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-xs h-10 px-6 border-none rounded-none"
+              className="bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-xs h-10 px-6 border-none rounded-none"
             >
               Get a Quote
             </Button>
@@ -143,7 +143,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     goToQuote(navigate);
                   }}
-                  className="w-full bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-xs h-12 border-none rounded-none"
+                  className="w-full bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-xs h-12 border-none rounded-none"
                 >
                   Get a Quote
                 </Button>
