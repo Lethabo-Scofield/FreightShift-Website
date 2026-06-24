@@ -10,36 +10,43 @@ const industries = [
 ];
 
 export function Industries() {
-  // Duplicate the list so the marquee can loop seamlessly
   const looped = [...industries, ...industries];
 
   return (
-    <section className="py-12 md:py-16 bg-muted border-y border-border/50 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 mb-6">
-        <div className="flex items-center justify-center gap-3">
-          <div className="h-px w-8 bg-border" />
-          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">
-            Built for South African business
-          </span>
-          <div className="h-px w-8 bg-border" />
+    <section className="py-12 md:py-16 bg-background border-b-2 border-foreground overflow-hidden relative">
+      <div className="absolute inset-0 z-0 opacity-5 mix-blend-multiply pointer-events-none">
+        <svg width="100%" height="100%">
+          <pattern id="grid-industries" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#grid-industries)" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 mb-8 relative z-10">
+        <div className="flex justify-center">
+           <div className="inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+              <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+              Built for South African business
+            </div>
         </div>
       </div>
 
       {/* Marquee */}
-      <div className="relative">
-        {/* Edge fades */}
-        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-muted to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-muted to-transparent z-10 pointer-events-none" />
+      <div className="relative z-10">
+        {/* Edge covers */}
+        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <div className="flex overflow-hidden">
           <div className="flex gap-4 md:gap-6 animate-marquee shrink-0">
             {looped.map((ind, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 bg-white border border-border/60 rounded-xl px-5 py-3 shrink-0"
+                className="flex items-center gap-3 bg-background border-2 border-foreground rounded-none px-6 py-4 shrink-0 transition-colors hover:bg-foreground hover:text-background group"
               >
-                <ind.icon className="w-5 h-5 text-brand-blue/80" />
-                <span className="text-sm font-semibold text-foreground/90 whitespace-nowrap">
+                <ind.icon className="w-5 h-5 text-foreground group-hover:text-background transition-colors" />
+                <span className="font-mono text-sm uppercase tracking-widest font-bold whitespace-nowrap">
                   {ind.name}
                 </span>
               </div>

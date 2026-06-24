@@ -6,33 +6,43 @@ const GOOGLE_REVIEWS_LINK = "GOOGLE_REVIEWS_LINK_HERE";
 
 export function GoogleReviews() {
   return (
-    <section className="py-16 md:py-24 bg-white border-y border-zinc-100">
-      <div className="container mx-auto px-4 md:px-6 text-center">
+    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground relative overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto"
         >
-          <div className="flex justify-center mb-6">
-            <div className="flex gap-1 text-brand-orange">
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex gap-2 bg-foreground text-background px-4 py-2 border-2 border-foreground rounded-none">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-8 h-8 fill-current" />
+                <Star key={i} className="w-6 h-6 fill-accent text-accent" />
               ))}
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">See What Our Clients Say</h2>
-          <p className="text-lg text-foreground/70 mb-10">
+          
+          <div className="mb-6 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+            <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none animate-pulse" />
+            // PUBLIC_RECORD
+          </div>
+          
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 uppercase tracking-tight leading-[0.9]">
+            See What Our Clients <span className="text-accent underline decoration-4 underline-offset-8">Say.</span>
+          </h2>
+          
+          <p className="text-lg md:text-xl text-foreground/80 font-mono tracking-tight mb-12">
             Hear directly from the businesses we move cargo for. Read our reviews on Google.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild className="w-full sm:w-auto bg-brand-blue hover:bg-brand-navy text-white rounded-none h-12 px-8">
+            <Button asChild size="lg" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none rounded-none">
               <a href={GOOGLE_REVIEWS_LINK} target="_blank" rel="noopener noreferrer">
                 Read Our Google Reviews
               </a>
             </Button>
-            <Button asChild variant="outline" className="w-full sm:w-auto rounded-none h-12 px-8 border-zinc-300 text-foreground hover:bg-zinc-50">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 rounded-none">
               <a href={GOOGLE_REVIEWS_LINK} target="_blank" rel="noopener noreferrer">
                 Leave a Google Review
               </a>

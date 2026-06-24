@@ -1,52 +1,61 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { goToQuote } from "@/lib/scroll-to-quote";
 
 export function FinalCTA() {
   const [, navigate] = useLocation();
   return (
-    <section className="py-16 md:py-24 bg-zinc-50 relative overflow-hidden">
-      {/* Subtle grid */}
-      <div
-        className="absolute inset-0 opacity-[0.5] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgb(0 0 0 / 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgb(0 0 0 / 0.04) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          maskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 100%)",
-        }}
-      />
-      {/* Soft accent glow */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-brand-orange/10 blur-3xl pointer-events-none" />
+    <section className="py-24 md:py-40 bg-foreground text-background relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-10 mix-blend-screen pointer-events-none">
+        <svg width="100%" height="100%">
+          <pattern id="grid-cta" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#grid-cta)" />
+        </svg>
+      </div>
+      
+      {/* Decorative accent element */}
+      <div className="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 border-l-2 border-b-2 border-accent/20 bg-background/5 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-32 h-32 md:w-64 md:h-64 border-r-2 border-t-2 border-accent/20 bg-background/5 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-        <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-blue bg-white border border-zinc-200 shadow-sm px-3 py-1.5 rounded-full mb-6">
+        <div className="mb-8 inline-flex items-center gap-2 bg-background text-foreground px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+          <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none animate-pulse" />
           Get a quote in 24 hours
-        </span>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-5 md:mb-6 tracking-tight">
-          Ready to move?
+        </div>
+        
+        <h2 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold text-background mb-8 uppercase tracking-tight leading-[0.9]">
+          Ready to <span className="text-accent underline decoration-4 underline-offset-8">Move?</span>
         </h2>
-        <p className="text-base sm:text-lg md:text-xl text-foreground/60 max-w-xl mx-auto mb-8 md:mb-10 font-light">
+        
+        <p className="font-mono text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-12 uppercase tracking-widest">
           Quick reply. Honest pricing. No back-and-forth.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        
+        <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-2xl mx-auto">
           <Button
             size="lg"
             onClick={() => goToQuote(navigate)}
-            className="bg-brand-orange hover:bg-brand-orange/90 text-white h-14 px-8 text-base border-none shadow-lg shadow-brand-orange/20 w-full sm:w-auto gap-2"
+            className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-16 px-10 border-none gap-3 rounded-none shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all"
           >
             Get a Quote
-            <ArrowRight className="w-4 h-4" />
+            <ArrowDownRight className="w-5 h-5" />
           </Button>
-          <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
+          <a 
+            href="https://wa.me/message/EVTMLWYQY2OCG1" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto"
+          >
             <Button
               size="lg"
               variant="outline"
-              className="bg-white border-zinc-200 text-foreground hover:bg-zinc-50 hover:text-foreground h-14 px-8 gap-2 w-full sm:w-auto text-base"
+              className="w-full bg-transparent border-2 border-background text-background hover:bg-background hover:text-foreground font-mono font-bold uppercase tracking-wider text-sm h-16 px-10 gap-3 rounded-none transition-colors"
             >
-              <FaWhatsapp className="w-5 h-5 text-green-500" />
+              <FaWhatsapp className="w-5 h-5 text-green-500 group-hover:text-green-600" />
               WhatsApp Us
             </Button>
           </a>

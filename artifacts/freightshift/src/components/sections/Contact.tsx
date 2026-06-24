@@ -5,24 +5,24 @@ import { FaWhatsapp } from "react-icons/fa";
 const methods = [
   {
     icon: FaWhatsapp,
-    iconColor: "text-green-600",
-    iconBg: "bg-green-50",
-    accentBar: "bg-green-500",
+    iconColor: "text-accent",
+    iconBg: "bg-background border-2 border-foreground",
+    accentBar: "bg-accent",
     label: "WhatsApp",
     headline: "Message us now",
     detail: "wa.me/freightshift",
     sub: "Replies within minutes",
     badge: "Fastest",
-    badgeColor: "bg-green-500",
+    badgeColor: "bg-accent text-background",
     href: "https://wa.me/message/EVTMLWYQY2OCG1",
     external: true,
     cta: "Open WhatsApp",
   },
   {
     icon: Phone,
-    iconColor: "text-brand-blue",
-    iconBg: "bg-blue-50",
-    accentBar: "bg-brand-blue",
+    iconColor: "text-foreground",
+    iconBg: "bg-background border-2 border-foreground",
+    accentBar: "bg-foreground",
     label: "Phone",
     headline: "Talk to a coordinator",
     detail: "010 011 3971",
@@ -35,8 +35,8 @@ const methods = [
   },
   {
     icon: MapPin,
-    iconColor: "text-foreground",
-    iconBg: "bg-zinc-100",
+    iconColor: "text-background",
+    iconBg: "bg-foreground border-2 border-foreground",
     accentBar: "bg-foreground",
     label: "Office",
     headline: "Johannesburg HQ",
@@ -52,24 +52,25 @@ const methods = [
 
 export function Contact() {
   return (
-    <section id="contact" className="py-14 md:py-28 bg-white">
+    <section id="contact" className="py-20 md:py-32 bg-background border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14 max-w-5xl mx-auto">
           <div>
-            <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">
-              Contact
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-2 tracking-tight">
+            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+               Contact // 03
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 tracking-tight uppercase">
               Three ways to reach us.
             </h2>
           </div>
-          <div className="flex items-center gap-2 text-sm text-foreground/60">
-            <Clock className="w-4 h-4 text-brand-blue" />
+          <div className="flex items-center gap-2 text-sm text-foreground/60 font-mono font-bold uppercase tracking-wider">
+            <Clock className="w-4 h-4 text-accent" />
             <span>Reply in 24 hours, faster on WhatsApp</span>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-zinc-200 border border-zinc-200 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {methods.map((m, i) => {
             const Icon = m.icon;
             const Wrapper = m.href ? "a" : "div";
@@ -82,6 +83,8 @@ export function Contact() {
                 }
               : {};
 
+            const isDark = m.label === "Office";
+
             return (
               <motion.div
                 key={i}
@@ -89,56 +92,52 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="bg-white"
+                className="h-full"
               >
                 <Wrapper
                   {...wrapperProps}
-                  className={`relative h-full p-7 md:p-8 flex flex-col gap-5 group transition-colors ${
-                    m.href ? "hover:bg-zinc-50/60 cursor-pointer" : ""
-                  }`}
+                  className={`relative h-full p-8 flex flex-col gap-5 border-2 border-foreground transition-colors rounded-none ${
+                    isDark ? "bg-foreground text-background" : "bg-background text-foreground"
+                  } ${m.href ? (isDark ? "hover:bg-foreground/90 cursor-pointer" : "hover:bg-foreground hover:text-background cursor-pointer") : ""}`}
                 >
-                  {/* Top accent bar */}
                   <span
-                    className={`absolute top-0 left-0 right-0 h-1 ${m.accentBar}`}
+                    className={`absolute top-0 left-0 right-0 h-1.5 ${m.accentBar}`}
                     aria-hidden="true"
                   />
 
-                  {/* Header row */}
                   <div className="flex items-start justify-between">
-                    <div className={`w-12 h-12 ${m.iconBg} flex items-center justify-center`}>
+                    <div className={`w-12 h-12 ${m.iconBg} flex items-center justify-center rounded-none`}>
                       <Icon className={`w-6 h-6 ${m.iconColor}`} />
                     </div>
                     {m.badge && (
                       <span
-                        className={`text-[10px] font-bold uppercase tracking-widest text-white px-2 py-1 ${m.badgeColor}`}
+                        className={`text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-1 rounded-none ${m.badgeColor}`}
                       >
                         {m.badge}
                       </span>
                     )}
                   </div>
 
-                  {/* Body */}
-                  <div className="flex-1">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/40">
+                  <div className="flex-1 mt-4">
+                    <span className={`text-[11px] font-mono font-bold uppercase tracking-[0.2em] ${isDark ? "text-background/50" : "text-foreground/50"}`}>
                       {m.label}
                     </span>
-                    <h3 className="text-xl font-bold text-foreground mt-1.5 mb-2 tracking-tight">
+                    <h3 className="text-2xl font-display font-bold mt-2 mb-2 tracking-tight uppercase">
                       {m.headline}
                     </h3>
-                    <p className="text-base font-mono text-foreground/85 break-all">
+                    <p className="text-base font-mono font-bold tracking-tight break-all">
                       {m.detail}
                     </p>
-                    <p className="text-sm text-foreground/55 mt-2">{m.sub}</p>
+                    <p className={`text-sm mt-4 font-sans ${isDark ? "text-background/70" : "text-foreground/70"}`}>{m.sub}</p>
                   </div>
 
-                  {/* Footer CTA */}
                   {m.cta && (
-                    <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
-                      <span className={`font-semibold text-sm ${m.iconColor}`}>
+                    <div className={`flex items-center justify-between pt-6 mt-4 border-t-2 ${isDark ? "border-background/20" : "border-foreground/10"}`}>
+                      <span className={`font-mono font-bold uppercase tracking-wider text-sm ${isDark ? "text-background" : "text-foreground"} group-hover:text-accent transition-colors`}>
                         {m.cta}
                       </span>
                       <ArrowUpRight
-                        className={`w-4 h-4 ${m.iconColor} group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform`}
+                        className={`w-5 h-5 ${isDark ? "text-background" : "text-foreground"} group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all`}
                       />
                     </div>
                   )}
@@ -148,12 +147,11 @@ export function Contact() {
           })}
         </div>
 
-        {/* Helper line */}
-        <p className="text-center text-sm text-foreground/50 mt-8 max-w-5xl mx-auto">
+        <p className="text-center text-sm font-mono font-bold tracking-wider uppercase text-foreground/60 mt-16 max-w-5xl mx-auto">
           Have a quote ready?{" "}
           <a
             href="#quote"
-            className="text-brand-blue font-semibold hover:underline"
+            className="text-accent font-bold hover:underline"
           >
             Skip to the quote form ↓
           </a>

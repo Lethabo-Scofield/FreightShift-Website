@@ -9,7 +9,7 @@ export function MovingStorageHighlight() {
   const goToQuote = () => routeToQuote(navigate);
 
   return (
-    <section className="py-16 md:py-32 bg-zinc-50 relative">
+    <section className="py-20 md:py-32 bg-foreground text-background relative border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <motion.div
@@ -18,46 +18,56 @@ export function MovingStorageHighlight() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block px-3 py-1 bg-brand-orange/10 text-brand-orange text-xs font-bold uppercase tracking-widest mb-6">
+            <div className="inline-block px-3 py-1 bg-background text-foreground font-mono text-xs font-bold uppercase tracking-widest mb-8 border-2 border-background">
+              <span className="w-1.5 h-1.5 bg-accent inline-block mr-2" />
               Moving &amp; Storage
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Moving &amp; Storage, <br/>Done Right.
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-background mb-8 leading-none tracking-tight uppercase">
+              Moving &amp; Storage, <br/>
+              <span className="text-accent">Done Right.</span>
             </h2>
-            <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
+            <p className="font-mono text-lg md:text-xl text-background/80 mb-10 leading-relaxed font-medium">
               Whether you're relocating your corporate office, moving homes, or need secure warehousing for your commercial goods, our team handles it with precision. We operate secure facilities and maintain a fleet ready to move your assets safely across South Africa.
             </p>
 
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-4 mb-12">
               {['Secure short and long-term warehousing', 'Professional packing and unpacking', 'Commercial and residential relocations', 'Inventory management and distribution'].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-brand-blue rounded-none" />
-                  <span className="text-foreground/80 font-medium">{item}</span>
+                <li key={i} className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-accent shrink-0 mt-2" />
+                  <span className="font-sans text-background/90 text-lg leading-snug">{item}</span>
                 </li>
               ))}
             </ul>
 
             <Button
               onClick={goToQuote}
-              className="bg-brand-blue hover:bg-brand-navy text-white rounded-none h-12 px-8"
+              className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none rounded-none w-full sm:w-auto"
             >
               Request Moving Quote
             </Button>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative h-[400px] lg:h-[600px] border border-zinc-200"
+            className="relative h-[400px] lg:h-[600px] border-2 border-background overflow-hidden"
           >
             <img
               src={storageBg}
               alt="Warehouse team managing storage operations"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 opacity-80"
             />
-            <div className="absolute inset-0 ring-1 ring-inset ring-black/10" />
+            {/* Grid overlay for texture */}
+            <div className="absolute inset-0 z-0 opacity-10 mix-blend-overlay pointer-events-none">
+              <svg width="100%" height="100%">
+                <pattern id="grid-light" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" strokeWidth="1" />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#grid-light)" />
+              </svg>
+            </div>
           </motion.div>
         </div>
       </div>

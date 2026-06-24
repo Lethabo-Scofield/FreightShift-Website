@@ -1,3 +1,4 @@
 - [FreightShift asset aliases](freightshift-asset-aliases.md) — @assets→attached_assets vs @/assets→src/assets; mismatched alias causes Vite 500 even when file exists.
 - [FreightShift deploy target](freightshift-deploy-target.md) — live site is on Vercel (not Replit); /api/quote needs a serverless fn for prod or POST returns 405.
+- [FreightShift restyle design language](freightshift-restyle-language.md) — industrial/manifest motifs (`// ` kickers, period headings); restyle-ONLY, keep copy verbatim, no invented data/emojis.
 - [FreightShift identity & keys](freightshift-identity.md) — China→SA corridor is canonical (revert rebrands); no Maps/API key in frontend (only Olyxee env); honesty constraints on companies/partners/reviews.

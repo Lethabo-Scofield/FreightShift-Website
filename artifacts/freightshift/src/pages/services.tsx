@@ -14,7 +14,7 @@ import { servicesJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Seo
         {...PAGE_SEO.services}
         jsonLd={[

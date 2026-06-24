@@ -35,25 +35,31 @@ export const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-14 md:py-32 bg-white">
+    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-        <div className="text-center mb-12">
-          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">FAQ</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Quick answers.</h2>
+        <div className="text-center mb-16">
+          <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+             <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+             FAQ // 04
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 uppercase tracking-tight">Quick answers.</h2>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full border-t-2 border-foreground">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-b border-border py-2">
-                <AccordionTrigger className="text-left text-lg font-semibold hover:text-brand-blue transition-colors">
-                  {faq.q}
+              <AccordionItem key={i} value={`item-${i}`} className="border-b-2 border-foreground rounded-none">
+                <AccordionTrigger className="text-left text-lg md:text-xl font-display font-bold hover:text-accent transition-colors py-6 uppercase tracking-tight">
+                  <span className="flex items-center gap-4">
+                    <span className="text-foreground/30 font-mono text-sm">0{i + 1}</span>
+                    {faq.q}
+                  </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-foreground/70 text-base leading-relaxed pt-2 pb-4">
+                <AccordionContent className="text-foreground/70 font-sans text-base md:text-lg leading-relaxed pt-2 pb-8 max-w-3xl ml-10">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>

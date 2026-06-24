@@ -34,8 +34,8 @@ export function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
-          : "bg-white py-3"
+          ? "bg-background border-b-2 border-foreground py-2"
+          : "bg-background py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -47,47 +47,44 @@ export function Navbar() {
           <img
             src={logoUrl}
             alt="FreightShift International Logistics"
-            className="h-12 md:h-14 w-auto object-contain transition-opacity group-hover:opacity-90"
+            className="h-10 md:h-12 w-auto object-contain transition-opacity group-hover:opacity-90"
           />
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8">
-          <div className="flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-10">
+          <div className="flex items-center gap-8">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative text-sm font-medium transition-colors ${
-                    active ? "text-brand-blue" : "text-foreground hover:text-brand-blue"
+                  className={`relative font-mono text-xs uppercase tracking-widest font-bold transition-colors ${
+                    active ? "text-accent" : "text-foreground hover:text-accent"
                   }`}
                 >
                   {link.name}
-                  {active && (
-                    <span className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-brand-blue rounded-full" />
-                  )}
                 </Link>
               );
             })}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <a
               href="https://wa.me/message/EVTMLWYQY2OCG1"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="outline" size="sm" className="gap-2 border-brand-blue text-brand-blue hover:bg-brand-blue/5">
-                <FaWhatsapp className="w-4 h-4" />
+              <Button variant="outline" size="sm" className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-xs h-10 px-4 gap-2 rounded-none">
+                <FaWhatsapp className="w-4 h-4 text-green-600" />
                 WhatsApp Us
               </Button>
             </a>
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
-              className="bg-brand-orange hover:bg-brand-orange/90 text-white border-none"
+              className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-xs h-10 px-6 border-none rounded-none"
             >
               Get a Quote
             </Button>
@@ -98,18 +95,18 @@ export function Navbar() {
         <div className="lg:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-foreground">
+              <Button variant="ghost" size="icon" className="text-foreground rounded-none hover:bg-foreground/5">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] flex flex-col pt-16">
+            <SheetContent side="right" className="w-[300px] flex flex-col pt-16 bg-background border-l-2 border-foreground rounded-none">
               <VisuallyHidden>
                 <SheetTitle>Navigation menu</SheetTitle>
                 <SheetDescription>
                   Site navigation links and quick actions for FreightShift International Logistics.
                 </SheetDescription>
               </VisuallyHidden>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-4 mt-8">
                 {navLinks.map((link) => {
                   const active = isActive(link.href);
                   return (
@@ -117,26 +114,27 @@ export function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`text-lg font-semibold py-2 px-3 rounded-lg transition-colors ${
+                      className={`font-mono text-sm uppercase tracking-widest font-bold py-2 border-b-2 border-foreground/10 transition-colors ${
                         active
-                          ? "text-brand-blue bg-brand-blue/5"
-                          : "text-foreground hover:text-brand-blue hover:bg-brand-blue/5"
+                          ? "text-accent border-accent/30"
+                          : "text-foreground hover:text-accent"
                       }`}
                     >
+                      {active && <span className="inline-block w-2 h-2 bg-accent mr-2" />}
                       {link.name}
                     </Link>
                   );
                 })}
               </div>
-              <div className="mt-auto flex flex-col gap-3 pb-8">
+              <div className="mt-auto flex flex-col gap-4 pb-8">
                 <a
                   href="https://wa.me/message/EVTMLWYQY2OCG1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full"
                 >
-                  <Button variant="outline" className="w-full gap-2 border-brand-blue text-brand-blue">
-                    <FaWhatsapp className="w-4 h-4" />
+                  <Button variant="outline" className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-xs h-12 gap-2 rounded-none">
+                    <FaWhatsapp className="w-4 h-4 text-green-600" />
                     WhatsApp Us
                   </Button>
                 </a>
@@ -145,7 +143,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     goToQuote(navigate);
                   }}
-                  className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white"
+                  className="w-full bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-xs h-12 border-none rounded-none"
                 >
                   Get a Quote
                 </Button>

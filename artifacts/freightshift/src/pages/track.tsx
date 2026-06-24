@@ -20,11 +20,11 @@ import {
 import { TrackingTimeline, ModeBadge } from "@/components/sections/TrackingTimeline";
 
 const TONE_RING: Record<string, string> = {
-  neutral: "bg-zinc-100 text-zinc-700 ring-zinc-200",
-  info: "bg-brand-blue/10 text-brand-blue ring-brand-blue/20",
-  warn: "bg-amber-50 text-amber-800 ring-amber-200",
-  success: "bg-emerald-50 text-emerald-800 ring-emerald-200",
-  danger: "bg-red-50 text-red-800 ring-red-200",
+  neutral: "bg-background text-foreground ring-foreground border-2 border-foreground",
+  info: "bg-foreground text-background ring-foreground border-2 border-foreground",
+  warn: "bg-accent text-background ring-accent border-2 border-accent",
+  success: "bg-foreground text-accent ring-foreground border-2 border-foreground",
+  danger: "bg-red-600 text-white ring-red-600 border-2 border-red-600",
 };
 
 function readCodeFromUrl(): string {
@@ -55,7 +55,6 @@ export default function TrackPage() {
   const [input, setInput] = useState("");
   const [state, setState] = useState<LoadState>({ kind: "idle" });
 
-  // Resolve ?code= on mount and whenever it changes (e.g. via back/forward).
   useEffect(() => {
     const sync = () => {
       const code = readCodeFromUrl();
@@ -100,7 +99,7 @@ export default function TrackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Seo
         title="Track your shipment | FreightShift International Logistics"
         description="Track your FreightShift shipment from China to South Africa. Paste your tracking ID to see real-time status, ETA and timeline."
@@ -122,42 +121,42 @@ export default function TrackPage() {
           breadcrumb={[{ label: "Track" }]}
         />
 
-        <section className="py-12 md:py-16">
+        <section className="py-20 md:py-32">
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             {/* Search */}
             <form
               onSubmit={onSubmit}
-              className="bg-white rounded-2xl border border-zinc-200 shadow-sm p-4 md:p-5 flex flex-col sm:flex-row gap-3"
+              className="bg-background border-2 border-foreground rounded-none p-6 md:p-8 flex flex-col sm:flex-row gap-4"
               role="search"
               aria-label="Track a shipment"
             >
               <div className="relative flex-1">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/40" />
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Enter your tracking ID"
                   aria-label="Tracking ID"
-                  className="pl-10 h-12 text-base font-medium tracking-wide uppercase placeholder:normal-case placeholder:font-normal placeholder:tracking-normal placeholder:text-foreground/40"
+                  className="pl-12 h-14 bg-background border-2 border-foreground text-base font-mono font-bold tracking-widest uppercase rounded-none placeholder:text-foreground/30 focus-visible:ring-0 focus-visible:border-accent"
                   autoComplete="off"
                   spellCheck={false}
                 />
               </div>
               <Button
                 type="submit"
-                className="bg-brand-blue hover:bg-brand-blue/90 text-white h-12 px-6 gap-2"
+                className="bg-accent hover:bg-foreground text-background h-14 px-8 gap-3 font-mono font-bold tracking-wider uppercase rounded-none border-none"
               >
                 Track
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </form>
 
-            <p className="mt-3 text-xs text-foreground/50">
+            <p className="mt-4 text-xs font-mono font-bold tracking-wider uppercase text-foreground/50">
               Your tracking ID is in the email we sent you when your shipment was created.
             </p>
 
             {/* States */}
-            <div className="mt-8">
+            <div className="mt-12">
               {state.kind === "idle" && <IdleHint />}
               {state.kind === "loading" && <LoadingCard code={state.code} />}
               {state.kind === "missing" && <MissingCard code={state.code} />}
@@ -175,12 +174,12 @@ export default function TrackPage() {
 
 function IdleHint() {
   return (
-    <div className="rounded-2xl border border-dashed border-zinc-200 bg-zinc-50/40 p-8 md:p-12 text-center">
-      <div className="mx-auto w-12 h-12 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center mb-4">
-        <Package className="w-5 h-5" />
+    <div className="rounded-none border-2 border-dashed border-foreground/30 bg-background p-10 md:p-16 text-center">
+      <div className="mx-auto w-16 h-16 border-2 border-foreground bg-foreground text-background flex items-center justify-center mb-6">
+        <Package className="w-6 h-6" />
       </div>
-      <h2 className="text-lg font-semibold text-foreground mb-1.5">Have a tracking ID?</h2>
-      <p className="text-sm text-foreground/60 max-w-md mx-auto">
+      <h2 className="text-2xl font-display font-bold text-foreground mb-2 uppercase tracking-tight">Have a tracking ID?</h2>
+      <p className="text-sm font-mono text-foreground/70 max-w-md mx-auto">
         Paste the ID from your FreightShift status email above. No account required.
       </p>
     </div>
@@ -189,10 +188,10 @@ function IdleHint() {
 
 function LoadingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-center">
-      <Loader2 className="w-5 h-5 text-brand-blue animate-spin mx-auto mb-3" />
-      <p className="text-sm text-foreground/60">
-        Looking up <span className="font-mono font-medium text-foreground">{code}</span>…
+    <div className="rounded-none border-2 border-foreground bg-background p-10 md:p-16 text-center">
+      <Loader2 className="w-8 h-8 text-accent animate-spin mx-auto mb-4" />
+      <p className="text-sm font-mono font-bold uppercase tracking-wider text-foreground/60">
+        Looking up <span className="text-foreground">{code}</span>…
       </p>
     </div>
   );
@@ -200,27 +199,29 @@ function LoadingCard({ code }: { code: string }) {
 
 function MissingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-6 md:p-8">
-      <div className="flex items-start gap-4">
-        <div className="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-          <AlertCircle className="w-5 h-5" />
+    <div className="rounded-none border-2 border-foreground bg-foreground text-background p-8 md:p-10">
+      <div className="flex flex-col sm:flex-row items-start gap-6">
+        <div className="w-12 h-12 bg-accent text-background flex items-center justify-center shrink-0">
+          <AlertCircle className="w-6 h-6" />
         </div>
         <div className="flex-1">
-          <h2 className="text-lg font-semibold text-foreground">No shipment found</h2>
-          <p className="text-sm text-foreground/70 mt-1">
+          <h2 className="text-2xl font-display font-bold uppercase tracking-tight">No shipment found</h2>
+          <p className="text-sm font-sans text-background/80 mt-2">
             We couldn't find a shipment with the ID{" "}
-            <span className="font-mono font-medium">{code}</span>. Double-check the
+            <span className="font-mono font-bold text-background bg-background/20 px-2 py-0.5">{code}</span>. Double-check the
             email we sent, or get in touch and we'll look it up for you.
           </p>
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-4 mt-6">
             <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" className="gap-2 border-brand-blue text-brand-blue hover:bg-brand-blue/5">
+              <Button size="lg" className="gap-2 bg-accent hover:bg-background text-background hover:text-foreground font-mono font-bold uppercase tracking-wider rounded-none">
                 <FaWhatsapp className="w-4 h-4" />
                 WhatsApp us
               </Button>
             </a>
             <a href={`mailto:${SITE.email}?subject=Tracking%20help%20for%20${encodeURIComponent(code)}`}>
-              <Button variant="ghost" size="sm">Email support</Button>
+              <Button size="lg" variant="outline" className="border-2 border-background bg-transparent text-background hover:bg-background hover:text-foreground font-mono font-bold uppercase tracking-wider rounded-none">
+                Email support
+              </Button>
             </a>
           </div>
         </div>
@@ -231,14 +232,14 @@ function MissingCard({ code }: { code: string }) {
 
 function ErrorCard({ message }: { message: string }) {
   return (
-    <div className="rounded-2xl border border-red-200 bg-red-50/60 p-6 md:p-8">
-      <div className="flex items-start gap-4">
-        <div className="w-10 h-10 rounded-full bg-red-100 text-red-700 flex items-center justify-center shrink-0">
-          <AlertCircle className="w-5 h-5" />
+    <div className="rounded-none border-2 border-red-600 bg-red-600 text-white p-8 md:p-10">
+      <div className="flex items-start gap-6">
+        <div className="w-12 h-12 border-2 border-white flex items-center justify-center shrink-0">
+          <AlertCircle className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-foreground">Tracking is temporarily unavailable</h2>
-          <p className="text-sm text-foreground/70 mt-1">{message}</p>
+          <h2 className="text-2xl font-display font-bold uppercase tracking-tight">Tracking is temporarily unavailable</h2>
+          <p className="text-sm font-sans text-white/90 mt-2">{message}</p>
         </div>
       </div>
     </div>
@@ -250,90 +251,90 @@ function OrderCard({ order }: { order: TrackingOrder }) {
   const eta = formatEta(order.estimatedDeliveryDate);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="rounded-2xl border border-zinc-200 bg-white shadow-sm overflow-hidden"
+      className="rounded-none border-2 border-foreground bg-background shadow-none overflow-hidden"
     >
       {/* Header */}
-      <div className="p-6 md:p-8 border-b border-zinc-100">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="p-6 md:p-8 border-b-2 border-foreground">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-foreground/50 mb-1">
-              Tracking ID
+            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/50 mb-2">
+              // TRACKING ID
             </p>
-            <p className="font-mono text-xl md:text-2xl font-semibold text-foreground">
+            <p className="font-display text-3xl md:text-4xl font-bold text-foreground uppercase tracking-tight">
               {order.trackingId}
             </p>
             {order.reference && (
-              <p className="text-xs text-foreground/50 mt-1.5">
-                Reference: <span className="font-medium text-foreground/70">{order.reference}</span>
+              <p className="text-xs font-mono font-bold uppercase tracking-wider text-foreground/50 mt-2">
+                Reference: <span className="text-foreground">{order.reference}</span>
               </p>
             )}
           </div>
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-semibold ring-1 ring-inset ${TONE_RING[meta.tone]}`}
+            className={`inline-flex items-center gap-2 px-4 py-2 font-mono font-bold text-xs uppercase tracking-wider rounded-none ${TONE_RING[meta.tone]}`}
           >
-            <span className="w-2 h-2 rounded-full bg-current" />
+            <span className="w-2 h-2 bg-current rounded-none" />
             {meta.label}
           </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t-2 border-foreground/10">
           {(order.origin || order.destination) && (
-            <div className="flex items-start gap-2.5">
-              <MapPin className="w-4 h-4 text-foreground/40 mt-0.5 shrink-0" />
-              <div className="min-w-0">
-                <p className="text-xs text-foreground/50">Route</p>
-                <p className="font-medium text-foreground truncate">
-                  {order.origin ?? "—"} → {order.destination ?? "—"}
-                </p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-accent shrink-0" />
+                <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Route</p>
               </div>
+              <p className="font-mono font-bold text-foreground text-sm truncate uppercase">
+                {order.origin ?? "—"} → {order.destination ?? "—"}
+              </p>
             </div>
           )}
           {eta && (
-            <div className="flex items-start gap-2.5">
-              <Calendar className="w-4 h-4 text-foreground/40 mt-0.5 shrink-0" />
-              <div>
-                <p className="text-xs text-foreground/50">Estimated delivery</p>
-                <p className="font-medium text-foreground">{eta}</p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-accent shrink-0" />
+                <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Estimated Delivery</p>
               </div>
+              <p className="font-mono font-bold text-foreground text-sm uppercase">{eta}</p>
             </div>
           )}
           {order.mode && (
-            <div className="flex items-start gap-2.5">
-              <Package className="w-4 h-4 text-foreground/40 mt-0.5 shrink-0" />
-              <div>
-                <p className="text-xs text-foreground/50">Mode</p>
-                <div className="mt-0.5">
-                  <ModeBadge mode={order.mode} />
-                </div>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <Package className="w-4 h-4 text-accent shrink-0" />
+                <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Mode</p>
+              </div>
+              <div className="mt-0.5">
+                <ModeBadge mode={order.mode} />
               </div>
             </div>
           )}
         </div>
 
         {meta.whatNext && (
-          <div className="mt-5 rounded-xl bg-zinc-50 border border-zinc-100 px-4 py-3 text-sm text-foreground/70">
+          <div className="mt-8 border-2 border-foreground bg-foreground text-background px-6 py-4 text-sm font-sans">
             {meta.whatNext}
           </div>
         )}
       </div>
 
       {/* Timeline */}
-      <div className="p-6 md:p-8">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/50 mb-6">
-          Timeline
+      <div className="p-6 md:p-8 bg-background">
+        <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-foreground/50 mb-8">
+          // TIMELINE
         </h3>
         <TrackingTimeline events={order.events} />
       </div>
 
       {/* Footer help */}
-      <div className="bg-zinc-50/60 border-t border-zinc-100 px-6 md:px-8 py-4 flex flex-wrap items-center justify-between gap-3 text-xs text-foreground/60">
-        <span>Need help with this shipment? We reply fastest on WhatsApp.</span>
+      <div className="border-t-2 border-foreground px-6 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono font-bold uppercase tracking-wider text-foreground/60 bg-foreground text-background">
+        <span className="text-center sm:text-left">Need help with this shipment? We reply fastest on WhatsApp.</span>
         <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-          <Button size="sm" variant="outline" className="gap-2 border-brand-blue text-brand-blue hover:bg-brand-blue/5 h-8">
-            <FaWhatsapp className="w-3.5 h-3.5" />
+          <Button size="lg" variant="outline" className="gap-2 border-2 border-background bg-transparent text-background hover:bg-background hover:text-foreground rounded-none font-mono font-bold uppercase tracking-wider">
+            <FaWhatsapp className="w-4 h-4" />
             Chat to us
           </Button>
         </a>

@@ -3,55 +3,54 @@ import officeImage from "@assets/WhatsApp_Image_2026-04-29_at_2.53.56_AM_1777424
 
 export function VisionMission() {
   return (
-    <section className="py-14 md:py-32 bg-muted border-b border-border/50">
+    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-center space-y-16"
           >
-            <div className="mb-12 relative">
-              <div className="absolute -left-6 -top-6 text-[8rem] leading-none font-serif text-brand-blue/10 select-none">"</div>
-              <h3 className="text-xl font-bold text-brand-blue mb-4 uppercase tracking-widest text-sm">
-                Our Vision
+            <div className="relative">
+              <h3 className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+                 <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+                 Our Vision //
               </h3>
-              <p className="text-2xl font-medium text-foreground leading-snug relative z-10">
+              <p className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight uppercase tracking-tight">
                 Be the leading link between China and South Africa.
               </p>
             </div>
             
             <div className="relative">
-              <div className="absolute -left-6 -top-6 text-[8rem] leading-none font-serif text-brand-orange/10 select-none">"</div>
-              <h3 className="text-xl font-bold text-brand-orange mb-4 uppercase tracking-widest text-sm">
-                Our Mission
+              <h3 className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+                 <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+                 Our Mission //
               </h3>
-              <p className="text-2xl font-medium text-foreground leading-snug relative z-10">
+              <p className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight uppercase tracking-tight">
                 Deliver fast, fair, and reliable logistics that grow our clients.
               </p>
             </div>
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.2 }}
-            className="relative rounded-3xl overflow-hidden shadow-xl min-h-[520px] lg:min-h-full"
+            transition={{ delay: 0.1 }}
+            className="relative border-2 border-foreground overflow-hidden min-h-[520px] lg:min-h-full rounded-none bg-foreground"
           >
             <img
               src={officeImage}
               alt="FreightShift International Logistics office"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-40"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/95 via-brand-navy/85 to-brand-navy/70" />
-            <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
-              <span className="inline-block self-start text-xs font-bold uppercase tracking-widest text-brand-blue bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full mb-6">
-                Inside FreightShift
+            <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-end">
+              <span className="inline-block self-start font-mono text-xs font-bold uppercase tracking-widest text-background bg-foreground border-2 border-background px-3 py-1.5 mb-8">
+                // INSIDE FREIGHTSHIFT
               </span>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Strategic Goals</h3>
-              <ul className="space-y-5 flex-1">
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-background uppercase tracking-tight mb-8">Strategic Goals</h3>
+              <ul className="space-y-4 w-full">
                 {[
                   "Transparent service",
                   "Faster lead times",
@@ -59,11 +58,11 @@ export function VisionMission() {
                   "Real-time tracking",
                   "Compliance & ethics"
                 ].map((goal, i) => (
-                  <li key={i} className="flex items-start gap-4 pb-5 border-b border-white/15 last:border-0 last:pb-0">
-                    <div className="w-8 h-8 rounded-full bg-brand-blue/30 backdrop-blur-sm border border-white/20 flex items-center justify-center shrink-0 text-white font-mono text-sm">
-                      {i + 1}
+                  <li key={i} className="flex items-center gap-4 pb-4 border-b-2 border-background/20 last:border-0 last:pb-0">
+                    <div className="w-8 h-8 bg-background text-foreground flex items-center justify-center shrink-0 font-mono text-sm font-bold">
+                      0{i + 1}
                     </div>
-                    <span className="text-white font-medium text-base md:text-lg leading-snug mt-0.5">{goal}</span>
+                    <span className="text-background font-mono font-bold uppercase tracking-wider text-base md:text-lg">{goal}</span>
                   </li>
                 ))}
               </ul>

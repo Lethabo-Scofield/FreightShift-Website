@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Anchor, Plane } from "lucide-react";
+import { ArrowRight, Anchor, Plane, ArrowDownRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import heroBg from "@assets/image_1777730034034.png";
 import { goToQuote as routeToQuote } from "@/lib/scroll-to-quote";
@@ -13,55 +13,44 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-24 pb-16 md:pt-32 md:pb-32 overflow-hidden bg-zinc-100"
+      className="relative pt-24 pb-16 md:pt-32 md:pb-32 overflow-hidden bg-background border-b-2 border-foreground"
     >
-      {/* Background photo */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        {/* Mobile: dark overlay so the white text reads */}
-        <div className="absolute inset-0 bg-black/55 lg:hidden" />
-
-        {/* Desktop: light overlay fading from solid white on the left
-            to transparent on the right, so the dark headline stays
-            crisp while the colourful container yard shows through clearly. */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-white/55 to-transparent" />
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-zinc-50/20" />
+      <div className="absolute inset-0 z-0 opacity-10 mix-blend-multiply pointer-events-none">
+        <svg width="100%" height="100%">
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left: copy */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
+            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+              <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none animate-pulse" />
+              Manifest // FS-ZA
+            </div>
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.75rem] font-bold tracking-[-0.03em] leading-[0.98] mb-6 text-white lg:text-foreground"
+              className="font-display text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.9] mb-8 text-foreground uppercase"
             >
-              Ship from{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10">China.</span>
-                <span className="absolute bottom-1 left-0 right-0 h-3 bg-brand-orange/40 -z-0 rounded-sm" />
-              </span>
+              Ship from <br className="hidden sm:block" />
+              <span className="text-accent underline decoration-4 underline-offset-8">China.</span>
               <br />
-              Land in{" "}
-              <span className="lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-brand-blue lg:via-brand-blue lg:to-brand-navy whitespace-nowrap">
-                South Africa.
-              </span>
+              Land in <br className="hidden sm:block" />
+              <span className="bg-foreground text-background px-2 py-1 inline-block mt-2">South Africa.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-lg md:text-xl max-w-xl mb-8 md:mb-10 font-light text-white/85 lg:text-foreground/65"
+              className="text-lg md:text-xl max-w-xl mb-8 md:mb-10 font-medium text-foreground/80 font-mono tracking-tight"
             >
               Door to door. One team. Zero surprises.
             </motion.p>
@@ -71,15 +60,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10"
+              className="flex flex-col sm:flex-row gap-4 mb-10"
             >
               <Button
                 size="lg"
-                className="bg-brand-orange hover:bg-brand-orange/90 text-white text-base h-14 px-8 border-none shadow-lg shadow-brand-orange/20 gap-2"
+                className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
                 onClick={goToQuote}
               >
                 Get a Quote
-                <ArrowRight className="w-4 h-4" />
+                <ArrowDownRight className="w-4 h-4" />
               </Button>
               <a
                 href="https://wa.me/message/EVTMLWYQY2OCG1"
@@ -90,9 +79,9 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white border-zinc-200 text-foreground hover:bg-zinc-50 hover:text-foreground h-14 px-8 gap-2 w-full"
+                  className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 gap-2 w-full rounded-none"
                 >
-                  <FaWhatsapp className="w-5 h-5 text-green-500" />
+                  <FaWhatsapp className="w-5 h-5 text-green-600" />
                   WhatsApp Us
                 </Button>
               </a>
@@ -103,48 +92,56 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/80 lg:text-foreground/65"
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-foreground/80 font-bold border-t-2 border-foreground/10 pt-6"
             >
               <span className="flex items-center gap-2">
-                <Anchor className="w-4 h-4 text-brand-orange lg:text-brand-blue" />
+                <Anchor className="w-4 h-4 text-accent" />
                 Sea · 28–35 days
               </span>
-              <span className="hidden sm:inline-block w-px h-4 bg-white/40 lg:bg-zinc-300" />
+              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-foreground/20 rounded-none" />
               <span className="flex items-center gap-2">
-                <Plane className="w-4 h-4 text-brand-orange lg:text-brand-blue" />
+                <Plane className="w-4 h-4 text-accent" />
                 Air · 5–9 days
               </span>
-              <span className="hidden sm:inline-block w-px h-4 bg-white/40 lg:bg-zinc-300" />
-              <span className="flex items-center gap-2">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange" />
+              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-foreground/20 rounded-none" />
+              <span className="flex items-center gap-2 text-foreground">
+                <span className="inline-block w-2 h-2 rounded-none bg-accent" />
                 Full DDP available
               </span>
             </motion.div>
           </div>
 
           {/* Right: floating stat card over the photo */}
-          <div className="hidden lg:flex lg:col-span-5 justify-end">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="bg-white shadow-2xl border border-zinc-100 px-6 py-5 flex items-center gap-4 whitespace-nowrap"
-            >
-              <div className="w-14 h-14 bg-brand-orange/15 flex items-center justify-center shrink-0">
-                <span className="text-brand-orange font-bold text-lg">98%</span>
-              </div>
-              <div className="leading-tight">
-                <div className="text-[11px] text-foreground/60 font-medium uppercase tracking-wider">
-                  On-time
-                </div>
-                <div className="text-base font-bold text-foreground">
-                  12,000+ shipments
-                </div>
-                <div className="text-xs text-foreground/55 mt-1">
+          <div className="hidden lg:flex lg:col-span-4 justify-end relative">
+            <div className="relative w-full aspect-[3/4] border-2 border-foreground bg-zinc-200 overflow-hidden">
+               <img
+                  src={heroBg}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 mix-blend-multiply opacity-80"
+                />
+                
+                <div className="absolute top-4 right-4 bg-background text-foreground border-2 border-foreground px-4 py-2 font-mono text-sm font-bold uppercase">
                   China → South Africa
                 </div>
-              </div>
-            </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="absolute bottom-4 left-4 right-4 bg-background border-2 border-foreground p-4 flex flex-col gap-1"
+                >
+                  <div className="text-[10px] text-foreground font-mono uppercase tracking-widest font-bold">
+                    On-time
+                  </div>
+                  <div className="text-3xl font-display font-bold text-foreground">
+                    98%
+                  </div>
+                  <div className="text-xs font-mono uppercase text-foreground/70">
+                    12,000+ shipments
+                  </div>
+                </motion.div>
+            </div>
           </div>
         </div>
       </div>

@@ -35,45 +35,55 @@ export function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section className="py-16 md:py-32 bg-white">
-      <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-        <div className="text-center mb-10 md:mb-14">
-          <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">
+    <section className="py-20 md:py-32 bg-foreground text-background border-b-2 border-foreground relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-5 mix-blend-screen pointer-events-none">
+        <svg width="100%" height="100%">
+          <pattern id="grid-testimonials" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#grid-testimonials)" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
+        <div className="mb-12">
+          <div className="mb-4 inline-flex items-center gap-2 bg-background text-foreground px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+            <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
             Testimonials
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-2 tracking-tight">
-            Trusted by SA importers.
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-background uppercase tracking-tight leading-[0.9]">
+            Trusted by <br />
+            <span className="text-accent">SA Importers.</span>
           </h2>
         </div>
 
         <div className="relative">
-          {/* Big decorative quote mark */}
-          <div className="absolute -top-8 -left-2 md:-top-12 md:-left-6 text-[10rem] md:text-[14rem] leading-none font-serif text-brand-blue/10 select-none pointer-events-none">
+          <div className="absolute -top-10 -left-6 md:-top-16 md:-left-12 text-[12rem] md:text-[18rem] leading-none font-display font-bold text-background/5 select-none pointer-events-none">
             "
           </div>
 
-          <div className="relative min-h-[260px] md:min-h-[220px] flex flex-col justify-center">
+          <div className="relative min-h-[280px] md:min-h-[240px] flex flex-col justify-center border-l-2 border-accent pl-6 md:pl-10 ml-2 md:ml-6">
             <AnimatePresence mode="wait">
               <motion.blockquote
                 key={index}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.45 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
                 className="relative z-10"
               >
-                <p className="text-2xl md:text-4xl lg:text-5xl font-medium text-foreground tracking-tight leading-[1.2] mb-8 md:mb-10">
-                  "{current.quote}"
+                <p className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-background uppercase tracking-tight leading-[1.1] mb-10">
+                  {current.quote}
                 </p>
 
-                <footer className="flex items-center gap-4">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-brand-blue to-brand-navy text-white flex items-center justify-center font-bold text-xl shrink-0">
+                <footer className="flex items-center gap-4 border-t-2 border-background/20 pt-6 mt-6">
+                  <div className="w-14 h-14 bg-background text-foreground border-2 border-background flex items-center justify-center font-mono font-bold text-xl rounded-none shrink-0 uppercase">
                     {current.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-bold text-foreground">{current.name}</div>
-                    <div className="text-sm text-foreground/60">
-                      {current.role}, {current.company}
+                    <div className="font-mono font-bold uppercase tracking-wider text-background text-lg">{current.name}</div>
+                    <div className="font-mono text-xs uppercase tracking-widest text-background/60">
+                      {current.role} // {current.company}
                     </div>
                   </div>
                 </footer>
@@ -81,25 +91,24 @@ export function Testimonials() {
             </AnimatePresence>
           </div>
 
-          {/* Dots */}
-          <div className="flex items-center gap-2 mt-10 md:mt-12">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Show testimonial ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className="group relative h-2 outline-none"
-                style={{ width: i === index ? 32 : 12 }}
-              >
-                <span
-                  className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                    i === index ? "bg-brand-blue" : "bg-border group-hover:bg-foreground/30"
-                  }`}
-                />
-              </button>
-            ))}
-            <span className="ml-3 text-xs text-foreground/40 font-mono">
-              {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+          {/* Controls */}
+          <div className="flex items-center gap-4 mt-12 md:mt-16 ml-2 md:ml-6">
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  aria-label={`Show testimonial ${i + 1}`}
+                  onClick={() => setIndex(i)}
+                  className="w-12 h-12 flex items-center justify-center border-2 border-background/30 hover:border-background/60 transition-colors group rounded-none outline-none"
+                >
+                  <span className={`w-3 h-3 rounded-none transition-all duration-300 ${
+                    i === index ? "bg-accent" : "bg-background/20 group-hover:bg-background/50"
+                  }`} />
+                </button>
+              ))}
+            </div>
+            <span className="ml-4 text-sm text-background/60 font-mono font-bold tracking-widest">
+              [{String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}]
             </span>
           </div>
         </div>

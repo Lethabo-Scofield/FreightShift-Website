@@ -13,68 +13,65 @@ const valueProps = [
 
 export function WhyUs() {
   return (
-    <section className="py-14 md:py-32 bg-muted border-t border-border/50">
+    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground relative">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            <span className="text-brand-blue font-semibold tracking-widest uppercase text-xs">
-              Why FreightShift
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6">
-              The corridor, simplified.
+            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+               Why FreightShift // 05
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 mb-6 uppercase tracking-tight">
+              The corridor,<br />simplified.
             </h2>
-            <p className="text-lg text-foreground/80 leading-relaxed mb-10">
+            <p className="text-lg md:text-xl text-foreground/80 font-mono tracking-tight leading-relaxed mb-10 max-w-lg">
               Shenzhen to Joburg. We handle every step in between.
             </p>
 
-            <div className="relative overflow-hidden aspect-[4/3] shadow-xl">
+            <div className="relative overflow-hidden aspect-[4/3] border-2 border-foreground bg-foreground">
               <img
                 src={teamImg}
                 alt="FreightShift logistics team celebrating a successful delivery"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-80"
               />
-              {/* Subtle bottom gradient for badge legibility */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
 
-              {/* Overlay badge */}
-              <div className="absolute left-4 bottom-4 right-4 flex items-center gap-3 text-white">
-                <div className="w-10 h-10 bg-white/15 backdrop-blur-md flex items-center justify-center shrink-0">
-                  <Users className="w-5 h-5" />
+              <div className="absolute left-4 bottom-4 right-4 flex items-center gap-3 text-foreground">
+                <div className="w-12 h-12 bg-background border-2 border-foreground flex items-center justify-center shrink-0 rounded-none">
+                  <Users className="w-6 h-6" />
                 </div>
                 <div className="leading-tight">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/70">
+                  <div className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/60">
                     The team
                   </div>
-                  <div className="text-sm md:text-base font-semibold">
+                  <div className="text-sm md:text-base font-mono font-bold uppercase tracking-tight">
                     Real people behind every shipment.
                   </div>
                 </div>
               </div>
-
-              <div className="absolute inset-0 border border-black/5 pointer-events-none" />
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.2 }}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-border/60"
+            transition={{ delay: 0.1 }}
+            className="bg-foreground text-background p-8 md:p-12 border-2 border-foreground rounded-none"
           >
-            <h3 className="text-2xl font-bold mb-8">Why us.</h3>
+            <h3 className="text-3xl font-display font-bold mb-10 uppercase tracking-tight">Why us.</h3>
             <ul className="space-y-6">
               {valueProps.map((prop, i) => (
                 <li key={i} className="flex items-start gap-4 group">
                   <div className="mt-1">
-                    <CheckCircle2 className="w-6 h-6 text-brand-blue group-hover:text-brand-orange transition-colors" />
+                    <CheckCircle2 className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <div className="text-lg font-semibold text-foreground/90">
+                    <div className="text-lg md:text-xl font-mono font-bold uppercase tracking-tight text-background">
                       {prop}
                     </div>
                   </div>

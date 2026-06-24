@@ -6,22 +6,24 @@ import ddpImage from "@assets/image_1777424859406.png";
 
 export function MultimodalFeature() {
   return (
-    <section className="py-14 md:py-28 bg-white border-b border-border/50">
+    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-3 py-1.5 rounded-full mb-5">
-              Multimodal · DDP
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-5 md:mb-6 leading-[1.15]">
-              Sea, Air, or DDP. <span className="text-brand-blue">One team.</span>
+            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
+               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+               Multimodal · DDP
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-foreground tracking-tight mb-6 leading-[1.05] uppercase">
+              Sea, Air, or DDP. <br/>
+              <span className="text-accent">One team.</span>
             </h2>
-            <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-foreground/80 font-mono tracking-tight mb-10 max-w-lg">
               One invoice. One contact. Every mode covered.
             </p>
 
@@ -34,14 +36,14 @@ export function MultimodalFeature() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-muted border border-border/50 hover:border-brand-blue/40 hover:bg-brand-blue/5 transition-colors"
+                  className="flex items-center gap-4 p-4 border-2 border-foreground bg-background hover:bg-foreground hover:text-background transition-colors group rounded-none"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-5 h-5 text-brand-blue" />
+                  <div className="w-12 h-12 border-2 border-foreground bg-background flex items-center justify-center shrink-0 rounded-none group-hover:border-background group-hover:bg-foreground">
+                    <item.icon className="w-6 h-6 text-foreground group-hover:text-accent transition-colors" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-foreground leading-tight">{item.label}</div>
-                    <div className="text-xs text-foreground/60 mt-0.5">{item.note}</div>
+                    <div className="text-sm font-mono font-bold uppercase tracking-wider text-foreground group-hover:text-background leading-tight">{item.label}</div>
+                    <div className="text-xs font-sans text-foreground/60 group-hover:text-background/60 mt-1 uppercase tracking-wide">{item.note}</div>
                   </div>
                 </div>
               ))}
@@ -50,7 +52,7 @@ export function MultimodalFeature() {
             <Link href="/contact">
               <Button
                 size="lg"
-                className="bg-brand-orange hover:bg-brand-orange/90 text-white border-none shadow-lg shadow-brand-orange/20 h-12 px-7"
+                className="bg-accent hover:bg-accent/90 text-background border-none rounded-none font-mono font-bold uppercase tracking-wider h-14 px-8"
               >
                 Get a DDP Quote
               </Button>
@@ -58,21 +60,22 @@ export function MultimodalFeature() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-border/50 bg-muted">
+            <div className="relative border-2 border-foreground bg-foreground overflow-hidden rounded-none aspect-[4/5] sm:aspect-square">
               <img
                 src={ddpImage}
                 alt="Multimodal freight: cargo plane and container ship connecting China and South Africa under DDP terms"
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-80"
               />
+              <div className="absolute inset-0 border-[16px] border-background mix-blend-overlay pointer-events-none" />
             </div>
-            <div className="hidden md:flex absolute -top-4 -right-4 bg-brand-navy text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <div className="absolute -top-4 -right-4 bg-background border-2 border-foreground text-foreground px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-3">
+              <span className="w-2 h-2 rounded-none bg-accent" />
               China ↔ SA
             </div>
           </motion.div>

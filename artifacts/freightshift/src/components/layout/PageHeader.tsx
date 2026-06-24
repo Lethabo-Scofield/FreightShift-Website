@@ -15,10 +15,10 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
 
   return (
     <section
-      className={`relative pt-24 pb-12 md:pt-40 md:pb-24 overflow-hidden border-b ${
+      className={`relative pt-24 pb-12 md:pt-40 md:pb-24 overflow-hidden border-b-2 border-foreground ${
         hasImage
-          ? "bg-foreground text-white border-black/20"
-          : "bg-zinc-50 border-zinc-200/60"
+          ? "bg-foreground text-background"
+          : "bg-background"
       }`}
     >
       {hasImage ? (
@@ -28,62 +28,55 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
             src={backgroundImage}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-40"
           />
-          {/* Dark gradient overlay for legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
         </>
       ) : (
         <>
-          {/* Soft accent glow */}
-          <div className="absolute -top-20 right-0 w-[500px] h-[500px] rounded-full bg-brand-blue/10 blur-3xl" />
-          {/* Subtle dot pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.5]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.06) 1px, transparent 0)",
-              backgroundSize: "32px 32px",
-              maskImage:
-                "radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 100%)",
-            }}
-          />
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 z-0 opacity-10 mix-blend-multiply pointer-events-none">
+            <svg width="100%" height="100%">
+              <pattern id="grid-header" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#grid-header)" />
+            </svg>
+          </div>
         </>
       )}
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {breadcrumb && breadcrumb.length > 0 && (
           <nav
-            className={`flex items-center gap-2 text-sm mb-6 ${
-              hasImage ? "text-white/70" : "text-foreground/50"
+            className={`flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-8 ${
+              hasImage ? "text-background/70" : "text-foreground/50"
             }`}
             aria-label="Breadcrumb"
           >
             <Link
               href="/"
               className={`transition-colors ${
-                hasImage ? "hover:text-white" : "hover:text-foreground"
+                hasImage ? "hover:text-background" : "hover:text-foreground"
               }`}
             >
               Home
             </Link>
             {breadcrumb.map((crumb, i) => (
               <span key={i} className="flex items-center gap-2">
-                <ChevronRight className="w-3.5 h-3.5" />
+                <ChevronRight className="w-3 h-3" />
                 {crumb.href ? (
                   <Link
                     href={crumb.href}
                     className={`transition-colors ${
-                      hasImage ? "hover:text-white" : "hover:text-foreground"
+                      hasImage ? "hover:text-background" : "hover:text-foreground"
                     }`}
                   >
                     {crumb.label}
                   </Link>
                 ) : (
                   <span
-                    className={`font-medium ${
-                      hasImage ? "text-white" : "text-foreground"
+                    className={`${
+                      hasImage ? "text-background" : "text-foreground"
                     }`}
                   >
                     {crumb.label}
@@ -97,30 +90,27 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl"
+          className="max-w-4xl"
         >
           {eyebrow && (
-            <span
-              className={`inline-block text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5 border shadow-sm ${
-                hasImage
-                  ? "text-white bg-white/10 border-white/20 backdrop-blur-sm"
-                  : "text-brand-blue bg-white border-zinc-200"
-              }`}
-            >
-              {eyebrow}
-            </span>
+            <div className={`mb-6 inline-flex items-center gap-2 px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold ${
+              hasImage ? "bg-background text-foreground" : "bg-foreground text-background"
+            }`}>
+               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+               {eyebrow}
+            </div>
           )}
           <h1
-            className={`text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-4 md:mb-5 break-words ${
-              hasImage ? "text-white" : "text-foreground"
+            className={`text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display font-bold tracking-tight leading-[0.95] mb-6 uppercase ${
+              hasImage ? "text-background" : "text-foreground"
             }`}
           >
             {title}
           </h1>
           {subtitle && (
             <p
-              className={`text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl ${
-                hasImage ? "text-white/80" : "text-foreground/60"
+              className={`text-lg md:text-xl font-mono tracking-tight max-w-2xl ${
+                hasImage ? "text-background/80" : "text-foreground/80"
               }`}
             >
               {subtitle}

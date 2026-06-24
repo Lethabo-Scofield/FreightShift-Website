@@ -15,7 +15,7 @@ import aboutHeroImg from "@assets/image_1777729909208.png";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Seo
         {...PAGE_SEO.about}
         jsonLd={[
