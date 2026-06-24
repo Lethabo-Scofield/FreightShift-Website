@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-24 pb-16 md:pt-32 md:pb-32 overflow-hidden bg-background border-b-2 border-foreground"
+      className="relative flex items-center min-h-screen pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-background border-b-2 border-foreground"
     >
       {/* Background photo */}
       <img
