@@ -58,25 +58,25 @@
 /* LIGHT MODE */
 :root {
   --background: 44 20% 96%; /* #f5f4ef warm off-white paper */
-  --foreground: 220 41% 7%; /* #0a0f18 deep ink */
+  --foreground: 212 74% 14%; /* #0a2540 brand navy (primary) */
 
   --border: 220 15% 85%;
   --input: 220 15% 85%;
   --ring: 17 100% 50%; /* signal orange */
 
   --card: 44 20% 96%;
-  --card-foreground: 220 41% 7%;
+  --card-foreground: 212 74% 14%;
   --card-border: 220 15% 85%;
 
   --popover: 44 20% 96%;
-  --popover-foreground: 220 41% 7%;
+  --popover-foreground: 212 74% 14%;
   --popover-border: 220 15% 85%;
 
-  --primary: 220 41% 7%;
+  --primary: 212 74% 14%;
   --primary-foreground: 44 20% 96%;
   
   --secondary: 44 10% 88%;
-  --secondary-foreground: 220 41% 7%;
+  --secondary-foreground: 212 74% 14%;
 
   --muted: 44 10% 88%;
   --muted-foreground: 220 15% 45%;
@@ -87,8 +87,8 @@
   --destructive: 0 84% 60%;
   --destructive-foreground: 44 20% 96%;
 
-  --brand-blue: 220 41% 7%;
-  --brand-navy: 220 41% 7%;
+  --brand-blue: 207 85% 37%; /* #0E5FB1 logo blue */
+  --brand-navy: 212 74% 14%; /* #0a2540 deep navy */
   --brand-orange: 17 100% 50%;
 
   --app-font-sans: 'DM Sans', sans-serif;
