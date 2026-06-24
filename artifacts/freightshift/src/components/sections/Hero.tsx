@@ -119,32 +119,6 @@ export function Hero() {
               </span>
             </motion.div>
           </div>
-
-          {/* Right: floating cards over the background photo */}
-          <div className="hidden lg:flex lg:col-span-4 justify-end relative self-stretch min-h-[26rem]">
-            <div className="relative w-full">
-                <div className="absolute top-0 right-0 bg-background text-foreground border-2 border-foreground px-4 py-2 font-mono text-sm font-bold uppercase">
-                  China → South Africa
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="absolute bottom-0 right-0 w-56 bg-background border-2 border-foreground p-4 flex flex-col gap-1 shadow-xl"
-                >
-                  <div className="text-[10px] text-foreground font-mono uppercase tracking-widest font-bold">
-                    On-time
-                  </div>
-                  <div className="text-3xl font-display font-bold text-foreground">
-                    98%
-                  </div>
-                  <div className="text-xs font-mono uppercase text-foreground/70">
-                    12,000+ shipments
-                  </div>
-                </motion.div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
