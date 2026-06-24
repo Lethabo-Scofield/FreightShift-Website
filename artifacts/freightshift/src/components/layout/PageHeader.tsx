@@ -101,7 +101,7 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
             </div>
           )}
           <h1
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display font-bold tracking-tight leading-[0.95] mb-6 uppercase ${
+            className={`text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display font-bold tracking-tight leading-[0.95] mb-6 uppercase break-words ${
               hasImage ? "text-background" : "text-foreground"
             }`}
           >

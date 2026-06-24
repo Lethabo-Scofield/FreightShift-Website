@@ -37,7 +37,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-display text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.9] mb-8 text-foreground uppercase"
+              className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] sm:leading-[0.9] mb-8 text-foreground uppercase break-words"
             >
               Ship from <br className="hidden sm:block" />
               <span className="text-accent underline decoration-4 underline-offset-8">China.</span>
@@ -116,8 +116,7 @@ export function Hero() {
             <div className="relative w-full aspect-[3/4] border-2 border-foreground bg-zinc-200 overflow-hidden">
                <img
                   src={heroBg}
-                  alt=""
-                  aria-hidden="true"
+                  alt="Container ship and port cranes on the China to South Africa freight corridor"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 

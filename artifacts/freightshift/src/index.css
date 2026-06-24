@@ -162,3 +162,10 @@
     border-radius: 0;
   }
 }
+
+/* Prevent accidental horizontal scroll on small screens */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}

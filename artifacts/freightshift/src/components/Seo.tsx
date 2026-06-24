@@ -66,6 +66,9 @@ export function Seo({
     setMeta("property", "og:description", description);
     setMeta("property", "og:url", url);
     setMeta("property", "og:image", ogImage);
+    setMeta("property", "og:image:alt", title);
+    setMeta("property", "og:image:width", "1280");
+    setMeta("property", "og:image:height", "720");
     setMeta("property", "og:locale", "en_ZA");
 
     // Twitter
@@ -73,6 +76,7 @@ export function Seo({
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:image", ogImage);
+    setMeta("name", "twitter:image:alt", title);
 
     if (jsonLd) {
       const items = Array.isArray(jsonLd) ? jsonLd : [jsonLd];

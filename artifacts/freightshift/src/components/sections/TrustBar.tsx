@@ -17,13 +17,13 @@ function Stat({ icon: Icon, value, suffix = "", label, isInView, delay = 0 }: St
       initial={{ opacity: 0, y: 16 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className="group flex flex-col md:flex-row items-center md:items-start gap-4 p-6 md:p-8"
+      className="group flex flex-col md:flex-row items-center md:items-start gap-4 p-4 sm:p-6 md:p-8"
     >
       <div className="w-12 h-12 bg-background border-2 border-foreground flex items-center justify-center shrink-0 rounded-none group-hover:bg-foreground group-hover:text-background transition-colors">
         <Icon className="w-6 h-6 text-foreground group-hover:text-accent transition-colors" />
       </div>
       <div className="flex flex-col text-center md:text-left leading-none mt-2 md:mt-0">
-        <span className="font-display font-bold text-4xl text-foreground uppercase tracking-tighter">
+        <span className="font-display font-bold text-3xl sm:text-4xl text-foreground uppercase tracking-tighter">
           {value}
           {suffix && <span className="text-accent ml-1">{suffix}</span>}
         </span>
