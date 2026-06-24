@@ -48,13 +48,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] sm:leading-[0.9] mb-8 text-foreground uppercase break-words"
+              className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-foreground break-words"
             >
-              Ship from <br className="hidden sm:block" />
-              <span className="text-accent underline decoration-4 underline-offset-8">China.</span>
+              Ship from <span className="text-accent">China.</span>
               <br />
-              Land in <br className="hidden sm:block" />
-              <span className="bg-foreground text-background px-2 py-1 inline-block mt-2">South Africa.</span>
+              Land in <span className="text-accent">South Africa.</span>
             </motion.h1>
 
             <motion.p
