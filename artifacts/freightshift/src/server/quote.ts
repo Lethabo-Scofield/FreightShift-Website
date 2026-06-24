@@ -67,37 +67,53 @@ export async function handleQuote(body: unknown): Promise<QuoteResult> {
   const modeLabel = data.mode === "sea" ? "Sea Freight" : "Air Freight";
   const subject = `New Quote Request — ${data.name} (${modeLabel})`;
 
+  const labelStyle =
+    "padding:10px 12px 10px 0;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #ececec;vertical-align:top;width:150px;";
+  const valueStyle =
+    "padding:10px 0;color:#0a0f18;font-size:14px;font-weight:600;border-bottom:1px solid #ececec;";
+
   const optionalRow = (label: string, value?: string) =>
     value && value.trim().length > 0
-      ? `<tr><td style="padding:8px 0;color:#666;">${label}</td><td style="padding:8px 0;">${escapeHtml(value)}</td></tr>`
+      ? `<tr><td style="${labelStyle}">${label}</td><td style="${valueStyle}">${escapeHtml(value)}</td></tr>`
       : "";
 
   const notesBlock =
     data.notes && data.notes.trim().length > 0
-      ? `<div style="margin-top:16px;padding:14px 16px;background:#fff;border-left:3px solid #1F73D8;font-size:14px;color:#333;white-space:pre-wrap;"><strong style="display:block;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Notes</strong>${escapeHtml(data.notes)}</div>`
+      ? `<div style="margin-top:20px;padding:16px;background:#f5f4ef;border-left:4px solid #ff4a00;font-size:14px;color:#0a0f18;white-space:pre-wrap;"><strong style="display:block;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Notes</strong>${escapeHtml(data.notes)}</div>`
       : "";
 
+  const logoUrl = "https://freightshiftlogistics.co.za/fsl-logo.png";
+
   const html = `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#1E1E1E;">
-      <div style="background:#0F3D75;color:#fff;padding:20px 24px;border-radius:12px 12px 0 0;">
-        <h1 style="margin:0;font-size:20px;">New Quote Request</h1>
-        <p style="margin:4px 0 0;opacity:0.85;font-size:13px;">FreightShift International Logistics</p>
-      </div>
-      <div style="background:#F7F7F7;padding:24px;border-radius:0 0 12px 12px;border:1px solid #e5e5e5;border-top:0;">
-        <table style="width:100%;border-collapse:collapse;font-size:14px;">
-          <tr><td style="padding:8px 0;color:#666;width:160px;">Name</td><td style="padding:8px 0;font-weight:600;">${escapeHtml(data.name!)}</td></tr>
-          <tr><td style="padding:8px 0;color:#666;">Email</td><td style="padding:8px 0;"><a href="mailto:${escapeHtml(data.email!)}" style="color:#1F73D8;text-decoration:none;">${escapeHtml(data.email!)}</a></td></tr>
-          <tr><td style="padding:8px 0;color:#666;">Mobile</td><td style="padding:8px 0;"><a href="tel:${escapeHtml(data.mobile!)}" style="color:#1F73D8;text-decoration:none;">${escapeHtml(data.mobile!)}</a></td></tr>
-          <tr><td colspan="2" style="padding:8px 0;"><hr style="border:none;border-top:1px solid #e5e5e5;margin:4px 0;" /></td></tr>
-          <tr><td style="padding:8px 0;color:#666;">Mode</td><td style="padding:8px 0;"><span style="background:#F28C28;color:#fff;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;">${modeLabel}</span></td></tr>
-          ${optionalRow("Origin", data.origin)}
-          ${optionalRow("Destination", data.destination)}
-          ${optionalRow("Cargo type", data.cargoType)}
-          <tr><td style="padding:8px 0;color:#666;">Goods</td><td style="padding:8px 0;">${escapeHtml(data.goodsType!)}</td></tr>
-          <tr><td style="padding:8px 0;color:#666;">Vol. / Weight</td><td style="padding:8px 0;">${escapeHtml(data.volumeWeight!)}</td></tr>
-        </table>
-        ${notesBlock}
-        <p style="margin-top:24px;font-size:12px;color:#888;">Submitted ${new Date().toUTCString()}</p>
+    <div style="background:#f5f4ef;padding:24px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border:2px solid #0a0f18;">
+        <div style="padding:24px;text-align:center;border-bottom:2px solid #0a0f18;">
+          <img src="${logoUrl}" alt="FreightShift International Logistics" width="200" style="display:inline-block;width:200px;max-width:62%;height:auto;" />
+        </div>
+        <div style="background:#0a0f18;color:#ffffff;padding:22px 24px;">
+          <div style="font-family:'Courier New',Courier,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#ff4a00;font-weight:bold;">New Quote Request</div>
+          <h1 style="margin:8px 0 0;font-size:22px;font-weight:800;">${escapeHtml(data.name!)}</h1>
+          <p style="margin:6px 0 0;font-size:13px;color:#c7ccd4;">${modeLabel} &middot; ${new Date().toUTCString()}</p>
+        </div>
+        <div style="padding:8px 24px 24px;">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <tr><td style="${labelStyle}">Email</td><td style="padding:10px 0;border-bottom:1px solid #ececec;"><a href="mailto:${escapeHtml(data.email!)}" style="color:#0a0f18;font-weight:600;text-decoration:none;">${escapeHtml(data.email!)}</a></td></tr>
+            <tr><td style="${labelStyle}">Mobile</td><td style="padding:10px 0;border-bottom:1px solid #ececec;"><a href="tel:${escapeHtml(data.mobile!)}" style="color:#0a0f18;font-weight:600;text-decoration:none;">${escapeHtml(data.mobile!)}</a></td></tr>
+            <tr><td style="${labelStyle}">Mode</td><td style="padding:10px 0;border-bottom:1px solid #ececec;"><span style="background:#ff4a00;color:#ffffff;padding:4px 12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">${modeLabel}</span></td></tr>
+            ${optionalRow("Origin", data.origin)}
+            ${optionalRow("Destination", data.destination)}
+            ${optionalRow("Cargo type", data.cargoType)}
+            <tr><td style="${labelStyle}">Goods</td><td style="${valueStyle}">${escapeHtml(data.goodsType!)}</td></tr>
+            <tr><td style="padding:10px 12px 10px 0;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;vertical-align:top;width:150px;">Vol. / Weight</td><td style="padding:10px 0;color:#0a0f18;font-size:14px;font-weight:600;">${escapeHtml(data.volumeWeight!)}</td></tr>
+          </table>
+          ${notesBlock}
+          <div style="margin-top:24px;padding-top:16px;border-top:1px solid #ececec;">
+            <a href="mailto:${escapeHtml(data.email!)}" style="display:inline-block;background:#0a0f18;color:#ffffff;padding:12px 24px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-decoration:none;">Reply to ${escapeHtml(data.name!)}</a>
+          </div>
+        </div>
+        <div style="background:#0a0f18;color:#8b93a1;padding:14px 24px;font-family:'Courier New',Courier,monospace;font-size:11px;text-transform:uppercase;letter-spacing:1px;">
+          FreightShift International Logistics &middot; China &rarr; South Africa
+        </div>
       </div>
     </div>
   `;

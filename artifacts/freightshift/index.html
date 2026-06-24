@@ -57,9 +57,24 @@
       "sameAs": ["https://wa.me/message/EVTMLWYQY2OCG1"]
     }
     </script>
+
+    <!-- Initial brand splash loader (removed once React mounts) -->
+    <style>
+      .fs-splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:#f5f4ef;z-index:9999;}
+      .fs-splash-logo{width:220px;max-width:60vw;height:auto;animation:fsFade 1s ease-in-out infinite alternate;}
+      .fs-splash-bar{width:160px;max-width:50vw;height:4px;background:rgba(10,15,24,0.1);overflow:hidden;}
+      .fs-splash-bar span{display:block;width:40%;height:100%;background:#ff4a00;animation:fsSlide 1.1s ease-in-out infinite;}
+      @keyframes fsSlide{0%{transform:translateX(-100%);}100%{transform:translateX(350%);}}
+      @keyframes fsFade{0%{opacity:0.55;}100%{opacity:1;}}
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="fs-splash">
+        <img src="/fsl-logo.png" alt="FreightShift International Logistics" class="fs-splash-logo" />
+        <div class="fs-splash-bar"><span></span></div>
+      </div>
+    </div>
     <noscript>
       FreightShift International Logistics — China to South Africa freight forwarding. Please enable JavaScript to use our site, or contact us at info@freightshiftlogistics.co.za / +27 68 109 5543.
     </noscript>

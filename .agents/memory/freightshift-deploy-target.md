@@ -51,3 +51,12 @@ Both use raw `fetch` to the Resend API (no `resend` npm package).
 `RESEND_API_KEY`, `QUOTE_TO_EMAIL`, `QUOTE_FROM_EMAIL` must be set **in Vercel** for
 production email to send (the form returns 500 otherwise). Setting them in Replit
 secrets only affects the Replit dev environment, not the Vercel deployment.
+
+## Email logo host
+
+The quote-email HTML embeds the brand logo via an absolute URL
+`https://freightshiftlogistics.co.za/fsl-logo.png` (public asset served at site root).
+Use the **non-www** host to match the site's other absolute asset URLs (OG image,
+canonical) and avoid broken images from redirects in email clients.
+**Why:** email clients can't resolve relative/`/fsl-logo.png` paths; they need an
+absolute, publicly reachable URL on the same host the rest of the site already uses.
