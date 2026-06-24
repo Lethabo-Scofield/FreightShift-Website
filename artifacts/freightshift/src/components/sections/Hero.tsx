@@ -56,7 +56,7 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="bg-yellow-400 hover:bg-yellow-300 text-foreground font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
+                className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
                 onClick={goToQuote}
               >
                 Get a Quote
