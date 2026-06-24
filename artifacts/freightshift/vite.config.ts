@@ -3,9 +3,73 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import { handleQuote } from "./src/server/quote";
 
 const OLYXEE_PREFIX = "/api/olyxee";
 const OLYXEE_TARGET = "https://logistics.olyxee.com";
+
+function readJsonBody(req: any): Promise<unknown> {
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    let size = 0;
+    req.on("data", (chunk: Buffer) => {
+      size += chunk.length;
+      if (size > 1_000_000) {
+        reject(new Error("payload_too_large"));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on("end", () => {
+      const raw = Buffer.concat(chunks).toString("utf8").trim();
+      if (!raw) return resolve({});
+      try {
+        resolve(JSON.parse(raw));
+      } catch {
+        reject(new Error("invalid_json"));
+      }
+    });
+    req.on("error", reject);
+  });
+}
+
+// Handles POST /api/quote in both dev (configureServer) and
+// production preview/serve (configurePreviewServer). Sends the quote
+// notification email via the Replit Mail integration (blueprint:replitmail).
+function quoteApiPlugin(): PluginOption {
+  const handler: any = async (req: any, res: any, next: any) => {
+    if (!req.url || req.url.split("?")[0] !== "/api/quote") return next();
+    if (req.method !== "POST") {
+      res.statusCode = 405;
+      res.setHeader("content-type", "application/json");
+      res.setHeader("allow", "POST");
+      res.end(JSON.stringify({ error: "method_not_allowed" }));
+      return;
+    }
+    try {
+      const body = await readJsonBody(req);
+      const result = await handleQuote(body);
+      res.statusCode = result.status;
+      res.setHeader("content-type", "application/json");
+      res.end(JSON.stringify(result.json));
+    } catch (err) {
+      res.statusCode = 400;
+      res.setHeader("content-type", "application/json");
+      const message = err instanceof Error ? err.message : "bad_request";
+      res.end(JSON.stringify({ error: message }));
+    }
+  };
+  return {
+    name: "quote-api",
+    configureServer(server) {
+      server.middlewares.use(handler);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(handler);
+    },
+  };
+}
 
 function olyxeeProxyPlugin(): PluginOption {
   const handler: any = async (req: any, res: any, next: any) => {
@@ -57,6 +121,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    quoteApiPlugin(),
     olyxeeProxyPlugin(),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
