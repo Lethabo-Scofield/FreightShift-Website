@@ -15,7 +15,18 @@ export function Hero() {
       id="home"
       className="relative pt-24 pb-16 md:pt-32 md:pb-32 overflow-hidden bg-background border-b-2 border-foreground"
     >
-      <div className="absolute inset-0 z-0 opacity-10 mix-blend-multiply pointer-events-none">
+      {/* Background photo */}
+      <img
+        src={heroBg}
+        alt="Container ship and port cranes on the China to South Africa freight corridor"
+        className="absolute inset-0 z-0 w-full h-full object-cover"
+      />
+
+      {/* Readability scrim: solid on the left where the copy sits, fading toward the image on the right */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/90 to-background/40 md:to-background/20 pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
+
+      <div className="absolute inset-0 z-[2] opacity-10 mix-blend-multiply pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
             <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -111,16 +122,10 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: floating stat card over the photo */}
-          <div className="hidden lg:flex lg:col-span-4 justify-end relative">
-            <div className="relative w-full aspect-[3/4] border-2 border-foreground bg-zinc-200 overflow-hidden">
-               <img
-                  src={heroBg}
-                  alt="Container ship and port cranes on the China to South Africa freight corridor"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                
-                <div className="absolute top-4 right-4 bg-background text-foreground border-2 border-foreground px-4 py-2 font-mono text-sm font-bold uppercase">
+          {/* Right: floating cards over the background photo */}
+          <div className="hidden lg:flex lg:col-span-4 justify-end relative self-stretch min-h-[26rem]">
+            <div className="relative w-full">
+                <div className="absolute top-0 right-0 bg-background text-foreground border-2 border-foreground px-4 py-2 font-mono text-sm font-bold uppercase">
                   China → South Africa
                 </div>
 
@@ -128,7 +133,7 @@ export function Hero() {
                   initial={{ opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="absolute bottom-4 left-4 right-4 bg-background border-2 border-foreground p-4 flex flex-col gap-1"
+                  className="absolute bottom-0 right-0 w-56 bg-background border-2 border-foreground p-4 flex flex-col gap-1 shadow-xl"
                 >
                   <div className="text-[10px] text-foreground font-mono uppercase tracking-widest font-bold">
                     On-time
