@@ -40,14 +40,14 @@ export function IndustryEngagement() {
               <img
                 src={ujVisit1}
                 alt="Road Freight Transport students from the University of Johannesburg visiting Freight Shift Logistics"
-                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
             </div>
             <div className="col-span-2 row-span-5 border-2 border-foreground bg-foreground overflow-hidden relative group">
               <img
                 src={ujVisit2}
                 alt="University of Johannesburg students touring the Freight Shift Logistics warehouse"
-                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
             </div>
           </motion.div>
