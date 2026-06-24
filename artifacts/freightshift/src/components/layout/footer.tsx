@@ -119,6 +119,17 @@ export function Footer() {
           <p>
             © 2026 FreightShift International Logistics (Pty) Ltd. All rights reserved.
           </p>
+          <p>
+            Created by{" "}
+            <a
+              href="https://olyxee.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-background/70 hover:text-accent transition-colors"
+            >
+              olyxee.com
+            </a>
+          </p>
         </div>
       </div>
     </footer>
