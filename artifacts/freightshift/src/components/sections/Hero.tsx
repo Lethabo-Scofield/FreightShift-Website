@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Anchor, Plane, ArrowDownRight } from "lucide-react";
+import { Anchor, Plane, ArrowDownRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import heroBg from "@assets/image_1777730034034.png";
 import { goToQuote as routeToQuote } from "@/lib/scroll-to-quote";
@@ -22,9 +22,9 @@ export function Hero() {
         className="absolute inset-0 z-0 w-full h-full object-cover"
       />
 
-      {/* Readability scrim: solid on the left where the copy sits, fading toward the image on the right */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/90 to-background/40 md:to-background/20 pointer-events-none" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
+      {/* Readability scrim: keep the copy side legible while letting the photo stay clear on the right */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/60 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
 
       <div className="absolute inset-0 z-[2] opacity-10 mix-blend-multiply pointer-events-none">
         <svg width="100%" height="100%">
@@ -73,7 +73,7 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
+                className="bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
                 onClick={goToQuote}
               >
                 Get a Quote
