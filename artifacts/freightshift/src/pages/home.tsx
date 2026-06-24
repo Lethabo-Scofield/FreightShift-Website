@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/footer";
 
 import { Hero } from "@/components/sections/Hero";
 import { CompaniesServed } from "@/components/sections/CompaniesServed";
-import { Lanes } from "@/components/sections/Lanes";
 import { ChinaSACorridor } from "@/components/sections/ChinaSACorridor";
 import { MovingStorageHighlight } from "@/components/sections/MovingStorageHighlight";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -27,7 +26,6 @@ export default function Home() {
         <Hero />
         <CompaniesServed />
         <ChinaSACorridor />
-        <Lanes />
         <MovingStorageHighlight />
         <HowItWorks />
         <IndustryEngagement />

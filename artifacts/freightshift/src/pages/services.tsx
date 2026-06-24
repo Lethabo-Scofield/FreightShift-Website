@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/footer";
 import { PageHeader } from "@/components/layout/PageHeader";
 
 import { ChinaSACorridor } from "@/components/sections/ChinaSACorridor";
-import { Lanes } from "@/components/sections/Lanes";
 import { Services } from "@/components/sections/Services";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -34,7 +33,6 @@ export default function ServicesPage() {
           breadcrumb={[{ label: "Services" }]}
         />
         <ChinaSACorridor />
-        <Lanes />
         <Services />
         <HowItWorks />
         <FinalCTA />
