@@ -22,19 +22,6 @@ export function Hero() {
         className="absolute inset-0 z-0 w-full h-full object-cover"
       />
 
-      {/* Readability scrim: keep the copy side legible while letting the photo stay clear on the right */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/60 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
-
-      <div className="absolute inset-0 z-[2] opacity-10 mix-blend-multiply pointer-events-none">
-        <svg width="100%" height="100%">
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left: copy */}
