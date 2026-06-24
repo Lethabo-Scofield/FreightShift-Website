@@ -23,7 +23,7 @@ export function GoogleReviews() {
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted by Businesses Across SA</h2>
           <p className="text-lg text-foreground/70 mb-10">
-            Our reputation is built on reliability, transparency, and operational excellence. Read what our clients have to say about working with FreightShift.
+            See what businesses across South Africa say about working with us.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4">

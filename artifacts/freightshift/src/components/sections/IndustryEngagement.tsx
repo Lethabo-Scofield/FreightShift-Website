@@ -28,7 +28,7 @@ export function IndustryEngagement() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Industry Engagement</h2>
             <div className="w-12 h-1 bg-brand-orange mb-8" />
             <blockquote className="text-xl md:text-2xl text-foreground/80 leading-relaxed font-serif italic border-l-4 border-brand-blue pl-6 py-2">
-              "Road Freight Transport students from the University of Johannesburg visited Freight Shift Logistics to learn more about real-world logistics and transport operations. The visit helped students connect classroom theory with practical industry experience."
+              "Road Freight Transport students from the University of Johannesburg visited FreightShift to see real-world logistics operations first-hand."
             </blockquote>
           </motion.div>
         </div>

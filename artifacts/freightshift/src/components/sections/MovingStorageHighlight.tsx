@@ -25,7 +25,7 @@ export function MovingStorageHighlight() {
               Moving & Storage, <br/>Done Right.
             </h2>
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              Whether you're relocating your corporate office, moving homes, or need secure warehousing for your commercial goods, our team handles it with precision. We operate secure facilities and maintain a fleet ready to move your assets safely across South Africa.
+              Office relocations, home moves, and secure warehousing—handled by our own team and fleet across South Africa.
             </p>
             
             <ul className="space-y-4 mb-10">

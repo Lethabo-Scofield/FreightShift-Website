@@ -187,8 +187,8 @@ export function Quote() {
                   <Clock className="w-5 h-5 text-brand-blue" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground">Reply within 24 hours</h4>
-                  <p className="text-sm text-foreground/70">Usually faster on WhatsApp.</p>
+                  <h4 className="font-bold text-foreground">No obligation</h4>
+                  <p className="text-sm text-foreground/70">Free to request, no commitment.</p>
                 </div>
               </li>
             </ul>
