@@ -71,6 +71,22 @@ function quoteApiPlugin(): PluginOption {
   };
 }
 
+// Development only: disable caching so the Replit preview iframe never serves
+// a stale (e.g. blank) version of the app.
+function noCacheInDevPlugin(): PluginOption {
+  return {
+    name: "no-cache-in-dev",
+    configureServer(server) {
+      server.middlewares.use((_req, res, next) => {
+        res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setHeader("Expires", "0");
+        next();
+      });
+    },
+  };
+}
+
 function olyxeeProxyPlugin(): PluginOption {
   const handler: any = async (req: any, res: any, next: any) => {
     if (!req.url || !req.url.startsWith(OLYXEE_PREFIX)) return next();
@@ -121,6 +137,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    noCacheInDevPlugin(),
     quoteApiPlugin(),
     olyxeeProxyPlugin(),
     ...(process.env.NODE_ENV !== "production" &&
