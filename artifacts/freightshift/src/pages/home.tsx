@@ -3,11 +3,16 @@ import { Footer } from "@/components/layout/footer";
 
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { CompaniesServed } from "@/components/sections/CompaniesServed";
 import { Lanes } from "@/components/sections/Lanes";
 import { ChinaSACorridor } from "@/components/sections/ChinaSACorridor";
+import { MovingStorageHighlight } from "@/components/sections/MovingStorageHighlight";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Industries } from "@/components/sections/Industries";
+import { IndustryEngagement } from "@/components/sections/IndustryEngagement";
+import { ServicePartners } from "@/components/sections/ServicePartners";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { GoogleReviews } from "@/components/sections/GoogleReviews";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
 import { Seo } from "@/components/Seo";
@@ -22,11 +27,16 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
+        <CompaniesServed />
         <ChinaSACorridor />
         <Lanes />
+        <MovingStorageHighlight />
         <HowItWorks />
+        <IndustryEngagement />
         <Industries />
+        <ServicePartners />
         <Testimonials />
+        <GoogleReviews />
         <FinalCTA />
       </main>
       <Footer />

@@ -44,7 +44,7 @@ export const PAGE_SEO: Record<string, SeoMeta> = {
   contact: {
     title: "Contact FreightShift — Quote in 24 Hours | WhatsApp & Phone",
     description:
-      "Get a freight quote in 24 hours. WhatsApp 068 109 5543, call us, or fill in the quick quote form. China to South Africa logistics specialists in Johannesburg.",
+      "Get a freight quote in 24 hours. WhatsApp 010 011 3971, call us, or fill in the quick quote form. China to South Africa logistics specialists in Johannesburg.",
     path: "/contact",
   },
 };
