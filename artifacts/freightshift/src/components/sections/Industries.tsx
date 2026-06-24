@@ -23,15 +23,6 @@ export function Industries() {
         </svg>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 mb-8 relative z-10">
-        <div className="flex justify-center">
-           <div className="inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-              <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-              Built for South African business
-            </div>
-        </div>
-      </div>
-
       {/* Marquee */}
       <div className="relative z-10">
         {/* Edge covers */}

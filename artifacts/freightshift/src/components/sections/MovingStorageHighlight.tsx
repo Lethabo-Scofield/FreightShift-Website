@@ -18,10 +18,6 @@ export function MovingStorageHighlight() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block px-3 py-1 bg-background text-foreground font-mono text-xs font-bold uppercase tracking-widest mb-8 border-2 border-background">
-              <span className="w-1.5 h-1.5 bg-accent inline-block mr-2" />
-              Moving &amp; Storage
-            </div>
             <h2 className="font-display text-4xl md:text-6xl font-bold text-background mb-8 leading-none tracking-tight uppercase">
               Moving &amp; Storage, <br/>
               <span className="text-accent">Done Right.</span>

@@ -39,10 +39,6 @@ export function Hero() {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left: copy */}
           <div className="lg:col-span-8">
-            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-              <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none animate-pulse" />
-              Manifest // FS-ZA
-            </div>
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 16 }}

@@ -47,10 +47,6 @@ export function Testimonials() {
 
       <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
         <div className="mb-12">
-          <div className="mb-4 inline-flex items-center gap-2 bg-background text-foreground px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-            <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-            Testimonials
-          </div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-background uppercase tracking-tight leading-[0.9]">
             Trusted by <br />
             <span className="text-accent">SA Importers.</span>

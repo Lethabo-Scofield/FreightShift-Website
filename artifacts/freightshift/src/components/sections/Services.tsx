@@ -45,10 +45,6 @@ export function Services() {
     <section id="services" className="py-20 md:py-32 bg-background border-b-2 border-foreground relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="mb-16 max-w-2xl">
-          <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-             <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-             Capabilities // 01
-          </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 mb-4 tracking-tight uppercase">What we do.</h2>
           <p className="text-lg md:text-xl text-foreground/80 font-mono">Freight, customs, storage, moving, courier and logistics — one trusted team.</p>
         </div>

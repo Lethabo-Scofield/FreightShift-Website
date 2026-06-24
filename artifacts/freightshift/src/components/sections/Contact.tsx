@@ -56,10 +56,6 @@ export function Contact() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14 max-w-5xl mx-auto">
           <div>
-            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-               Contact // 03
-            </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 tracking-tight uppercase">
               Three ways to reach us.
             </h2>

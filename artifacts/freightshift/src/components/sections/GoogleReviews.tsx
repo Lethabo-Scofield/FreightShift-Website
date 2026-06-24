@@ -23,10 +23,6 @@ export function GoogleReviews() {
             </div>
           </div>
           
-          <div className="mb-6 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-            <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none animate-pulse" />
-            // PUBLIC_RECORD
-          </div>
           
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 uppercase tracking-tight leading-[0.9]">
             See What Our Clients <span className="text-accent underline decoration-4 underline-offset-8">Say.</span>

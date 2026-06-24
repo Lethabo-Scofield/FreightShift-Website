@@ -21,10 +21,6 @@ export function ChinaSACorridor() {
             viewport={{ once: true, margin: "-50px" }}
             className="order-2 lg:order-1"
           >
-            <div className="mb-6 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-              <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-              Core Route
-            </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 uppercase tracking-tight leading-none">
               Direct China-SA <br/>Link.
             </h2>

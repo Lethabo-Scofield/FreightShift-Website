@@ -22,10 +22,6 @@ export function FinalCTA() {
       <div className="absolute bottom-0 left-0 w-32 h-32 md:w-64 md:h-64 border-r-2 border-t-2 border-accent/20 bg-background/5 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-        <div className="mb-8 inline-flex items-center gap-2 bg-background text-foreground px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-          <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none animate-pulse" />
-          Get a quote in 24 hours
-        </div>
         
         <h2 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold text-background mb-8 uppercase tracking-tight leading-[0.9]">
           Ready to <span className="text-accent underline decoration-4 underline-offset-8">Move?</span>

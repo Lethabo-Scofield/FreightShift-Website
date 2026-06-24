@@ -26,10 +26,6 @@ export function ServicePartners() {
                <Handshake className="w-8 h-8" />
             </div>
           </div>
-          <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-            <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-            // NETWORK_NODE
-          </div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 uppercase tracking-tight leading-[0.9]">
             Partners &amp; Support <br className="hidden sm:block" />
             <span className="text-accent underline decoration-4 underline-offset-8">Providers.</span>

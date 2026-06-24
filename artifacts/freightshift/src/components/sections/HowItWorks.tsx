@@ -34,10 +34,6 @@ export function HowItWorks() {
     <section className="py-20 md:py-32 bg-background border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="mb-6 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-            <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-            How It Works
-          </div>
           <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tight leading-none">
             Factory to Door <br/>
             <span className="text-foreground/40">In 5 Steps.</span>

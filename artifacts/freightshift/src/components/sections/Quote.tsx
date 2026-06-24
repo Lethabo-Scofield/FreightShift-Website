@@ -171,10 +171,6 @@ export function Quote() {
             viewport={{ once: true, margin: "-50px" }}
             className="lg:col-span-2 lg:sticky lg:top-32"
           >
-            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-              <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-              Request a Quote // 02
-            </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-4 mb-6 uppercase tracking-tight">
               Clear rates.<br />No surprises.
             </h2>

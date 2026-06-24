@@ -15,10 +15,6 @@ export function MultimodalFeature() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mb-4 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold">
-               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
-               Multimodal · DDP
-            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-foreground tracking-tight mb-6 leading-[1.05] uppercase">
               Sea, Air, or DDP. <br/>
               <span className="text-accent">One team.</span>
