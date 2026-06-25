@@ -10,6 +10,7 @@ import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
 import { Seo } from "@/components/Seo";
 import { PAGE_SEO, SITE } from "@/lib/seo";
 import { servicesJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
+import servicesHeroImg from "@/assets/freight-ship-corridor.png";
 
 export default function ServicesPage() {
   return (
@@ -31,6 +32,7 @@ export default function ServicesPage() {
           title="Freight, customs & delivery."
           subtitle="China–SA corridor specialists. Door to door, one team."
           breadcrumb={[{ label: "Services" }]}
+          backgroundImage={servicesHeroImg}
         />
         <ChinaSACorridor />
         <Services />
