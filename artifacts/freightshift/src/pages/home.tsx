@@ -6,7 +6,6 @@ import { CompaniesServed } from "@/components/sections/CompaniesServed";
 import { ChinaSACorridor } from "@/components/sections/ChinaSACorridor";
 import { MovingStorageHighlight } from "@/components/sections/MovingStorageHighlight";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Industries } from "@/components/sections/Industries";
 import { IndustryEngagement } from "@/components/sections/IndustryEngagement";
 import { ServicePartners } from "@/components/sections/ServicePartners";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -29,7 +28,6 @@ export default function Home() {
         <MovingStorageHighlight />
         <HowItWorks />
         <IndustryEngagement />
-        <Industries />
         <ServicePartners />
         <Testimonials />
         <GoogleReviews />
