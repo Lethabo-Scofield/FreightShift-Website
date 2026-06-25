@@ -79,8 +79,6 @@ export function Contact() {
                 }
               : {};
 
-            const isDark = m.label === "Office";
-
             return (
               <motion.div
                 key={i}
@@ -92,9 +90,7 @@ export function Contact() {
               >
                 <Wrapper
                   {...wrapperProps}
-                  className={`relative h-full p-8 flex flex-col gap-5 border-2 border-foreground transition-colors rounded-none ${
-                    isDark ? "bg-foreground text-background" : "bg-background text-foreground"
-                  } ${m.href ? (isDark ? "hover:bg-foreground/90 cursor-pointer" : "hover:bg-foreground hover:text-background cursor-pointer") : ""}`}
+                  className={`relative h-full p-8 flex flex-col gap-5 border-2 border-foreground transition-colors rounded-none bg-background text-foreground ${m.href ? "hover:bg-foreground hover:text-background cursor-pointer" : ""}`}
                 >
                   <span
                     className={`absolute top-0 left-0 right-0 h-1.5 ${m.accentBar}`}
@@ -115,7 +111,7 @@ export function Contact() {
                   </div>
 
                   <div className="flex-1 mt-4">
-                    <span className={`text-[11px] font-mono font-bold uppercase tracking-[0.2em] ${isDark ? "text-background/50" : "text-foreground/50"}`}>
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/50">
                       {m.label}
                     </span>
                     <h3 className="text-2xl font-display font-bold mt-2 mb-2 tracking-tight uppercase">
@@ -124,16 +120,16 @@ export function Contact() {
                     <p className="text-base font-mono font-bold tracking-tight break-all">
                       {m.detail}
                     </p>
-                    <p className={`text-sm mt-4 font-sans ${isDark ? "text-background/70" : "text-foreground/70"}`}>{m.sub}</p>
+                    <p className="text-sm mt-4 font-sans text-foreground/70">{m.sub}</p>
                   </div>
 
                   {m.cta && (
-                    <div className={`flex items-center justify-between pt-6 mt-4 border-t-2 ${isDark ? "border-background/20" : "border-foreground/10"}`}>
-                      <span className={`font-mono font-bold uppercase tracking-wider text-sm ${isDark ? "text-background" : "text-foreground"} group-hover:text-accent transition-colors`}>
+                    <div className="flex items-center justify-between pt-6 mt-4 border-t-2 border-foreground/10">
+                      <span className="font-mono font-bold uppercase tracking-wider text-sm text-foreground group-hover:text-accent transition-colors">
                         {m.cta}
                       </span>
                       <ArrowUpRight
-                        className={`w-5 h-5 ${isDark ? "text-background" : "text-foreground"} group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all`}
+                        className="w-5 h-5 text-foreground group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
                       />
                     </div>
                   )}

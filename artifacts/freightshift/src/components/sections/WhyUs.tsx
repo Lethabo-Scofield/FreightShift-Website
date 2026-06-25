@@ -57,7 +57,7 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.1 }}
-            className="bg-foreground text-background p-8 md:p-12 border-2 border-foreground rounded-none"
+            className="bg-background text-foreground p-8 md:p-12 border-2 border-foreground rounded-none"
           >
             <h3 className="text-3xl font-display font-bold mb-10 uppercase tracking-tight">Why us.</h3>
             <ul className="space-y-6">
@@ -67,7 +67,7 @@ export function WhyUs() {
                     <CheckCircle2 className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <div className="text-lg md:text-xl font-mono font-bold uppercase tracking-tight text-background">
+                    <div className="text-lg md:text-xl font-mono font-bold uppercase tracking-tight text-foreground">
                       {prop}
                     </div>
                   </div>

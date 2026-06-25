@@ -199,27 +199,27 @@ function LoadingCard({ code }: { code: string }) {
 
 function MissingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-none border-2 border-foreground bg-foreground text-background p-8 md:p-10">
+    <div className="rounded-none border-2 border-foreground bg-background text-foreground p-8 md:p-10">
       <div className="flex flex-col sm:flex-row items-start gap-6">
         <div className="w-12 h-12 bg-accent text-background flex items-center justify-center shrink-0">
           <AlertCircle className="w-6 h-6" />
         </div>
         <div className="flex-1">
           <h2 className="text-2xl font-display font-bold uppercase tracking-tight">No shipment found</h2>
-          <p className="text-sm font-sans text-background/80 mt-2">
+          <p className="text-sm font-sans text-foreground/80 mt-2">
             We couldn't find a shipment with the ID{" "}
-            <span className="font-mono font-bold text-background bg-background/20 px-2 py-0.5">{code}</span>. Double-check the
+            <span className="font-mono font-bold text-foreground bg-foreground/10 px-2 py-0.5">{code}</span>. Double-check the
             email we sent, or get in touch and we'll look it up for you.
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="gap-2 bg-accent hover:bg-background text-background hover:text-foreground font-mono font-bold uppercase tracking-wider rounded-none">
+              <Button size="lg" className="gap-2 bg-accent hover:bg-foreground text-background hover:text-background font-mono font-bold uppercase tracking-wider rounded-none">
                 <FaWhatsapp className="w-4 h-4" />
                 WhatsApp us
               </Button>
             </a>
             <a href={`mailto:${SITE.email}?subject=Tracking%20help%20for%20${encodeURIComponent(code)}`}>
-              <Button size="lg" variant="outline" className="border-2 border-background bg-transparent text-background hover:bg-background hover:text-foreground font-mono font-bold uppercase tracking-wider rounded-none">
+              <Button size="lg" variant="outline" className="border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider rounded-none">
                 Email support
               </Button>
             </a>
@@ -315,7 +315,7 @@ function OrderCard({ order }: { order: TrackingOrder }) {
         </div>
 
         {meta.whatNext && (
-          <div className="mt-8 border-2 border-foreground bg-foreground text-background px-6 py-4 text-sm font-sans">
+          <div className="mt-8 border-2 border-foreground bg-background text-foreground px-6 py-4 text-sm font-sans">
             {meta.whatNext}
           </div>
         )}
@@ -330,10 +330,10 @@ function OrderCard({ order }: { order: TrackingOrder }) {
       </div>
 
       {/* Footer help */}
-      <div className="border-t-2 border-foreground px-6 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono font-bold uppercase tracking-wider text-foreground/60 bg-foreground text-background">
+      <div className="border-t-2 border-foreground px-6 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono font-bold uppercase tracking-wider text-foreground/60 bg-background">
         <span className="text-center sm:text-left">Need help with this shipment? We reply fastest on WhatsApp.</span>
         <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-          <Button size="lg" variant="outline" className="gap-2 border-2 border-background bg-transparent text-background hover:bg-background hover:text-foreground rounded-none font-mono font-bold uppercase tracking-wider">
+          <Button size="lg" variant="outline" className="gap-2 border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-none font-mono font-bold uppercase tracking-wider">
             <FaWhatsapp className="w-4 h-4" />
             Chat to us
           </Button>

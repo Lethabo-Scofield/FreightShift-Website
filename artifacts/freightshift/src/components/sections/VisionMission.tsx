@@ -38,18 +38,18 @@ export function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.1 }}
-            className="relative border-2 border-foreground overflow-hidden min-h-[520px] lg:min-h-full rounded-none bg-foreground"
+            className="relative border-2 border-foreground overflow-hidden min-h-[520px] lg:min-h-full rounded-none bg-background"
           >
             <img
               src={officeImage}
               alt="FreightShift International Logistics office"
-              className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-40"
+              className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-10"
             />
             <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-end">
-              <span className="inline-block self-start font-mono text-xs font-bold uppercase tracking-widest text-background bg-foreground border-2 border-background px-3 py-1.5 mb-8">
+              <span className="inline-block self-start font-mono text-xs font-bold uppercase tracking-widest text-background bg-foreground border-2 border-foreground px-3 py-1.5 mb-8">
                 // INSIDE FREIGHTSHIFT
               </span>
-              <h3 className="text-3xl md:text-4xl font-display font-bold text-background uppercase tracking-tight mb-8">Strategic Goals</h3>
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground uppercase tracking-tight mb-8">Strategic Goals</h3>
               <ul className="space-y-4 w-full">
                 {[
                   "Transparent service",
@@ -58,11 +58,11 @@ export function VisionMission() {
                   "Real-time tracking",
                   "Compliance & ethics"
                 ].map((goal, i) => (
-                  <li key={i} className="flex items-center gap-4 pb-4 border-b-2 border-background/20 last:border-0 last:pb-0">
-                    <div className="w-8 h-8 bg-background text-foreground flex items-center justify-center shrink-0 font-mono text-sm font-bold">
+                  <li key={i} className="flex items-center gap-4 pb-4 border-b-2 border-foreground/20 last:border-0 last:pb-0">
+                    <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center shrink-0 font-mono text-sm font-bold">
                       0{i + 1}
                     </div>
-                    <span className="text-background font-mono font-bold uppercase tracking-wider text-base md:text-lg">{goal}</span>
+                    <span className="text-foreground font-mono font-bold uppercase tracking-wider text-base md:text-lg">{goal}</span>
                   </li>
                 ))}
               </ul>
