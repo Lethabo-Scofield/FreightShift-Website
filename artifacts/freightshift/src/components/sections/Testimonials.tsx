@@ -35,7 +35,7 @@ export function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section className="py-20 md:py-32 bg-foreground text-background border-b-2 border-foreground relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-neutral-800 text-background border-b-2 border-neutral-800 relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-5 mix-blend-screen pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-testimonials" width="40" height="40" patternUnits="userSpaceOnUse">

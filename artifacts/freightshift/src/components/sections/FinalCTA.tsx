@@ -7,7 +7,7 @@ import { goToQuote } from "@/lib/scroll-to-quote";
 export function FinalCTA() {
   const [, navigate] = useLocation();
   return (
-    <section className="py-24 md:py-40 bg-foreground text-background relative overflow-hidden">
+    <section className="py-24 md:py-40 bg-neutral-800 text-background relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10 mix-blend-screen pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-cta" width="40" height="40" patternUnits="userSpaceOnUse">
