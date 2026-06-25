@@ -36,9 +36,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.05 }}
               className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-white break-words [text-shadow:0_2px_16px_rgba(0,0,0,0.35)]"
             >
-              Ship from <span className="text-accent">China.</span>
+              Ship from China.
               <br />
-              Land in <span className="text-accent">South Africa.</span>
+              Land in South Africa.
             </motion.h1>
 
             <motion.p
