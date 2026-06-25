@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Anchor, Plane, ArrowDownRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import heroBg from "@assets/image_1777730034034.png";
+import heroBg from "@assets/hero-corridor.webp";
 import { goToQuote as routeToQuote } from "@/lib/scroll-to-quote";
 
 export function Hero() {
@@ -20,6 +20,9 @@ export function Hero() {
         src={heroBg}
         alt="Container ship and port cranes on the China to South Africa freight corridor"
         className="absolute inset-0 z-0 w-full h-full object-cover"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
       />
 
       {/* Readability shade: darkens the left so the white copy stays clear while the photo stays visible on the right */}
