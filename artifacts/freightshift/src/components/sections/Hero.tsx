@@ -74,7 +74,7 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 gap-2 w-full rounded-none"
+                  className="bg-white border-2 border-foreground text-foreground hover:bg-white/90 font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 gap-2 w-full rounded-none"
                 >
                   <FaWhatsapp className="w-5 h-5 text-green-600" />
                   WhatsApp Us
