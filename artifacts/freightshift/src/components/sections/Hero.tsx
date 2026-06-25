@@ -59,7 +59,7 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
+                className="bg-orange-300 hover:bg-orange-300/90 text-foreground font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
                 onClick={goToQuote}
               >
                 Get a Quote
@@ -90,17 +90,17 @@ export function Hero() {
               className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-white/90 font-bold border-t-2 border-white/20 pt-6 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
             >
               <span className="flex items-center gap-2">
-                <Anchor className="w-4 h-4 text-sky-300" />
+                <Anchor className="w-4 h-4 text-orange-300" />
                 Sea · 28–35 days
               </span>
               <span className="hidden sm:inline-block w-1.5 h-1.5 bg-white/40 rounded-none" />
               <span className="flex items-center gap-2">
-                <Plane className="w-4 h-4 text-sky-300" />
+                <Plane className="w-4 h-4 text-orange-300" />
                 Air · 5–9 days
               </span>
               <span className="hidden sm:inline-block w-1.5 h-1.5 bg-white/40 rounded-none" />
               <span className="flex items-center gap-2 text-white">
-                <span className="inline-block w-2 h-2 rounded-none bg-sky-300" />
+                <span className="inline-block w-2 h-2 rounded-none bg-orange-300" />
                 Full DDP available
               </span>
             </motion.div>
