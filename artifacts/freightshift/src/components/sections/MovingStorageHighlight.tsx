@@ -7,7 +7,7 @@ export function MovingStorageHighlight() {
   const [, navigate] = useLocation();
 
   return (
-    <section className="py-20 md:py-32 bg-neutral-800 text-background relative border-b-2 border-neutral-800">
+    <section className="py-20 md:py-32 bg-background text-foreground relative border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <motion.div
@@ -16,11 +16,11 @@ export function MovingStorageHighlight() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-background mb-8 leading-none tracking-tight uppercase">
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8 leading-none tracking-tight uppercase">
               Moving &amp; Storage, <br/>
               <span className="text-accent">Done Right.</span>
             </h2>
-            <p className="font-mono text-lg md:text-xl text-background/80 mb-10 leading-relaxed font-medium">
+            <p className="font-mono text-lg md:text-xl text-foreground/80 mb-10 leading-relaxed font-medium">
               Whether you're relocating your corporate office, moving homes, or need secure warehousing for your commercial goods, our team handles it with precision. We operate secure facilities and maintain a fleet ready to move your assets safely across South Africa.
             </p>
 
@@ -28,7 +28,7 @@ export function MovingStorageHighlight() {
               {['Secure short and long-term warehousing', 'Professional packing and unpacking', 'Commercial and residential relocations', 'Inventory management and distribution'].map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-accent shrink-0 mt-2" />
-                  <span className="font-sans text-background/90 text-lg leading-snug">{item}</span>
+                  <span className="font-sans text-foreground/90 text-lg leading-snug">{item}</span>
                 </li>
               ))}
             </ul>
@@ -46,7 +46,7 @@ export function MovingStorageHighlight() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative h-[400px] lg:h-[600px] border-2 border-background overflow-hidden"
+            className="relative h-[400px] lg:h-[600px] border-2 border-foreground overflow-hidden"
           >
             <img
               src={storageBg}

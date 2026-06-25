@@ -35,7 +35,7 @@ export function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section className="py-20 md:py-32 bg-neutral-800 text-background border-b-2 border-neutral-800 relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-background text-foreground border-b-2 border-foreground relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-5 mix-blend-screen pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-testimonials" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -47,14 +47,14 @@ export function Testimonials() {
 
       <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
         <div className="mb-12">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-background uppercase tracking-tight leading-[0.9]">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground uppercase tracking-tight leading-[0.9]">
             Trusted by <br />
             <span className="text-accent">SA Importers.</span>
           </h2>
         </div>
 
         <div className="relative">
-          <div className="absolute -top-10 -left-6 md:-top-16 md:-left-12 text-[12rem] md:text-[18rem] leading-none font-display font-bold text-background/5 select-none pointer-events-none">
+          <div className="absolute -top-10 -left-6 md:-top-16 md:-left-12 text-[12rem] md:text-[18rem] leading-none font-display font-bold text-foreground/5 select-none pointer-events-none">
             "
           </div>
 
@@ -68,17 +68,17 @@ export function Testimonials() {
                 transition={{ duration: 0.4 }}
                 className="relative z-10"
               >
-                <p className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-background uppercase tracking-tight leading-[1.1] mb-10">
+                <p className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground uppercase tracking-tight leading-[1.1] mb-10">
                   {current.quote}
                 </p>
 
-                <footer className="flex items-center gap-4 border-t-2 border-background/20 pt-6 mt-6">
-                  <div className="w-14 h-14 bg-background text-foreground border-2 border-background flex items-center justify-center font-mono font-bold text-xl rounded-none shrink-0 uppercase">
+                <footer className="flex items-center gap-4 border-t-2 border-foreground/20 pt-6 mt-6">
+                  <div className="w-14 h-14 bg-foreground text-background border-2 border-foreground flex items-center justify-center font-mono font-bold text-xl rounded-none shrink-0 uppercase">
                     {current.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-mono font-bold uppercase tracking-wider text-background text-lg">{current.name}</div>
-                    <div className="font-mono text-xs uppercase tracking-widest text-background/60">
+                    <div className="font-mono font-bold uppercase tracking-wider text-foreground text-lg">{current.name}</div>
+                    <div className="font-mono text-xs uppercase tracking-widest text-foreground/60">
                       {current.role} // {current.company}
                     </div>
                   </div>
@@ -95,15 +95,15 @@ export function Testimonials() {
                   key={i}
                   aria-label={`Show testimonial ${i + 1}`}
                   onClick={() => setIndex(i)}
-                  className="w-12 h-12 flex items-center justify-center border-2 border-background/30 hover:border-background/60 transition-colors group rounded-none outline-none"
+                  className="w-12 h-12 flex items-center justify-center border-2 border-foreground/30 hover:border-foreground/60 transition-colors group rounded-none outline-none"
                 >
                   <span className={`w-3 h-3 rounded-none transition-all duration-300 ${
-                    i === index ? "bg-accent" : "bg-background/20 group-hover:bg-background/50"
+                    i === index ? "bg-accent" : "bg-foreground/20 group-hover:bg-foreground/50"
                   }`} />
                 </button>
               ))}
             </div>
-            <span className="ml-4 text-sm text-background/60 font-mono font-bold tracking-widest">
+            <span className="ml-4 text-sm text-foreground/60 font-mono font-bold tracking-widest">
               [{String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}]
             </span>
           </div>
