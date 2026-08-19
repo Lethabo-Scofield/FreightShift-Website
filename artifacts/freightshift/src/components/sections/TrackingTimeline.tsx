@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Anchor, Plane, Truck, CheckCircle2, AlertTriangle, Clock, PackageCheck, FileSearch, XCircle, RotateCcw, type LucideIcon } from "lucide-react";
+import { Anchor, Plane, Truck, CheckCircle2, AlertTriangle, Clock, PackageCheck, FileSearch, XCircle, RotateCcw, MapPin, type LucideIcon } from "lucide-react";
 import { STATUS_META, type TrackingEvent, type TrackingStatus } from "@/lib/tracking";
 
 const ICON_BY_STATUS: Record<TrackingStatus, LucideIcon> = {
@@ -22,11 +22,11 @@ const MODE_ICON: Record<string, LucideIcon> = {
 };
 
 const TONE_DOT: Record<string, string> = {
-  neutral: "bg-background text-foreground border-foreground",
-  info: "bg-foreground text-background border-foreground",
-  warn: "bg-accent text-background border-accent",
-  success: "bg-foreground text-accent border-foreground",
-  danger: "bg-red-600 text-white border-red-600",
+  neutral: "bg-secondary text-foreground border-foreground",
+  info: "bg-brand-blue text-background border-brand-blue",
+  warn: "bg-brand-orange text-background border-brand-orange",
+  success: "bg-emerald-700 text-background border-emerald-700",
+  danger: "bg-destructive text-destructive-foreground border-destructive",
 };
 
 function formatDate(iso: string) {
@@ -50,7 +50,7 @@ export function TrackingTimeline({ events }: { events: TrackingEvent[] }) {
   }
 
   return (
-    <ol className="relative border-l-2 border-foreground pl-6 md:pl-8 ml-3">
+    <ol className="relative ml-4 border-l-2 border-foreground/20 pl-7 md:ml-5 md:pl-10">
       {events.map((ev, i) => {
         const meta = STATUS_META[ev.status];
         const Icon = ICON_BY_STATUS[ev.status];
@@ -61,30 +61,33 @@ export function TrackingTimeline({ events }: { events: TrackingEvent[] }) {
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: Math.min(i * 0.04, 0.4) }}
-            className="relative pb-10 last:pb-0"
+            className="relative pb-9 last:pb-0"
           >
             <span
-              className={`absolute -left-[35px] md:-left-[43px] top-0 flex h-10 w-10 items-center justify-center border-2 rounded-none ${TONE_DOT[meta.tone]}`}
+              className={`absolute -left-[44px] md:-left-[53px] top-0 flex h-9 w-9 items-center justify-center border-2 shadow-[3px_3px_0_hsl(var(--foreground)/0.12)] ${TONE_DOT[meta.tone]}`}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="h-4 w-4" aria-hidden="true" />
             </span>
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/60">
+            <div className="border-l-2 border-foreground/10 pl-4 pb-1">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-foreground/55">
                 {formatDate(ev.at)}
-              </span>
-              {isLatest && (
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-background bg-foreground px-2 py-0.5 rounded-none">
-                  Latest
                 </span>
+                {isLatest && (
+                  <span className="bg-foreground px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest text-background">
+                    Latest update
+                  </span>
+                )}
+              </div>
+              <h3 className="mt-1 text-xl font-display font-bold uppercase leading-none tracking-wide text-foreground">{ev.label}</h3>
+              {ev.message && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground/75">{ev.message}</p>}
+              {ev.location && (
+                <p className="mt-3 flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-foreground/55">
+                  <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                  {ev.location}
+                </p>
               )}
             </div>
-            <h3 className="text-lg font-display font-bold text-foreground mt-2 uppercase tracking-tight">{ev.label}</h3>
-            {ev.message && <p className="text-sm font-sans text-foreground/80 mt-1">{ev.message}</p>}
-            {ev.location && (
-              <p className="text-xs font-mono font-bold uppercase tracking-wider text-foreground/50 mt-2">
-                {ev.location}
-              </p>
-            )}
           </motion.li>
         );
       })}

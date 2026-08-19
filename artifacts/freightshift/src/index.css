@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -91,10 +91,10 @@
   --brand-navy: 212 74% 14%; /* #0a2540 deep navy */
   --brand-orange: 17 100% 50%;
 
-  --app-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --app-font-sans: 'DM Sans', system-ui, sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
-  --app-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --app-font-display: 'Barlow Condensed', 'DM Sans', system-ui, sans-serif;
 
   --radius: 0;
   
@@ -149,6 +149,17 @@
   html {
     scroll-behavior: smooth;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tracking-scanline {
+    animation: tracking-scanline 2.8s ease-in-out infinite;
+  }
+}
+
+@keyframes tracking-scanline {
+  0%, 100% { transform: scaleX(0.35); opacity: .35; transform-origin: left; }
+  50% { transform: scaleX(1); opacity: 1; transform-origin: left; }
 }
 
 @layer utilities {

@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { Search, Package, MapPin, Calendar, Loader2, AlertCircle, ArrowRight } from "lucide-react";
+import { Search, Package, MapPin, Calendar, Loader2, AlertCircle, ArrowRight, CheckCircle2, Clock3, Truck, FileSearch, Plane, Anchor, CircleDotDashed, RotateCcw, XCircle, type LucideIcon } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -20,11 +20,30 @@ import {
 import { TrackingTimeline, ModeBadge } from "@/components/sections/TrackingTimeline";
 
 const TONE_RING: Record<string, string> = {
-  neutral: "bg-background text-foreground ring-foreground border-2 border-foreground",
-  info: "bg-foreground text-background ring-foreground border-2 border-foreground",
-  warn: "bg-accent text-background ring-accent border-2 border-accent",
-  success: "bg-foreground text-accent ring-foreground border-2 border-foreground",
-  danger: "bg-red-600 text-white ring-red-600 border-2 border-red-600",
+  neutral: "bg-secondary text-foreground border-foreground",
+  info: "bg-brand-blue text-background border-brand-blue",
+  warn: "bg-brand-orange text-background border-brand-orange",
+  success: "bg-emerald-700 text-background border-emerald-700",
+  danger: "bg-destructive text-destructive-foreground border-destructive",
+};
+
+const STATUS_ICON: Record<TrackingOrder["currentStatus"], LucideIcon> = {
+  pending: Clock3,
+  picked_up: Package,
+  in_transit: Truck,
+  customs: FileSearch,
+  out_for_delivery: Truck,
+  delivered: CheckCircle2,
+  delayed: AlertCircle,
+  failed_delivery: AlertCircle,
+  returned: RotateCcw,
+  cancelled: XCircle,
+};
+
+const MODE_ICON: Record<NonNullable<TrackingOrder["mode"]>, LucideIcon> = {
+  sea: Anchor,
+  air: Plane,
+  road: Truck,
 };
 
 function readCodeFromUrl(): string {
@@ -190,7 +209,7 @@ function LoadingCard({ code }: { code: string }) {
   return (
     <div className="rounded-none border-2 border-foreground bg-background p-10 md:p-16 text-center">
       <Loader2 className="w-8 h-8 text-accent animate-spin mx-auto mb-4" />
-      <p className="text-sm font-mono font-bold uppercase tracking-wider text-foreground/60">
+            <p className="text-sm font-mono font-bold uppercase tracking-wider text-foreground/60">
         Looking up <span className="text-foreground">{code}</span>…
       </p>
     </div>
@@ -250,16 +269,18 @@ function OrderCard({ order }: { order: TrackingOrder }) {
   const meta = STATUS_META[order.currentStatus];
   const eta = formatEta(order.estimatedDeliveryDate);
   const statusLabel = order.statusLabel ?? meta.label;
+  const StatusIcon = STATUS_ICON[order.currentStatus];
+  const RouteModeIcon = order.mode ? MODE_ICON[order.mode] : CircleDotDashed;
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="rounded-none border-2 border-foreground bg-background shadow-none overflow-hidden"
+      className="overflow-hidden border-2 border-foreground bg-background shadow-[8px_8px_0_hsl(var(--foreground)/0.1)]"
     >
       {/* Header */}
-      <div className="p-6 md:p-8 border-b-2 border-foreground">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="border-b-2 border-foreground p-6 md:p-8">
+        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div>
             <p className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/50 mb-2">
               // TRACKING ID
@@ -274,41 +295,43 @@ function OrderCard({ order }: { order: TrackingOrder }) {
             )}
           </div>
           <div
-            className={`inline-flex items-center gap-2 px-4 py-2 font-mono font-bold text-xs uppercase tracking-wider rounded-none ${TONE_RING[meta.tone]}`}
+            className={`inline-flex items-center gap-2 border-2 px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider shadow-[3px_3px_0_hsl(var(--foreground)/0.14)] ${TONE_RING[meta.tone]}`}
           >
-            <span className="w-2 h-2 bg-current rounded-none" />
+            <StatusIcon className="h-4 w-4" aria-hidden="true" />
             {statusLabel}
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t-2 border-foreground/10">
+        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border-2 border-foreground bg-foreground sm:grid-cols-3">
           {(order.origin || order.destination) && (
-            <div className="flex flex-col gap-2">
+            <div className="flex min-h-32 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Route</p>
               </div>
-              <p className="font-mono font-bold text-foreground text-sm truncate uppercase">
-                {order.origin ?? "—"} → {order.destination ?? "—"}
-              </p>
+              <div className="flex items-center gap-2 font-mono text-sm font-bold uppercase text-foreground">
+                <span className="min-w-0 flex-1 truncate">{order.origin ?? "—"}</span>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center border border-foreground/30 text-accent"><RouteModeIcon className="h-3.5 w-3.5" aria-hidden="true" /></span>
+                <span className="min-w-0 flex-1 truncate text-right">{order.destination ?? "—"}</span>
+              </div>
             </div>
           )}
           {eta && (
-            <div className="flex flex-col gap-2">
+            <div className="flex min-h-32 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-accent shrink-0" />
                 <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Estimated Delivery</p>
               </div>
-              <p className="font-mono font-bold text-foreground text-sm uppercase">{eta}</p>
+              <p className="font-display text-2xl font-bold uppercase leading-none tracking-wide text-foreground">{eta}</p>
             </div>
           )}
           {order.mode && (
-            <div className="flex flex-col gap-2">
+            <div className="flex min-h-32 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
                 <Package className="w-4 h-4 text-accent shrink-0" />
                 <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Mode</p>
               </div>
-              <div className="mt-0.5">
+              <div>
                 <ModeBadge mode={order.mode} />
               </div>
             </div>
@@ -316,17 +339,21 @@ function OrderCard({ order }: { order: TrackingOrder }) {
         </div>
 
         {meta.whatNext && (
-          <div className="mt-8 border-2 border-foreground bg-background text-foreground px-6 py-4 text-sm font-sans">
+          <div className="mt-8 border-l-4 border-accent bg-secondary px-5 py-4 text-sm leading-relaxed text-foreground">
+            <span className="mr-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground/50">What happens next</span>
             {meta.whatNext}
           </div>
         )}
       </div>
 
       {/* Timeline */}
-      <div className="p-6 md:p-8 bg-background">
-        <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-foreground/50 mb-8">
-          // TIMELINE
-        </h3>
+      <div className="bg-background p-6 md:p-8">
+        <div className="mb-8 flex items-center gap-4">
+          <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-foreground/50">
+            // TIMELINE
+          </h3>
+          <span className="tracking-scanline h-px flex-1 bg-accent" aria-hidden="true" />
+        </div>
         <TrackingTimeline events={order.events} />
       </div>
 
