@@ -24,6 +24,7 @@ export type TrackingOrder = {
   origin?: string;
   destination?: string;
   mode?: "sea" | "air" | "road";
+  statusLabel?: string;
   weightKg?: number;
   volumeCbm?: number;
   estimatedDeliveryDate?: string;
@@ -54,6 +55,96 @@ function getApiBase(): string {
   return (fromEnv ?? DEFAULT_API_BASE).replace(/\/$/, "");
 }
 
+type OlyxeeTrackingResponse = {
+  trackingId?: unknown;
+  reference?: unknown;
+  orderReference?: unknown;
+  origin?: unknown;
+  destination?: unknown;
+  mode?: unknown;
+  transportMode?: unknown;
+  statusLabel?: unknown;
+  estimatedDeliveryDate?: unknown;
+  currentStatus?: unknown;
+  status?: unknown;
+  events?: unknown;
+};
+
+const STATUS_BY_API_VALUE: Record<string, TrackingStatus> = {
+  PENDING: "pending",
+  ORDER_CONFIRMED: "pending",
+  PICKED_UP: "picked_up",
+  COLLECTED_FROM_SUPPLIER: "picked_up",
+  IN_TRANSIT: "in_transit",
+  ARRIVED_AT_DESTINATION: "customs",
+  CUSTOMS: "customs",
+  OUT_FOR_DELIVERY: "out_for_delivery",
+  DELIVERED: "delivered",
+  DELIVERED_COLLECTED: "delivered",
+  DELAYED: "delayed",
+  FAILED_DELIVERY: "failed_delivery",
+  RETURNED: "returned",
+  CANCELLED: "cancelled",
+};
+
+function asOptionalString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
+function normalizeStatus(value: unknown): TrackingStatus {
+  const key = asOptionalString(value)?.trim().toUpperCase().replace(/[\s-]+/g, "_");
+  return (key && STATUS_BY_API_VALUE[key]) || "pending";
+}
+
+function normalizeMode(value: unknown): TrackingOrder["mode"] {
+  const mode = asOptionalString(value)?.trim().toLowerCase();
+  return mode === "sea" || mode === "air" || mode === "road" ? mode : undefined;
+}
+
+function normalizeEvents(value: unknown): TrackingEvent[] {
+  if (!Array.isArray(value)) return [];
+
+  return value.flatMap((event) => {
+    if (!event || typeof event !== "object") return [];
+    const item = event as Record<string, unknown>;
+    const at = asOptionalString(item.at) ?? asOptionalString(item.timestamp);
+    const label = asOptionalString(item.label) ?? asOptionalString(item.statusLabel);
+    if (!at || !label) return [];
+
+    return [{
+      at,
+      status: normalizeStatus(item.status),
+      label,
+      message: asOptionalString(item.message) ?? asOptionalString(item.notes),
+      location: asOptionalString(item.location),
+    }];
+  });
+}
+
+function normalizeTrackingResponse(data: unknown): TrackingOrder {
+  if (!data || typeof data !== "object") {
+    throw new Error("Tracking service returned an invalid response.");
+  }
+
+  const response = data as OlyxeeTrackingResponse;
+  const trackingId = asOptionalString(response.trackingId);
+  if (!trackingId) {
+    throw new Error("Tracking service returned an invalid shipment.");
+  }
+
+  return {
+    trackingId,
+    reference: asOptionalString(response.reference) ?? asOptionalString(response.orderReference),
+    origin: asOptionalString(response.origin),
+    destination: asOptionalString(response.destination),
+    mode: normalizeMode(response.transportMode) ?? normalizeMode(response.mode),
+    statusLabel: asOptionalString(response.statusLabel),
+    estimatedDeliveryDate: asOptionalString(response.estimatedDeliveryDate),
+    currentStatus: normalizeStatus(response.currentStatus ?? response.status),
+    events: normalizeEvents(response.events),
+  };
+}
+
 export async function fetchTracking(code: string): Promise<TrackingOrder | null> {
   const trimmed = code.trim();
   if (!trimmed) return null;
@@ -65,5 +156,5 @@ export async function fetchTracking(code: string): Promise<TrackingOrder | null>
   if (!res.ok) {
     throw new Error(`Tracking lookup failed (${res.status})`);
   }
-  return (await res.json()) as TrackingOrder;
+  return normalizeTrackingResponse(await res.json());
 }

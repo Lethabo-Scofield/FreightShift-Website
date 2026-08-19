@@ -249,6 +249,7 @@ function ErrorCard({ message }: { message: string }) {
 function OrderCard({ order }: { order: TrackingOrder }) {
   const meta = STATUS_META[order.currentStatus];
   const eta = formatEta(order.estimatedDeliveryDate);
+  const statusLabel = order.statusLabel ?? meta.label;
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -276,7 +277,7 @@ function OrderCard({ order }: { order: TrackingOrder }) {
             className={`inline-flex items-center gap-2 px-4 py-2 font-mono font-bold text-xs uppercase tracking-wider rounded-none ${TONE_RING[meta.tone]}`}
           >
             <span className="w-2 h-2 bg-current rounded-none" />
-            {meta.label}
+            {statusLabel}
           </div>
         </div>
 
