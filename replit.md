@@ -1,9 +1,10 @@
-# [Project name]
+# FreightShift
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+FreightShift is a South African freight-logistics website for China-to-South-Africa shipping enquiries and shipment tracking.
 
 ## Run & Operate
 
+- `PORT=5000 pnpm --filter @workspace/freightshift run dev` — run the FreightShift frontend in the Replit preview
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
