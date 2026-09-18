@@ -35,7 +35,7 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Important: This is an existing production website inside Replit. Inspect the existing codebase first and modify the current components and styles. Do not create a second website, duplicate pages, replace working functionality, or rebuild the project from scratch. Preserve FreightShift's existing brand identity and functionality.
 
 ## Gotchas
 

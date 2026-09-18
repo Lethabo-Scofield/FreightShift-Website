@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex items-center min-h-screen pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-background border-b-2 border-foreground"
+      className="relative flex min-h-[720px] items-center overflow-hidden border-b-2 border-foreground bg-background pt-24 pb-14 md:min-h-screen md:pt-32 md:pb-24"
     >
       {/* Background photo */}
       <img
@@ -26,7 +26,7 @@ export function Hero() {
       />
 
       {/* Readability shade: darkens the left so the white copy stays clear while the photo stays visible on the right */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-foreground/80 via-foreground/35 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-foreground/90 via-foreground/60 to-foreground/20 pointer-events-none md:from-foreground/80 md:via-foreground/35 md:to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">

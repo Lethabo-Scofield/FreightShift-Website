@@ -206,7 +206,7 @@ export function Contact() {
                       <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/50">
                         Email
                       </span>
-                      <span className="block truncate font-mono text-sm font-bold">
+                      <span className="block break-all font-mono text-sm font-bold">
                         {category.email}
                       </span>
                     </span>

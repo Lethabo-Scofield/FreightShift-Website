@@ -1,5 +1,4 @@
 import { Link, useLocation } from "wouter";
-import { FaWhatsapp } from "react-icons/fa";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import logoUrl from "@/assets/freightshift-logo.png";
 import { goToQuote } from "@/lib/scroll-to-quote";
@@ -14,9 +13,9 @@ const quickLinks = [
 export function Footer() {
   const [, navigate] = useLocation();
   return (
-    <footer className="bg-background text-foreground pt-16 md:pt-24 pb-12 border-t-2 border-foreground">
+    <footer className="bg-background text-foreground pt-12 md:pt-24 pb-8 md:pb-12 border-t-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-16 mb-10 md:mb-16">
           {/* Brand */}
           <div className="flex flex-col gap-6">
             <Link
@@ -37,7 +36,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/40 mb-6 flex items-center gap-2">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/40 mb-4 md:mb-6 flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-accent inline-block" />
               Quick Links
             </h4>
@@ -125,7 +124,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t-2 border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs uppercase tracking-widest text-foreground/40">
+        <div className="pt-6 md:pt-8 border-t-2 border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 font-mono text-xs uppercase tracking-widest text-foreground/40 text-center md:text-left">
           <p>
             © 2026 FreightShift International Logistics (Pty) Ltd. All rights reserved.
           </p>
