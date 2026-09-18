@@ -15,10 +15,10 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
 
   return (
     <section
-      className={`relative pt-24 pb-12 md:pt-40 md:pb-24 overflow-hidden border-b-2 border-foreground ${
+      className={`relative pt-20 pb-10 md:pt-40 md:pb-24 overflow-hidden border-b-2 border-foreground ${
         hasImage
           ? "bg-foreground text-background"
-          : "bg-background"
+        : "bg-section-alt"
       }`}
     >
       {hasImage ? (
@@ -34,7 +34,7 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
       ) : (
         <>
           {/* Subtle grid pattern */}
-          <div className="absolute inset-0 z-0 opacity-10 mix-blend-multiply pointer-events-none">
+          <div className="absolute inset-0 z-0 opacity-[0.16] text-brand-blue pointer-events-none">
             <svg width="100%" height="100%">
               <pattern id="grid-header" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -42,13 +42,37 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
               <rect width="100%" height="100%" fill="url(#grid-header)" />
             </svg>
           </div>
+          {/* Faint corridor lines add an operational, route-planning feel without competing with the copy. */}
+          <svg
+            className="absolute inset-0 z-0 h-full w-full text-brand-blue opacity-[0.14] pointer-events-none"
+            viewBox="0 0 1200 480"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M-40 380 C170 315 205 92 470 160 S785 395 1240 86"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
+            <path
+              d="M-40 120 C185 170 300 35 535 106 S865 295 1240 240"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+            <circle cx="470" cy="160" r="5" fill="currentColor" />
+            <circle cx="785" cy="318" r="5" fill="currentColor" />
+          </svg>
+          <div className="absolute right-0 top-0 h-24 w-24 border-b-2 border-l-2 border-brand-blue/20 pointer-events-none md:h-40 md:w-40" />
+          <div className="absolute bottom-0 left-0 h-16 w-16 border-r-2 border-t-2 border-brand-blue/20 pointer-events-none md:h-24 md:w-24" />
         </>
       )}
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {breadcrumb && breadcrumb.length > 0 && (
           <nav
-            className={`flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-8 ${
+            className={`flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-6 md:mb-8 ${
               hasImage ? "text-background/70" : "text-foreground/50"
             }`}
             aria-label="Breadcrumb"

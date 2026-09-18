@@ -140,18 +140,19 @@ export default function TrackPage() {
           breadcrumb={[{ label: "Track" }]}
         />
 
-        <section className="py-20 md:py-32">
+        <section className="section-alt section-grid border-b-2 border-foreground py-14 md:py-20">
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             {/* Search */}
             <form
               onSubmit={onSubmit}
-              className="bg-background border-2 border-foreground rounded-none p-6 md:p-8 flex flex-col sm:flex-row gap-4"
+              className="bg-card border-2 border-foreground rounded-none p-4 md:p-6 flex flex-col sm:flex-row gap-3 shadow-[6px_6px_0_hsl(var(--brand-blue)/0.12)]"
               role="search"
               aria-label="Track a shipment"
             >
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/40" />
                 <Input
+                  data-testid="input-tracking-id"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Enter your tracking ID"
@@ -162,8 +163,9 @@ export default function TrackPage() {
                 />
               </div>
               <Button
+                data-testid="button-track-shipment"
                 type="submit"
-                className="bg-accent hover:bg-foreground text-background h-14 px-8 gap-3 font-mono font-bold tracking-wider uppercase rounded-none border-none"
+                className="bg-brand-blue hover:bg-foreground text-background h-14 px-8 gap-3 font-mono font-bold tracking-wider uppercase rounded-none border-none"
               >
                 Track
                 <ArrowRight className="w-4 h-4" />
@@ -175,7 +177,7 @@ export default function TrackPage() {
             </p>
 
             {/* States */}
-            <div className="mt-12">
+            <div className="mt-8">
               {state.kind === "idle" && <IdleHint />}
               {state.kind === "loading" && <LoadingCard code={state.code} />}
               {state.kind === "missing" && <MissingCard code={state.code} />}
@@ -193,8 +195,8 @@ export default function TrackPage() {
 
 function IdleHint() {
   return (
-    <div className="rounded-none border-2 border-dashed border-foreground/30 bg-background p-10 md:p-16 text-center">
-      <div className="mx-auto w-16 h-16 border-2 border-foreground bg-foreground text-background flex items-center justify-center mb-6">
+    <div className="rounded-none border-2 border-dashed border-foreground/30 bg-card p-8 md:p-12 text-center">
+      <div className="mx-auto w-14 h-14 border-2 border-foreground bg-foreground text-background flex items-center justify-center mb-5">
         <Package className="w-6 h-6" />
       </div>
       <h2 className="text-2xl font-display font-bold text-foreground mb-2 uppercase tracking-tight">Have a tracking ID?</h2>
@@ -207,7 +209,7 @@ function IdleHint() {
 
 function LoadingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-none border-2 border-foreground bg-background p-10 md:p-16 text-center">
+    <div className="rounded-none border-2 border-foreground bg-card p-8 md:p-12 text-center">
       <Loader2 className="w-8 h-8 text-accent animate-spin mx-auto mb-4" />
             <p className="text-sm font-mono font-bold uppercase tracking-wider text-foreground/60">
         Looking up <span className="text-foreground">{code}</span>…
@@ -218,7 +220,7 @@ function LoadingCard({ code }: { code: string }) {
 
 function MissingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-none border-2 border-foreground bg-background text-foreground p-8 md:p-10">
+    <div className="rounded-none border-2 border-foreground bg-card text-foreground p-6 md:p-8">
       <div className="flex flex-col sm:flex-row items-start gap-6">
         <div className="w-12 h-12 bg-accent text-background flex items-center justify-center shrink-0">
           <AlertCircle className="w-6 h-6" />
@@ -251,7 +253,7 @@ function MissingCard({ code }: { code: string }) {
 
 function ErrorCard({ message }: { message: string }) {
   return (
-    <div className="rounded-none border-2 border-red-600 bg-red-600 text-white p-8 md:p-10">
+    <div className="rounded-none border-2 border-destructive bg-destructive text-destructive-foreground p-6 md:p-8">
       <div className="flex items-start gap-6">
         <div className="w-12 h-12 border-2 border-white flex items-center justify-center shrink-0">
           <AlertCircle className="w-6 h-6" />
@@ -276,7 +278,7 @@ function OrderCard({ order }: { order: TrackingOrder }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="overflow-hidden border-2 border-foreground bg-background shadow-[8px_8px_0_hsl(var(--foreground)/0.1)]"
+      className="overflow-hidden border-2 border-foreground bg-card shadow-[8px_8px_0_hsl(var(--foreground)/0.1)]"
     >
       {/* Header */}
       <div className="border-b-2 border-foreground p-6 md:p-8">
@@ -304,7 +306,7 @@ function OrderCard({ order }: { order: TrackingOrder }) {
 
         <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border-2 border-foreground bg-foreground sm:grid-cols-3">
           {(order.origin || order.destination) && (
-            <div className="flex min-h-32 flex-col justify-between gap-4 bg-background p-5">
+            <div className="flex min-h-24 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Route</p>
@@ -317,7 +319,7 @@ function OrderCard({ order }: { order: TrackingOrder }) {
             </div>
           )}
           {eta && (
-            <div className="flex min-h-32 flex-col justify-between gap-4 bg-background p-5">
+            <div className="flex min-h-24 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-accent shrink-0" />
                 <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Estimated Delivery</p>
@@ -326,7 +328,7 @@ function OrderCard({ order }: { order: TrackingOrder }) {
             </div>
           )}
           {order.mode && (
-            <div className="flex min-h-32 flex-col justify-between gap-4 bg-background p-5">
+            <div className="flex min-h-24 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
                 <Package className="w-4 h-4 text-accent shrink-0" />
                 <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Mode</p>

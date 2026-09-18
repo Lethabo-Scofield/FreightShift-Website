@@ -7,7 +7,7 @@ export function MovingStorageHighlight() {
   const [, navigate] = useLocation();
 
   return (
-    <section className="py-20 md:py-32 bg-background text-foreground relative border-b-2 border-foreground">
+    <section className="section-alt py-16 md:py-32 text-foreground relative border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <motion.div

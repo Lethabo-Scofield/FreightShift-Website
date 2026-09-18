@@ -3,7 +3,7 @@ import officeImage from "@assets/WhatsApp_Image_2026-04-29_at_2.53.56_AM_1777424
 
 export function VisionMission() {
   return (
-    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground">
+    <section className="section-alt section-grid py-16 md:py-32 border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
           <motion.div 

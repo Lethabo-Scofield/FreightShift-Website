@@ -154,7 +154,7 @@ export function Quote() {
   };
 
   return (
-    <section id="quote" className="py-20 md:py-32 bg-background border-b-2 border-foreground relative">
+    <section id="quote" className="py-16 md:py-32 bg-background border-b-2 border-foreground relative">
       <div className="absolute inset-0 z-0 opacity-10 mix-blend-multiply pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-quote" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -164,7 +164,7 @@ export function Quote() {
         </svg>
       </div>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -175,7 +175,7 @@ export function Quote() {
               Clear rates.<br />No surprises.
             </h2>
 
-            <ul className="space-y-6 mb-10 border-t-2 border-foreground/10 pt-6">
+            <ul className="space-y-4 mb-8 border-t-2 border-foreground/10 pt-5">
               <li className="flex gap-4">
                 <div className="mt-1">
                   <Calculator className="w-5 h-5 text-accent" />
@@ -198,7 +198,7 @@ export function Quote() {
               </li>
             </ul>
 
-            <div className="p-6 bg-background border-2 border-foreground rounded-none space-y-4">
+            <div className="p-5 md:p-6 bg-background border-2 border-foreground rounded-none space-y-3">
               <h4 className="font-mono font-bold uppercase tracking-wider text-foreground text-sm mb-4">
                 Need help now?
               </h4>
@@ -211,8 +211,8 @@ export function Quote() {
                 <FaWhatsapp className="w-5 h-5" />
                 WhatsApp Us
               </a>
-              <a
-                href="tel:+27100113971"
+                <a
+                  href="tel:0100113971"
                 className="flex items-center gap-3 text-foreground hover:text-accent transition-colors font-mono font-bold text-sm uppercase tracking-wider"
               >
                 <Phone className="w-5 h-5" />
@@ -533,7 +533,7 @@ export function Quote() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-accent hover:bg-accent/90 text-background h-14 text-sm font-mono font-bold uppercase tracking-wider border-none rounded-none disabled:opacity-70 mt-4"
+                     className="w-full bg-brand-orange hover:bg-brand-orange/90 text-foreground h-14 text-sm font-mono font-bold uppercase tracking-wider border-none rounded-none disabled:opacity-70 mt-4"
                   >
                     {isSubmitting ? "Sending…" : "Get my quote"}
                   </Button>

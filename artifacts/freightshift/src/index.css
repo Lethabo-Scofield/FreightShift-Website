@@ -43,6 +43,7 @@
   --color-brand-blue: hsl(var(--brand-blue));
   --color-brand-navy: hsl(var(--brand-navy));
   --color-brand-orange: hsl(var(--brand-orange));
+  --color-section-alt: hsl(var(--section-alt));
 
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
@@ -72,8 +73,9 @@
   --popover-foreground: 212 74% 14%;
   --popover-border: 220 15% 85%;
 
-  --primary: 212 74% 14%;
+  --primary: 207 85% 37%;
   --primary-foreground: 44 20% 96%;
+  --primary-border: hsl(var(--brand-blue));
   
   --secondary: 44 10% 88%;
   --secondary-foreground: 212 74% 14%;
@@ -90,6 +92,7 @@
   --brand-blue: 207 85% 37%; /* #0E5FB1 logo blue */
   --brand-navy: 212 74% 14%; /* #0a2540 deep navy */
   --brand-orange: 17 100% 50%;
+  --section-alt: 210 25% 97%;
 
   --app-font-sans: 'DM Sans', system-ui, sans-serif;
   --app-font-serif: Georgia, serif;
@@ -134,6 +137,7 @@
   
   --destructive: 0 62% 30%;
   --destructive-foreground: 44 20% 96%;
+  --section-alt: 220 35% 10%;
 }
 
 @layer base {
@@ -171,6 +175,17 @@
   .rounded-2xl,
   .rounded-3xl {
     border-radius: 0;
+  }
+
+  .section-alt {
+    background-color: hsl(var(--section-alt));
+  }
+
+  .section-grid {
+    background-image:
+      linear-gradient(hsl(var(--brand-blue) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--brand-blue) / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 

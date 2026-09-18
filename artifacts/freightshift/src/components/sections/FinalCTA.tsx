@@ -7,7 +7,7 @@ import { goToQuote } from "@/lib/scroll-to-quote";
 export function FinalCTA() {
   const [, navigate] = useLocation();
   return (
-    <section className="py-24 md:py-40 bg-background text-foreground relative overflow-hidden">
+    <section className="section-alt py-24 md:py-40 text-foreground relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10 mix-blend-screen pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-cta" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -35,7 +35,7 @@ export function FinalCTA() {
           <Button
             size="lg"
             onClick={() => goToQuote(navigate)}
-            className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-sm h-16 px-10 border-none gap-3 rounded-none shadow-[8px_8px_0px_0px_hsl(var(--foreground))] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all"
+            className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-sm h-16 px-10 border-none gap-3 rounded-none shadow-[8px_8px_0px_0px_hsl(var(--foreground))] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all"
           >
             Get a Quote
             <ArrowDownRight className="w-5 h-5" />
@@ -51,7 +51,7 @@ export function FinalCTA() {
               variant="outline"
               className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-sm h-16 px-10 gap-3 rounded-none transition-colors"
             >
-              <FaWhatsapp className="w-5 h-5 text-green-500 group-hover:text-green-600" />
+              <FaWhatsapp className="w-5 h-5 text-brand-blue" />
               WhatsApp Us
             </Button>
           </a>

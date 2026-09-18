@@ -18,7 +18,7 @@ import { localBusinessJsonLd, servicesJsonLd } from "@/lib/jsonld";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Seo {...PAGE_SEO.home} jsonLd={[localBusinessJsonLd, servicesJsonLd]} />
       <Navbar />
       <main>

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { FaWhatsapp } from "react-icons/fa";
-import { Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import logoUrl from "@/assets/freightshift-logo.png";
 import { goToQuote } from "@/lib/scroll-to-quote";
 
@@ -70,28 +70,38 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/40 mb-6 flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-accent inline-block" />
-              Contact Us
+              General Enquiries
             </h4>
             <ul className="flex flex-col gap-4">
               <li>
                 <a
-                  href="tel:+27100113971"
+                  href="mailto:info@freightshiftlogistics.co.za"
+                  data-testid="link-footer-general-email"
                   className="flex items-center gap-3 text-sm font-mono text-foreground hover:text-accent transition-colors"
                 >
-                  <Phone className="w-4 h-4" />
-                  010 011 3971
+                  <Mail className="w-4 h-4 shrink-0" />
+                  <span className="break-all">info@freightshiftlogistics.co.za</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/message/EVTMLWYQY2OCG1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:0100113971"
+                  data-testid="link-footer-general-phone"
                   className="flex items-center gap-3 text-sm font-mono text-foreground hover:text-accent transition-colors"
                 >
-                  <FaWhatsapp className="w-4 h-4" />
-                  WhatsApp Us
+                  <Phone className="w-4 h-4 shrink-0" />
+                  010 011 3971
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  data-testid="link-footer-operations-support"
+                  className="flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-wider text-foreground hover:text-accent transition-colors"
+                >
+                  Shipment &amp; Operations Support
+                  <ArrowUpRight className="h-4 w-4 shrink-0" />
+                </Link>
               </li>
               <li className="flex items-start gap-3 text-sm font-mono text-foreground/70">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-foreground/40" />

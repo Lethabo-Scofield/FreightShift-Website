@@ -12,7 +12,7 @@ const alsoOffer = [
 
 export function ChinaSACorridor() {
   return (
-    <section id="china-sa" className="py-20 md:py-32 bg-background relative overflow-hidden border-b-2 border-foreground">
+    <section id="china-sa" className="section-alt section-grid py-16 md:py-32 relative overflow-hidden border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div

@@ -42,7 +42,7 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 md:py-32 bg-background border-b-2 border-foreground relative overflow-hidden">
+    <section id="services" className="section-alt section-grid py-16 md:py-32 border-b-2 border-foreground relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="mb-16 max-w-2xl">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 mb-4 tracking-tight uppercase">What we do.</h2>

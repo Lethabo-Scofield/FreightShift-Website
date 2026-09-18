@@ -7,7 +7,7 @@ const companies = [
 
 export function CompaniesServed() {
   return (
-    <section className="py-12 bg-background border-b-2 border-foreground">
+    <section className="section-alt section-grid py-12 border-b-2 border-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">

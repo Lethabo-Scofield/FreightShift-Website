@@ -34,8 +34,8 @@ export function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background border-b-2 border-foreground py-2"
-          : "bg-background py-4"
+           ? "bg-background border-b-2 border-foreground py-2"
+           : "bg-background py-3 md:py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -77,14 +77,14 @@ export function Navbar() {
               rel="noopener noreferrer"
             >
               <Button variant="outline" size="sm" className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-xs h-10 px-4 gap-2 rounded-none">
-                <FaWhatsapp className="w-4 h-4 text-green-600" />
+                <FaWhatsapp className="w-4 h-4 text-brand-blue" />
                 WhatsApp Us
               </Button>
             </a>
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
-              className="bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-xs h-10 px-6 border-none rounded-none"
+               className="bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-xs h-10 px-6 border-none rounded-none"
             >
               Get a Quote
             </Button>
@@ -134,7 +134,7 @@ export function Navbar() {
                   className="w-full"
                 >
                   <Button variant="outline" className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-xs h-12 gap-2 rounded-none">
-                    <FaWhatsapp className="w-4 h-4 text-green-600" />
+                    <FaWhatsapp className="w-4 h-4 text-brand-blue" />
                     WhatsApp Us
                   </Button>
                 </a>
@@ -143,7 +143,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     goToQuote(navigate);
                   }}
-                  className="w-full bg-accent hover:bg-accent/90 text-background font-mono font-bold uppercase tracking-wider text-xs h-12 border-none rounded-none"
+                   className="w-full bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-xs h-12 border-none rounded-none"
                 >
                   Get a Quote
                 </Button>

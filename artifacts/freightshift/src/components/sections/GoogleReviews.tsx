@@ -7,7 +7,7 @@ const GOOGLE_REVIEWS_LINK = "GOOGLE_REVIEWS_LINK_HERE";
 
 export function GoogleReviews() {
   return (
-    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground relative overflow-hidden">
+    <section className="section-alt py-16 md:py-32 border-b-2 border-foreground relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
