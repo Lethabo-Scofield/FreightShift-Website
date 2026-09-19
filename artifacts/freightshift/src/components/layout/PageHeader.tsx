@@ -9,6 +9,7 @@ interface PageHeaderProps {
   breadcrumb?: { label: string; href?: string }[];
   backgroundImage?: string;
   imageTreatment?: "muted" | "full-color";
+  imageFit?: "cover" | "contain-desktop";
 }
 
 export function PageHeader({
@@ -18,6 +19,7 @@ export function PageHeader({
   breadcrumb,
   backgroundImage,
   imageTreatment = "muted",
+  imageFit = "cover",
 }: PageHeaderProps) {
   const hasImage = Boolean(backgroundImage);
   const hasFullColorImage = hasImage && imageTreatment === "full-color";
@@ -37,7 +39,11 @@ export function PageHeader({
             src={backgroundImage}
             alt=""
             aria-hidden="true"
-            className={`absolute inset-0 h-full w-full object-cover ${
+            className={`absolute inset-0 h-full w-full ${
+              imageFit === "contain-desktop"
+                ? "object-cover md:object-contain md:object-right"
+                : "object-cover"
+            } ${
               hasFullColorImage
                 ? "opacity-100"
                 : "grayscale mix-blend-luminosity opacity-40"

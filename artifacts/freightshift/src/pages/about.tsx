@@ -34,6 +34,7 @@ export default function About() {
           subtitle="A South African freight forwarder built for transparent, reliable imports."
           breadcrumb={[{ label: "About" }]}
           backgroundImage={aboutHeroImg}
+          imageFit="contain-desktop"
         />
         <VisionMission />
         <WhyUs />

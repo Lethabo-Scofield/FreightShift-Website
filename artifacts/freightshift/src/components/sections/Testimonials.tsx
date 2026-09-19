@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import portImage from "@assets/hero-corridor.webp";
+import deliveryImage from "@assets/image_1789777181414.png";
+import warehouseImage from "@/assets/warehouse-team-tablet.png";
 
 const testimonials = [
   {
@@ -7,18 +10,24 @@ const testimonials = [
     name: "Aisha Naidoo",
     company: "Durban Home Goods",
     role: "Founder",
+    image: portImage,
+    imageAlt: "Container terminal on the China to South Africa freight corridor",
   },
   {
     quote: "SARS clearance, handled. No more delays. Highly recommend.",
     name: "Sipho Khumalo",
     company: "Joburg Auto Parts",
     role: "Operations Manager",
+    image: warehouseImage,
+    imageAlt: "Logistics team coordinating work inside a warehouse",
   },
   {
     quote: "Real-time updates. Delivered on time, every time.",
     name: "Reza Patel",
     company: "Cape Town Imports Co.",
     role: "MD",
+    image: deliveryImage,
+    imageAlt: "Customer receiving and checking a delivered parcel",
   },
 ];
 
@@ -35,30 +44,51 @@ export function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section className="py-20 md:py-32 bg-background text-foreground border-b border-border relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-5 mix-blend-screen pointer-events-none">
-        <svg width="100%" height="100%">
-          <pattern id="grid-testimonials" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#grid-testimonials)" />
-        </svg>
-      </div>
+    <section id="testimonials" className="relative overflow-hidden border-b border-brand-blue/20 bg-brand-navy py-20 text-white md:py-28">
+      <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-blue/25 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-brand-blue/15 blur-3xl" />
 
-      <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
-        <div className="mb-12">
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight leading-[0.9]">
-            Trusted by <br />
-            SA Importers.
-          </h2>
-        </div>
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10 flex flex-col justify-between gap-4 md:mb-14 md:flex-row md:items-end"
+        >
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+              Importer experiences
+            </p>
+            <h2 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
+              Trusted by SA Importers.
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-white/65 md:text-base">
+            Feedback from South African businesses moving goods through the corridor.
+          </p>
+        </motion.div>
 
-        <div className="relative">
-          <div className="absolute -top-10 -left-6 md:-top-16 md:-left-12 text-[12rem] md:text-[18rem] leading-none font-serif font-semibold text-foreground/5 select-none pointer-events-none">
-            "
+        <div className="grid overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-2xl lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative min-h-[340px] overflow-hidden md:min-h-[460px]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={current.image}
+                src={current.image}
+                alt={current.imageAlt}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.55 }}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 rounded-full border border-white/20 bg-brand-navy/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] backdrop-blur">
+              China → South Africa
+            </div>
           </div>
 
-          <div className="relative min-h-[280px] md:min-h-[240px] flex flex-col justify-center border-l border-primary pl-6 md:pl-10 ml-2 md:ml-6">
+          <div className="flex min-h-[420px] flex-col justify-between bg-background p-6 text-foreground md:p-10 lg:p-12">
             <AnimatePresence mode="wait">
               <motion.blockquote
                 key={index}
@@ -66,46 +96,48 @@ export function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="relative z-10"
               >
-                <p className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight leading-[1.1] mb-10">
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue text-3xl font-semibold text-white">
+                  “
+                </div>
+                <p className="font-serif text-2xl font-semibold leading-snug tracking-tight text-foreground md:text-4xl">
                   {current.quote}
                 </p>
 
-                <footer className="flex items-center gap-4 border-t border-border pt-6 mt-6">
-                  <div className="w-14 h-14 bg-foreground text-background flex items-center justify-center font-semibold text-xl rounded-full shrink-0 shadow-sm">
+                <footer className="mt-10 flex items-center gap-4 border-t border-border pt-6">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-blue/10 text-lg font-bold text-brand-blue">
                     {current.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-medium tracking-wide text-foreground text-lg">{current.name}</div>
-                    <div className="font-medium text-xs tracking-wider text-foreground/60">
+                    <div className="text-base font-semibold text-foreground">{current.name}</div>
+                    <div className="mt-1 text-xs font-medium tracking-wide text-foreground/60">
                       {current.role} • {current.company}
                     </div>
                   </div>
                 </footer>
               </motion.blockquote>
             </AnimatePresence>
-          </div>
 
-          {/* Controls */}
-          <div className="flex items-center gap-4 mt-12 md:mt-16 ml-2 md:ml-6">
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  aria-label={`Show testimonial ${i + 1}`}
-                  onClick={() => setIndex(i)}
-                  className="w-12 h-12 flex items-center justify-center hover:bg-muted transition-colors group rounded-full outline-none"
-                >
-                  <span className={`w-3 h-3 rounded-full transition-all duration-300 ${
- i === index ? "bg-primary" : "bg-foreground/20 group-hover:bg-foreground/50"
- }`} />
-                </button>
-              ))}
+            <div className="mt-10 flex items-center justify-between">
+              <div className="flex gap-2">
+                {testimonials.map((testimonial, i) => (
+                  <button
+                    key={testimonial.name}
+                    aria-label={`Show testimonial ${i + 1}`}
+                    aria-current={i === index}
+                    onClick={() => setIndex(i)}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      i === index
+                        ? "w-10 bg-brand-blue"
+                        : "w-2.5 bg-foreground/20 hover:bg-foreground/40"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-xs font-semibold tracking-[0.15em] text-foreground/50">
+                {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+              </span>
             </div>
-            <span className="ml-4 text-sm text-foreground/60 font-medium tracking-wider">
-              {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
-            </span>
           </div>
         </div>
       </div>
