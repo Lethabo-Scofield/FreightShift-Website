@@ -6,8 +6,7 @@ const contactCategories = [
   {
     id: "general-enquiries",
     label: "General Enquiries",
-    description:
-      "For general information, quotations, service enquiries, partnerships, and any other general enquiries about FreightShift.",
+    description: "For quotations, services, partnerships and general information.",
     email: "info@freightshiftlogistics.co.za",
     phone: "010 011 3971",
     phoneHref: "tel:0100113971",
@@ -16,8 +15,7 @@ const contactCategories = [
   {
     id: "shipment-operations-support",
     label: "Shipment & Operations Support",
-    description:
-      "For questions regarding shipments, tracking, operations, delivery status, customs documentation, invoices, payments, accounts, and other shipment-related enquiries.",
+    description: "For shipments, tracking, customs documents, invoices, payments and accounts.",
     email: "admin@freightshiftlogistics.co.za",
     phone: "011 385 0010",
     phoneHref: "tel:0113850010",
@@ -47,13 +45,13 @@ export function Contact() {
             data-testid="contact-reply-time-badge"
             className="mb-3 text-sm font-medium text-brand-blue"
           >
-            Reply in 24 hours, faster on WhatsApp
+            Direct lines for every enquiry
           </div>
           <h2
             data-testid="contact-heading"
             className="text-4xl md:text-5xl font-serif font-semibold text-foreground tracking-tight"
           >
-            Three ways to reach us.
+            Contact the right team.
           </h2>
         </motion.div>
 
@@ -80,7 +78,7 @@ export function Contact() {
                   <div>
                     <h3 className="font-serif text-xl font-medium tracking-tight">WhatsApp Us</h3>
                     <p className="mt-1 max-w-2xl text-sm text-white/75">
-                      Our fastest channel. Message us directly for quick quotes, updates, and general questions.
+                      Start a direct conversation with our team.
                     </p>
                   </div>
                 </div>
@@ -161,24 +159,6 @@ export function Contact() {
               </div>
             </motion.div>
           ))}
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-            className="flex items-center justify-between gap-4 border-t border-border pt-5 lg:col-span-2"
-          >
-            <p className="text-sm text-foreground/65">Need a detailed shipping quote?</p>
-            <a
-              href="#quote"
-              data-testid="link-skip-to-quote"
-              className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-brand-blue transition-colors hover:text-brand-navy"
-            >
-              Go to quote form
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </motion.div>
         </div>
       </div>
     </section>

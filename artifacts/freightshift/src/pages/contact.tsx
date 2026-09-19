@@ -40,7 +40,7 @@ export default function ContactPage() {
         <PageHeader
           eyebrow="Get in Touch"
           title="Let's move your cargo."
-          subtitle="Quote in 24 hours. WhatsApp for instant replies."
+          subtitle="Choose the right team below or send a detailed quote request."
           breadcrumb={[{ label: "Contact" }]}
           backgroundImage={contactSupportImage}
           imageTreatment="full-color"

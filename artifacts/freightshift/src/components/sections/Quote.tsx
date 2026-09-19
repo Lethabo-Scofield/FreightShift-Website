@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { CheckCircle2, Clock, Calculator, Phone, Anchor, Plane } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { CheckCircle2, Calculator, Anchor, Plane } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -174,8 +173,11 @@ export function Quote() {
             <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-4 mb-6 tracking-tight">
               Clear rates.<br />No surprises.
             </h2>
+            <p className="mb-8 max-w-sm text-base leading-relaxed text-foreground/70">
+              Share your shipment details and we’ll prepare an itemised rate.
+            </p>
 
-            <ul className="space-y-4 mb-8 border-t border-foreground/10 pt-5">
+            <ul className="space-y-4 border-t border-foreground/10 pt-5">
               <li className="flex gap-4">
                 <div className="mt-1">
                   <Calculator className="w-5 h-5 text-primary" />
@@ -187,38 +189,7 @@ export function Quote() {
                   </p>
                 </div>
               </li>
-              <li className="flex gap-4">
-                <div className="mt-1">
-                  <Clock className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium tracking-wide text-foreground">Reply within 24 hours</h4>
-                  <p className="text-sm  text-foreground/70 mt-1">Usually faster on WhatsApp.</p>
-                </div>
-              </li>
             </ul>
-
-            <div className="p-5 md:p-6 bg-background border border-border rounded-xl shadow-sm space-y-3">
-              <h4 className="font-medium tracking-wide text-foreground text-sm mb-4">
-                Need help now?
-              </h4>
-              <a
-                href="https://wa.me/message/EVTMLWYQY2OCG1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-semibold text-sm tracking-wider"
-              >
-                <FaWhatsapp className="w-5 h-5 text-brand-blue" />
-                WhatsApp Us
-              </a>
-                <a
-                  href="tel:0100113971"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-semibold text-sm tracking-wider"
-              >
-                <Phone className="w-5 h-5 text-primary" />
-                010 011 3971
-              </a>
-            </div>
           </motion.div>
 
           <motion.div
