@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[720px] items-center overflow-hidden border-b-2 border-foreground bg-background pt-24 pb-14 md:min-h-screen md:pt-32 md:pb-24"
+      className="relative flex min-h-[720px] items-center overflow-hidden bg-background pt-24 pb-14 md:min-h-screen md:pt-32 md:pb-24"
     >
       {/* Background photo */}
       <img
@@ -37,7 +37,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-white break-words [text-shadow:0_2px_16px_rgba(0,0,0,0.35)]"
+              className="font-serif text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-tight leading-[1.05] mb-8 text-white break-words"
             >
               Ship from China.
               <br />
@@ -48,7 +48,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-lg md:text-xl max-w-xl mb-8 md:mb-10 font-medium text-white/90 font-mono tracking-tight [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]"
+              className="text-lg md:text-xl max-w-xl mb-8 md:mb-10 font-medium text-white/90 tracking-tight"
             >
               Door to door. One team. Zero surprises.
             </motion.p>
@@ -62,11 +62,11 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 border-none gap-2 rounded-none"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-base h-14 px-8 border-none gap-2 rounded-full shadow-lg transition-all"
                 onClick={goToQuote}
               >
                 Get a Quote
-                <ArrowDownRight className="w-4 h-4" />
+                <ArrowDownRight className="w-5 h-5" />
               </Button>
               <a
                 href="https://wa.me/message/EVTMLWYQY2OCG1"
@@ -77,9 +77,9 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white border-2 border-foreground text-foreground hover:bg-white/90 font-mono font-bold uppercase tracking-wider text-sm h-14 px-8 gap-2 w-full rounded-none"
+                  className="bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 font-medium text-base h-14 px-8 gap-2 w-full rounded-full transition-all"
                 >
-                  <FaWhatsapp className="w-5 h-5 text-green-600" />
+                  <FaWhatsapp className="w-5 h-5 text-white/80" />
                   WhatsApp Us
                 </Button>
               </a>
@@ -90,20 +90,20 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-white/90 font-bold border-t-2 border-white/20 pt-6 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-white/90 border-t border-white/20 pt-8"
             >
               <span className="flex items-center gap-2">
-                <Anchor className="w-4 h-4 text-brand-orange" />
+                <Anchor className="w-4 h-4 text-primary" />
                 Sea · 28–35 days
               </span>
-              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-white/40 rounded-none" />
+              <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2">
-                <Plane className="w-4 h-4 text-brand-orange" />
+                <Plane className="w-4 h-4 text-primary" />
                 Air · 5–9 days
               </span>
-              <span className="hidden sm:inline-block w-1.5 h-1.5 bg-white/40 rounded-none" />
+              <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2 text-white">
-                <span className="inline-block w-2 h-2 rounded-none bg-brand-orange" />
+                <span className="inline-block w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
                 Full DDP available
               </span>
             </motion.div>

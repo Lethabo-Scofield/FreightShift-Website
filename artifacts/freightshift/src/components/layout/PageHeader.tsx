@@ -15,11 +15,11 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
 
   return (
     <section
-      className={`relative pt-20 pb-10 md:pt-40 md:pb-24 overflow-hidden border-b-2 border-foreground ${
-        hasImage
-          ? "bg-foreground text-background"
-        : "bg-section-alt"
-      }`}
+      className={`relative pt-20 pb-10 md:pt-40 md:pb-24 overflow-hidden border-b border-border ${
+ hasImage
+ ? "bg-foreground text-primary-foreground"
+ : "bg-muted/30"
+ }`}
     >
       {hasImage ? (
         <>
@@ -34,7 +34,7 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
       ) : (
         <>
           {/* Subtle grid pattern */}
-          <div className="absolute inset-0 z-0 opacity-[0.16] text-brand-blue pointer-events-none">
+          <div className="absolute inset-0 z-0 opacity-[0.05] text-brand-blue pointer-events-none">
             <svg width="100%" height="100%">
               <pattern id="grid-header" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -44,7 +44,7 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
           </div>
           {/* Faint corridor lines add an operational, route-planning feel without competing with the copy. */}
           <svg
-            className="absolute inset-0 z-0 h-full w-full text-brand-blue opacity-[0.14] pointer-events-none"
+            className="absolute inset-0 z-0 h-full w-full text-brand-blue opacity-[0.1] pointer-events-none"
             viewBox="0 0 1200 480"
             preserveAspectRatio="none"
             aria-hidden="true"
@@ -64,24 +64,24 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
             <circle cx="470" cy="160" r="5" fill="currentColor" />
             <circle cx="785" cy="318" r="5" fill="currentColor" />
           </svg>
-          <div className="absolute right-0 top-0 h-24 w-24 border-b-2 border-l-2 border-brand-blue/20 pointer-events-none md:h-40 md:w-40" />
-          <div className="absolute bottom-0 left-0 h-16 w-16 border-r-2 border-t-2 border-brand-blue/20 pointer-events-none md:h-24 md:w-24" />
+          <div className="absolute right-0 top-0 h-24 w-24 border-b border-l border-border/20 pointer-events-none md:h-40 md:w-40" />
+          <div className="absolute bottom-0 left-0 h-16 w-16 border-r border-t border-border/20 pointer-events-none md:h-24 md:w-24" />
         </>
       )}
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {breadcrumb && breadcrumb.length > 0 && (
           <nav
-            className={`flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-6 md:mb-8 ${
-              hasImage ? "text-background/70" : "text-foreground/50"
-            }`}
+            className={`flex items-center gap-2 text-xs font-medium tracking-wide mb-6 md:mb-8 ${
+ hasImage ? "text-background/70" : "text-foreground/50"
+ }`}
             aria-label="Breadcrumb"
           >
             <Link
               href="/"
               className={`transition-colors ${
-                hasImage ? "hover:text-background" : "hover:text-foreground"
-              }`}
+ hasImage ? "hover:text-background" : "hover:text-foreground"
+ }`}
             >
               Home
             </Link>
@@ -92,16 +92,16 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
                   <Link
                     href={crumb.href}
                     className={`transition-colors ${
-                      hasImage ? "hover:text-background" : "hover:text-foreground"
-                    }`}
+ hasImage ? "hover:text-background" : "hover:text-foreground"
+ }`}
                   >
                     {crumb.label}
                   </Link>
                 ) : (
                   <span
                     className={`${
-                      hasImage ? "text-background" : "text-foreground"
-                    }`}
+ hasImage ? "text-background" : "text-foreground"
+ }`}
                   >
                     {crumb.label}
                   </span>
@@ -117,25 +117,25 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
           className="max-w-4xl"
         >
           {eyebrow && (
-            <div className={`mb-6 inline-flex items-center gap-2 px-3 py-1 font-mono text-xs uppercase tracking-widest font-bold ${
+            <div className={`mb-6 inline-flex items-center gap-2 px-3 py-1 text-sm font-medium tracking-wide ${
               hasImage ? "bg-background text-foreground" : "bg-foreground text-background"
-            }`}>
-               <span className="w-1.5 h-1.5 bg-accent inline-block rounded-none" />
+ }`}>
+               <span className="w-1.5 h-1.5 bg-primary inline-block rounded-xl" />
                {eyebrow}
             </div>
           )}
           <h1
-            className={`text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display font-bold tracking-tight leading-[0.95] mb-6 uppercase break-words ${
-              hasImage ? "text-background" : "text-foreground"
-            }`}
+            className={`text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-serif font-semibold tracking-tight leading-[0.95] mb-6 break-words ${
+ hasImage ? "text-background" : "text-foreground"
+ }`}
           >
             {title}
           </h1>
           {subtitle && (
             <p
-              className={`text-lg md:text-xl font-mono tracking-tight max-w-2xl ${
-                hasImage ? "text-background/80" : "text-foreground/80"
-              }`}
+              className={`text-lg md:text-xl font-medium tracking-tight max-w-2xl ${
+ hasImage ? "text-background/80" : "text-foreground/80"
+ }`}
             >
               {subtitle}
             </p>

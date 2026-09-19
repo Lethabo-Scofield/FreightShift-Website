@@ -35,10 +35,10 @@ export const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-20 md:py-32 bg-background border-b-2 border-foreground">
+    <section className="py-20 md:py-32 bg-background border-b border-border">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4 uppercase tracking-tight">Quick answers.</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground mt-4 tracking-tight">Quick answers.</h2>
         </div>
 
         <motion.div
@@ -46,12 +46,12 @@ export function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          <Accordion type="single" collapsible className="w-full border-t-2 border-foreground">
+          <Accordion type="single" collapsible className="w-full border-t border-foreground">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-b-2 border-foreground rounded-none">
-                <AccordionTrigger className="text-left text-lg md:text-xl font-display font-bold hover:text-accent transition-colors py-6 uppercase tracking-tight">
+              <AccordionItem key={i} value={`item-${i}`} className="border-b border-border rounded-xl">
+                <AccordionTrigger className="text-left text-lg md:text-xl font-serif font-semibold hover:text-primary transition-colors py-6 tracking-tight">
                   <span className="flex items-center gap-4">
-                    <span className="text-foreground/30 font-mono text-sm">0{i + 1}</span>
+                    <span className="text-foreground/30 font-medium text-sm">0{i + 1}</span>
                     {faq.q}
                   </span>
                 </AccordionTrigger>

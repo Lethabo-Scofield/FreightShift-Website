@@ -33,10 +33,10 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-           ? "bg-background border-b-2 border-foreground py-2"
-           : "bg-background py-3 md:py-4"
-      }`}
+ isScrolled
+ ? "bg-background border-b border-border py-2"
+ : "bg-background py-3 md:py-4"
+ }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link
@@ -60,9 +60,9 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative font-mono text-xs uppercase tracking-widest font-bold transition-colors ${
-                    active ? "text-accent" : "text-foreground hover:text-accent"
-                  }`}
+                  className={`relative text-sm font-medium tracking-wide transition-colors ${
+ active ? "text-primary" : "text-foreground hover:text-primary"
+ }`}
                 >
                   {link.name}
                 </Link>
@@ -76,15 +76,15 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="outline" size="sm" className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-xs h-10 px-4 gap-2 rounded-none">
-                <FaWhatsapp className="w-4 h-4 text-brand-blue" />
+              <Button variant="outline" size="sm" className="bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide text-xs h-10 px-4 gap-2 rounded-xl">
+                <FaWhatsapp className="w-4 h-4 text-foreground/60" />
                 WhatsApp Us
               </Button>
             </a>
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
-               className="bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-xs h-10 px-6 border-none rounded-none"
+               className="bg-primary hover:bg-brand-navy text-primary-foreground font-medium tracking-wide text-xs h-10 px-6 border-none rounded-xl"
             >
               Get a Quote
             </Button>
@@ -95,11 +95,11 @@ export function Navbar() {
         <div className="lg:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-foreground rounded-none hover:bg-foreground/5">
+              <Button variant="ghost" size="icon" className="text-foreground rounded-xl hover:bg-foreground/5">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] flex flex-col pt-16 bg-background border-l-2 border-foreground rounded-none">
+            <SheetContent side="right" className="w-[300px] flex flex-col pt-16 bg-background border-l border-foreground rounded-xl">
               <VisuallyHidden>
                 <SheetTitle>Navigation menu</SheetTitle>
                 <SheetDescription>
@@ -114,13 +114,13 @@ export function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`font-mono text-sm uppercase tracking-widest font-bold py-2 border-b-2 border-foreground/10 transition-colors ${
-                        active
-                          ? "text-accent border-accent/30"
-                          : "text-foreground hover:text-accent"
-                      }`}
+                      className={`text-base font-medium tracking-wide py-2 border-b border-border/10 transition-colors ${
+ active
+ ? "text-primary border-primary/30"
+ : "text-foreground hover:text-primary"
+ }`}
                     >
-                      {active && <span className="inline-block w-2 h-2 bg-accent mr-2" />}
+                      {active && <span className="inline-block w-2 h-2 bg-primary mr-2" />}
                       {link.name}
                     </Link>
                   );
@@ -133,8 +133,8 @@ export function Navbar() {
                   rel="noopener noreferrer"
                   className="w-full"
                 >
-                  <Button variant="outline" className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-xs h-12 gap-2 rounded-none">
-                    <FaWhatsapp className="w-4 h-4 text-brand-blue" />
+                  <Button variant="outline" className="w-full bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide text-xs h-12 gap-2 rounded-xl">
+                    <FaWhatsapp className="w-4 h-4 text-foreground/60" />
                     WhatsApp Us
                   </Button>
                 </a>
@@ -143,7 +143,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     goToQuote(navigate);
                   }}
-                   className="w-full bg-brand-orange hover:bg-brand-orange/90 text-foreground font-mono font-bold uppercase tracking-wider text-xs h-12 border-none rounded-none"
+                   className="w-full bg-primary hover:bg-brand-navy text-primary-foreground font-medium tracking-wide text-xs h-12 border-none rounded-xl"
                 >
                   Get a Quote
                 </Button>

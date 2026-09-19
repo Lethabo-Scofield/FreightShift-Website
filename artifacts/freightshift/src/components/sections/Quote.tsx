@@ -154,7 +154,7 @@ export function Quote() {
   };
 
   return (
-    <section id="quote" className="py-16 md:py-32 bg-background border-b-2 border-foreground relative">
+    <section id="quote" className="py-16 md:py-32 bg-background border-b border-border relative">
       <div className="absolute inset-0 z-0 opacity-10 mix-blend-multiply pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-quote" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -171,51 +171,51 @@ export function Quote() {
             viewport={{ once: true, margin: "-50px" }}
             className="lg:col-span-2 lg:sticky lg:top-32"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-4 mb-6 uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-4 mb-6 tracking-tight">
               Clear rates.<br />No surprises.
             </h2>
 
-            <ul className="space-y-4 mb-8 border-t-2 border-foreground/10 pt-5">
+            <ul className="space-y-4 mb-8 border-t border-foreground/10 pt-5">
               <li className="flex gap-4">
                 <div className="mt-1">
-                  <Calculator className="w-5 h-5 text-accent" />
+                  <Calculator className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-mono font-bold uppercase tracking-wider text-foreground">Transparent pricing</h4>
-                  <p className="text-sm font-sans text-foreground/70 mt-1">
+                  <h4 className="font-medium tracking-wide text-foreground">Transparent pricing</h4>
+                  <p className="text-sm  text-foreground/70 mt-1">
                     Origin, freight, and destination charges, itemised.
                   </p>
                 </div>
               </li>
               <li className="flex gap-4">
                 <div className="mt-1">
-                  <Clock className="w-5 h-5 text-accent" />
+                  <Clock className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-mono font-bold uppercase tracking-wider text-foreground">Reply within 24 hours</h4>
-                  <p className="text-sm font-sans text-foreground/70 mt-1">Usually faster on WhatsApp.</p>
+                  <h4 className="font-medium tracking-wide text-foreground">Reply within 24 hours</h4>
+                  <p className="text-sm  text-foreground/70 mt-1">Usually faster on WhatsApp.</p>
                 </div>
               </li>
             </ul>
 
-            <div className="p-5 md:p-6 bg-background border-2 border-foreground rounded-none space-y-3">
-              <h4 className="font-mono font-bold uppercase tracking-wider text-foreground text-sm mb-4">
+            <div className="p-5 md:p-6 bg-background border border-border rounded-xl shadow-sm space-y-3">
+              <h4 className="font-medium tracking-wide text-foreground text-sm mb-4">
                 Need help now?
               </h4>
               <a
                 href="https://wa.me/message/EVTMLWYQY2OCG1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-accent transition-colors font-mono font-bold text-sm uppercase tracking-wider"
+                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-semibold text-sm tracking-wider"
               >
-                <FaWhatsapp className="w-5 h-5" />
+                <FaWhatsapp className="w-5 h-5 text-brand-blue" />
                 WhatsApp Us
               </a>
                 <a
                   href="tel:0100113971"
-                className="flex items-center gap-3 text-foreground hover:text-accent transition-colors font-mono font-bold text-sm uppercase tracking-wider"
+                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-semibold text-sm tracking-wider"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5 text-primary" />
                 010 011 3971
               </a>
             </div>
@@ -225,15 +225,15 @@ export function Quote() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            className="lg:col-span-3 bg-background text-foreground p-6 md:p-10 rounded-none border-2 border-foreground"
+            className="lg:col-span-3 bg-background text-foreground p-6 md:p-10 rounded-2xl border border-border shadow-lg"
           >
             {isSubmitted ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-foreground/10 rounded-none flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-10 h-10 text-accent" />
+                <div className="w-20 h-20 bg-foreground/10 rounded-xl flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-2xl font-display font-bold text-foreground uppercase mb-3 tracking-tight">Request received</h3>
-                <p className="text-foreground/70 mb-8 max-w-sm mx-auto font-sans">
+                <h3 className="text-2xl font-serif font-semibold text-foreground mb-3 tracking-tight">Request received</h3>
+                <p className="text-foreground/70 mb-8 max-w-sm mx-auto ">
                   We'll send your rate within 24 hours.
                 </p>
                 <Button
@@ -242,21 +242,21 @@ export function Quote() {
                     setIsSubmitted(false);
                   }}
                   variant="outline"
-                  className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider text-sm h-12 px-6 rounded-none"
+                  className="bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide text-sm h-12 px-6 rounded-xl"
                 >
                   Submit another request
                 </Button>
               </div>
             ) : (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="quote-form space-y-6">
                   {/* Mode toggle as a prominent segmented control */}
                   <FormField
                     control={form.control}
                     name="mode"
                     render={({ field }) => (
                       <FormItem className="space-y-2">
-                        <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                        <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                           Shipping mode
                         </FormLabel>
                         <FormControl>
@@ -270,7 +270,7 @@ export function Quote() {
                           >
                             <FormItem className="m-0">
                               <FormLabel
-                                className="flex items-center gap-3 border-2 border-foreground/20 p-4 rounded-none cursor-pointer hover:border-foreground/50 transition-colors m-0 font-mono font-bold text-sm uppercase tracking-wider has-[button[data-state=checked]]:border-accent has-[button[data-state=checked]]:bg-accent/10"
+                                className="flex items-center gap-3 border border-border/20 p-4 rounded-xl cursor-pointer hover:border-foreground/50 transition-colors m-0 font-medium font-semibold text-sm tracking-wider has-[button[data-state=checked]]:border-primary has-[button[data-state=checked]]:bg-primary/10"
                               >
                                 <FormControl>
                                   <RadioGroupItem
@@ -279,13 +279,13 @@ export function Quote() {
                                     className="absolute opacity-0 pointer-events-none"
                                   />
                                 </FormControl>
-                                <Anchor className="w-5 h-5 text-accent" />
+                                <Anchor className="w-5 h-5 text-primary" />
                                 Sea Freight
                               </FormLabel>
                             </FormItem>
                             <FormItem className="m-0">
                               <FormLabel
-                                className="flex items-center gap-3 border-2 border-foreground/20 p-4 rounded-none cursor-pointer hover:border-foreground/50 transition-colors m-0 font-mono font-bold text-sm uppercase tracking-wider has-[button[data-state=checked]]:border-accent has-[button[data-state=checked]]:bg-accent/10"
+                                className="flex items-center gap-3 border border-border/20 p-4 rounded-xl cursor-pointer hover:border-foreground/50 transition-colors m-0 font-medium font-semibold text-sm tracking-wider has-[button[data-state=checked]]:border-primary has-[button[data-state=checked]]:bg-primary/10"
                               >
                                 <FormControl>
                                   <RadioGroupItem
@@ -294,13 +294,13 @@ export function Quote() {
                                     className="absolute opacity-0 pointer-events-none"
                                   />
                                 </FormControl>
-                                <Plane className="w-5 h-5 text-accent" />
+                                <Plane className="w-5 h-5 text-primary" />
                                 Air Freight
                               </FormLabel>
                             </FormItem>
                           </RadioGroup>
                         </FormControl>
-                        <FormMessage className="text-accent" />
+                        <FormMessage className="text-primary" />
                       </FormItem>
                     )}
                   />
@@ -312,24 +312,24 @@ export function Quote() {
                       name="origin"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                             Pickup in China
                           </FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans">
+                              <SelectTrigger className="bg-background text-foreground border border-border h-12 rounded-xl ">
                                 <SelectValue placeholder="Choose origin" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="rounded-none border-2 border-foreground bg-background text-foreground">
+                            <SelectContent className="rounded-xl border border-border bg-background text-foreground">
                               {ORIGINS.map((o) => (
-                                <SelectItem key={o} value={o} className="rounded-none font-sans focus:bg-foreground focus:text-background">
+                                <SelectItem key={o} value={o} className="rounded-xl  focus:bg-foreground focus:text-background">
                                   {o}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
@@ -338,24 +338,24 @@ export function Quote() {
                       name="destination"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                             Delivery in SA
                           </FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans">
+                              <SelectTrigger className="bg-background text-foreground border border-border h-12 rounded-xl ">
                                 <SelectValue placeholder="Choose destination" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="rounded-none border-2 border-foreground bg-background text-foreground">
+                            <SelectContent className="rounded-xl border border-border bg-background text-foreground">
                               {DESTINATIONS.map((d) => (
-                                <SelectItem key={d} value={d} className="rounded-none font-sans focus:bg-foreground focus:text-background">
+                                <SelectItem key={d} value={d} className="rounded-xl  focus:bg-foreground focus:text-background">
                                   {d}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
@@ -368,24 +368,24 @@ export function Quote() {
                       name="cargoType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                             Cargo type
                           </FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans">
+                              <SelectTrigger className="bg-background text-foreground border border-border h-12 rounded-xl ">
                                 <SelectValue placeholder="Choose container or service" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="rounded-none border-2 border-foreground bg-background text-foreground">
+                            <SelectContent className="rounded-xl border border-border bg-background text-foreground">
                               {cargoOptions.map((opt) => (
-                                <SelectItem key={opt.value} value={opt.value} className="rounded-none font-sans focus:bg-foreground focus:text-background">
+                                <SelectItem key={opt.value} value={opt.value} className="rounded-xl  focus:bg-foreground focus:text-background">
                                   {opt.label}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
@@ -394,22 +394,22 @@ export function Quote() {
                       name="goodsType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">Goods</FormLabel>
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">Goods</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans">
+                              <SelectTrigger className="bg-background text-foreground border border-border h-12 rounded-xl ">
                                 <SelectValue placeholder="What are you shipping?" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="rounded-none border-2 border-foreground bg-background text-foreground">
+                            <SelectContent className="rounded-xl border border-border bg-background text-foreground">
                               {GOODS_CATEGORIES.map((g) => (
-                                <SelectItem key={g} value={g} className="rounded-none font-sans focus:bg-foreground focus:text-background">
+                                <SelectItem key={g} value={g} className="rounded-xl  focus:bg-foreground focus:text-background">
                                   {g}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
@@ -422,13 +422,13 @@ export function Quote() {
                       name="estWeight"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                             Est. weight <span className="text-foreground/40 font-normal">(OPTIONAL)</span>
                           </FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g. 500 kg" className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans" {...field} />
+                            <Input placeholder="e.g. 500 kg" className="bg-background text-foreground border border-border h-12 rounded-xl " {...field} />
                           </FormControl>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
@@ -437,20 +437,20 @@ export function Quote() {
                       name="estVolume"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                             Est. volume <span className="text-foreground/40 font-normal">(OPTIONAL)</span>
                           </FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g. 2 CBM" className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans" {...field} />
+                            <Input placeholder="e.g. 2 CBM" className="bg-background text-foreground border border-border h-12 rounded-xl " {...field} />
                           </FormControl>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
                   </div>
 
-                  <div className="border-t-2 border-foreground/20 pt-6 space-y-4">
-                    <h4 className="text-sm font-mono font-bold uppercase tracking-wider text-foreground/50">
+                  <div className="border-t border-foreground/20 pt-6 space-y-4">
+                    <h4 className="text-sm font-medium tracking-wide text-foreground/50">
                       Your details
                     </h4>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -459,13 +459,13 @@ export function Quote() {
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                            <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                               Full name
                             </FormLabel>
                             <FormControl>
-                              <Input placeholder="John Doe" className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans" {...field} />
+                              <Input placeholder="John Doe" className="bg-background text-foreground border border-border h-12 rounded-xl " {...field} />
                             </FormControl>
-                            <FormMessage className="text-accent" />
+                            <FormMessage className="text-primary" />
                           </FormItem>
                         )}
                       />
@@ -474,16 +474,16 @@ export function Quote() {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">Email</FormLabel>
+                            <FormLabel className="text-foreground font-medium tracking-wide text-xs">Email</FormLabel>
                             <FormControl>
                               <Input
                                 type="email"
                                 placeholder="john@company.co.za"
-                                className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans"
+                                className="bg-background text-foreground border border-border h-12 rounded-xl "
                                 {...field}
                               />
                             </FormControl>
-                            <FormMessage className="text-accent" />
+                            <FormMessage className="text-primary" />
                           </FormItem>
                         )}
                       />
@@ -493,11 +493,11 @@ export function Quote() {
                       name="mobile"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">Mobile</FormLabel>
+                          <FormLabel className="text-foreground font-medium tracking-wide text-xs">Mobile</FormLabel>
                           <FormControl>
-                            <Input placeholder="082 123 4567" className="bg-background text-foreground border-2 border-foreground h-12 rounded-none font-sans" {...field} />
+                            <Input placeholder="082 123 4567" className="bg-background text-foreground border border-border h-12 rounded-xl " {...field} />
                           </FormControl>
-                          <FormMessage className="text-accent" />
+                          <FormMessage className="text-primary" />
                         </FormItem>
                       )}
                     />
@@ -508,23 +508,23 @@ export function Quote() {
                     name="notes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground font-mono font-bold uppercase tracking-wider text-xs">
+                        <FormLabel className="text-foreground font-medium tracking-wide text-xs">
                           Notes <span className="text-foreground/40 font-normal">(OPTIONAL)</span>
                         </FormLabel>
                         <FormControl>
                           <Textarea
                             placeholder="Anything else? Timeline, special handling, supplier address…"
-                            className="bg-background text-foreground border-2 border-foreground min-h-[96px] resize-none rounded-none font-sans"
+                            className="bg-background text-foreground border border-border min-h-[96px] resize-none rounded-xl "
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage className="text-accent" />
+                        <FormMessage className="text-primary" />
                       </FormItem>
                     )}
                   />
 
                   {submitError && (
-                    <div className="border-2 border-accent bg-accent/10 px-4 py-3 text-sm font-mono font-bold text-accent rounded-none uppercase">
+                    <div className="border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm font-medium font-semibold text-destructive rounded-xl">
                       {submitError}
                     </div>
                   )}
@@ -533,7 +533,7 @@ export function Quote() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                     className="w-full bg-brand-orange hover:bg-brand-orange/90 text-foreground h-14 text-sm font-mono font-bold uppercase tracking-wider border-none rounded-none disabled:opacity-70 mt-4"
+                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-sm font-medium tracking-wide border-none rounded-xl disabled:opacity-70 mt-4"
                   >
                     {isSubmitting ? "Sending…" : "Get my quote"}
                   </Button>

@@ -19,15 +19,15 @@ function Stat({ icon: Icon, value, suffix = "", label, isInView, delay = 0 }: St
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className="group flex flex-col md:flex-row items-center md:items-start gap-4 p-4 sm:p-6 md:p-8"
     >
-      <div className="w-12 h-12 bg-background border-2 border-foreground flex items-center justify-center shrink-0 rounded-none group-hover:bg-foreground group-hover:text-background transition-colors">
-        <Icon className="w-6 h-6 text-foreground group-hover:text-accent transition-colors" />
+      <div className="w-12 h-12 bg-background border border-border flex items-center justify-center shrink-0 rounded-xl group-hover:bg-foreground group-hover:text-background transition-colors">
+        <Icon className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
       </div>
       <div className="flex flex-col text-center md:text-left leading-none mt-2 md:mt-0">
-        <span className="font-display font-bold text-3xl sm:text-4xl text-foreground uppercase tracking-tighter">
+        <span className="font-serif font-semibold text-3xl sm:text-4xl text-foreground tracking-tighter">
           {value}
-          {suffix && <span className="text-accent ml-1">{suffix}</span>}
+          {suffix && <span className="ml-1">{suffix}</span>}
         </span>
-        <span className="text-foreground/70 text-xs font-mono font-bold uppercase tracking-widest mt-2">{label}</span>
+        <span className="text-foreground/70 text-xs font-medium font-semibold tracking-widest mt-2">{label}</span>
       </div>
     </motion.div>
   );
@@ -38,9 +38,9 @@ export function TrustBar() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <div ref={ref} className="bg-background border-y-2 border-foreground relative z-20">
+    <div ref={ref} className="bg-background border-y border-border relative z-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x-2 divide-foreground border-x-2 border-foreground justify-items-stretch">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 divide-border md:divide-x border-x border-border justify-items-stretch">
           <Stat icon={Container} value="12,000" suffix="+" label="Containers Cleared" isInView={isInView} delay={0} />
           <Stat icon={Clock} value="98.4" suffix="%" label="On-Time Delivery" isInView={isInView} delay={0.1} />
           <Stat icon={Truck} value="45" suffix="d" label="Door-to-Door" isInView={isInView} delay={0.2} />

@@ -35,7 +35,7 @@ export function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section className="py-20 md:py-32 bg-background text-foreground border-b-2 border-foreground relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-background text-foreground border-b border-border relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-5 mix-blend-screen pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-testimonials" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -47,18 +47,18 @@ export function Testimonials() {
 
       <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
         <div className="mb-12">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground uppercase tracking-tight leading-[0.9]">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight leading-[0.9]">
             Trusted by <br />
-            <span className="text-accent">SA Importers.</span>
+            SA Importers.
           </h2>
         </div>
 
         <div className="relative">
-          <div className="absolute -top-10 -left-6 md:-top-16 md:-left-12 text-[12rem] md:text-[18rem] leading-none font-display font-bold text-foreground/5 select-none pointer-events-none">
+          <div className="absolute -top-10 -left-6 md:-top-16 md:-left-12 text-[12rem] md:text-[18rem] leading-none font-serif font-semibold text-foreground/5 select-none pointer-events-none">
             "
           </div>
 
-          <div className="relative min-h-[280px] md:min-h-[240px] flex flex-col justify-center border-l-2 border-accent pl-6 md:pl-10 ml-2 md:ml-6">
+          <div className="relative min-h-[280px] md:min-h-[240px] flex flex-col justify-center border-l border-primary pl-6 md:pl-10 ml-2 md:ml-6">
             <AnimatePresence mode="wait">
               <motion.blockquote
                 key={index}
@@ -68,18 +68,18 @@ export function Testimonials() {
                 transition={{ duration: 0.4 }}
                 className="relative z-10"
               >
-                <p className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground uppercase tracking-tight leading-[1.1] mb-10">
+                <p className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight leading-[1.1] mb-10">
                   {current.quote}
                 </p>
 
-                <footer className="flex items-center gap-4 border-t-2 border-foreground/20 pt-6 mt-6">
-                  <div className="w-14 h-14 bg-foreground text-background border-2 border-foreground flex items-center justify-center font-mono font-bold text-xl rounded-none shrink-0 uppercase">
+                <footer className="flex items-center gap-4 border-t border-border pt-6 mt-6">
+                  <div className="w-14 h-14 bg-foreground text-background flex items-center justify-center font-semibold text-xl rounded-full shrink-0 shadow-sm">
                     {current.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-mono font-bold uppercase tracking-wider text-foreground text-lg">{current.name}</div>
-                    <div className="font-mono text-xs uppercase tracking-widest text-foreground/60">
-                      {current.role} // {current.company}
+                    <div className="font-medium tracking-wide text-foreground text-lg">{current.name}</div>
+                    <div className="font-medium text-xs tracking-wider text-foreground/60">
+                      {current.role} • {current.company}
                     </div>
                   </div>
                 </footer>
@@ -95,16 +95,16 @@ export function Testimonials() {
                   key={i}
                   aria-label={`Show testimonial ${i + 1}`}
                   onClick={() => setIndex(i)}
-                  className="w-12 h-12 flex items-center justify-center border-2 border-foreground/30 hover:border-foreground/60 transition-colors group rounded-none outline-none"
+                  className="w-12 h-12 flex items-center justify-center hover:bg-muted transition-colors group rounded-full outline-none"
                 >
-                  <span className={`w-3 h-3 rounded-none transition-all duration-300 ${
-                    i === index ? "bg-accent" : "bg-foreground/20 group-hover:bg-foreground/50"
-                  }`} />
+                  <span className={`w-3 h-3 rounded-full transition-all duration-300 ${
+ i === index ? "bg-primary" : "bg-foreground/20 group-hover:bg-foreground/50"
+ }`} />
                 </button>
               ))}
             </div>
-            <span className="ml-4 text-sm text-foreground/60 font-mono font-bold tracking-widest">
-              [{String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}]
+            <span className="ml-4 text-sm text-foreground/60 font-medium tracking-wider">
+              {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
             </span>
           </div>
         </div>

@@ -20,9 +20,9 @@ import {
 import { TrackingTimeline, ModeBadge } from "@/components/sections/TrackingTimeline";
 
 const TONE_RING: Record<string, string> = {
-  neutral: "bg-secondary text-foreground border-foreground",
+  neutral: "bg-secondary text-foreground border-border",
   info: "bg-brand-blue text-background border-brand-blue",
-  warn: "bg-brand-orange text-background border-brand-orange",
+  warn: "bg-primary text-primary-foreground border-primary",
   success: "bg-emerald-700 text-background border-emerald-700",
   danger: "bg-destructive text-destructive-foreground border-destructive",
 };
@@ -140,12 +140,12 @@ export default function TrackPage() {
           breadcrumb={[{ label: "Track" }]}
         />
 
-        <section className="section-alt section-grid border-b-2 border-foreground py-14 md:py-20">
+        <section className="section-alt border-b border-border py-14 md:py-20">
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             {/* Search */}
             <form
               onSubmit={onSubmit}
-              className="bg-card border-2 border-foreground rounded-none p-4 md:p-6 flex flex-col sm:flex-row gap-3 shadow-[6px_6px_0_hsl(var(--brand-blue)/0.12)]"
+              className="bg-card border border-border rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row gap-3 shadow-lg"
               role="search"
               aria-label="Track a shipment"
             >
@@ -157,7 +157,7 @@ export default function TrackPage() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Enter your tracking ID"
                   aria-label="Tracking ID"
-                  className="pl-12 h-14 bg-background border-2 border-foreground text-base font-mono font-bold tracking-widest uppercase rounded-none placeholder:text-foreground/30 focus-visible:ring-0 focus-visible:border-accent"
+                  className="pl-12 h-14 bg-background border border-border text-base font-sans font-bold tracking-widest rounded-2xl placeholder:text-foreground/30 focus-visible:ring-0 focus-visible:border-brand-blue"
                   autoComplete="off"
                   spellCheck={false}
                 />
@@ -165,14 +165,14 @@ export default function TrackPage() {
               <Button
                 data-testid="button-track-shipment"
                 type="submit"
-                className="bg-brand-blue hover:bg-foreground text-background h-14 px-8 gap-3 font-mono font-bold tracking-wider uppercase rounded-none border-none"
+                className="bg-brand-blue hover:bg-brand-navy text-background h-14 px-8 gap-3 font-medium tracking-wide rounded-2xl border-none"
               >
                 Track
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </form>
 
-            <p className="mt-4 text-xs font-mono font-bold tracking-wider uppercase text-foreground/50">
+            <p className="mt-4 text-xs font-medium tracking-wide text-foreground/50">
               Your tracking ID is in the email we sent you when your shipment was created.
             </p>
 
@@ -195,12 +195,12 @@ export default function TrackPage() {
 
 function IdleHint() {
   return (
-    <div className="rounded-none border-2 border-dashed border-foreground/30 bg-card p-8 md:p-12 text-center">
-      <div className="mx-auto w-14 h-14 border-2 border-foreground bg-foreground text-background flex items-center justify-center mb-5">
+    <div className="rounded-2xl border border-dashed border-border/30 bg-card p-8 md:p-12 text-center">
+      <div className="mx-auto w-14 h-14 border border-border bg-foreground text-background flex items-center justify-center mb-5">
         <Package className="w-6 h-6" />
       </div>
-      <h2 className="text-2xl font-display font-bold text-foreground mb-2 uppercase tracking-tight">Have a tracking ID?</h2>
-      <p className="text-sm font-mono text-foreground/70 max-w-md mx-auto">
+      <h2 className="text-2xl font-display font-bold text-foreground mb-2 tracking-tight">Have a tracking ID?</h2>
+      <p className="text-sm font-sans text-foreground/70 max-w-md mx-auto">
         Paste the ID from your FreightShift status email above. No account required.
       </p>
     </div>
@@ -209,9 +209,9 @@ function IdleHint() {
 
 function LoadingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-none border-2 border-foreground bg-card p-8 md:p-12 text-center">
-      <Loader2 className="w-8 h-8 text-accent animate-spin mx-auto mb-4" />
-            <p className="text-sm font-mono font-bold uppercase tracking-wider text-foreground/60">
+    <div className="rounded-2xl border border-border bg-card p-8 md:p-12 text-center">
+      <Loader2 className="w-8 h-8 text-brand-blue animate-spin mx-auto mb-4" />
+            <p className="text-sm font-medium tracking-wide text-foreground/60">
         Looking up <span className="text-foreground">{code}</span>…
       </p>
     </div>
@@ -220,27 +220,27 @@ function LoadingCard({ code }: { code: string }) {
 
 function MissingCard({ code }: { code: string }) {
   return (
-    <div className="rounded-none border-2 border-foreground bg-card text-foreground p-6 md:p-8">
+    <div className="rounded-2xl border border-border bg-card text-foreground p-6 md:p-8">
       <div className="flex flex-col sm:flex-row items-start gap-6">
-        <div className="w-12 h-12 bg-accent text-background flex items-center justify-center shrink-0">
+        <div className="w-12 h-12 bg-brand-blue text-background flex items-center justify-center shrink-0">
           <AlertCircle className="w-6 h-6" />
         </div>
         <div className="flex-1">
-          <h2 className="text-2xl font-display font-bold uppercase tracking-tight">No shipment found</h2>
+          <h2 className="text-2xl font-serif font-semibold tracking-tight">No shipment found</h2>
           <p className="text-sm font-sans text-foreground/80 mt-2">
             We couldn't find a shipment with the ID{" "}
-            <span className="font-mono font-bold text-foreground bg-foreground/10 px-2 py-0.5">{code}</span>. Double-check the
+            <span className="font-sans font-bold text-foreground bg-foreground/10 px-2 py-0.5">{code}</span>. Double-check the
             email we sent, or get in touch and we'll look it up for you.
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="gap-2 bg-accent hover:bg-foreground text-background hover:text-background font-mono font-bold uppercase tracking-wider rounded-none">
+              <Button size="lg" className="gap-2 bg-primary hover:bg-foreground text-primary-foreground hover:text-background font-medium tracking-wide rounded-2xl">
                 <FaWhatsapp className="w-4 h-4" />
                 WhatsApp us
               </Button>
             </a>
             <a href={`mailto:${SITE.email}?subject=Tracking%20help%20for%20${encodeURIComponent(code)}`}>
-              <Button size="lg" variant="outline" className="border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background font-mono font-bold uppercase tracking-wider rounded-none">
+              <Button size="lg" variant="outline" className="border border-border bg-transparent text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide rounded-2xl">
                 Email support
               </Button>
             </a>
@@ -253,13 +253,13 @@ function MissingCard({ code }: { code: string }) {
 
 function ErrorCard({ message }: { message: string }) {
   return (
-    <div className="rounded-none border-2 border-destructive bg-destructive text-destructive-foreground p-6 md:p-8">
+    <div className="rounded-2xl border border-destructive bg-destructive text-destructive-foreground p-6 md:p-8">
       <div className="flex items-start gap-6">
-        <div className="w-12 h-12 border-2 border-white flex items-center justify-center shrink-0">
+        <div className="w-12 h-12 border border-white flex items-center justify-center shrink-0">
           <AlertCircle className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-display font-bold uppercase tracking-tight">Tracking is temporarily unavailable</h2>
+          <h2 className="text-2xl font-serif font-semibold tracking-tight">Tracking is temporarily unavailable</h2>
           <p className="text-sm font-sans text-white/90 mt-2">{message}</p>
         </div>
       </div>
@@ -278,42 +278,42 @@ function OrderCard({ order }: { order: TrackingOrder }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="overflow-hidden border-2 border-foreground bg-card shadow-[8px_8px_0_hsl(var(--foreground)/0.1)]"
+      className="overflow-hidden border border-border bg-card shadow-xl"
     >
       {/* Header */}
-      <div className="border-b-2 border-foreground p-6 md:p-8">
+      <div className="border-b border-border p-6 md:p-8">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div>
-            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/50 mb-2">
-              // TRACKING ID
+            <p className="text-[11px] font-medium tracking-wider text-foreground/50 mb-2">
+              Tracking ID
             </p>
-            <p className="font-display text-3xl md:text-4xl font-bold text-foreground uppercase tracking-tight">
+            <p className="font-serif text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
               {order.trackingId}
             </p>
             {order.reference && (
-              <p className="text-xs font-mono font-bold uppercase tracking-wider text-foreground/50 mt-2">
+              <p className="text-xs font-medium tracking-wide text-foreground/50 mt-2">
                 Reference: <span className="text-foreground">{order.reference}</span>
               </p>
             )}
           </div>
           <div
-            className={`inline-flex items-center gap-2 border-2 px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider shadow-[3px_3px_0_hsl(var(--foreground)/0.14)] ${TONE_RING[meta.tone]}`}
+            className={`inline-flex items-center gap-2 border px-4 py-2 text-sm font-medium tracking-wide shadow-sm rounded-full ${TONE_RING[meta.tone]}`}
           >
             <StatusIcon className="h-4 w-4" aria-hidden="true" />
             {statusLabel}
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border-2 border-foreground bg-foreground sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-border bg-foreground sm:grid-cols-3">
           {(order.origin || order.destination) && (
             <div className="flex min-h-24 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-accent shrink-0" />
-                <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Route</p>
+                <MapPin className="w-4 h-4 text-brand-blue shrink-0" />
+                <p className="text-xs font-sans font-bold tracking-widest text-foreground/50">Route</p>
               </div>
-              <div className="flex items-center gap-2 font-mono text-sm font-bold uppercase text-foreground">
+              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
                 <span className="min-w-0 flex-1 truncate">{order.origin ?? "—"}</span>
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center border border-foreground/30 text-accent"><RouteModeIcon className="h-3.5 w-3.5" aria-hidden="true" /></span>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center border border-border/30 text-brand-blue"><RouteModeIcon className="h-3.5 w-3.5" aria-hidden="true" /></span>
                 <span className="min-w-0 flex-1 truncate text-right">{order.destination ?? "—"}</span>
               </div>
             </div>
@@ -321,17 +321,17 @@ function OrderCard({ order }: { order: TrackingOrder }) {
           {eta && (
             <div className="flex min-h-24 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-accent shrink-0" />
-                <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Estimated Delivery</p>
+                <Calendar className="w-4 h-4 text-brand-blue shrink-0" />
+                <p className="text-xs font-sans font-bold tracking-widest text-foreground/50">Estimated Delivery</p>
               </div>
-              <p className="font-display text-2xl font-bold uppercase leading-none tracking-wide text-foreground">{eta}</p>
+              <p className="font-serif text-2xl font-semibold leading-none tracking-wide text-foreground">{eta}</p>
             </div>
           )}
           {order.mode && (
             <div className="flex min-h-24 flex-col justify-between gap-4 bg-background p-5">
               <div className="flex items-center gap-2">
-                <Package className="w-4 h-4 text-accent shrink-0" />
-                <p className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50">Mode</p>
+                <Package className="w-4 h-4 text-brand-blue shrink-0" />
+                <p className="text-xs font-sans font-bold tracking-widest text-foreground/50">Mode</p>
               </div>
               <div>
                 <ModeBadge mode={order.mode} />
@@ -341,8 +341,8 @@ function OrderCard({ order }: { order: TrackingOrder }) {
         </div>
 
         {meta.whatNext && (
-          <div className="mt-8 border-l-4 border-accent bg-secondary px-5 py-4 text-sm leading-relaxed text-foreground">
-            <span className="mr-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground/50">What happens next</span>
+          <div className="mt-8 border-l-4 border-primary bg-secondary px-5 py-4 text-sm leading-relaxed text-foreground">
+            <span className="mr-2 font-sans text-[10px] font-bold tracking-[0.16em] text-foreground/50">What happens next</span>
             {meta.whatNext}
           </div>
         )}
@@ -351,19 +351,19 @@ function OrderCard({ order }: { order: TrackingOrder }) {
       {/* Timeline */}
       <div className="bg-background p-6 md:p-8">
         <div className="mb-8 flex items-center gap-4">
-          <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-foreground/50">
-            // TIMELINE
+          <h3 className="text-xs font-medium tracking-wider text-foreground/50">
+            Timeline
           </h3>
-          <span className="tracking-scanline h-px flex-1 bg-accent" aria-hidden="true" />
+          <span className="tracking-scanline h-px flex-1 bg-brand-blue" aria-hidden="true" />
         </div>
         <TrackingTimeline events={order.events} />
       </div>
 
       {/* Footer help */}
-      <div className="border-t-2 border-foreground px-6 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono font-bold uppercase tracking-wider text-foreground/60 bg-background">
+      <div className="border-t border-border px-6 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium tracking-wide text-foreground/60 bg-background">
         <span className="text-center sm:text-left">Need help with this shipment? We reply fastest on WhatsApp.</span>
         <a href="https://wa.me/message/EVTMLWYQY2OCG1" target="_blank" rel="noopener noreferrer">
-          <Button size="lg" variant="outline" className="gap-2 border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-none font-mono font-bold uppercase tracking-wider">
+          <Button size="lg" variant="outline" className="gap-2 border border-border bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-2xl font-medium tracking-wide">
             <FaWhatsapp className="w-4 h-4" />
             Chat to us
           </Button>

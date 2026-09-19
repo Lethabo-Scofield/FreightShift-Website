@@ -22,9 +22,9 @@ const MODE_ICON: Record<string, LucideIcon> = {
 };
 
 const TONE_DOT: Record<string, string> = {
-  neutral: "bg-secondary text-foreground border-foreground",
-  info: "bg-brand-blue text-background border-brand-blue",
-  warn: "bg-brand-orange text-background border-brand-orange",
+  neutral: "bg-secondary text-foreground border-border",
+  info: "bg-foreground text-background border-border",
+  warn: "bg-primary text-primary-foreground border-primary",
   success: "bg-emerald-700 text-background border-emerald-700",
   danger: "bg-destructive text-destructive-foreground border-destructive",
 };
@@ -43,14 +43,14 @@ function formatDate(iso: string) {
 export function TrackingTimeline({ events }: { events: TrackingEvent[] }) {
   if (events.length === 0) {
     return (
-      <div className="border-2 border-dashed border-foreground/20 bg-background p-8 text-center text-sm font-mono font-bold uppercase tracking-wider text-foreground/60">
+      <div className="border border-dashed border-border/20 bg-background p-8 text-center text-sm font-medium tracking-wide text-foreground/60">
         No timeline events yet. We'll post updates here as your shipment moves.
       </div>
     );
   }
 
   return (
-    <ol className="relative ml-4 border-l-2 border-foreground/20 pl-7 md:ml-5 md:pl-10">
+    <ol className="relative ml-4 border-l border-border/20 pl-7 md:ml-5 md:pl-10">
       {events.map((ev, i) => {
         const meta = STATUS_META[ev.status];
         const Icon = ICON_BY_STATUS[ev.status];
@@ -64,26 +64,26 @@ export function TrackingTimeline({ events }: { events: TrackingEvent[] }) {
             className="relative pb-9 last:pb-0"
           >
             <span
-              className={`absolute -left-[44px] md:-left-[53px] top-0 flex h-9 w-9 items-center justify-center border-2 shadow-[3px_3px_0_hsl(var(--foreground)/0.12)] ${TONE_DOT[meta.tone]}`}
+              className={`absolute -left-[44px] md:-left-[53px] top-0 flex h-9 w-9 items-center justify-center border shadow-sm rounded-full ${TONE_DOT[meta.tone]}`}
             >
               <Icon className="h-4 w-4" aria-hidden="true" />
             </span>
-            <div className="border-l-2 border-foreground/10 pl-4 pb-1">
+            <div className="border-l border-border/10 pl-4 pb-1">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-foreground/55">
+                <span className="text-[11px] font-medium tracking-wide text-foreground/55">
                 {formatDate(ev.at)}
                 </span>
                 {isLatest && (
-                  <span className="bg-foreground px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest text-background">
+                  <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs font-semibold">
                     Latest update
                   </span>
                 )}
               </div>
-              <h3 className="mt-1 text-xl font-display font-bold uppercase leading-none tracking-wide text-foreground">{ev.label}</h3>
+              <h3 className="mt-1 text-xl font-serif font-semibold leading-none tracking-wide text-foreground">{ev.label}</h3>
               {ev.message && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground/75">{ev.message}</p>}
               {ev.location && (
-                <p className="mt-3 flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-foreground/55">
-                  <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                <p className="mt-3 flex items-center gap-1.5 text-[11px] font-medium tracking-wide text-foreground/55">
+                  <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                   {ev.location}
                 </p>
               )}
@@ -100,8 +100,8 @@ export function ModeBadge({ mode }: { mode?: "sea" | "air" | "road" }) {
   const Icon = MODE_ICON[mode] ?? Truck;
   const label = mode === "sea" ? "Sea freight" : mode === "air" ? "Air freight" : "Road";
   return (
-    <span className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-background bg-foreground px-3 py-1.5 rounded-none">
-      <Icon className="w-4 h-4 text-accent" />
+    <span className="inline-flex items-center gap-2 text-xs font-medium font-semibold tracking-widest text-background bg-foreground px-3 py-1.5 rounded-xl">
+      <Icon className="w-4 h-4 text-primary" />
       {label}
     </span>
   );

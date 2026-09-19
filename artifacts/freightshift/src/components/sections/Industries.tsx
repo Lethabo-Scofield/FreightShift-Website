@@ -13,7 +13,7 @@ export function Industries() {
   const looped = [...industries, ...industries];
 
   return (
-    <section className="py-12 md:py-16 bg-background border-b-2 border-foreground overflow-hidden relative">
+    <section className="py-12 md:py-16 bg-background border-b border-border overflow-hidden relative">
       <div className="absolute inset-0 z-0 opacity-5 mix-blend-multiply pointer-events-none">
         <svg width="100%" height="100%">
           <pattern id="grid-industries" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -34,10 +34,10 @@ export function Industries() {
             {looped.map((ind, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 bg-background border-2 border-foreground rounded-none px-6 py-4 shrink-0 transition-colors hover:bg-foreground hover:text-background group"
+                className="flex items-center gap-3 bg-background border border-border rounded-xl px-6 py-4 shrink-0 transition-colors hover:bg-foreground hover:text-background group"
               >
                 <ind.icon className="w-5 h-5 text-foreground group-hover:text-background transition-colors" />
-                <span className="font-mono text-sm uppercase tracking-widest font-bold whitespace-nowrap">
+                <span className="text-base font-medium tracking-wide whitespace-nowrap">
                   {ind.name}
                 </span>
               </div>

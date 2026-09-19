@@ -31,14 +31,14 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="section-alt py-16 md:py-32 border-b-2 border-foreground">
+    <section className="section-alt py-16 md:py-32 border-b border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tight leading-none">
+          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-foreground tracking-tight leading-none">
             Factory to Door <br/>
             <span className="text-foreground/40">In 5 Steps.</span>
           </h2>
-          <p className="font-mono text-foreground/80 mt-6 text-lg uppercase tracking-wider font-bold">
+          <p className="font-medium text-foreground/80 mt-6 text-lg tracking-wider font-semibold">
             We handle the complexity. You track the cargo.
           </p>
         </div>
@@ -62,16 +62,16 @@ export function HowItWorks() {
                   <div className="lg:hidden absolute top-[5.5rem] bottom-[-3rem] left-1/2 w-[2px] bg-foreground/10 -translate-x-1/2 z-[-1]" />
                 )}
                 
-                <div className="w-24 h-24 rounded-none bg-background border-2 border-foreground flex items-center justify-center mb-8 relative transition-colors duration-300 group-hover:bg-foreground group-hover:text-background">
-                  <step.icon className="w-10 h-10 text-foreground group-hover:text-background transition-colors" />
+                <div className="w-24 h-24 rounded-2xl bg-background border border-border shadow-sm flex items-center justify-center mb-8 relative transition-colors duration-300 group-hover:bg-primary group-hover:border-primary group-hover:shadow-lg">
+                  <step.icon className="w-10 h-10 text-primary group-hover:text-primary-foreground transition-colors" />
                   
                   {/* Step Number Badge */}
-                  <div className="absolute -top-3 -right-3 w-10 h-10 bg-accent text-background font-mono text-sm font-bold flex items-center justify-center border-2 border-foreground">
-                    0{i + 1}
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-foreground text-background font-medium text-xs flex items-center justify-center shadow-md">
+                    {i + 1}
                   </div>
                 </div>
 
-                <h3 className="font-mono text-lg font-bold text-foreground mb-3 uppercase tracking-wider">{step.title}</h3>
+                <h3 className="font-semibold text-lg text-foreground mb-3 tracking-wide">{step.title}</h3>
                 <p className="font-sans text-base text-foreground/70 leading-relaxed px-4">
                   {step.desc}
                 </p>

@@ -14,14 +14,14 @@ const methods = [
     id: "whatsapp",
     icon: FaWhatsapp,
     iconColor: "text-white",
-    iconBg: "bg-[hsl(var(--brand-orange))]",
-    accentBar: "bg-[hsl(var(--brand-orange))]",
+    iconBg: "bg-primary",
+    accentBar: "bg-primary",
     label: "WhatsApp",
     headline: "Message us now",
     detail: "wa.me/freightshift",
     sub: "Replies within minutes",
     badge: "Fastest",
-    badgeColor: "bg-[hsl(var(--brand-orange))] text-white",
+    badgeColor: "bg-primary text-primary-foreground",
     href: "https://wa.me/message/EVTMLWYQY2OCG1",
     external: true,
     cta: "Open WhatsApp",
@@ -31,8 +31,8 @@ const methods = [
     id: "phone",
     icon: Phone,
     iconColor: "text-white",
-    iconBg: "bg-accent",
-    accentBar: "bg-accent",
+    iconBg: "bg-brand-blue",
+    accentBar: "bg-brand-blue",
     label: "Phone",
     headline: "Talk to a coordinator",
     detail: "010 011 3971",
@@ -85,7 +85,7 @@ const contactCategories = [
     phone: "010 011 3971",
     phoneHref: "tel:0100113971",
     emailHref: "mailto:info@freightshiftlogistics.co.za",
-    accent: "bg-accent",
+    accent: "bg-brand-blue",
     emailCta: "Send email",
     phoneCta: "Call now",
   },
@@ -98,7 +98,7 @@ const contactCategories = [
     phone: "011 385 0010",
     phoneHref: "tel:0113850010",
     emailHref: "mailto:admin@freightshiftlogistics.co.za",
-    accent: "bg-[hsl(var(--brand-orange))]",
+    accent: "bg-brand-blue",
     emailCta: "Email operations",
     phoneCta: "Call operations",
   },
@@ -119,14 +119,14 @@ export function Contact() {
           <div className="space-y-4 md:space-y-6">
             <div
               data-testid="contact-reply-time-badge"
-              className="inline-flex items-center gap-2.5 px-4 py-2 bg-accent/5 border border-accent/20 rounded-sm text-accent font-mono text-sm font-bold uppercase tracking-wider shadow-sm"
+              className="inline-flex items-center gap-2.5 px-4 py-2 bg-brand-blue/5 border border-brand-blue/20 rounded-xl text-brand-blue font-medium text-sm font-semibold tracking-wider shadow-sm"
             >
               <Clock className="w-4 h-4" />
               <span>Reply in 24 hours, faster on WhatsApp</span>
             </div>
             <h2
               data-testid="contact-heading"
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground tracking-tight uppercase"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground tracking-tight"
             >
               Three ways to reach us.
             </h2>
@@ -142,7 +142,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative overflow-hidden border border-border bg-card shadow-sm"
+              className="relative overflow-hidden border border-border bg-card shadow-lg rounded-2xl"
             >
               <div
                 className={`absolute inset-x-0 top-0 h-1 ${category.accent}`}
@@ -151,18 +151,18 @@ export function Contact() {
               <div className="p-5 md:p-8">
                 <div className="mb-7 flex items-start justify-between gap-4">
                   <div>
-                    <span className="mb-2 block font-mono text-xs font-bold uppercase tracking-[0.18em] text-foreground/50">
+                    <span className="mb-2 block font-medium text-xs font-semibold tracking-[0.18em] text-foreground/50">
                       Contact category
                     </span>
                     <h3
                       data-testid={`contact-category-title-${category.id}`}
-                      className="max-w-sm text-2xl font-display font-bold uppercase tracking-tight text-foreground md:text-3xl"
+                      className="max-w-sm text-2xl font-serif font-semibold tracking-tight text-foreground md:text-3xl"
                     >
                       {category.label}
                     </h3>
                   </div>
                   <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-sm text-white ${category.accent}`}
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white ${category.accent}`}
                     aria-hidden="true"
                   >
                     <PhoneCall className="h-5 w-5" />
@@ -180,16 +180,16 @@ export function Contact() {
                   <a
                     href={category.phoneHref}
                     data-testid={`link-${category.id}-phone`}
-                    className="group flex min-w-0 items-center gap-3 text-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="group flex min-w-0 items-center gap-3 text-foreground transition-colors hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-background text-accent">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-background text-brand-blue">
                       <Phone className="h-4 w-4" />
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/50">
+                      <span className="block font-medium text-[10px] font-semibold tracking-widest text-foreground/50">
                         Phone
                       </span>
-                      <span className="block truncate font-mono text-sm font-bold">
+                      <span className="block truncate font-medium text-sm font-semibold">
                         {category.phone}
                       </span>
                     </span>
@@ -197,16 +197,16 @@ export function Contact() {
                   <a
                     href={category.emailHref}
                     data-testid={`link-${category.id}-email`}
-                    className="group flex min-w-0 items-center gap-3 text-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="group flex min-w-0 items-center gap-3 text-foreground transition-colors hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-background text-accent">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-background text-brand-blue">
                       <Mail className="h-4 w-4" />
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/50">
+                      <span className="block font-medium text-[10px] font-semibold tracking-widest text-foreground/50">
                         Email
                       </span>
-                      <span className="block break-all font-mono text-sm font-bold">
+                      <span className="block break-all font-medium text-sm font-semibold">
                         {category.email}
                       </span>
                     </span>
@@ -217,7 +217,7 @@ export function Contact() {
                   <a
                     href={category.phoneHref}
                     data-testid={`button-${category.id}-call`}
-                     className="inline-flex items-center justify-center gap-2 border border-accent bg-accent px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                     className="inline-flex items-center justify-center gap-2 border border-brand-blue bg-brand-blue px-4 py-3 rounded-full font-medium text-xs font-semibold tracking-wider text-white transition-all hover:bg-brand-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                   >
                     <PhoneCall className="h-4 w-4" />
                     {category.phoneCta}
@@ -225,7 +225,7 @@ export function Contact() {
                   <a
                     href={category.emailHref}
                     data-testid={`button-${category.id}-email`}
-                     className="inline-flex items-center justify-center gap-2 border border-accent bg-background px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-accent transition-all hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                     className="inline-flex items-center justify-center gap-2 border border-brand-blue bg-background px-4 py-3 rounded-full font-medium text-xs font-semibold tracking-wider text-brand-blue transition-all hover:bg-brand-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                   >
                     <Mail className="h-4 w-4" />
                     {category.emailCta}
@@ -261,11 +261,11 @@ export function Contact() {
                 <Wrapper
                   {...wrapperProps}
                   data-testid={`contact-method-${m.id}`}
-                   className={`relative block bg-card border border-border shadow-sm transition-all duration-300 ${
-                    m.href
-                      ? "hover:border-accent hover:shadow-md group cursor-pointer hover:-translate-y-1"
-                      : ""
-                  }`}
+                   className={`relative block bg-card border border-border shadow-md rounded-2xl transition-all duration-300 ${
+ m.href
+ ? "hover:border-primary hover:shadow-md group cursor-pointer hover:-translate-y-1"
+ : ""
+ }`}
                 >
                   {/* Top Accent Line */}
                   <div
@@ -276,11 +276,11 @@ export function Contact() {
                   <div className="p-5 md:p-8 flex flex-col">
                     {/* Header */}
                     <div className="flex items-start justify-between mb-6">
-                      <div className={`w-14 h-14 rounded-sm flex items-center justify-center shadow-sm ${m.iconBg}`}>
+                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center shadow-sm ${m.iconBg}`}>
                         <Icon className={`w-7 h-7 ${m.iconColor}`} />
                       </div>
                       {m.badge && (
-                        <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1.5 rounded-sm shadow-sm ${m.badgeColor}`}>
+                        <span className={`text-[10px] font-medium tracking-wide px-3 py-1.5 rounded-xl shadow-sm ${m.badgeColor}`}>
                           {m.badge}
                         </span>
                       )}
@@ -288,21 +288,21 @@ export function Contact() {
 
                     {/* Content */}
                     <div className="flex flex-col">
-                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-foreground/50 mb-3">
+                      <span className="text-xs font-medium font-semibold tracking-widest text-foreground/50 mb-3">
                         {m.label}
                       </span>
-                      <h3 className="text-2xl font-display font-bold text-foreground uppercase tracking-tight mb-2">
+                      <h3 className="text-2xl font-serif font-semibold text-foreground tracking-tight mb-2">
                         {m.headline}
                       </h3>
-                      <p className="text-base md:text-lg font-mono font-medium text-foreground tracking-tight break-words">
+                      <p className="text-base md:text-lg font-medium font-medium text-foreground tracking-tight break-words">
                         {m.detail}
                       </p>
                       {m.secondaryDetail && (
-                        <p className="text-base md:text-lg font-mono font-medium text-foreground tracking-tight break-words">
+                        <p className="text-base md:text-lg font-medium font-medium text-foreground tracking-tight break-words">
                           {m.secondaryDetail}
                         </p>
                       )}
-                      <p className="text-sm font-sans text-foreground/70 mt-3">
+                      <p className="text-sm  text-foreground/70 mt-3">
                         {m.sub}
                       </p>
                     </div>
@@ -315,7 +315,7 @@ export function Contact() {
                             key={emailLink.href}
                             href={emailLink.href}
                             data-testid={`link-email-${emailLink.label.toLowerCase().replaceAll(" ", "-")}`}
-                            className="inline-flex items-center justify-between gap-3 border border-border bg-background px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-foreground transition-all hover:border-accent hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                            className="inline-flex items-center justify-between gap-3 border border-brand-blue bg-background px-4 py-3 rounded-full font-medium text-xs font-semibold tracking-wider text-brand-blue transition-all hover:bg-brand-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                           >
                             <span>{emailLink.label}</span>
                             <Mail className="h-4 w-4 shrink-0" />
@@ -325,11 +325,11 @@ export function Contact() {
                     ) : m.cta ? (
                       <div className="mt-6 pt-5 border-t border-border">
                         <div
-                           className={`inline-flex items-center justify-between px-5 py-3.5 w-full font-mono font-bold uppercase tracking-wider text-sm transition-all duration-300 border shadow-sm ${
-                            m.isPrimary
-                              ? 'bg-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))] text-white group-hover:brightness-110'
-                               : 'bg-accent border-accent text-white group-hover:brightness-110'
-                          }`}
+                           className={`inline-flex items-center justify-between px-5 py-3.5 w-full font-medium tracking-wide text-sm transition-all duration-300 border shadow-sm ${
+ m.isPrimary
+                              ? 'bg-primary border-primary text-primary-foreground group-hover:brightness-110'
+                              : 'bg-brand-blue border-brand-blue text-white group-hover:bg-brand-navy'
+ }`}
                         >
                           <span>{m.cta}</span>
                           <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`} />
@@ -352,17 +352,17 @@ export function Contact() {
         >
           <div className="flex flex-col sm:flex-row items-center justify-between p-6 md:p-8 bg-card border border-border shadow-sm">
             <div className="flex items-center gap-5 mb-6 sm:mb-0">
-              <div className="w-12 h-12 bg-accent/10 flex items-center justify-center rounded-sm border border-accent/20 hidden sm:flex">
-                <ArrowDown className="w-5 h-5 text-accent" />
+              <div className="w-12 h-12 bg-primary/10 flex items-center justify-center rounded-xl border border-primary/20 hidden sm:flex">
+                <ArrowDown className="w-5 h-5 text-primary" />
               </div>
-              <p className="text-lg md:text-xl font-mono font-bold tracking-wider uppercase text-foreground">
+              <p className="text-lg md:text-xl font-medium font-semibold tracking-wider text-foreground">
                 Have a quote ready?
               </p>
             </div>
             <a
               href="#quote"
               data-testid="link-skip-to-quote"
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-[hsl(var(--brand-orange))] text-white font-mono font-bold uppercase tracking-wider text-sm transition-all hover:brightness-110 shadow-sm"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-medium tracking-wide text-sm transition-all hover:bg-primary/90 shadow-sm rounded-full"
             >
               <span>Skip to the quote form</span>
               <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
