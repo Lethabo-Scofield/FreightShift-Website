@@ -15,6 +15,7 @@ import {
   faqJsonLd,
   breadcrumbJsonLd,
 } from "@/lib/jsonld";
+import contactSupportImage from "@assets/image_1789779270216.png";
 
 export default function ContactPage() {
   useEffect(() => {
@@ -41,6 +42,9 @@ export default function ContactPage() {
           title="Let's move your cargo."
           subtitle="Quote in 24 hours. WhatsApp for instant replies."
           breadcrumb={[{ label: "Contact" }]}
+          backgroundImage={contactSupportImage}
+          imageTreatment="full-color"
+          imageFit="contain-desktop"
         />
         <Contact />
         <Quote />
