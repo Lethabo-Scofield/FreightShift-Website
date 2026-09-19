@@ -31,46 +31,64 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="bg-background py-20 md:py-32 border-b border-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-16 md:mb-24">
+    <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-section-alt via-background to-background py-20 md:py-28">
+      <div className="pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full bg-brand-blue/10 blur-3xl" />
+      <div className="container relative mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55 }}
+          className="mb-12 md:mb-16"
+        >
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
+            How it works
+          </p>
           <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground tracking-tight mb-6">
             Factory to Door. In 5 Steps.
           </h2>
           <p className="text-lg md:text-xl text-foreground/70 max-w-2xl font-medium leading-relaxed">
             We handle the complexity. You track the cargo.
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative">
           {/* Continuous Line desktop */}
-          <div className="hidden lg:block absolute top-[28px] left-[28px] right-[28px] h-px bg-border z-0" />
+          <div className="absolute left-[10%] right-[10%] top-7 z-0 hidden h-0.5 bg-brand-blue/15 lg:block" />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
+            className="absolute left-[10%] right-[10%] top-7 z-0 hidden h-0.5 origin-left bg-brand-blue lg:block"
+          />
           
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-6 relative z-10">
+          <div className="relative z-10 grid gap-5 lg:grid-cols-5">
             {steps.map((step, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={{ y: -6 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative flex flex-col"
+                transition={{ duration: 0.5, delay: i * 0.09, ease: "easeOut" }}
+                className="relative flex min-h-64 flex-col rounded-2xl border border-brand-blue/15 bg-white/90 p-6 shadow-sm transition-shadow hover:shadow-lg"
               >
                 {/* Mobile connecting line */}
                 {i !== steps.length - 1 && (
-                  <div className="lg:hidden absolute top-14 -bottom-12 left-7 w-px bg-border z-[-1]" />
+                  <div className="absolute -bottom-5 left-12 top-16 z-[-1] w-0.5 bg-brand-blue/30 lg:hidden" />
                 )}
                 
-                <div className="flex items-center lg:block mb-6 lg:mb-8">
-                  <div className="w-14 h-14 rounded-full bg-section-alt border border-border flex items-center justify-center shrink-0 z-10 relative">
-                    <step.icon className="w-6 h-6 text-foreground/80" strokeWidth={1.5} />
+                <div className="mb-8 flex items-center lg:block">
+                  <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-blue text-white shadow-[0_8px_24px_rgba(17,119,180,0.24)]">
+                    <step.icon className="h-6 w-6" strokeWidth={1.8} />
                   </div>
-                  <div className="ml-6 lg:ml-0 lg:mt-6 text-sm font-semibold text-foreground/40 tracking-widest uppercase">
+                  <div className="ml-6 text-xs font-bold uppercase tracking-[0.16em] text-brand-blue lg:ml-0 lg:mt-6">
                     Step 0{i + 1}
                   </div>
                 </div>
 
-                <div>
+                <div className="mt-auto">
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-2">
                     {step.title}
                   </h3>

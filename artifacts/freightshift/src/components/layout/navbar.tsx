@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -70,17 +69,7 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="https://wa.me/message/EVTMLWYQY2OCG1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" size="sm" className="bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide text-xs h-10 px-4 gap-2 rounded-xl">
-                <FaWhatsapp className="w-4 h-4 text-foreground/60" />
-                WhatsApp Us
-              </Button>
-            </a>
+          <div className="flex items-center">
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
@@ -127,17 +116,6 @@ export function Navbar() {
                 })}
               </div>
               <div className="mt-auto flex flex-col gap-4 pb-8">
-                <a
-                  href="https://wa.me/message/EVTMLWYQY2OCG1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
-                >
-                  <Button variant="outline" className="w-full bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide text-xs h-12 gap-2 rounded-xl">
-                    <FaWhatsapp className="w-4 h-4 text-foreground/60" />
-                    WhatsApp Us
-                  </Button>
-                </a>
                 <Button
                   onClick={() => {
                     setIsMobileMenuOpen(false);

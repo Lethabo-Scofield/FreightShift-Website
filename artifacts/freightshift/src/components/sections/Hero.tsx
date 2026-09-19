@@ -74,8 +74,8 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors font-medium text-sm tracking-wide group w-full justify-center sm:w-auto sm:justify-start"
               >
-                <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors border border-white/20">
-                  <FaWhatsapp className="w-5 h-5" />
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm transition-colors group-hover:bg-[#20bd5a]">
+                  <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
                 </span>
                 WhatsApp Us
               </a>
