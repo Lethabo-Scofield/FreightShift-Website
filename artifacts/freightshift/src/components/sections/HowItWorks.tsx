@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ClipboardEdit, Truck, Ship, FileCheck, MapPin } from "lucide-react";
 
@@ -5,41 +6,55 @@ const steps = [
   {
     icon: ClipboardEdit,
     title: "Quote & Book",
-    desc: "Rates within 24 hours."
+    desc: "Rates within 24 hours.",
+    color: "#1478b8",
   },
   {
     icon: Truck,
     title: "Origin Pickup",
-    desc: "We collect from your supplier in China."
+    desc: "We collect from your supplier in China.",
+    color: "#0e7490",
   },
   {
     icon: Ship,
     title: "Sea or Air",
-    desc: "Scheduled corridor services with tracking."
+    desc: "Scheduled corridor services with tracking.",
+    color: "#2563eb",
   },
   {
     icon: FileCheck,
     title: "Customs Clearance",
-    desc: "We handle SARS, duties, and compliance."
+    desc: "We handle SARS, duties, and compliance.",
+    color: "#4f46e5",
   },
   {
     icon: MapPin,
     title: "Final Delivery",
-    desc: "Door-to-door anywhere in SA."
+    desc: "Door-to-door anywhere in SA.",
+    color: "#0f766e",
   }
 ];
 
 export function HowItWorks() {
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveStep((current) => (current + 1) % steps.length);
+    }, 2200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-section-alt via-background to-background py-20 md:py-28">
-      <div className="pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full bg-brand-blue/10 blur-3xl" />
-      <div className="container relative mx-auto px-4 md:px-6">
+    <section className="border-b border-border bg-background py-20 md:py-28">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
-          className="mb-12 md:mb-16"
+          className="mb-14 md:mb-20"
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
             How it works
@@ -52,51 +67,82 @@ export function HowItWorks() {
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Continuous Line desktop */}
-          <div className="absolute left-[10%] right-[10%] top-7 z-0 hidden h-0.5 bg-brand-blue/15 lg:block" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="absolute left-7 top-7 h-[calc(100%-3.5rem)] w-px bg-border lg:left-[10%] lg:right-[10%] lg:top-7 lg:h-px lg:w-auto" />
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
-            className="absolute left-[10%] right-[10%] top-7 z-0 hidden h-0.5 origin-left bg-brand-blue lg:block"
+            className="absolute left-7 top-7 h-[calc(100%-3.5rem)] w-0.5 origin-top lg:hidden"
+            animate={{
+              scaleY: activeStep / (steps.length - 1),
+              backgroundColor: steps[activeStep].color,
+            }}
+            transition={{ duration: 0.65, ease: "easeInOut" }}
           />
-          
-          <div className="relative z-10 grid gap-5 lg:grid-cols-5">
+          <motion.div
+            className="absolute left-[10%] top-7 hidden h-0.5 origin-left lg:block"
+            animate={{
+              width: `${(activeStep / (steps.length - 1)) * 80}%`,
+              backgroundColor: steps[activeStep].color,
+            }}
+            transition={{ duration: 0.65, ease: "easeInOut" }}
+          />
+
+          <div className="relative z-10 grid gap-10 lg:grid-cols-5 lg:gap-4">
             {steps.map((step, i) => (
-              <motion.div 
+              <button
+                type="button"
                 key={i}
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                whileHover={{ y: -6 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.09, ease: "easeOut" }}
-                className="relative flex min-h-64 flex-col rounded-2xl border border-brand-blue/15 bg-white/90 p-6 shadow-sm transition-shadow hover:shadow-lg"
+                onClick={() => setActiveStep(i)}
+                aria-current={i === activeStep ? "step" : undefined}
+                className="group grid grid-cols-[3.5rem_1fr] gap-5 text-left lg:block lg:text-center"
               >
-                {/* Mobile connecting line */}
-                {i !== steps.length - 1 && (
-                  <div className="absolute -bottom-5 left-12 top-16 z-[-1] w-0.5 bg-brand-blue/30 lg:hidden" />
-                )}
-                
-                <div className="mb-8 flex items-center lg:block">
-                  <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-blue text-white shadow-[0_8px_24px_rgba(17,119,180,0.24)]">
-                    <step.icon className="h-6 w-6" strokeWidth={1.8} />
-                  </div>
-                  <div className="ml-6 text-xs font-bold uppercase tracking-[0.16em] text-brand-blue lg:ml-0 lg:mt-6">
+                <motion.span
+                  animate={{
+                    scale: i === activeStep ? 1.12 : 1,
+                    backgroundColor: i === activeStep ? step.color : "#ffffff",
+                    borderColor: i === activeStep ? step.color : "#d9e0e7",
+                    color: i === activeStep ? "#ffffff" : "#718096",
+                    boxShadow:
+                      i === activeStep
+                        ? `0 10px 30px ${step.color}40`
+                        : "0 0 0 rgba(0,0,0,0)",
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border-2"
+                >
+                  <step.icon className="h-6 w-6" strokeWidth={1.8} />
+                  {i === activeStep && (
+                    <motion.span
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1.55, opacity: 0 }}
+                      transition={{ duration: 1.4, repeat: Infinity }}
+                      className="absolute inset-0 rounded-full border"
+                      style={{ borderColor: step.color }}
+                    />
+                  )}
+                </motion.span>
+
+                <div className="pt-1 lg:pt-0">
+                  <div
+                    className="mb-2 text-xs font-bold uppercase tracking-[0.16em] transition-colors lg:mt-7"
+                    style={{ color: i === activeStep ? step.color : undefined }}
+                  >
                     Step 0{i + 1}
                   </div>
-                </div>
-
-                <div className="mt-auto">
-                  <h3 className="font-serif text-xl font-semibold text-foreground mb-2">
+                  <h3 className="mb-2 font-serif text-lg font-semibold text-foreground md:text-xl">
                     {step.title}
                   </h3>
-                  <p className="text-foreground/70 leading-relaxed text-sm md:text-base pr-4 lg:pr-0">
-                    {step.desc}
-                  </p>
+                  <motion.div
+                    animate={{
+                      opacity: i === activeStep ? 1 : 0.38,
+                      y: i === activeStep ? 0 : 4,
+                    }}
+                    transition={{ duration: 0.35 }}
+                    className="min-h-12"
+                  >
+                    <p className="text-sm leading-relaxed text-foreground/65">{step.desc}</p>
+                  </motion.div>
                 </div>
-              </motion.div>
+              </button>
             ))}
           </div>
         </div>
