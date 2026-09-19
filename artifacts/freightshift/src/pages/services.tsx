@@ -14,7 +14,7 @@ import servicesHeroImg from "@/assets/freight-ship-corridor.png";
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Seo
         {...PAGE_SEO.services}
         jsonLd={[
@@ -26,7 +26,7 @@ export default function ServicesPage() {
         ]}
       />
       <Navbar />
-      <main>
+      <main className="flex-1">
         <PageHeader
           eyebrow="Services & Corridor"
           title="Freight, customs & delivery."

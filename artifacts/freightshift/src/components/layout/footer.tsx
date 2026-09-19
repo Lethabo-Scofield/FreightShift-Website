@@ -1,23 +1,21 @@
-import { Link, useLocation } from "wouter";
-import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Link } from "wouter";
+import { Phone, Mail } from "lucide-react";
 import logoUrl from "@/assets/freightshift-logo.png";
-import { goToQuote } from "@/lib/scroll-to-quote";
 
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Track", href: "/track" },
   { name: "Contact", href: "/contact" },
 ];
 
 export function Footer() {
-  const [, navigate] = useLocation();
   return (
-    <footer className="bg-background text-foreground pt-12 md:pt-24 pb-8 md:pb-12 border-t border-border">
+    <footer id="site-footer" className="border-t border-white/10 bg-brand-navy text-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-16 mb-10 md:mb-16">
-          {/* Brand */}
-          <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 md:py-16 lg:grid-cols-[1.4fr_0.7fr_1fr] lg:gap-16">
+          <div>
             <Link
               href="/"
               className="inline-flex items-center self-start"
@@ -26,59 +24,44 @@ export function Footer() {
               <img
                 src={logoUrl}
                 alt="FreightShift International Logistics"
-                className="h-12 w-auto object-contain"
+                className="h-11 w-auto object-contain brightness-0 invert"
               />
             </Link>
-            <p className="text-sm text-foreground/70 max-w-xs font-medium">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
               China to South Africa. Door to door. One trusted team.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-medium font-semibold tracking-widest text-foreground/40 mb-4 md:mb-6 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-primary inline-block" />
-              Quick Links
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+              Navigate
             </h4>
-            <ul className="flex flex-col gap-4">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-1">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm font-medium tracking-wide text-foreground hover:text-primary transition-colors flex items-center gap-2 group"
+                    className="text-sm text-white/70 transition-colors hover:text-white"
                   >
-                    <ArrowUpRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                     {link.name}
                   </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  type="button"
-                  onClick={() => goToQuote(navigate)}
-                  className="text-sm font-medium tracking-wide text-foreground hover:text-primary transition-colors flex items-center gap-2 group text-left"
-                >
-                  <ArrowUpRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                  Get a Quote
-                </button>
-              </li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-xs font-medium font-semibold tracking-widest text-foreground/40 mb-6 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-primary inline-block" />
-              General Enquiries
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+              Contact
             </h4>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-3">
               <li>
                 <a
                   href="mailto:info@freightshiftlogistics.co.za"
                   data-testid="link-footer-general-email"
-                  className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
                 >
-                  <Mail className="w-4 h-4 shrink-0" />
+                  <Mail className="h-4 w-4 shrink-0 text-white/40" />
                   <span className="break-all">info@freightshiftlogistics.co.za</span>
                 </a>
               </li>
@@ -86,9 +69,9 @@ export function Footer() {
                 <a
                   href="tel:0100113971"
                   data-testid="link-footer-general-phone"
-                  className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
                 >
-                  <Phone className="w-4 h-4 shrink-0" />
+                  <Phone className="h-4 w-4 shrink-0 text-white/40" />
                   010 011 3971
                 </a>
               </li>
@@ -96,48 +79,18 @@ export function Footer() {
                 <Link
                   href="/contact"
                   data-testid="link-footer-operations-support"
-                  className="flex items-center gap-2 text-sm font-medium tracking-wide text-foreground hover:text-primary transition-colors"
+                  className="inline-flex text-sm text-white/70 transition-colors hover:text-white"
                 >
                   Shipment &amp; Operations Support
-                  <ArrowUpRight className="h-4 w-4 shrink-0" />
                 </Link>
               </li>
-              <li className="flex items-start gap-3 text-sm font-medium text-foreground/70">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-foreground/40" />
-                <span>Johannesburg, South Africa</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-xs font-medium font-semibold tracking-widest text-foreground/40 mb-6 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-primary inline-block" />
-              What we do
-            </h4>
-            <ul className="flex flex-col gap-4">
-              <li className="text-sm font-medium tracking-wider text-foreground/70">Freight Forwarding</li>
-              <li className="text-sm font-medium tracking-wider text-foreground/70">Customs Clearance</li>
-              <li className="text-sm font-medium tracking-wider text-foreground/70">Warehousing</li>
-              <li className="text-sm font-medium tracking-wider text-foreground/70">China-SA Corridor</li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-6 md:pt-8 border-t border-border/10 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 font-medium text-xs tracking-widest text-foreground/40 text-center md:text-left">
+        <div className="border-t border-white/10 py-6 text-center text-xs tracking-wide text-white/35 md:text-left">
           <p>
             © 2026 FreightShift International Logistics (Pty) Ltd. All rights reserved.
-          </p>
-          <p>
-            Created by{" "}
-            <a
-              href="https://olyxee.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-primary transition-colors"
-            >
-              olyxee.com
-            </a>
           </p>
         </div>
       </div>

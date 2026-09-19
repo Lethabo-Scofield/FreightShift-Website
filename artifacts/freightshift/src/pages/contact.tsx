@@ -6,7 +6,6 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Contact } from "@/components/sections/Contact";
 import { Quote } from "@/components/sections/Quote";
 import { FAQ, faqs } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
 import { consumePendingQuoteScroll } from "@/lib/scroll-to-quote";
 import { Seo } from "@/components/Seo";
@@ -46,7 +45,6 @@ export default function ContactPage() {
         <Contact />
         <Quote />
         <FAQ />
-        <FinalCTA />
       </main>
       <Footer />
       <FloatingWhatsApp />

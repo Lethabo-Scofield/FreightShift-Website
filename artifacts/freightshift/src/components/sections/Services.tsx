@@ -1,75 +1,97 @@
 import { motion } from "framer-motion";
-import { Globe, ShieldCheck, Box, BarChart3, Truck, Package } from "lucide-react";
+
+const services = [
+  {
+    id: "01",
+    title: "Freight Transport",
+    desc: "Air, sea, and road. FCL, LCL, express — China to South Africa.",
+    details: [
+      "Sea Freight: Bulk or shared space via Durban and Cape Town.",
+      "Air Freight: Fast transit to OR Tambo and Cape Town Int."
+    ]
+  },
+  {
+    id: "02",
+    title: "Customs Clearance",
+    desc: "SARS-compliant. No delays, no penalties.",
+    details: [
+      "Supplier pickup to SA delivery, with SARS clearance."
+    ]
+  },
+  {
+    id: "03",
+    title: "Courier Services",
+    desc: "Fast local courier and last-mile delivery nationwide.",
+    details: [
+      "Door-to-door tracking from factory floor to final destination anywhere in SA."
+    ]
+  },
+  {
+    id: "04",
+    title: "Storage",
+    desc: "Secure short and long-term warehousing, packing, distribution.",
+    details: []
+  },
+  {
+    id: "05",
+    title: "Moving Services",
+    desc: "Home and office relocations. Packed, moved, safe.",
+    details: []
+  },
+  {
+    id: "06",
+    title: "Logistics Operations",
+    desc: "End-to-end planning. Lower cost, faster lanes.",
+    details: []
+  }
+];
 
 export function Services() {
-  const services = [
-    {
-      title: "Freight Transport",
-      desc: "Air, sea, and road. FCL, LCL, express — China to South Africa.",
-      icon: Globe,
-      colSpan: "lg:col-span-2"
-    },
-    {
-      title: "Customs Clearance",
-      desc: "SARS-compliant. No delays, no penalties.",
-      icon: ShieldCheck,
-      colSpan: "lg:col-span-1"
-    },
-    {
-      title: "Storage",
-      desc: "Secure short and long-term warehousing, packing, distribution.",
-      icon: Box,
-      colSpan: "lg:col-span-1"
-    },
-    {
-      title: "Moving Services",
-      desc: "Home and office relocations. Packed, moved, safe.",
-      icon: Package,
-      colSpan: "lg:col-span-2"
-    },
-    {
-      title: "Courier Services",
-      desc: "Fast local courier and last-mile delivery nationwide.",
-      icon: Truck,
-      colSpan: "lg:col-span-2"
-    },
-    {
-      title: "Logistics Operations",
-      desc: "End-to-end planning. Lower cost, faster lanes.",
-      icon: BarChart3,
-      colSpan: "lg:col-span-1"
-    }
-  ];
-
   return (
-    <section id="services" className="section-alt py-16 md:py-32 border-b border-border relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="mb-16 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground mt-4 mb-4 tracking-tight">What we do.</h2>
-          <p className="text-lg md:text-xl text-foreground/80 font-medium">Freight, customs, storage, moving, courier and logistics — one trusted team.</p>
+    <section id="services" className="bg-section-alt py-16 md:py-32 border-b border-border">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-3xl mb-16 md:mb-24">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground mb-6 tracking-tight">
+            What we do.
+          </h2>
+          <p className="text-lg md:text-xl text-foreground/70 font-medium leading-relaxed">
+            Freight, customs, storage, moving, courier and logistics — one trusted team.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-col border-t border-border">
           {services.map((service, i) => (
             <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
+              key={service.id}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`bg-background border border-border p-8 relative group hover:bg-foreground hover:text-background transition-colors duration-300 ${service.colSpan} flex flex-col rounded-xl`}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="group grid md:grid-cols-12 gap-6 md:gap-12 py-10 md:py-12 border-b border-border hover:bg-background/40 transition-colors"
             >
-              <div className="absolute top-8 right-8 text-4xl font-serif font-semibold text-foreground/10 group-hover:text-background/10 transition-colors pointer-events-none select-none">
-                0{i + 1}
+              <div className="md:col-span-1 text-sm font-medium text-foreground/40 pt-1 tracking-widest">
+                {service.id}
               </div>
-              <service.icon className="w-10 h-10 text-foreground group-hover:text-primary transition-colors mb-12" />
-              <div className="mt-auto">
-                <h3 className="text-2xl font-serif font-semibold text-foreground group-hover:text-background mb-3 transition-colors">{service.title}</h3>
-                <p className="text-foreground/70 group-hover:text-background/70 transition-colors mb-6 font-sans">
-                  {service.desc}
-                </p>
-                <div className="text-sm font-medium tracking-wide text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  Learn more <span className="text-lg leading-none group-hover:translate-x-1 transition-transform">→</span>
+              <div className="md:col-span-4">
+                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-foreground mb-2 group-hover:text-brand-blue transition-colors">
+                  {service.title}
+                </h3>
+              </div>
+              <div className="md:col-span-7">
+                <div>
+                  <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
+                    {service.desc}
+                  </p>
+                  {service.details.length > 0 && (
+                    <ul className="space-y-3">
+                      {service.details.map((detail, idx) => (
+                        <li key={idx} className="text-base text-foreground/60 flex items-start gap-3">
+                          <span className="block w-1 h-1 rounded-full bg-foreground/30 mt-2.5 shrink-0" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             </motion.div>

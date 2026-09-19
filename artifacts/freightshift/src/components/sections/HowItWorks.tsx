@@ -31,50 +31,53 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="section-alt py-16 md:py-32 border-b border-border">
+    <section className="bg-background py-20 md:py-32 border-b border-border">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-foreground tracking-tight leading-none">
-            Factory to Door <br/>
-            <span className="text-foreground/40">In 5 Steps.</span>
+        <div className="mb-16 md:mb-24">
+          <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground tracking-tight mb-6">
+            Factory to Door. In 5 Steps.
           </h2>
-          <p className="font-medium text-foreground/80 mt-6 text-lg tracking-wider font-semibold">
+          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl font-medium leading-relaxed">
             We handle the complexity. You track the cargo.
           </p>
         </div>
 
         <div className="relative">
-          {/* Connecting line desktop */}
-          <div className="hidden lg:block absolute top-[4.5rem] left-[10%] right-[10%] h-[2px] bg-foreground/10 z-0" />
+          {/* Continuous Line desktop */}
+          <div className="hidden lg:block absolute top-[28px] left-[28px] right-[28px] h-px bg-border z-0" />
           
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-6 relative z-10">
             {steps.map((step, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex flex-col items-center text-center relative group"
+                className="relative flex flex-col"
               >
                 {/* Mobile connecting line */}
                 {i !== steps.length - 1 && (
-                  <div className="lg:hidden absolute top-[5.5rem] bottom-[-3rem] left-1/2 w-[2px] bg-foreground/10 -translate-x-1/2 z-[-1]" />
+                  <div className="lg:hidden absolute top-14 -bottom-12 left-7 w-px bg-border z-[-1]" />
                 )}
                 
-                <div className="w-24 h-24 rounded-2xl bg-background border border-border shadow-sm flex items-center justify-center mb-8 relative transition-colors duration-300 group-hover:bg-primary group-hover:border-primary group-hover:shadow-lg">
-                  <step.icon className="w-10 h-10 text-primary group-hover:text-primary-foreground transition-colors" />
-                  
-                  {/* Step Number Badge */}
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-foreground text-background font-medium text-xs flex items-center justify-center shadow-md">
-                    {i + 1}
+                <div className="flex items-center lg:block mb-6 lg:mb-8">
+                  <div className="w-14 h-14 rounded-full bg-section-alt border border-border flex items-center justify-center shrink-0 z-10 relative">
+                    <step.icon className="w-6 h-6 text-foreground/80" strokeWidth={1.5} />
+                  </div>
+                  <div className="ml-6 lg:ml-0 lg:mt-6 text-sm font-semibold text-foreground/40 tracking-widest uppercase">
+                    Step 0{i + 1}
                   </div>
                 </div>
 
-                <h3 className="font-semibold text-lg text-foreground mb-3 tracking-wide">{step.title}</h3>
-                <p className="font-sans text-base text-foreground/70 leading-relaxed px-4">
-                  {step.desc}
-                </p>
+                <div>
+                  <h3 className="font-serif text-xl font-semibold text-foreground mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed text-sm md:text-base pr-4 lg:pr-0">
+                    {step.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -58,11 +58,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-col sm:flex-row gap-4 mb-10"
+              className="flex flex-col sm:flex-row items-center gap-6 mb-10 sm:items-center sm:justify-start"
             >
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-base h-14 px-8 border-none gap-2 rounded-full shadow-lg transition-all"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-base h-14 px-8 border-none gap-2 rounded-full shadow-lg transition-all w-full sm:w-auto"
                 onClick={goToQuote}
               >
                 Get a Quote
@@ -72,16 +72,12 @@ export function Hero() {
                 href="https://wa.me/message/EVTMLWYQY2OCG1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto"
+                className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors font-medium text-sm tracking-wide group w-full justify-center sm:w-auto sm:justify-start"
               >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 font-medium text-base h-14 px-8 gap-2 w-full rounded-full transition-all"
-                >
-                  <FaWhatsapp className="w-5 h-5 text-white/80" />
-                  WhatsApp Us
-                </Button>
+                <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors border border-white/20">
+                  <FaWhatsapp className="w-5 h-5" />
+                </span>
+                WhatsApp Us
               </a>
             </motion.div>
 

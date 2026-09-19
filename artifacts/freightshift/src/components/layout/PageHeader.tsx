@@ -8,10 +8,19 @@ interface PageHeaderProps {
   subtitle?: string;
   breadcrumb?: { label: string; href?: string }[];
   backgroundImage?: string;
+  imageTreatment?: "muted" | "full-color";
 }
 
-export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundImage }: PageHeaderProps) {
+export function PageHeader({
+  eyebrow,
+  title,
+  subtitle,
+  breadcrumb,
+  backgroundImage,
+  imageTreatment = "muted",
+}: PageHeaderProps) {
   const hasImage = Boolean(backgroundImage);
+  const hasFullColorImage = hasImage && imageTreatment === "full-color";
 
   return (
     <section
@@ -28,8 +37,18 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
             src={backgroundImage}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-40"
+            className={`absolute inset-0 h-full w-full object-cover ${
+              hasFullColorImage
+                ? "opacity-100"
+                : "grayscale mix-blend-luminosity opacity-40"
+            }`}
           />
+          {hasFullColorImage && (
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-brand-navy/90 via-brand-navy/50 to-brand-navy/5"
+              aria-hidden="true"
+            />
+          )}
         </>
       ) : (
         <>
@@ -117,10 +136,9 @@ export function PageHeader({ eyebrow, title, subtitle, breadcrumb, backgroundIma
           className="max-w-4xl"
         >
           {eyebrow && (
-            <div className={`mb-6 inline-flex items-center gap-2 px-3 py-1 text-sm font-medium tracking-wide ${
-              hasImage ? "bg-background text-foreground" : "bg-foreground text-background"
- }`}>
-               <span className="w-1.5 h-1.5 bg-primary inline-block rounded-xl" />
+            <div className={`mb-6 text-sm font-semibold tracking-widest uppercase ${
+              hasImage ? "text-background/90" : "text-brand-blue"
+            }`}>
                {eyebrow}
             </div>
           )}

@@ -18,6 +18,7 @@ import {
   type TrackingOrder,
 } from "@/lib/tracking";
 import { TrackingTimeline, ModeBadge } from "@/components/sections/TrackingTimeline";
+import trackingHeroImg from "@assets/image_1789777181414.png";
 
 const TONE_RING: Record<string, string> = {
   neutral: "bg-secondary text-foreground border-border",
@@ -138,6 +139,8 @@ export default function TrackPage() {
           title="Track your shipment."
           subtitle="Paste the tracking ID from your FreightShift email to see status, timeline and ETA."
           breadcrumb={[{ label: "Track" }]}
+          backgroundImage={trackingHeroImg}
+          imageTreatment="full-color"
         />
 
         <section className="section-alt border-b border-border py-14 md:py-20">

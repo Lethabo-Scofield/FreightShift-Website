@@ -3,31 +3,30 @@ import officeImage from "@assets/WhatsApp_Image_2026-04-29_at_2.53.56_AM_1777424
 
 export function VisionMission() {
   return (
-    <section className="section-alt py-16 md:py-32 border-b border-border">
+    <section className="py-20 md:py-32 border-b border-border bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+
           <motion.div 
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            className="flex flex-col justify-center space-y-16"
+            className="lg:col-span-5 space-y-16"
           >
-            <div className="relative">
-              <h3 className="mb-4 inline-flex items-center gap-2 bg-foreground text-primary-foreground px-3 py-1 text-sm font-medium tracking-wide">
-                 <span className="w-1.5 h-1.5 bg-primary inline-block rounded-xl" />
-                 Our Vision //
+            <div>
+              <h3 className="text-sm font-semibold tracking-widest uppercase text-brand-blue mb-4">
+                Our Vision
               </h3>
-              <p className="text-3xl md:text-4xl font-serif font-semibold text-foreground leading-tight tracking-tight">
+              <p className="text-3xl md:text-4xl font-serif font-medium text-foreground leading-snug tracking-tight">
                 Be the leading link between China and South Africa.
               </p>
             </div>
             
-            <div className="relative">
-              <h3 className="mb-4 inline-flex items-center gap-2 bg-foreground text-primary-foreground px-3 py-1 text-sm font-medium tracking-wide">
-                 <span className="w-1.5 h-1.5 bg-primary inline-block rounded-xl" />
-                 Our Mission //
+            <div>
+              <h3 className="text-sm font-semibold tracking-widest uppercase text-brand-blue mb-4">
+                Our Mission
               </h3>
-              <p className="text-3xl md:text-4xl font-serif font-semibold text-foreground leading-tight tracking-tight">
+              <p className="text-3xl md:text-4xl font-serif font-medium text-foreground leading-snug tracking-tight">
                 Deliver fast, fair, and reliable logistics that grow our clients.
               </p>
             </div>
@@ -38,19 +37,18 @@ export function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.1 }}
-            className="relative border border-border overflow-hidden min-h-[520px] lg:min-h-full rounded-xl bg-background"
+            className="lg:col-span-7 space-y-8"
           >
-            <img
-              src={officeImage}
-              alt="FreightShift International Logistics office"
-              className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-10"
-            />
-            <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-end">
-              <span className="inline-block self-start font-medium text-xs font-semibold tracking-widest text-background bg-foreground border border-border px-3 py-1.5 mb-8">
-                // INSIDE FREIGHTSHIFT
-              </span>
-              <h3 className="text-3xl md:text-4xl font-serif font-semibold text-foreground tracking-tight mb-8">Strategic Goals</h3>
-              <ul className="space-y-4 w-full">
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
+              <img
+                src={officeImage}
+                alt="FreightShift International Logistics office"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="text-xl font-serif font-semibold text-foreground mb-6">Strategic Goals</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Transparent service",
                   "Faster lead times",
@@ -58,16 +56,15 @@ export function VisionMission() {
                   "Real-time tracking",
                   "Compliance & ethics"
                 ].map((goal, i) => (
-                  <li key={i} className="flex items-center gap-4 pb-4 border-b border-border/20 last:border-0 last:pb-0">
-                    <div className="w-8 h-8 bg-foreground text-primary-foreground flex items-center justify-center shrink-0 font-medium text-sm font-semibold">
-                      0{i + 1}
-                    </div>
-                    <span className="text-foreground font-medium tracking-wide text-base md:text-lg">{goal}</span>
-                  </li>
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-blue shrink-0" />
+                    <span className="text-foreground/80 font-medium text-base">{goal}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

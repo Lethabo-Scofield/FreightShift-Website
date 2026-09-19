@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, ArrowRight } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
-import { Button } from "@/components/ui/button";
 
 const GOOGLE_REVIEWS_LINK = "GOOGLE_REVIEWS_LINK_HERE";
 
@@ -37,17 +36,25 @@ export function GoogleReviews() {
             Hear directly from the businesses we move cargo for. Read our reviews on Google.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-medium tracking-wide text-sm h-14 px-8 border-none rounded-full shadow-sm">
-              <a href={GOOGLE_REVIEWS_LINK} target="_blank" rel="noopener noreferrer">
-                Read Our Google Reviews
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto bg-background border border-border text-foreground hover:bg-muted font-medium tracking-wide text-sm h-14 px-8 rounded-full shadow-sm">
-              <a href={GOOGLE_REVIEWS_LINK} target="_blank" rel="noopener noreferrer">
-                Leave a Google Review
-              </a>
-            </Button>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-4">
+            <a
+              href={GOOGLE_REVIEWS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-medium text-lg text-foreground hover:text-primary transition-colors pb-1 border-b-2 border-primary/30 hover:border-primary group"
+            >
+              Read our reviews on Google
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <span className="hidden sm:inline-block w-1 h-1 bg-border rounded-full" />
+            <a
+              href={GOOGLE_REVIEWS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-primary text-sm font-medium tracking-wide transition-colors"
+            >
+              Leave a review
+            </a>
           </div>
         </motion.div>
       </div>
