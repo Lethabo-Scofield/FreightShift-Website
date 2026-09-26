@@ -2,3 +2,4 @@
 - [FreightShift deploy target](freightshift-deploy-target.md) — live site is on Vercel (not Replit); /api/quote needs a serverless fn for prod or POST returns 405.
 - [FreightShift editorial design language](freightshift-restyle-language.md) — premium global-editorial direction; preserve copy and functionality, with no invented data or emojis.
 - [FreightShift identity & keys](freightshift-identity.md) — China→SA corridor is canonical (revert rebrands); no Maps/API key in frontend (only Olyxee env); honesty constraints on companies/partners/reviews.
+- [Scoped workspace installs](scoped-workspace-installs.md) — when unrelated workspace packages are blocked by the registry firewall, install only the artifact's dependency graph.
