@@ -39,9 +39,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.05 }}
               className="font-serif text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-tight leading-[1.05] mb-8 text-white break-words"
             >
-              Ship from China.
+              Ship from <span className="text-brand-gold">China.</span>
               <br />
-              Land in South Africa.
+              Land in <span className="text-[#B9DFF2]">South Africa.</span>
             </motion.h1>
 
             <motion.p
@@ -62,7 +62,7 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="group bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold text-base h-14 px-8 border border-brand-earth gap-3 rounded-xl shadow-lg shadow-brand-navy/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy w-full sm:w-auto"
+                className="group bg-brand-gold hover:bg-brand-gold-dark text-brand-navy font-semibold text-base h-14 px-8 border border-brand-gold gap-3 rounded-xl shadow-lg shadow-brand-navy/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy w-full sm:w-auto"
                 onClick={goToQuote}
               >
                 Get a Quote
@@ -74,7 +74,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="group inline-flex h-14 w-full items-center justify-center gap-3 rounded-xl border border-white/70 bg-brand-navy/25 px-7 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
               >
-                <FaWhatsapp className="h-5 w-5 text-brand-earth-light" aria-hidden="true" />
+                <FaWhatsapp className="h-5 w-5 text-brand-gold" aria-hidden="true" />
                 WhatsApp Us
               </a>
             </motion.div>
@@ -87,17 +87,17 @@ export function Hero() {
               className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-white/90 border-t border-white/20 pt-8"
             >
               <span className="flex items-center gap-2">
-                <Anchor className="w-4 h-4 text-brand-earth-light" />
+                <Anchor className="w-4 h-4 text-brand-gold" />
                 Sea · 28–35 days
               </span>
               <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2">
-                <Plane className="w-4 h-4 text-brand-earth-light" />
+                <Plane className="w-4 h-4 text-brand-gold" />
                 Air · 5–9 days
               </span>
               <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2 text-white">
-                <span className="inline-block w-2 h-2 rounded-full bg-brand-earth-light" />
+                <span className="inline-block w-2 h-2 rounded-full bg-brand-gold" />
                 Full DDP available
               </span>
             </motion.div>

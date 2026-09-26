@@ -41,9 +41,9 @@
   
   --color-brand-blue: hsl(var(--brand-blue));
   --color-brand-navy: hsl(var(--brand-navy));
-  --color-brand-earth: #89674c;
-  --color-brand-earth-dark: hsl(var(--brand-earth-dark));
-  --color-brand-earth-light: hsl(var(--brand-earth-light));
+  --color-brand-gold: #ffbf00;
+  --color-brand-gold-dark: #dba500;
+  --color-brand-gold-ink: #715100;
   --color-section-alt: hsl(var(--section-alt));
 
   --font-sans: var(--app-font-sans);
@@ -62,29 +62,29 @@
   --background: 210 20% 99%;
   --foreground: 220 30% 20%;
 
-  --border: 28 12% 87%;
-  --input: 28 12% 87%;
+  --border: 214 20% 88%;
+  --input: 214 20% 88%;
   --ring: 207 85% 37%;
 
   --card: 0 0% 100%;
   --card-foreground: 220 30% 20%;
-  --card-border: 28 12% 91%;
+  --card-border: 214 20% 92%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 220 30% 20%;
-  --popover-border: 28 12% 91%;
+  --popover-border: 214 20% 92%;
 
   --primary: 207 85% 37%;
   --primary-foreground: 0 0% 100%;
   --primary-border: var(--primary);
   
-  --secondary: 29 15% 91%;
+  --secondary: 214 15% 90%;
   --secondary-foreground: 220 30% 20%;
 
-  --muted: 28 15% 95%;
+  --muted: 214 20% 95%;
   --muted-foreground: 215 15% 45%;
 
-  --accent: 29 21% 92%;
+  --accent: 45 100% 94%;
   --accent-foreground: 220 30% 20%;
 
   --destructive: 0 84% 60%;
@@ -92,9 +92,7 @@
 
   --brand-blue: 207 85% 37%;
   --brand-navy: 220 40% 15%;
-  --brand-earth-dark: 27 30% 33%;
-  --brand-earth-light: 31 40% 78%;
-  --section-alt: 29 20% 96%;
+  --section-alt: 44 45% 97%;
 
   --app-font-sans: 'Inter', system-ui, sans-serif;
   --app-font-serif: 'DM Sans', 'Inter', system-ui, sans-serif;
@@ -136,8 +134,6 @@
   
   --accent: 220 20% 20%;
   --accent-foreground: 210 20% 95%;
-  --brand-earth-dark: 27 30% 33%;
-  --brand-earth-light: 31 40% 78%;
   
   --destructive: 0 62% 30%;
   --destructive-foreground: 44 20% 96%;

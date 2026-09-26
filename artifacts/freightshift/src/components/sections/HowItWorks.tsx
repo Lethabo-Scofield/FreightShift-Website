@@ -7,7 +7,7 @@ const steps = [
     icon: ClipboardEdit,
     title: "Quote & Book",
     desc: "Rates within 24 hours.",
-    color: "#89674C",
+    color: "#ffbf00",
   },
   {
     icon: Truck,
@@ -31,7 +31,7 @@ const steps = [
     icon: MapPin,
     title: "Final Delivery",
     desc: "Door-to-door anywhere in SA.",
-    color: "#89674C",
+    color: "#ffbf00",
   }
 ];
 
@@ -100,7 +100,7 @@ export function HowItWorks() {
                     scale: i === activeStep ? 1.12 : 1,
                     backgroundColor: i === activeStep ? step.color : "#ffffff",
                     borderColor: i === activeStep ? step.color : "#d9e0e7",
-                    color: i === activeStep ? "#ffffff" : "#718096",
+                    color: i === activeStep && step.color === "#ffbf00" ? "#16243a" : i === activeStep ? "#ffffff" : "#718096",
                     boxShadow:
                       i === activeStep
                         ? `0 10px 30px ${step.color}40`
@@ -124,7 +124,7 @@ export function HowItWorks() {
                 <div className="pt-1 lg:pt-0">
                   <div
                     className="mb-2 text-xs font-bold uppercase tracking-[0.16em] transition-colors lg:mt-7"
-                    style={{ color: i === activeStep ? step.color : undefined }}
+                    style={{ color: i === activeStep ? (step.color === "#ffbf00" ? "#715100" : step.color) : undefined }}
                   >
                     Step 0{i + 1}
                   </div>

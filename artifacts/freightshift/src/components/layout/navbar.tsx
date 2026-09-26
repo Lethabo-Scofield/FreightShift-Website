@@ -60,7 +60,7 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   className={`relative text-sm font-medium tracking-wide transition-colors ${
-  active ? "text-brand-earth" : "text-foreground hover:text-brand-earth"
+  active ? "text-brand-gold-ink" : "text-foreground hover:text-brand-gold-ink"
  }`}
                 >
                   {link.name}
@@ -73,7 +73,7 @@ export function Navbar() {
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
-               className="bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold tracking-wide text-xs h-10 px-6 border-none rounded-xl"
+               className="bg-brand-gold hover:bg-brand-gold-dark text-brand-navy font-semibold tracking-wide text-xs h-10 px-6 border-none rounded-xl"
             >
               Get a Quote
             </Button>
@@ -105,11 +105,11 @@ export function Navbar() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`text-base font-medium tracking-wide py-2 border-b border-border/10 transition-colors ${
  active
-  ? "text-brand-earth border-brand-earth/30"
-  : "text-foreground hover:text-brand-earth"
+  ? "text-brand-gold-ink border-brand-gold/50"
+  : "text-foreground hover:text-brand-gold-ink"
  }`}
                     >
-                       {active && <span className="inline-block w-2 h-2 bg-brand-earth mr-2" />}
+                       {active && <span className="inline-block w-2 h-2 bg-brand-gold mr-2" />}
                       {link.name}
                     </Link>
                   );
@@ -121,7 +121,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     goToQuote(navigate);
                   }}
-                    className="w-full bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold tracking-wide text-xs h-12 border-none rounded-xl"
+                    className="w-full bg-brand-gold hover:bg-brand-gold-dark text-brand-navy font-semibold tracking-wide text-xs h-12 border-none rounded-xl"
                 >
                   Get a Quote
                 </Button>
