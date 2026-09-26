@@ -41,7 +41,7 @@ export function Hero() {
             >
               Ship from <span className="text-brand-gold">China.</span>
               <br />
-              Land in <span className="text-[#B9DFF2]">South Africa.</span>
+              Land in <span className="text-brand-blue">South Africa.</span>
             </motion.h1>
 
             <motion.p
