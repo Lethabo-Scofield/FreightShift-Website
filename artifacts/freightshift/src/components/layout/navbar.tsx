@@ -60,7 +60,7 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   className={`relative text-sm font-medium tracking-wide transition-colors ${
- active ? "text-primary" : "text-foreground hover:text-primary"
+  active ? "text-brand-earth" : "text-foreground hover:text-brand-earth"
  }`}
                 >
                   {link.name}
@@ -73,7 +73,7 @@ export function Navbar() {
             <Button
               size="sm"
               onClick={() => goToQuote(navigate)}
-               className="bg-primary hover:bg-brand-navy text-primary-foreground font-medium tracking-wide text-xs h-10 px-6 border-none rounded-xl"
+               className="bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold tracking-wide text-xs h-10 px-6 border-none rounded-xl"
             >
               Get a Quote
             </Button>
@@ -105,11 +105,11 @@ export function Navbar() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`text-base font-medium tracking-wide py-2 border-b border-border/10 transition-colors ${
  active
- ? "text-primary border-primary/30"
- : "text-foreground hover:text-primary"
+  ? "text-brand-earth border-brand-earth/30"
+  : "text-foreground hover:text-brand-earth"
  }`}
                     >
-                      {active && <span className="inline-block w-2 h-2 bg-primary mr-2" />}
+                       {active && <span className="inline-block w-2 h-2 bg-brand-earth mr-2" />}
                       {link.name}
                     </Link>
                   );
@@ -121,7 +121,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     goToQuote(navigate);
                   }}
-                   className="w-full bg-primary hover:bg-brand-navy text-primary-foreground font-medium tracking-wide text-xs h-12 border-none rounded-xl"
+                    className="w-full bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold tracking-wide text-xs h-12 border-none rounded-xl"
                 >
                   Get a Quote
                 </Button>

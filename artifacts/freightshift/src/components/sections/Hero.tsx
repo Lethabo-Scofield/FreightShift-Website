@@ -25,8 +25,8 @@ export function Hero() {
         decoding="async"
       />
 
-      {/* Readability shade: darkens the left so the white copy stays clear while the photo stays visible on the right */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-foreground/90 via-foreground/60 to-foreground/20 pointer-events-none md:from-foreground/80 md:via-foreground/35 md:to-transparent" />
+      {/* Keep the copy legible while letting the port image remain visible. */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-brand-navy/95 via-brand-navy/65 to-brand-navy/20 pointer-events-none md:from-brand-navy/90 md:via-brand-navy/50 md:to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -58,25 +58,23 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-col sm:flex-row items-center gap-6 mb-10 sm:items-center sm:justify-start"
+              className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 mb-10 sm:items-center sm:justify-start"
             >
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-base h-14 px-8 border-none gap-2 rounded-full shadow-lg transition-all w-full sm:w-auto"
+                className="group bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold text-base h-14 px-8 border border-brand-earth gap-3 rounded-xl shadow-lg shadow-brand-navy/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy w-full sm:w-auto"
                 onClick={goToQuote}
               >
                 Get a Quote
-                <ArrowDownRight className="w-5 h-5" />
+                <ArrowDownRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" aria-hidden="true" />
               </Button>
               <a
                 href="https://wa.me/message/EVTMLWYQY2OCG1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors font-medium text-sm tracking-wide group w-full justify-center sm:w-auto sm:justify-start"
+                className="group inline-flex h-14 w-full items-center justify-center gap-3 rounded-xl border border-white/70 bg-brand-navy/25 px-7 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm transition-colors group-hover:bg-[#20bd5a]">
-                  <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-                </span>
+                <FaWhatsapp className="h-5 w-5 text-brand-earth-light" aria-hidden="true" />
                 WhatsApp Us
               </a>
             </motion.div>
@@ -89,17 +87,17 @@ export function Hero() {
               className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-white/90 border-t border-white/20 pt-8"
             >
               <span className="flex items-center gap-2">
-                <Anchor className="w-4 h-4 text-primary" />
+                <Anchor className="w-4 h-4 text-brand-earth-light" />
                 Sea · 28–35 days
               </span>
               <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2">
-                <Plane className="w-4 h-4 text-primary" />
+                <Plane className="w-4 h-4 text-brand-earth-light" />
                 Air · 5–9 days
               </span>
               <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2 text-white">
-                <span className="inline-block w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                <span className="inline-block w-2 h-2 rounded-full bg-brand-earth-light" />
                 Full DDP available
               </span>
             </motion.div>

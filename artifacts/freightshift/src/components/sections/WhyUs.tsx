@@ -37,7 +37,7 @@ export function WhyUs() {
               <ul className="space-y-5">
                 {valueProps.map((prop, i) => (
                   <li key={i} className="flex items-start gap-4">
-                    <Check className="w-5 h-5 text-brand-blue shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-brand-earth shrink-0 mt-0.5" />
                     <span className="text-foreground/80 font-medium text-lg">
                       {prop}
                     </span>

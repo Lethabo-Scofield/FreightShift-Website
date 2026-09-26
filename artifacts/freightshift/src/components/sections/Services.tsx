@@ -69,7 +69,7 @@ export function Services() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="group grid md:grid-cols-12 gap-6 md:gap-12 py-10 md:py-12 border-b border-border hover:bg-background/40 transition-colors"
             >
-              <div className="md:col-span-1 text-sm font-medium text-foreground/40 pt-1 tracking-widest">
+              <div className="md:col-span-1 text-sm font-semibold text-brand-earth pt-1 tracking-widest">
                 {service.id}
               </div>
               <div className="md:col-span-4">
@@ -86,7 +86,7 @@ export function Services() {
                     <ul className="space-y-3">
                       {service.details.map((detail, idx) => (
                         <li key={idx} className="text-base text-foreground/60 flex items-start gap-3">
-                          <span className="block w-1 h-1 rounded-full bg-foreground/30 mt-2.5 shrink-0" />
+                          <span className="block w-1 h-1 rounded-full bg-brand-earth mt-2.5 shrink-0" />
                           {detail}
                         </li>
                       ))}

@@ -22,7 +22,7 @@ export function FinalCTA() {
           <Button
             size="lg"
             onClick={() => goToQuote(navigate)}
-            className="w-full sm:w-auto bg-brand-blue hover:bg-brand-navy text-white font-semibold text-lg h-16 px-12 rounded-none transition-colors group"
+            className="w-full sm:w-auto bg-brand-earth hover:bg-brand-earth-dark text-white font-semibold text-lg h-16 px-12 rounded-xl transition-colors group"
             data-testid="button-final-cta-quote"
           >
             Get a Quote
@@ -39,7 +39,7 @@ export function FinalCTA() {
             href="https://wa.me/message/EVTMLWYQY2OCG1"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/80 hover:text-brand-blue transition-colors inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest"
+            className="text-foreground/80 hover:text-brand-earth transition-colors inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest"
             data-testid="link-final-cta-whatsapp"
           >
             <FaWhatsapp className="w-5 h-5" />

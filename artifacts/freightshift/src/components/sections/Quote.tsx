@@ -180,7 +180,7 @@ export function Quote() {
             <ul className="space-y-4 border-t border-foreground/10 pt-5">
               <li className="flex gap-4">
                 <div className="mt-1">
-                  <Calculator className="w-5 h-5 text-primary" />
+                   <Calculator className="w-5 h-5 text-brand-earth" />
                 </div>
                 <div>
                   <h4 className="font-medium tracking-wide text-foreground">Transparent pricing</h4>
@@ -201,7 +201,7 @@ export function Quote() {
             {isSubmitted ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 bg-foreground/10 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-10 h-10 text-primary" />
+                   <CheckCircle2 className="w-10 h-10 text-brand-earth" />
                 </div>
                 <h3 className="text-2xl font-serif font-semibold text-foreground mb-3 tracking-tight">Request received</h3>
                 <p className="text-foreground/70 mb-8 max-w-sm mx-auto ">
@@ -241,7 +241,7 @@ export function Quote() {
                           >
                             <FormItem className="m-0">
                               <FormLabel
-                                className="flex items-center gap-3 border border-border/20 p-4 rounded-xl cursor-pointer hover:border-foreground/50 transition-colors m-0 font-medium font-semibold text-sm tracking-wider has-[button[data-state=checked]]:border-primary has-[button[data-state=checked]]:bg-primary/10"
+                                className="flex items-center gap-3 border border-border/20 p-4 rounded-xl cursor-pointer hover:border-brand-earth transition-colors m-0 font-semibold text-sm tracking-wider has-[button[data-state=checked]]:border-brand-earth has-[button[data-state=checked]]:bg-brand-earth/10"
                               >
                                 <FormControl>
                                   <RadioGroupItem
@@ -250,13 +250,13 @@ export function Quote() {
                                     className="absolute opacity-0 pointer-events-none"
                                   />
                                 </FormControl>
-                                <Anchor className="w-5 h-5 text-primary" />
+                                 <Anchor className="w-5 h-5 text-brand-earth" />
                                 Sea Freight
                               </FormLabel>
                             </FormItem>
                             <FormItem className="m-0">
                               <FormLabel
-                                className="flex items-center gap-3 border border-border/20 p-4 rounded-xl cursor-pointer hover:border-foreground/50 transition-colors m-0 font-medium font-semibold text-sm tracking-wider has-[button[data-state=checked]]:border-primary has-[button[data-state=checked]]:bg-primary/10"
+                                className="flex items-center gap-3 border border-border/20 p-4 rounded-xl cursor-pointer hover:border-brand-earth transition-colors m-0 font-semibold text-sm tracking-wider has-[button[data-state=checked]]:border-brand-earth has-[button[data-state=checked]]:bg-brand-earth/10"
                               >
                                 <FormControl>
                                   <RadioGroupItem
@@ -265,7 +265,7 @@ export function Quote() {
                                     className="absolute opacity-0 pointer-events-none"
                                   />
                                 </FormControl>
-                                <Plane className="w-5 h-5 text-primary" />
+                                 <Plane className="w-5 h-5 text-brand-earth" />
                                 Air Freight
                               </FormLabel>
                             </FormItem>
@@ -504,7 +504,7 @@ export function Quote() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-sm font-medium tracking-wide border-none rounded-xl disabled:opacity-70 mt-4"
+                     className="w-full bg-brand-earth hover:bg-brand-earth-dark text-white h-14 text-sm font-semibold tracking-wide border-none rounded-xl disabled:opacity-70 mt-4"
                   >
                     {isSubmitting ? "Sending…" : "Get my quote"}
                   </Button>

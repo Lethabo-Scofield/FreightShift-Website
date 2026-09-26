@@ -7,31 +7,31 @@ const steps = [
     icon: ClipboardEdit,
     title: "Quote & Book",
     desc: "Rates within 24 hours.",
-    color: "#1478b8",
+    color: "#89674C",
   },
   {
     icon: Truck,
     title: "Origin Pickup",
     desc: "We collect from your supplier in China.",
-    color: "#0e7490",
+    color: "#256482",
   },
   {
     icon: Ship,
     title: "Sea or Air",
     desc: "Scheduled corridor services with tracking.",
-    color: "#2563eb",
+    color: "#175f96",
   },
   {
     icon: FileCheck,
     title: "Customs Clearance",
     desc: "We handle SARS, duties, and compliance.",
-    color: "#4f46e5",
+    color: "#6a756f",
   },
   {
     icon: MapPin,
     title: "Final Delivery",
     desc: "Door-to-door anywhere in SA.",
-    color: "#0f766e",
+    color: "#89674C",
   }
 ];
 
