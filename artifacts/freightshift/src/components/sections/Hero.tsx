@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Anchor, Plane, ArrowDownRight } from "lucide-react";
+import { Anchor, Plane, MapPin, ArrowDownRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import heroBg from "@assets/hero-corridor.webp";
 import { goToQuote as routeToQuote } from "@/lib/scroll-to-quote";
@@ -88,12 +88,17 @@ export function Hero() {
             >
               <span className="flex items-center gap-2">
                 <Anchor className="w-4 h-4 text-brand-gold" />
-                Sea · 28–35 days
+                Sea · 35–40 days
               </span>
               <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2">
                 <Plane className="w-4 h-4 text-brand-gold" />
-                Air · 5–9 days
+                Air · 5–7 days
+              </span>
+              <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
+              <span className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-brand-gold" />
+                Remote areas / outside Gauteng · 7–14 days
               </span>
               <span className="hidden sm:inline-block w-1 h-1 bg-white/40 rounded-full" />
               <span className="flex items-center gap-2 text-white">
