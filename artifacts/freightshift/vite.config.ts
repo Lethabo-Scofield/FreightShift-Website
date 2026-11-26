@@ -6,7 +6,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { handleQuote } from "./src/server/quote";
 
 const OLYXEE_PREFIX = "/api/olyxee";
-const OLYXEE_TARGET = "https://logistics.olyxee.com";
+const OLYXEE_TARGET = "https://freightics.olyxee.com";
 
 function readJsonBody(req: any): Promise<unknown> {
   return new Promise((resolve, reject) => {

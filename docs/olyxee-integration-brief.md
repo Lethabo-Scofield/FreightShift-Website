@@ -1,9 +1,9 @@
 # Olyxee → Customer Website Tracking Integration Brief
 
-**To:** Olyxee Admin dev team (`logistics.olyxee.com`)
+**To:** Olyxee Admin dev team (`freightics.olyxee.com`)
 **From:** FreightShift International Logistics (first integrator)
 
-This brief covers what `logistics.olyxee.com` needs to ship so that customer-facing websites can plug a public `/track?code=…` page into Olyxee. Our website (`freightshiftlogistics.co.za`) is **built, deployed, and already calling your API** — it currently shows the empty/error state because the endpoint isn't live yet.
+This brief covers what `freightics.olyxee.com` needs to ship so that customer-facing websites can plug a public `/track?code=…` page into Olyxee. Our website (`freightshiftlogistics.co.za`) is **built, deployed, and already calling your API** — it currently shows the empty/error state because the endpoint isn't live yet.
 
 > ⚠️ **Important:** Olyxee is a multi-business platform. Everything below has to work for **every business** in Olyxee, not just FreightShift. The two places this matters most are **tracking-ID generation** (section 1) and **CORS** (section 3). Please don't hard-code anything FreightShift-specific.
 
@@ -40,7 +40,7 @@ Today the platform generates IDs like `OLY-XXX-XXXX`. That works for one tenant 
 ### 2. Public tracking endpoint
 
 ```
-GET https://logistics.olyxee.com/api/public/track/:trackingId
+GET https://freightics.olyxee.com/api/public/track/:trackingId
 ```
 
 - No authentication.
@@ -174,7 +174,7 @@ The tracking ID itself is the auth — anyone with the ID can see that one shipm
 6. Open the email, click the button → should land on `https://freightshiftlogistics.co.za/track?code=FSL-XXX-XXXX` and show the live status and timeline.
 7. Sanity-check the payload directly:
    ```bash
-   curl -i https://logistics.olyxee.com/api/public/track/FSL-XXX-XXXX
+   curl -i https://freightics.olyxee.com/api/public/track/FSL-XXX-XXXX
    ```
 8. Repeat steps 3–7 with a second test business using a different prefix (e.g. `ACME`) to confirm the multi-tenant path works.
 
@@ -187,7 +187,7 @@ For reference, no action needed from you on these — just so you know the contr
 - `/track` page is live on `freightshiftlogistics.co.za` (and linked from the main nav).
 - It reads `?code=` from the URL on mount and on browser back/forward.
 - Manual search input updates the URL so customers can bookmark/share.
-- It calls `https://logistics.olyxee.com/api/public/track/:trackingId` directly (configurable via `VITE_OLYXEE_API_BASE` if the URL ever changes).
+- It calls `https://freightics.olyxee.com/api/public/track/:trackingId` directly (configurable via `VITE_OLYXEE_API_BASE` if the URL ever changes).
 - States handled: idle, loading, found (with timeline + ETA + "what next"), 404 ("no shipment found"), and network/CORS error ("temporarily unavailable").
 - Page is `noindex` so individual tracking pages don't leak into Google.
 
@@ -197,7 +197,7 @@ For reference, no action needed from you on these — just so you know the contr
 
 A short reply on these would let us close the loop:
 
-- [ ] Confirm the endpoint URL will be exactly `https://logistics.olyxee.com/api/public/track/:trackingId`. If different, send the final URL.
+- [ ] Confirm the endpoint URL will be exactly `https://freightics.olyxee.com/api/public/track/:trackingId`. If different, send the final URL.
 - [ ] Confirm the JSON shape in section 2 matches what you'll return.
 - [ ] Confirm the per-business prefix approach (section 1) works for you, or propose an alternative — but it must let FreightShift's IDs look like `FSL-…`, not `OLY-…`.
 - [ ] Confirm CORS will be per-business (or at minimum that you'll document how to add new tenants to `ALLOWED_ORIGINS`).
